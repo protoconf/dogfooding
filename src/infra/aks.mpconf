@@ -15,7 +15,7 @@ load("//terraform/http/provider/v3/http.proto", HttpProvider="Http")
 load("//terraform/http/datasources/v3/http.proto", Http="Http")
 
 load("encoding/yaml.star", "yaml")
-#hello
+#hello world
 
 load(
     "@kubernetes//lib/kubernetes/kubernetes.pinc",
