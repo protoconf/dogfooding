@@ -1,13 +1,13 @@
-deps:  {
-  key:  "kubernetes"
-  value:  {
-    label:  "com_github_protoconf_protoconf_kubernetes_f01a1ab"
-    url:  "git@github.com:protoconf/protoconf-kubernetes"
-    commit:  "f01a1ab"
-    source_path:  "src"
-    exclude_file_regexps:  "terraform"
-    integrity:  "h1:TAz1UT8/s0UlZjI2mJZcljguSKRRAr8cDbB7pWNFu/Y="
-    getter_url:  "git::ssh://git@github.com/protoconf/protoconf-kubernetes?depth=0&ref=f01a1ab"
-    file_descriptor_set_sum:  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+deps: {
+  key: "kubernetes"
+  value: {
+    label: "com_github_protoconf_protoconf_kubernetes_f01a1ab"
+    url: "git@github.com:protoconf/protoconf-kubernetes"
+    commit: "f01a1ab"
+    source_path: "src"
+    exclude_file_regexps: "terraform"
+    integrity: "h1:TAz1UT8/s0UlZjI2mJZcljguSKRRAr8cDbB7pWNFu/Y="
+    getter_url: "git::ssh://git@github.com/protoconf/protoconf-kubernetes?depth=0&ref=f01a1ab"
+    file_descriptor_set_sum: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   }
 }
