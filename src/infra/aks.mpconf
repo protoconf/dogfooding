@@ -24,7 +24,7 @@ load(
     "KubernetesDaemonSet",
 )
 AZURE_RESOURCE_GROUP = "ProtoconfDev"
-# Just add regions here
+# Just add regions here!!!
 REGIONS = ["southeastasia", "eastus", "westus", "westeurope", "northeurope", "us-west-2"]
 
 
