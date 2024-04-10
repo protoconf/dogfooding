@@ -3,10 +3,10 @@
     "options": ["--proto_path=${workspaceDir}/src"]
   },
   "files.associations": {
-    "*.pconf": "Starlark",
+    "*.pconf": "starlark",
     "*.mpconf": "starlark",
-    "*.pinc": "Starlark",
-    "*.proto-validator": "Starlark",
+    "*.pinc": "starlark",
+    "*.proto-validator": "starlark",
     "*.materialized_JSON": "json"
   }
 }
