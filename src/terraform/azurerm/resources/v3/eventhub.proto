@@ -1,0 +1,474 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermEventhub version is 0
+message AzurermEventhub {
+  string id = 1;
+
+  int64 message_retention = 2 [json_name = "message_retention"];
+
+  string name = 3;
+
+  string namespace_name = 4 [json_name = "namespace_name"];
+
+  int64 partition_count = 5 [json_name = "partition_count"];
+
+  repeated string partition_ids = 6 [json_name = "partition_ids"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string status = 8;
+
+  CaptureDescription capture_description = 9 [json_name = "capture_description"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message CaptureDescription {
+    bool enabled = 1;
+
+    string encoding = 2;
+
+    int64 interval_in_seconds = 3 [json_name = "interval_in_seconds"];
+
+    int64 size_limit_in_bytes = 4 [json_name = "size_limit_in_bytes"];
+
+    bool skip_empty_archives = 5 [json_name = "skip_empty_archives"];
+
+    Destination destination = 6;
+
+    message Destination {
+      string archive_name_format = 1 [json_name = "archive_name_format"];
+
+      string blob_container_name = 2 [json_name = "blob_container_name"];
+
+      string name = 3;
+
+      string storage_account_id = 4 [json_name = "storage_account_id"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermEventhubAuthorizationRule version is 1
+message AzurermEventhubAuthorizationRule {
+  string eventhub_name = 1 [json_name = "eventhub_name"];
+
+  string id = 2;
+
+  bool listen = 3;
+
+  bool manage = 4;
+
+  string name = 5;
+
+  string namespace_name = 6 [json_name = "namespace_name"];
+
+  string primary_connection_string = 7 [json_name = "primary_connection_string"];
+
+  string primary_connection_string_alias = 8 [json_name = "primary_connection_string_alias"];
+
+  string primary_key = 9 [json_name = "primary_key"];
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  string secondary_connection_string = 11 [json_name = "secondary_connection_string"];
+
+  string secondary_connection_string_alias = 12 [json_name = "secondary_connection_string_alias"];
+
+  string secondary_key = 13 [json_name = "secondary_key"];
+
+  bool send = 14;
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermEventhubCluster version is 0
+message AzurermEventhubCluster {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  string sku_name = 5 [json_name = "sku_name"];
+
+  map<string, string> tags = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermEventhubConsumerGroup version is 1
+message AzurermEventhubConsumerGroup {
+  string eventhub_name = 1 [json_name = "eventhub_name"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string namespace_name = 4 [json_name = "namespace_name"];
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string user_metadata = 6 [json_name = "user_metadata"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermEventhubNamespace version is 0
+message AzurermEventhubNamespace {
+  bool auto_inflate_enabled = 1 [json_name = "auto_inflate_enabled"];
+
+  int64 capacity = 2;
+
+  string dedicated_cluster_id = 3 [json_name = "dedicated_cluster_id"];
+
+  string default_primary_connection_string = 4 [json_name = "default_primary_connection_string"];
+
+  string default_primary_connection_string_alias = 5 [
+    json_name = "default_primary_connection_string_alias"
+  ];
+
+  string default_primary_key = 6 [json_name = "default_primary_key"];
+
+  string default_secondary_connection_string = 7 [json_name = "default_secondary_connection_string"];
+
+  string default_secondary_connection_string_alias = 8 [
+    json_name = "default_secondary_connection_string_alias"
+  ];
+
+  string default_secondary_key = 9 [json_name = "default_secondary_key"];
+
+  string id = 10;
+
+  bool local_authentication_enabled = 11 [json_name = "local_authentication_enabled"];
+
+  string location = 12;
+
+  int64 maximum_throughput_units = 13 [json_name = "maximum_throughput_units"];
+
+  string minimum_tls_version = 14 [json_name = "minimum_tls_version"];
+
+  string name = 15;
+
+  repeated NetworkRulesets network_rulesets = 16 [json_name = "network_rulesets"];
+
+  bool public_network_access_enabled = 17 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 18 [json_name = "resource_group_name"];
+
+  string sku = 19;
+
+  map<string, string> tags = 20;
+
+  bool zone_redundant = 21 [json_name = "zone_redundant"];
+
+  Identity identity = 22;
+
+  repeated Timeouts timeouts = 23;
+
+  google.protobuf.Value for_each = 24 [json_name = "for_each"];
+
+  repeated string depends_on = 25 [json_name = "depends_on"];
+
+  int32 count = 26;
+
+  string provider = 27;
+
+  terraform.v1.Lifecycle lifecycle = 28;
+
+  message NetworkRulesets {
+    // default_action: string
+    string default_action = 1 [json_name = "default_action"];
+
+    // ip_rule: list of object
+    repeated IpRule ip_rule = 2 [json_name = "ip_rule"];
+
+    // public_network_access_enabled: bool
+    bool public_network_access_enabled = 3 [json_name = "public_network_access_enabled"];
+
+    // trusted_service_access_enabled: bool
+    bool trusted_service_access_enabled = 4 [json_name = "trusted_service_access_enabled"];
+
+    // virtual_network_rule: set of object
+    repeated VirtualNetworkRule virtual_network_rule = 5 [json_name = "virtual_network_rule"];
+
+    message IpRule {
+      // action: string
+      string action = 1;
+
+      // ip_mask: string
+      string ip_mask = 2 [json_name = "ip_mask"];
+    }
+
+    message VirtualNetworkRule {
+      // ignore_missing_virtual_network_service_endpoint: bool
+      bool ignore_missing_virtual_network_service_endpoint = 1 [
+        json_name = "ignore_missing_virtual_network_service_endpoint"
+      ];
+
+      // subnet_id: string
+      string subnet_id = 2 [json_name = "subnet_id"];
+    }
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermEventhubNamespaceAuthorizationRule version is 2
+message AzurermEventhubNamespaceAuthorizationRule {
+  string id = 1;
+
+  bool listen = 2;
+
+  bool manage = 3;
+
+  string name = 4;
+
+  string namespace_name = 5 [json_name = "namespace_name"];
+
+  string primary_connection_string = 6 [json_name = "primary_connection_string"];
+
+  string primary_connection_string_alias = 7 [json_name = "primary_connection_string_alias"];
+
+  string primary_key = 8 [json_name = "primary_key"];
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  string secondary_connection_string = 10 [json_name = "secondary_connection_string"];
+
+  string secondary_connection_string_alias = 11 [json_name = "secondary_connection_string_alias"];
+
+  string secondary_key = 12 [json_name = "secondary_key"];
+
+  bool send = 13;
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermEventhubNamespaceCustomerManagedKey version is 0
+message AzurermEventhubNamespaceCustomerManagedKey {
+  string eventhub_namespace_id = 1 [json_name = "eventhub_namespace_id"];
+
+  string id = 2;
+
+  bool infrastructure_encryption_enabled = 3 [json_name = "infrastructure_encryption_enabled"];
+
+  repeated string key_vault_key_ids = 4 [json_name = "key_vault_key_ids"];
+
+  string user_assigned_identity_id = 5 [json_name = "user_assigned_identity_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermEventhubNamespaceDisasterRecoveryConfig version is 0
+message AzurermEventhubNamespaceDisasterRecoveryConfig {
+  string id = 1;
+
+  string name = 2;
+
+  string namespace_name = 3 [json_name = "namespace_name"];
+
+  string partner_namespace_id = 4 [json_name = "partner_namespace_id"];
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermEventhubNamespaceSchemaGroup version is 0
+message AzurermEventhubNamespaceSchemaGroup {
+  string id = 1;
+
+  string name = 2;
+
+  string namespace_id = 3 [json_name = "namespace_id"];
+
+  string schema_compatibility = 4 [json_name = "schema_compatibility"];
+
+  string schema_type = 5 [json_name = "schema_type"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}

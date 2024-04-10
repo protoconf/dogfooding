@@ -1,0 +1,1492 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermMediaAsset version is 1
+message AzurermMediaAsset {
+  string alternate_id = 1 [json_name = "alternate_id"];
+
+  string container = 2;
+
+  string description = 3;
+
+  string id = 4;
+
+  string media_services_account_name = 5 [json_name = "media_services_account_name"];
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string storage_account_name = 8 [json_name = "storage_account_name"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMediaAssetFilter version is 1
+message AzurermMediaAssetFilter {
+  string asset_id = 1 [json_name = "asset_id"];
+
+  int64 first_quality_bitrate = 2 [json_name = "first_quality_bitrate"];
+
+  string id = 3;
+
+  string name = 4;
+
+  PresentationTimeRange presentation_time_range = 5 [json_name = "presentation_time_range"];
+
+  repeated Timeouts timeouts = 6;
+
+  repeated TrackSelection track_selection = 7 [json_name = "track_selection"];
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message PresentationTimeRange {
+    int64 end_in_units = 1 [json_name = "end_in_units"];
+
+    bool force_end = 2 [json_name = "force_end"];
+
+    int64 live_backoff_in_units = 3 [json_name = "live_backoff_in_units"];
+
+    int64 presentation_window_in_units = 4 [json_name = "presentation_window_in_units"];
+
+    int64 start_in_units = 5 [json_name = "start_in_units"];
+
+    int64 unit_timescale_in_miliseconds = 6 [json_name = "unit_timescale_in_miliseconds"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message TrackSelection {
+    repeated Condition condition = 1;
+
+    message Condition {
+      string operation = 1;
+
+      string property = 2;
+
+      string value = 3;
+    }
+  }
+}
+
+// AzurermMediaContentKeyPolicy version is 1
+message AzurermMediaContentKeyPolicy {
+  string description = 1;
+
+  string id = 2;
+
+  string media_services_account_name = 3 [json_name = "media_services_account_name"];
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  repeated PolicyOption policy_option = 6 [json_name = "policy_option"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message PolicyOption {
+    bool clear_key_configuration_enabled = 1 [json_name = "clear_key_configuration_enabled"];
+
+    string name = 2;
+
+    bool open_restriction_enabled = 3 [json_name = "open_restriction_enabled"];
+
+    string playready_response_custom_data = 4 [json_name = "playready_response_custom_data"];
+
+    string widevine_configuration_template = 5 [json_name = "widevine_configuration_template"];
+
+    FairplayConfiguration fairplay_configuration = 6 [json_name = "fairplay_configuration"];
+
+    repeated PlayreadyConfigurationLicense playready_configuration_license = 7 [json_name = "playready_configuration_license"];
+
+    TokenRestriction token_restriction = 8 [json_name = "token_restriction"];
+
+    message FairplayConfiguration {
+      string ask = 1;
+
+      string pfx = 2;
+
+      string pfx_password = 3 [json_name = "pfx_password"];
+
+      string rental_and_lease_key_type = 4 [json_name = "rental_and_lease_key_type"];
+
+      int64 rental_duration_seconds = 5 [json_name = "rental_duration_seconds"];
+
+      OfflineRentalConfiguration offline_rental_configuration = 6 [json_name = "offline_rental_configuration"];
+
+      message OfflineRentalConfiguration {
+        int64 playback_duration_seconds = 1 [json_name = "playback_duration_seconds"];
+
+        int64 storage_duration_seconds = 2 [json_name = "storage_duration_seconds"];
+      }
+    }
+
+    message PlayreadyConfigurationLicense {
+      bool allow_test_devices = 1 [json_name = "allow_test_devices"];
+
+      string begin_date = 2 [json_name = "begin_date"];
+
+      bool content_key_location_from_header_enabled = 3 [
+        json_name = "content_key_location_from_header_enabled"
+      ];
+
+      string content_key_location_from_key_id = 4 [json_name = "content_key_location_from_key_id"];
+
+      string content_type = 5 [json_name = "content_type"];
+
+      string expiration_date = 6 [json_name = "expiration_date"];
+
+      string grace_period = 7 [json_name = "grace_period"];
+
+      string license_type = 8 [json_name = "license_type"];
+
+      string relative_begin_date = 9 [json_name = "relative_begin_date"];
+
+      string relative_expiration_date = 10 [json_name = "relative_expiration_date"];
+
+      string security_level = 11 [json_name = "security_level"];
+
+      PlayRight play_right = 12 [json_name = "play_right"];
+
+      message PlayRight {
+        int64 agc_and_color_stripe_restriction = 1 [json_name = "agc_and_color_stripe_restriction"];
+
+        string allow_passing_video_content_to_unknown_output = 2 [
+          json_name = "allow_passing_video_content_to_unknown_output"
+        ];
+
+        int64 analog_video_opl = 3 [json_name = "analog_video_opl"];
+
+        int64 compressed_digital_audio_opl = 4 [json_name = "compressed_digital_audio_opl"];
+
+        int64 compressed_digital_video_opl = 5 [json_name = "compressed_digital_video_opl"];
+
+        bool digital_video_only_content_restriction = 6 [
+          json_name = "digital_video_only_content_restriction"
+        ];
+
+        string first_play_expiration = 7 [json_name = "first_play_expiration"];
+
+        bool image_constraint_for_analog_component_video_restriction = 8 [
+          json_name = "image_constraint_for_analog_component_video_restriction"
+        ];
+
+        bool image_constraint_for_analog_computer_monitor_restriction = 9 [
+          json_name = "image_constraint_for_analog_computer_monitor_restriction"
+        ];
+
+        int64 scms_restriction = 10 [json_name = "scms_restriction"];
+
+        int64 uncompressed_digital_audio_opl = 11 [json_name = "uncompressed_digital_audio_opl"];
+
+        int64 uncompressed_digital_video_opl = 12 [json_name = "uncompressed_digital_video_opl"];
+
+        ExplicitAnalogTelevisionOutputRestriction explicit_analog_television_output_restriction = 13 [
+          json_name = "explicit_analog_television_output_restriction"
+        ];
+
+        message ExplicitAnalogTelevisionOutputRestriction {
+          bool best_effort_enforced = 1 [json_name = "best_effort_enforced"];
+
+          int64 control_bits = 2 [json_name = "control_bits"];
+        }
+      }
+    }
+
+    message TokenRestriction {
+      string audience = 1;
+
+      string issuer = 2;
+
+      string open_id_connect_discovery_document = 3 [json_name = "open_id_connect_discovery_document"];
+
+      string primary_rsa_token_key_exponent = 4 [json_name = "primary_rsa_token_key_exponent"];
+
+      string primary_rsa_token_key_modulus = 5 [json_name = "primary_rsa_token_key_modulus"];
+
+      string primary_symmetric_token_key = 6 [json_name = "primary_symmetric_token_key"];
+
+      string primary_x509_token_key_raw = 7 [json_name = "primary_x509_token_key_raw"];
+
+      string token_type = 8 [json_name = "token_type"];
+
+      repeated AlternateKey alternate_key = 9 [json_name = "alternate_key"];
+
+      repeated RequiredClaim required_claim = 10 [json_name = "required_claim"];
+
+      message AlternateKey {
+        string rsa_token_key_exponent = 1 [json_name = "rsa_token_key_exponent"];
+
+        string rsa_token_key_modulus = 2 [json_name = "rsa_token_key_modulus"];
+
+        string symmetric_token_key = 3 [json_name = "symmetric_token_key"];
+
+        string x509_token_key_raw = 4 [json_name = "x509_token_key_raw"];
+      }
+
+      message RequiredClaim {
+        string type = 1;
+
+        string value = 2;
+      }
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMediaJob version is 1
+message AzurermMediaJob {
+  string description = 1;
+
+  string id = 2;
+
+  string media_services_account_name = 3 [json_name = "media_services_account_name"];
+
+  string name = 4;
+
+  string priority = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string transform_name = 7 [json_name = "transform_name"];
+
+  InputAsset input_asset = 8 [json_name = "input_asset"];
+
+  repeated OutputAsset output_asset = 9 [json_name = "output_asset"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message InputAsset {
+    string label = 1;
+
+    string name = 2;
+  }
+
+  message OutputAsset {
+    string label = 1;
+
+    string name = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMediaLiveEvent version is 1
+message AzurermMediaLiveEvent {
+  bool auto_start_enabled = 1 [json_name = "auto_start_enabled"];
+
+  string description = 2;
+
+  string hostname_prefix = 3 [json_name = "hostname_prefix"];
+
+  string id = 4;
+
+  string location = 5;
+
+  string media_services_account_name = 6 [json_name = "media_services_account_name"];
+
+  string name = 7;
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  repeated string stream_options = 9 [json_name = "stream_options"];
+
+  map<string, string> tags = 10;
+
+  repeated string transcription_languages = 11 [json_name = "transcription_languages"];
+
+  bool use_static_hostname = 12 [json_name = "use_static_hostname"];
+
+  CrossSiteAccessPolicy cross_site_access_policy = 13 [json_name = "cross_site_access_policy"];
+
+  Encoding encoding = 14;
+
+  Input input = 15;
+
+  Preview preview = 16;
+
+  repeated Timeouts timeouts = 17;
+
+  google.protobuf.Value for_each = 18 [json_name = "for_each"];
+
+  repeated string depends_on = 19 [json_name = "depends_on"];
+
+  int32 count = 20;
+
+  string provider = 21;
+
+  terraform.v1.Lifecycle lifecycle = 22;
+
+  message CrossSiteAccessPolicy {
+    string client_access_policy = 1 [json_name = "client_access_policy"];
+
+    string cross_domain_policy = 2 [json_name = "cross_domain_policy"];
+  }
+
+  message Encoding {
+    string key_frame_interval = 1 [json_name = "key_frame_interval"];
+
+    string preset_name = 2 [json_name = "preset_name"];
+
+    string stretch_mode = 3 [json_name = "stretch_mode"];
+
+    string type = 4;
+  }
+
+  message Input {
+    string access_token = 1 [json_name = "access_token"];
+
+    repeated Endpoint endpoint = 2;
+
+    string key_frame_interval_duration = 3 [json_name = "key_frame_interval_duration"];
+
+    string streaming_protocol = 4 [json_name = "streaming_protocol"];
+
+    repeated IpAccessControlAllow ip_access_control_allow = 5 [json_name = "ip_access_control_allow"];
+
+    message Endpoint {
+      // protocol: string
+      string protocol = 1;
+
+      // url: string
+      string url = 2;
+    }
+
+    message IpAccessControlAllow {
+      string address = 1;
+
+      string name = 2;
+
+      int64 subnet_prefix_length = 3 [json_name = "subnet_prefix_length"];
+    }
+  }
+
+  message Preview {
+    string alternative_media_id = 1 [json_name = "alternative_media_id"];
+
+    repeated Endpoint endpoint = 2;
+
+    string preview_locator = 3 [json_name = "preview_locator"];
+
+    string streaming_policy_name = 4 [json_name = "streaming_policy_name"];
+
+    repeated IpAccessControlAllow ip_access_control_allow = 5 [json_name = "ip_access_control_allow"];
+
+    message Endpoint {
+      // protocol: string
+      string protocol = 1;
+
+      // url: string
+      string url = 2;
+    }
+
+    message IpAccessControlAllow {
+      string address = 1;
+
+      string name = 2;
+
+      int64 subnet_prefix_length = 3 [json_name = "subnet_prefix_length"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMediaLiveEventOutput version is 1
+message AzurermMediaLiveEventOutput {
+  string archive_window_duration = 1 [json_name = "archive_window_duration"];
+
+  string asset_name = 2 [json_name = "asset_name"];
+
+  string description = 3;
+
+  int64 hls_fragments_per_ts_segment = 4 [json_name = "hls_fragments_per_ts_segment"];
+
+  string id = 5;
+
+  string live_event_id = 6 [json_name = "live_event_id"];
+
+  string manifest_name = 7 [json_name = "manifest_name"];
+
+  string name = 8;
+
+  int64 output_snap_time_in_seconds = 9 [json_name = "output_snap_time_in_seconds"];
+
+  string rewind_window_duration = 10 [json_name = "rewind_window_duration"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermMediaServicesAccount version is 1
+message AzurermMediaServicesAccount {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  bool public_network_access_enabled = 4 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string storage_authentication_type = 6 [json_name = "storage_authentication_type"];
+
+  map<string, string> tags = 7;
+
+  Encryption encryption = 8;
+
+  Identity identity = 9;
+
+  KeyDeliveryAccessControl key_delivery_access_control = 10 [json_name = "key_delivery_access_control"];
+
+  repeated StorageAccount storage_account = 11 [json_name = "storage_account"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Encryption {
+    string current_key_identifier = 1 [json_name = "current_key_identifier"];
+
+    string key_vault_key_identifier = 2 [json_name = "key_vault_key_identifier"];
+
+    string type = 3;
+
+    ManagedIdentity managed_identity = 4 [json_name = "managed_identity"];
+
+    message ManagedIdentity {
+      bool use_system_assigned_identity = 1 [json_name = "use_system_assigned_identity"];
+
+      string user_assigned_identity_id = 2 [json_name = "user_assigned_identity_id"];
+    }
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message KeyDeliveryAccessControl {
+    string default_action = 1 [json_name = "default_action"];
+
+    repeated string ip_allow_list = 2 [json_name = "ip_allow_list"];
+  }
+
+  message StorageAccount {
+    string id = 1;
+
+    bool is_primary = 2 [json_name = "is_primary"];
+
+    ManagedIdentity managed_identity = 3 [json_name = "managed_identity"];
+
+    message ManagedIdentity {
+      bool use_system_assigned_identity = 1 [json_name = "use_system_assigned_identity"];
+
+      string user_assigned_identity_id = 2 [json_name = "user_assigned_identity_id"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMediaServicesAccountFilter version is 0
+message AzurermMediaServicesAccountFilter {
+  int64 first_quality_bitrate = 1 [json_name = "first_quality_bitrate"];
+
+  string id = 2;
+
+  string media_services_account_name = 3 [json_name = "media_services_account_name"];
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  PresentationTimeRange presentation_time_range = 6 [json_name = "presentation_time_range"];
+
+  repeated Timeouts timeouts = 7;
+
+  repeated TrackSelection track_selection = 8 [json_name = "track_selection"];
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message PresentationTimeRange {
+    int64 end_in_units = 1 [json_name = "end_in_units"];
+
+    bool force_end = 2 [json_name = "force_end"];
+
+    int64 live_backoff_in_units = 3 [json_name = "live_backoff_in_units"];
+
+    int64 presentation_window_in_units = 4 [json_name = "presentation_window_in_units"];
+
+    int64 start_in_units = 5 [json_name = "start_in_units"];
+
+    int64 unit_timescale_in_milliseconds = 6 [json_name = "unit_timescale_in_milliseconds"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message TrackSelection {
+    repeated Condition condition = 1;
+
+    message Condition {
+      string operation = 1;
+
+      string property = 2;
+
+      string value = 3;
+    }
+  }
+}
+
+// AzurermMediaStreamingEndpoint version is 1
+message AzurermMediaStreamingEndpoint {
+  bool auto_start_enabled = 1 [json_name = "auto_start_enabled"];
+
+  bool cdn_enabled = 2 [json_name = "cdn_enabled"];
+
+  string cdn_profile = 3 [json_name = "cdn_profile"];
+
+  string cdn_provider = 4 [json_name = "cdn_provider"];
+
+  repeated string custom_host_names = 5 [json_name = "custom_host_names"];
+
+  string description = 6;
+
+  string host_name = 7 [json_name = "host_name"];
+
+  string id = 8;
+
+  string location = 9;
+
+  int64 max_cache_age_seconds = 10 [json_name = "max_cache_age_seconds"];
+
+  string media_services_account_name = 11 [json_name = "media_services_account_name"];
+
+  string name = 12;
+
+  string resource_group_name = 13 [json_name = "resource_group_name"];
+
+  int64 scale_units = 14 [json_name = "scale_units"];
+
+  repeated Sku sku = 15;
+
+  map<string, string> tags = 16;
+
+  AccessControl access_control = 17 [json_name = "access_control"];
+
+  CrossSiteAccessPolicy cross_site_access_policy = 18 [json_name = "cross_site_access_policy"];
+
+  repeated Timeouts timeouts = 19;
+
+  google.protobuf.Value for_each = 20 [json_name = "for_each"];
+
+  repeated string depends_on = 21 [json_name = "depends_on"];
+
+  int32 count = 22;
+
+  string provider = 23;
+
+  terraform.v1.Lifecycle lifecycle = 24;
+
+  message Sku {
+    // capacity: number
+    int64 capacity = 1;
+
+    // name: string
+    string name = 2;
+  }
+
+  message AccessControl {
+    repeated AkamaiSignatureHeaderAuthenticationKey akamai_signature_header_authentication_key = 1 [
+      json_name = "akamai_signature_header_authentication_key"
+    ];
+
+    repeated IpAllow ip_allow = 2 [json_name = "ip_allow"];
+
+    message AkamaiSignatureHeaderAuthenticationKey {
+      string base64_key = 1 [json_name = "base64_key"];
+
+      string expiration = 2;
+
+      string identifier = 3;
+    }
+
+    message IpAllow {
+      string address = 1;
+
+      string name = 2;
+
+      int64 subnet_prefix_length = 3 [json_name = "subnet_prefix_length"];
+    }
+  }
+
+  message CrossSiteAccessPolicy {
+    string client_access_policy = 1 [json_name = "client_access_policy"];
+
+    string cross_domain_policy = 2 [json_name = "cross_domain_policy"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMediaStreamingLocator version is 1
+message AzurermMediaStreamingLocator {
+  string alternative_media_id = 1 [json_name = "alternative_media_id"];
+
+  string asset_name = 2 [json_name = "asset_name"];
+
+  string default_content_key_policy_name = 3 [json_name = "default_content_key_policy_name"];
+
+  string end_time = 4 [json_name = "end_time"];
+
+  repeated string filter_names = 5 [json_name = "filter_names"];
+
+  string id = 6;
+
+  string media_services_account_name = 7 [json_name = "media_services_account_name"];
+
+  string name = 8;
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  string start_time = 10 [json_name = "start_time"];
+
+  string streaming_locator_id = 11 [json_name = "streaming_locator_id"];
+
+  string streaming_policy_name = 12 [json_name = "streaming_policy_name"];
+
+  repeated ContentKey content_key = 13 [json_name = "content_key"];
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message ContentKey {
+    string content_key_id = 1 [json_name = "content_key_id"];
+
+    string label_reference_in_streaming_policy = 2 [json_name = "label_reference_in_streaming_policy"];
+
+    string policy_name = 3 [json_name = "policy_name"];
+
+    string type = 4;
+
+    string value = 5;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermMediaStreamingPolicy version is 1
+message AzurermMediaStreamingPolicy {
+  string default_content_key_policy_name = 1 [json_name = "default_content_key_policy_name"];
+
+  string id = 2;
+
+  string media_services_account_name = 3 [json_name = "media_services_account_name"];
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  CommonEncryptionCbcs common_encryption_cbcs = 6 [json_name = "common_encryption_cbcs"];
+
+  CommonEncryptionCenc common_encryption_cenc = 7 [json_name = "common_encryption_cenc"];
+
+  EnvelopeEncryption envelope_encryption = 8 [json_name = "envelope_encryption"];
+
+  NoEncryptionEnabledProtocols no_encryption_enabled_protocols = 9 [json_name = "no_encryption_enabled_protocols"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message CommonEncryptionCbcs {
+    ClearKeyEncryption clear_key_encryption = 1 [json_name = "clear_key_encryption"];
+
+    DefaultContentKey default_content_key = 2 [json_name = "default_content_key"];
+
+    DrmFairplay drm_fairplay = 3 [json_name = "drm_fairplay"];
+
+    EnabledProtocols enabled_protocols = 4 [json_name = "enabled_protocols"];
+
+    message ClearKeyEncryption {
+      string custom_keys_acquisition_url_template = 1 [json_name = "custom_keys_acquisition_url_template"];
+    }
+
+    message DefaultContentKey {
+      string label = 1;
+
+      string policy_name = 2 [json_name = "policy_name"];
+    }
+
+    message DrmFairplay {
+      bool allow_persistent_license = 1 [json_name = "allow_persistent_license"];
+
+      string custom_license_acquisition_url_template = 2 [
+        json_name = "custom_license_acquisition_url_template"
+      ];
+    }
+
+    message EnabledProtocols {
+      bool dash = 1;
+
+      bool download = 2;
+
+      bool hls = 3;
+
+      bool smooth_streaming = 4 [json_name = "smooth_streaming"];
+    }
+  }
+
+  message CommonEncryptionCenc {
+    string drm_widevine_custom_license_acquisition_url_template = 1 [
+      json_name = "drm_widevine_custom_license_acquisition_url_template"
+    ];
+
+    ClearKeyEncryption clear_key_encryption = 2 [json_name = "clear_key_encryption"];
+
+    repeated ClearTrack clear_track = 3 [json_name = "clear_track"];
+
+    repeated ContentKeyToTrackMapping content_key_to_track_mapping = 4 [json_name = "content_key_to_track_mapping"];
+
+    DefaultContentKey default_content_key = 5 [json_name = "default_content_key"];
+
+    DrmPlayready drm_playready = 6 [json_name = "drm_playready"];
+
+    EnabledProtocols enabled_protocols = 7 [json_name = "enabled_protocols"];
+
+    message ClearKeyEncryption {
+      string custom_keys_acquisition_url_template = 1 [json_name = "custom_keys_acquisition_url_template"];
+    }
+
+    message ClearTrack {
+      repeated Condition condition = 1;
+
+      message Condition {
+        string operation = 1;
+
+        string property = 2;
+
+        string value = 3;
+      }
+    }
+
+    message ContentKeyToTrackMapping {
+      string label = 1;
+
+      string policy_name = 2 [json_name = "policy_name"];
+
+      repeated Track track = 3;
+
+      message Track {
+        repeated Condition condition = 1;
+
+        message Condition {
+          string operation = 1;
+
+          string property = 2;
+
+          string value = 3;
+        }
+      }
+    }
+
+    message DefaultContentKey {
+      string label = 1;
+
+      string policy_name = 2 [json_name = "policy_name"];
+    }
+
+    message DrmPlayready {
+      string custom_attributes = 1 [json_name = "custom_attributes"];
+
+      string custom_license_acquisition_url_template = 2 [
+        json_name = "custom_license_acquisition_url_template"
+      ];
+    }
+
+    message EnabledProtocols {
+      bool dash = 1;
+
+      bool download = 2;
+
+      bool hls = 3;
+
+      bool smooth_streaming = 4 [json_name = "smooth_streaming"];
+    }
+  }
+
+  message EnvelopeEncryption {
+    string custom_keys_acquisition_url_template = 1 [json_name = "custom_keys_acquisition_url_template"];
+
+    DefaultContentKey default_content_key = 2 [json_name = "default_content_key"];
+
+    EnabledProtocols enabled_protocols = 3 [json_name = "enabled_protocols"];
+
+    message DefaultContentKey {
+      string label = 1;
+
+      string policy_name = 2 [json_name = "policy_name"];
+    }
+
+    message EnabledProtocols {
+      bool dash = 1;
+
+      bool download = 2;
+
+      bool hls = 3;
+
+      bool smooth_streaming = 4 [json_name = "smooth_streaming"];
+    }
+  }
+
+  message NoEncryptionEnabledProtocols {
+    bool dash = 1;
+
+    bool download = 2;
+
+    bool hls = 3;
+
+    bool smooth_streaming = 4 [json_name = "smooth_streaming"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermMediaTransform version is 1
+message AzurermMediaTransform {
+  string description = 1;
+
+  string id = 2;
+
+  string media_services_account_name = 3 [json_name = "media_services_account_name"];
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  repeated Output output = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Output {
+    string on_error_action = 1 [json_name = "on_error_action"];
+
+    string relative_priority = 2 [json_name = "relative_priority"];
+
+    AudioAnalyzerPreset audio_analyzer_preset = 3 [json_name = "audio_analyzer_preset"];
+
+    BuiltinPreset builtin_preset = 4 [json_name = "builtin_preset"];
+
+    CustomPreset custom_preset = 5 [json_name = "custom_preset"];
+
+    FaceDetectorPreset face_detector_preset = 6 [json_name = "face_detector_preset"];
+
+    VideoAnalyzerPreset video_analyzer_preset = 7 [json_name = "video_analyzer_preset"];
+
+    message AudioAnalyzerPreset {
+      string audio_analysis_mode = 1 [json_name = "audio_analysis_mode"];
+
+      string audio_language = 2 [json_name = "audio_language"];
+
+      map<string, string> experimental_options = 3 [json_name = "experimental_options"];
+    }
+
+    message BuiltinPreset {
+      string preset_name = 1 [json_name = "preset_name"];
+
+      PresetConfiguration preset_configuration = 2 [json_name = "preset_configuration"];
+
+      message PresetConfiguration {
+        string complexity = 1;
+
+        string interleave_output = 2 [json_name = "interleave_output"];
+
+        int64 key_frame_interval_in_seconds = 3 [json_name = "key_frame_interval_in_seconds"];
+
+        int64 max_bitrate_bps = 4 [json_name = "max_bitrate_bps"];
+
+        int64 max_height = 5 [json_name = "max_height"];
+
+        int64 max_layers = 6 [json_name = "max_layers"];
+
+        int64 min_bitrate_bps = 7 [json_name = "min_bitrate_bps"];
+
+        int64 min_height = 8 [json_name = "min_height"];
+      }
+    }
+
+    message CustomPreset {
+      map<string, string> experimental_options = 1 [json_name = "experimental_options"];
+
+      repeated Codec codec = 2;
+
+      Filter filter = 3;
+
+      repeated Format format = 4;
+
+      message Codec {
+        AacAudio aac_audio = 1 [json_name = "aac_audio"];
+
+        CopyAudio copy_audio = 2 [json_name = "copy_audio"];
+
+        CopyVideo copy_video = 3 [json_name = "copy_video"];
+
+        DdAudio dd_audio = 4 [json_name = "dd_audio"];
+
+        H264Video h264_video = 5 [json_name = "h264_video"];
+
+        H265Video h265_video = 6 [json_name = "h265_video"];
+
+        JpgImage jpg_image = 7 [json_name = "jpg_image"];
+
+        PngImage png_image = 8 [json_name = "png_image"];
+
+        message AacAudio {
+          int64 bitrate = 1;
+
+          int64 channels = 2;
+
+          string label = 3;
+
+          string profile = 4;
+
+          int64 sampling_rate = 5 [json_name = "sampling_rate"];
+        }
+
+        message CopyAudio {
+          string label = 1;
+        }
+
+        message CopyVideo {
+          string label = 1;
+        }
+
+        message DdAudio {
+          int64 bitrate = 1;
+
+          int64 channels = 2;
+
+          string label = 3;
+
+          int64 sampling_rate = 4 [json_name = "sampling_rate"];
+        }
+
+        message H264Video {
+          string complexity = 1;
+
+          string key_frame_interval = 2 [json_name = "key_frame_interval"];
+
+          string label = 3;
+
+          string rate_control_mode = 4 [json_name = "rate_control_mode"];
+
+          bool scene_change_detection_enabled = 5 [json_name = "scene_change_detection_enabled"];
+
+          string stretch_mode = 6 [json_name = "stretch_mode"];
+
+          string sync_mode = 7 [json_name = "sync_mode"];
+
+          repeated Layer layer = 8;
+
+          message Layer {
+            bool adaptive_b_frame_enabled = 1 [json_name = "adaptive_b_frame_enabled"];
+
+            int64 b_frames = 2 [json_name = "b_frames"];
+
+            int64 bitrate = 3;
+
+            string buffer_window = 4 [json_name = "buffer_window"];
+
+            int64 crf = 5;
+
+            string entropy_mode = 6 [json_name = "entropy_mode"];
+
+            string frame_rate = 7 [json_name = "frame_rate"];
+
+            string height = 8;
+
+            string label = 9;
+
+            string level = 10;
+
+            int64 max_bitrate = 11 [json_name = "max_bitrate"];
+
+            string profile = 12;
+
+            int64 reference_frames = 13 [json_name = "reference_frames"];
+
+            int64 slices = 14;
+
+            string width = 15;
+          }
+        }
+
+        message H265Video {
+          string complexity = 1;
+
+          string key_frame_interval = 2 [json_name = "key_frame_interval"];
+
+          string label = 3;
+
+          bool scene_change_detection_enabled = 4 [json_name = "scene_change_detection_enabled"];
+
+          string stretch_mode = 5 [json_name = "stretch_mode"];
+
+          string sync_mode = 6 [json_name = "sync_mode"];
+
+          repeated Layer layer = 7;
+
+          message Layer {
+            bool adaptive_b_frame_enabled = 1 [json_name = "adaptive_b_frame_enabled"];
+
+            int64 b_frames = 2 [json_name = "b_frames"];
+
+            int64 bitrate = 3;
+
+            string buffer_window = 4 [json_name = "buffer_window"];
+
+            int64 crf = 5;
+
+            string frame_rate = 6 [json_name = "frame_rate"];
+
+            string height = 7;
+
+            string label = 8;
+
+            string level = 9;
+
+            int64 max_bitrate = 10 [json_name = "max_bitrate"];
+
+            string profile = 11;
+
+            int64 reference_frames = 12 [json_name = "reference_frames"];
+
+            int64 slices = 13;
+
+            string width = 14;
+          }
+        }
+
+        message JpgImage {
+          string key_frame_interval = 1 [json_name = "key_frame_interval"];
+
+          string label = 2;
+
+          string range = 3;
+
+          int64 sprite_column = 4 [json_name = "sprite_column"];
+
+          string start = 5;
+
+          string step = 6;
+
+          string stretch_mode = 7 [json_name = "stretch_mode"];
+
+          string sync_mode = 8 [json_name = "sync_mode"];
+
+          repeated Layer layer = 9;
+
+          message Layer {
+            string height = 1;
+
+            string label = 2;
+
+            int64 quality = 3;
+
+            string width = 4;
+          }
+        }
+
+        message PngImage {
+          string key_frame_interval = 1 [json_name = "key_frame_interval"];
+
+          string label = 2;
+
+          string range = 3;
+
+          string start = 4;
+
+          string step = 5;
+
+          string stretch_mode = 6 [json_name = "stretch_mode"];
+
+          string sync_mode = 7 [json_name = "sync_mode"];
+
+          repeated Layer layer = 8;
+
+          message Layer {
+            string height = 1;
+
+            string label = 2;
+
+            string width = 3;
+          }
+        }
+      }
+
+      message Filter {
+        string rotation = 1;
+
+        CropRectangle crop_rectangle = 2 [json_name = "crop_rectangle"];
+
+        Deinterlace deinterlace = 3;
+
+        FadeIn fade_in = 4 [json_name = "fade_in"];
+
+        FadeOut fade_out = 5 [json_name = "fade_out"];
+
+        repeated Overlay overlay = 6;
+
+        message CropRectangle {
+          string height = 1;
+
+          string left = 2;
+
+          string top = 3;
+
+          string width = 4;
+        }
+
+        message Deinterlace {
+          string mode = 1;
+
+          string parity = 2;
+        }
+
+        message FadeIn {
+          string duration = 1;
+
+          string fade_color = 2 [json_name = "fade_color"];
+
+          string start = 3;
+        }
+
+        message FadeOut {
+          string duration = 1;
+
+          string fade_color = 2 [json_name = "fade_color"];
+
+          string start = 3;
+        }
+
+        message Overlay {
+          Audio audio = 1;
+
+          Video video = 2;
+
+          message Audio {
+            int64 audio_gain_level = 1 [json_name = "audio_gain_level"];
+
+            string end = 2;
+
+            string fade_in_duration = 3 [json_name = "fade_in_duration"];
+
+            string fade_out_duration = 4 [json_name = "fade_out_duration"];
+
+            string input_label = 5 [json_name = "input_label"];
+
+            string start = 6;
+          }
+
+          message Video {
+            int64 audio_gain_level = 1 [json_name = "audio_gain_level"];
+
+            string end = 2;
+
+            string fade_in_duration = 3 [json_name = "fade_in_duration"];
+
+            string fade_out_duration = 4 [json_name = "fade_out_duration"];
+
+            string input_label = 5 [json_name = "input_label"];
+
+            int64 opacity = 6;
+
+            string start = 7;
+
+            CropRectangle crop_rectangle = 8 [json_name = "crop_rectangle"];
+
+            Position position = 9;
+
+            message CropRectangle {
+              string height = 1;
+
+              string left = 2;
+
+              string top = 3;
+
+              string width = 4;
+            }
+
+            message Position {
+              string height = 1;
+
+              string left = 2;
+
+              string top = 3;
+
+              string width = 4;
+            }
+          }
+        }
+      }
+
+      message Format {
+        Jpg jpg = 1;
+
+        Mp4 mp4 = 2;
+
+        Png png = 3;
+
+        TransportStream transport_stream = 4 [json_name = "transport_stream"];
+
+        message Jpg {
+          string filename_pattern = 1 [json_name = "filename_pattern"];
+        }
+
+        message Mp4 {
+          string filename_pattern = 1 [json_name = "filename_pattern"];
+
+          repeated OutputFile output_file = 2 [json_name = "output_file"];
+
+          message OutputFile {
+            repeated string labels = 1;
+          }
+        }
+
+        message Png {
+          string filename_pattern = 1 [json_name = "filename_pattern"];
+        }
+
+        message TransportStream {
+          string filename_pattern = 1 [json_name = "filename_pattern"];
+
+          repeated OutputFile output_file = 2 [json_name = "output_file"];
+
+          message OutputFile {
+            repeated string labels = 1;
+          }
+        }
+      }
+    }
+
+    message FaceDetectorPreset {
+      string analysis_resolution = 1 [json_name = "analysis_resolution"];
+
+      string blur_type = 2 [json_name = "blur_type"];
+
+      map<string, string> experimental_options = 3 [json_name = "experimental_options"];
+
+      string face_redactor_mode = 4 [json_name = "face_redactor_mode"];
+    }
+
+    message VideoAnalyzerPreset {
+      string audio_analysis_mode = 1 [json_name = "audio_analysis_mode"];
+
+      string audio_language = 2 [json_name = "audio_language"];
+
+      map<string, string> experimental_options = 3 [json_name = "experimental_options"];
+
+      string insights_type = 4 [json_name = "insights_type"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

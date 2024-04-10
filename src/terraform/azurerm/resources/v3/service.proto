@@ -1,0 +1,449 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermServiceFabricCluster version is 0
+message AzurermServiceFabricCluster {
+  repeated string add_on_features = 1 [json_name = "add_on_features"];
+
+  string cluster_code_version = 2 [json_name = "cluster_code_version"];
+
+  string cluster_endpoint = 3 [json_name = "cluster_endpoint"];
+
+  string id = 4;
+
+  string location = 5;
+
+  string management_endpoint = 6 [json_name = "management_endpoint"];
+
+  string name = 7;
+
+  string reliability_level = 8 [json_name = "reliability_level"];
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  string service_fabric_zonal_upgrade_mode = 10 [json_name = "service_fabric_zonal_upgrade_mode"];
+
+  map<string, string> tags = 11;
+
+  string upgrade_mode = 12 [json_name = "upgrade_mode"];
+
+  string vm_image = 13 [json_name = "vm_image"];
+
+  string vmss_zonal_upgrade_mode = 14 [json_name = "vmss_zonal_upgrade_mode"];
+
+  AzureActiveDirectory azure_active_directory = 15 [json_name = "azure_active_directory"];
+
+  Certificate certificate = 16;
+
+  CertificateCommonNames certificate_common_names = 17 [json_name = "certificate_common_names"];
+
+  repeated ClientCertificateCommonName client_certificate_common_name = 18 [json_name = "client_certificate_common_name"];
+
+  repeated ClientCertificateThumbprint client_certificate_thumbprint = 19 [json_name = "client_certificate_thumbprint"];
+
+  DiagnosticsConfig diagnostics_config = 20 [json_name = "diagnostics_config"];
+
+  repeated FabricSettings fabric_settings = 21 [json_name = "fabric_settings"];
+
+  repeated NodeType node_type = 22 [json_name = "node_type"];
+
+  ReverseProxyCertificate reverse_proxy_certificate = 23 [json_name = "reverse_proxy_certificate"];
+
+  ReverseProxyCertificateCommonNames reverse_proxy_certificate_common_names = 24 [
+    json_name = "reverse_proxy_certificate_common_names"
+  ];
+
+  repeated Timeouts timeouts = 25;
+
+  UpgradePolicy upgrade_policy = 26 [json_name = "upgrade_policy"];
+
+  google.protobuf.Value for_each = 27 [json_name = "for_each"];
+
+  repeated string depends_on = 28 [json_name = "depends_on"];
+
+  int32 count = 29;
+
+  string provider = 30;
+
+  terraform.v1.Lifecycle lifecycle = 31;
+
+  message AzureActiveDirectory {
+    string client_application_id = 1 [json_name = "client_application_id"];
+
+    string cluster_application_id = 2 [json_name = "cluster_application_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+  }
+
+  message Certificate {
+    string thumbprint = 1;
+
+    string thumbprint_secondary = 2 [json_name = "thumbprint_secondary"];
+
+    string x509_store_name = 3 [json_name = "x509_store_name"];
+  }
+
+  message CertificateCommonNames {
+    string x509_store_name = 1 [json_name = "x509_store_name"];
+
+    repeated CommonNames common_names = 2 [json_name = "common_names"];
+
+    message CommonNames {
+      string certificate_common_name = 1 [json_name = "certificate_common_name"];
+
+      string certificate_issuer_thumbprint = 2 [json_name = "certificate_issuer_thumbprint"];
+    }
+  }
+
+  message ClientCertificateCommonName {
+    string common_name = 1 [json_name = "common_name"];
+
+    bool is_admin = 2 [json_name = "is_admin"];
+
+    string issuer_thumbprint = 3 [json_name = "issuer_thumbprint"];
+  }
+
+  message ClientCertificateThumbprint {
+    bool is_admin = 1 [json_name = "is_admin"];
+
+    string thumbprint = 2;
+  }
+
+  message DiagnosticsConfig {
+    string blob_endpoint = 1 [json_name = "blob_endpoint"];
+
+    string protected_account_key_name = 2 [json_name = "protected_account_key_name"];
+
+    string queue_endpoint = 3 [json_name = "queue_endpoint"];
+
+    string storage_account_name = 4 [json_name = "storage_account_name"];
+
+    string table_endpoint = 5 [json_name = "table_endpoint"];
+  }
+
+  message FabricSettings {
+    string name = 1;
+
+    map<string, string> parameters = 2;
+  }
+
+  message NodeType {
+    map<string, string> capacities = 1;
+
+    int64 client_endpoint_port = 2 [json_name = "client_endpoint_port"];
+
+    string durability_level = 3 [json_name = "durability_level"];
+
+    int64 http_endpoint_port = 4 [json_name = "http_endpoint_port"];
+
+    int64 instance_count = 5 [json_name = "instance_count"];
+
+    bool is_primary = 6 [json_name = "is_primary"];
+
+    bool is_stateless = 7 [json_name = "is_stateless"];
+
+    bool multiple_availability_zones = 8 [json_name = "multiple_availability_zones"];
+
+    string name = 9;
+
+    map<string, string> placement_properties = 10 [json_name = "placement_properties"];
+
+    int64 reverse_proxy_endpoint_port = 11 [json_name = "reverse_proxy_endpoint_port"];
+
+    ApplicationPorts application_ports = 12 [json_name = "application_ports"];
+
+    EphemeralPorts ephemeral_ports = 13 [json_name = "ephemeral_ports"];
+
+    message ApplicationPorts {
+      int64 end_port = 1 [json_name = "end_port"];
+
+      int64 start_port = 2 [json_name = "start_port"];
+    }
+
+    message EphemeralPorts {
+      int64 end_port = 1 [json_name = "end_port"];
+
+      int64 start_port = 2 [json_name = "start_port"];
+    }
+  }
+
+  message ReverseProxyCertificate {
+    string thumbprint = 1;
+
+    string thumbprint_secondary = 2 [json_name = "thumbprint_secondary"];
+
+    string x509_store_name = 3 [json_name = "x509_store_name"];
+  }
+
+  message ReverseProxyCertificateCommonNames {
+    string x509_store_name = 1 [json_name = "x509_store_name"];
+
+    repeated CommonNames common_names = 2 [json_name = "common_names"];
+
+    message CommonNames {
+      string certificate_common_name = 1 [json_name = "certificate_common_name"];
+
+      string certificate_issuer_thumbprint = 2 [json_name = "certificate_issuer_thumbprint"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message UpgradePolicy {
+    bool force_restart_enabled = 1 [json_name = "force_restart_enabled"];
+
+    string health_check_retry_timeout = 2 [json_name = "health_check_retry_timeout"];
+
+    string health_check_stable_duration = 3 [json_name = "health_check_stable_duration"];
+
+    string health_check_wait_duration = 4 [json_name = "health_check_wait_duration"];
+
+    string upgrade_domain_timeout = 5 [json_name = "upgrade_domain_timeout"];
+
+    string upgrade_replica_set_check_timeout = 6 [json_name = "upgrade_replica_set_check_timeout"];
+
+    string upgrade_timeout = 7 [json_name = "upgrade_timeout"];
+
+    DeltaHealthPolicy delta_health_policy = 8 [json_name = "delta_health_policy"];
+
+    HealthPolicy health_policy = 9 [json_name = "health_policy"];
+
+    message DeltaHealthPolicy {
+      int64 max_delta_unhealthy_applications_percent = 1 [
+        json_name = "max_delta_unhealthy_applications_percent"
+      ];
+
+      int64 max_delta_unhealthy_nodes_percent = 2 [json_name = "max_delta_unhealthy_nodes_percent"];
+
+      int64 max_upgrade_domain_delta_unhealthy_nodes_percent = 3 [
+        json_name = "max_upgrade_domain_delta_unhealthy_nodes_percent"
+      ];
+    }
+
+    message HealthPolicy {
+      int64 max_unhealthy_applications_percent = 1 [json_name = "max_unhealthy_applications_percent"];
+
+      int64 max_unhealthy_nodes_percent = 2 [json_name = "max_unhealthy_nodes_percent"];
+    }
+  }
+}
+
+// AzurermServiceFabricManagedCluster version is 0
+message AzurermServiceFabricManagedCluster {
+  bool backup_service_enabled = 1 [json_name = "backup_service_enabled"];
+
+  int64 client_connection_port = 2 [json_name = "client_connection_port"];
+
+  string dns_name = 3 [json_name = "dns_name"];
+
+  bool dns_service_enabled = 4 [json_name = "dns_service_enabled"];
+
+  int64 http_gateway_port = 5 [json_name = "http_gateway_port"];
+
+  string id = 6;
+
+  string location = 7;
+
+  string name = 8;
+
+  string password = 9;
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  string sku = 11;
+
+  map<string, string> tags = 12;
+
+  string upgrade_wave = 13 [json_name = "upgrade_wave"];
+
+  string username = 14;
+
+  Authentication authentication = 15;
+
+  repeated CustomFabricSetting custom_fabric_setting = 16 [json_name = "custom_fabric_setting"];
+
+  repeated LbRule lb_rule = 17 [json_name = "lb_rule"];
+
+  repeated NodeType node_type = 18 [json_name = "node_type"];
+
+  repeated Timeouts timeouts = 19;
+
+  google.protobuf.Value for_each = 20 [json_name = "for_each"];
+
+  repeated string depends_on = 21 [json_name = "depends_on"];
+
+  int32 count = 22;
+
+  string provider = 23;
+
+  terraform.v1.Lifecycle lifecycle = 24;
+
+  message Authentication {
+    ActiveDirectory active_directory = 1 [json_name = "active_directory"];
+
+    repeated Certificate certificate = 2;
+
+    message ActiveDirectory {
+      string client_application_id = 1 [json_name = "client_application_id"];
+
+      string cluster_application_id = 2 [json_name = "cluster_application_id"];
+
+      string tenant_id = 3 [json_name = "tenant_id"];
+    }
+
+    message Certificate {
+      string common_name = 1 [json_name = "common_name"];
+
+      string thumbprint = 2;
+
+      string type = 3;
+    }
+  }
+
+  message CustomFabricSetting {
+    string parameter = 1;
+
+    string section = 2;
+
+    string value = 3;
+  }
+
+  message LbRule {
+    int64 backend_port = 1 [json_name = "backend_port"];
+
+    int64 frontend_port = 2 [json_name = "frontend_port"];
+
+    string probe_protocol = 3 [json_name = "probe_protocol"];
+
+    string probe_request_path = 4 [json_name = "probe_request_path"];
+
+    string protocol = 5;
+  }
+
+  message NodeType {
+    string application_port_range = 1 [json_name = "application_port_range"];
+
+    map<string, string> capacities = 2;
+
+    int64 data_disk_size_gb = 3 [json_name = "data_disk_size_gb"];
+
+    string data_disk_type = 4 [json_name = "data_disk_type"];
+
+    string ephemeral_port_range = 5 [json_name = "ephemeral_port_range"];
+
+    string id = 6;
+
+    bool multiple_placement_groups_enabled = 7 [json_name = "multiple_placement_groups_enabled"];
+
+    string name = 8;
+
+    map<string, string> placement_properties = 9 [json_name = "placement_properties"];
+
+    bool primary = 10;
+
+    bool stateless = 11;
+
+    string vm_image_offer = 12 [json_name = "vm_image_offer"];
+
+    string vm_image_publisher = 13 [json_name = "vm_image_publisher"];
+
+    string vm_image_sku = 14 [json_name = "vm_image_sku"];
+
+    string vm_image_version = 15 [json_name = "vm_image_version"];
+
+    int64 vm_instance_count = 16 [json_name = "vm_instance_count"];
+
+    string vm_size = 17 [json_name = "vm_size"];
+
+    repeated VmSecrets vm_secrets = 18 [json_name = "vm_secrets"];
+
+    message VmSecrets {
+      string vault_id = 1 [json_name = "vault_id"];
+
+      repeated Certificates certificates = 2;
+
+      message Certificates {
+        string store = 1;
+
+        string url = 2;
+      }
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermServicePlan version is 1
+message AzurermServicePlan {
+  string app_service_environment_id = 1 [json_name = "app_service_environment_id"];
+
+  string id = 2;
+
+  string kind = 3;
+
+  string location = 4;
+
+  int64 maximum_elastic_worker_count = 5 [json_name = "maximum_elastic_worker_count"];
+
+  string name = 6;
+
+  string os_type = 7 [json_name = "os_type"];
+
+  bool per_site_scaling_enabled = 8 [json_name = "per_site_scaling_enabled"];
+
+  bool reserved = 9;
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  string sku_name = 11 [json_name = "sku_name"];
+
+  map<string, string> tags = 12;
+
+  int64 worker_count = 13 [json_name = "worker_count"];
+
+  bool zone_balancing_enabled = 14 [json_name = "zone_balancing_enabled"];
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

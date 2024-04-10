@@ -1,0 +1,698 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermMobileNetwork version is 0
+message AzurermMobileNetwork {
+  string id = 1;
+
+  string location = 2;
+
+  string mobile_country_code = 3 [json_name = "mobile_country_code"];
+
+  string mobile_network_code = 4 [json_name = "mobile_network_code"];
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string service_key = 7 [json_name = "service_key"];
+
+  map<string, string> tags = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMobileNetworkAttachedDataNetwork version is 0
+message AzurermMobileNetworkAttachedDataNetwork {
+  repeated string dns_addresses = 1 [json_name = "dns_addresses"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string mobile_network_data_network_name = 4 [json_name = "mobile_network_data_network_name"];
+
+  string mobile_network_packet_core_data_plane_id = 5 [
+    json_name = "mobile_network_packet_core_data_plane_id"
+  ];
+
+  repeated NetworkAddressPortTranslation network_address_port_translation = 6 [json_name = "network_address_port_translation"];
+
+  map<string, string> tags = 7;
+
+  repeated string user_equipment_address_pool_prefixes = 8 [json_name = "user_equipment_address_pool_prefixes"];
+
+  repeated string user_equipment_static_address_pool_prefixes = 9 [
+    json_name = "user_equipment_static_address_pool_prefixes"
+  ];
+
+  string user_plane_access_ipv4_address = 10 [json_name = "user_plane_access_ipv4_address"];
+
+  string user_plane_access_ipv4_gateway = 11 [json_name = "user_plane_access_ipv4_gateway"];
+
+  string user_plane_access_ipv4_subnet = 12 [json_name = "user_plane_access_ipv4_subnet"];
+
+  string user_plane_access_name = 13 [json_name = "user_plane_access_name"];
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message NetworkAddressPortTranslation {
+    // icmp_pinhole_timeout_in_seconds: number
+    int64 icmp_pinhole_timeout_in_seconds = 1 [json_name = "icmp_pinhole_timeout_in_seconds"];
+
+    // pinhole_maximum_number: number
+    int64 pinhole_maximum_number = 2 [json_name = "pinhole_maximum_number"];
+
+    // port_range: list of object
+    repeated PortRange port_range = 3 [json_name = "port_range"];
+
+    // tcp_pinhole_timeout_in_seconds: number
+    int64 tcp_pinhole_timeout_in_seconds = 4 [json_name = "tcp_pinhole_timeout_in_seconds"];
+
+    // tcp_port_reuse_minimum_hold_time_in_seconds: number
+    int64 tcp_port_reuse_minimum_hold_time_in_seconds = 5 [
+      json_name = "tcp_port_reuse_minimum_hold_time_in_seconds"
+    ];
+
+    // udp_pinhole_timeout_in_seconds: number
+    int64 udp_pinhole_timeout_in_seconds = 6 [json_name = "udp_pinhole_timeout_in_seconds"];
+
+    // udp_port_reuse_minimum_hold_time_in_seconds: number
+    int64 udp_port_reuse_minimum_hold_time_in_seconds = 7 [
+      json_name = "udp_port_reuse_minimum_hold_time_in_seconds"
+    ];
+
+    message PortRange {
+      // maximum: number
+      int64 maximum = 1;
+
+      // minimum: number
+      int64 minimum = 2;
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMobileNetworkDataNetwork version is 0
+message AzurermMobileNetworkDataNetwork {
+  string description = 1;
+
+  string id = 2;
+
+  string location = 3;
+
+  string mobile_network_id = 4 [json_name = "mobile_network_id"];
+
+  string name = 5;
+
+  map<string, string> tags = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMobileNetworkPacketCoreControlPlane version is 0
+message AzurermMobileNetworkPacketCoreControlPlane {
+  string control_plane_access_ipv4_address = 1 [json_name = "control_plane_access_ipv4_address"];
+
+  string control_plane_access_ipv4_gateway = 2 [json_name = "control_plane_access_ipv4_gateway"];
+
+  string control_plane_access_ipv4_subnet = 3 [json_name = "control_plane_access_ipv4_subnet"];
+
+  string control_plane_access_name = 4 [json_name = "control_plane_access_name"];
+
+  string core_network_technology = 5 [json_name = "core_network_technology"];
+
+  string id = 6;
+
+  repeated Identity identity = 7;
+
+  string interoperability_settings_json = 8 [json_name = "interoperability_settings_json"];
+
+  repeated LocalDiagnosticsAccess local_diagnostics_access = 9 [json_name = "local_diagnostics_access"];
+
+  string location = 10;
+
+  string name = 11;
+
+  repeated Platform platform = 12;
+
+  string resource_group_name = 13 [json_name = "resource_group_name"];
+
+  repeated string site_ids = 14 [json_name = "site_ids"];
+
+  string sku = 15;
+
+  string software_version = 16 [json_name = "software_version"];
+
+  map<string, string> tags = 17;
+
+  int64 user_equipment_mtu_in_bytes = 18 [json_name = "user_equipment_mtu_in_bytes"];
+
+  repeated Timeouts timeouts = 19;
+
+  google.protobuf.Value for_each = 20 [json_name = "for_each"];
+
+  repeated string depends_on = 21 [json_name = "depends_on"];
+
+  int32 count = 22;
+
+  string provider = 23;
+
+  terraform.v1.Lifecycle lifecycle = 24;
+
+  message Identity {
+    // identity_ids: list of string
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    // type: string
+    string type = 2;
+  }
+
+  message LocalDiagnosticsAccess {
+    // authentication_type: string
+    string authentication_type = 1 [json_name = "authentication_type"];
+
+    // https_server_certificate_url: string
+    string https_server_certificate_url = 2 [json_name = "https_server_certificate_url"];
+  }
+
+  message Platform {
+    // arc_kubernetes_cluster_id: string
+    string arc_kubernetes_cluster_id = 1 [json_name = "arc_kubernetes_cluster_id"];
+
+    // custom_location_id: string
+    string custom_location_id = 2 [json_name = "custom_location_id"];
+
+    // edge_device_id: string
+    string edge_device_id = 3 [json_name = "edge_device_id"];
+
+    // stack_hci_cluster_id: string
+    string stack_hci_cluster_id = 4 [json_name = "stack_hci_cluster_id"];
+
+    // type: string
+    string type = 5;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMobileNetworkPacketCoreDataPlane version is 0
+message AzurermMobileNetworkPacketCoreDataPlane {
+  string id = 1;
+
+  string location = 2;
+
+  string mobile_network_packet_core_control_plane_id = 3 [
+    json_name = "mobile_network_packet_core_control_plane_id"
+  ];
+
+  string name = 4;
+
+  map<string, string> tags = 5;
+
+  string user_plane_access_ipv4_address = 6 [json_name = "user_plane_access_ipv4_address"];
+
+  string user_plane_access_ipv4_gateway = 7 [json_name = "user_plane_access_ipv4_gateway"];
+
+  string user_plane_access_ipv4_subnet = 8 [json_name = "user_plane_access_ipv4_subnet"];
+
+  string user_plane_access_name = 9 [json_name = "user_plane_access_name"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMobileNetworkService version is 0
+message AzurermMobileNetworkService {
+  string id = 1;
+
+  string location = 2;
+
+  string mobile_network_id = 3 [json_name = "mobile_network_id"];
+
+  string name = 4;
+
+  repeated PccRule pcc_rule = 5 [json_name = "pcc_rule"];
+
+  int64 service_precedence = 6 [json_name = "service_precedence"];
+
+  repeated ServiceQosPolicy service_qos_policy = 7 [json_name = "service_qos_policy"];
+
+  map<string, string> tags = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message PccRule {
+    // name: string
+    string name = 1;
+
+    // precedence: number
+    int64 precedence = 2;
+
+    // qos_policy: list of object
+    repeated QosPolicy qos_policy = 3 [json_name = "qos_policy"];
+
+    // service_data_flow_template: list of object
+    repeated ServiceDataFlowTemplate service_data_flow_template = 4 [json_name = "service_data_flow_template"];
+
+    // traffic_control_enabled: bool
+    bool traffic_control_enabled = 5 [json_name = "traffic_control_enabled"];
+
+    message QosPolicy {
+      // allocation_and_retention_priority_level: number
+      int64 allocation_and_retention_priority_level = 1 [
+        json_name = "allocation_and_retention_priority_level"
+      ];
+
+      // guaranteed_bit_rate: list of object
+      repeated GuaranteedBitRate guaranteed_bit_rate = 2 [json_name = "guaranteed_bit_rate"];
+
+      // maximum_bit_rate: list of object
+      repeated MaximumBitRate maximum_bit_rate = 3 [json_name = "maximum_bit_rate"];
+
+      // preemption_capability: string
+      string preemption_capability = 4 [json_name = "preemption_capability"];
+
+      // preemption_vulnerability: string
+      string preemption_vulnerability = 5 [json_name = "preemption_vulnerability"];
+
+      // qos_indicator: number
+      int64 qos_indicator = 6 [json_name = "qos_indicator"];
+
+      message GuaranteedBitRate {
+        // downlink: string
+        string downlink = 1;
+
+        // uplink: string
+        string uplink = 2;
+      }
+
+      message MaximumBitRate {
+        // downlink: string
+        string downlink = 1;
+
+        // uplink: string
+        string uplink = 2;
+      }
+    }
+
+    message ServiceDataFlowTemplate {
+      // direction: string
+      string direction = 1;
+
+      // name: string
+      string name = 2;
+
+      // ports: list of string
+      repeated string ports = 3;
+
+      // protocol: list of string
+      repeated string protocol = 4;
+
+      // remote_ip_list: list of string
+      repeated string remote_ip_list = 5 [json_name = "remote_ip_list"];
+    }
+  }
+
+  message ServiceQosPolicy {
+    // allocation_and_retention_priority_level: number
+    int64 allocation_and_retention_priority_level = 1 [
+      json_name = "allocation_and_retention_priority_level"
+    ];
+
+    // maximum_bit_rate: list of object
+    repeated MaximumBitRate maximum_bit_rate = 2 [json_name = "maximum_bit_rate"];
+
+    // preemption_capability: string
+    string preemption_capability = 3 [json_name = "preemption_capability"];
+
+    // preemption_vulnerability: string
+    string preemption_vulnerability = 4 [json_name = "preemption_vulnerability"];
+
+    // qos_indicator: number
+    int64 qos_indicator = 5 [json_name = "qos_indicator"];
+
+    message MaximumBitRate {
+      // downlink: string
+      string downlink = 1;
+
+      // uplink: string
+      string uplink = 2;
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMobileNetworkSim version is 0
+message AzurermMobileNetworkSim {
+  string device_type = 1 [json_name = "device_type"];
+
+  string id = 2;
+
+  string integrated_circuit_card_identifier = 3 [json_name = "integrated_circuit_card_identifier"];
+
+  string international_mobile_subscriber_identity = 4 [
+    json_name = "international_mobile_subscriber_identity"
+  ];
+
+  string mobile_network_sim_group_id = 5 [json_name = "mobile_network_sim_group_id"];
+
+  string name = 6;
+
+  string sim_policy_id = 7 [json_name = "sim_policy_id"];
+
+  string sim_state = 8 [json_name = "sim_state"];
+
+  repeated StaticIpConfiguration static_ip_configuration = 9 [json_name = "static_ip_configuration"];
+
+  string vendor_key_fingerprint = 10 [json_name = "vendor_key_fingerprint"];
+
+  string vendor_name = 11 [json_name = "vendor_name"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message StaticIpConfiguration {
+    // attached_data_network_id: string
+    string attached_data_network_id = 1 [json_name = "attached_data_network_id"];
+
+    // slice_id: string
+    string slice_id = 2 [json_name = "slice_id"];
+
+    // static_ipv4_address: string
+    string static_ipv4_address = 3 [json_name = "static_ipv4_address"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMobileNetworkSimGroup version is 0
+message AzurermMobileNetworkSimGroup {
+  string encryption_key_url = 1 [json_name = "encryption_key_url"];
+
+  string id = 2;
+
+  repeated Identity identity = 3;
+
+  string location = 4;
+
+  string mobile_network_id = 5 [json_name = "mobile_network_id"];
+
+  string name = 6;
+
+  map<string, string> tags = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Identity {
+    // identity_ids: list of string
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    // principal_id: string
+    string principal_id = 2 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 4;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMobileNetworkSimPolicy version is 0
+message AzurermMobileNetworkSimPolicy {
+  string default_slice_id = 1 [json_name = "default_slice_id"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string mobile_network_id = 4 [json_name = "mobile_network_id"];
+
+  string name = 5;
+
+  int64 rat_frequency_selection_priority_index = 6 [
+    json_name = "rat_frequency_selection_priority_index"
+  ];
+
+  int64 registration_timer_in_seconds = 7 [json_name = "registration_timer_in_seconds"];
+
+  repeated Slice slice = 8;
+
+  map<string, string> tags = 9;
+
+  repeated UserEquipmentAggregateMaximumBitRate user_equipment_aggregate_maximum_bit_rate = 10 [
+    json_name = "user_equipment_aggregate_maximum_bit_rate"
+  ];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Slice {
+    // data_network: list of object
+    repeated DataNetwork data_network = 1 [json_name = "data_network"];
+
+    // default_data_network_id: string
+    string default_data_network_id = 2 [json_name = "default_data_network_id"];
+
+    // slice_id: string
+    string slice_id = 3 [json_name = "slice_id"];
+
+    message DataNetwork {
+      // additional_allowed_session_types: list of string
+      repeated string additional_allowed_session_types = 1 [json_name = "additional_allowed_session_types"];
+
+      // allocation_and_retention_priority_level: number
+      int64 allocation_and_retention_priority_level = 2 [
+        json_name = "allocation_and_retention_priority_level"
+      ];
+
+      // allowed_services_ids: list of string
+      repeated string allowed_services_ids = 3 [json_name = "allowed_services_ids"];
+
+      // data_network_id: string
+      string data_network_id = 4 [json_name = "data_network_id"];
+
+      // default_session_type: string
+      string default_session_type = 5 [json_name = "default_session_type"];
+
+      // max_buffered_packets: number
+      int64 max_buffered_packets = 6 [json_name = "max_buffered_packets"];
+
+      // preemption_capability: string
+      string preemption_capability = 7 [json_name = "preemption_capability"];
+
+      // preemption_vulnerability: string
+      string preemption_vulnerability = 8 [json_name = "preemption_vulnerability"];
+
+      // qos_indicator: number
+      int64 qos_indicator = 9 [json_name = "qos_indicator"];
+
+      // session_aggregate_maximum_bit_rate: list of object
+      repeated SessionAggregateMaximumBitRate session_aggregate_maximum_bit_rate = 10 [json_name = "session_aggregate_maximum_bit_rate"];
+
+      message SessionAggregateMaximumBitRate {
+        // downlink: string
+        string downlink = 1;
+
+        // uplink: string
+        string uplink = 2;
+      }
+    }
+  }
+
+  message UserEquipmentAggregateMaximumBitRate {
+    // downlink: string
+    string downlink = 1;
+
+    // uplink: string
+    string uplink = 2;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMobileNetworkSite version is 0
+message AzurermMobileNetworkSite {
+  string id = 1;
+
+  string location = 2;
+
+  string mobile_network_id = 3 [json_name = "mobile_network_id"];
+
+  string name = 4;
+
+  repeated string network_function_ids = 5 [json_name = "network_function_ids"];
+
+  map<string, string> tags = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMobileNetworkSlice version is 0
+message AzurermMobileNetworkSlice {
+  string description = 1;
+
+  string id = 2;
+
+  string location = 3;
+
+  string mobile_network_id = 4 [json_name = "mobile_network_id"];
+
+  string name = 5;
+
+  repeated SingleNetworkSliceSelectionAssistanceInformation single_network_slice_selection_assistance_information = 6 [
+    json_name = "single_network_slice_selection_assistance_information"
+  ];
+
+  map<string, string> tags = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message SingleNetworkSliceSelectionAssistanceInformation {
+    // slice_differentiator: string
+    string slice_differentiator = 1 [json_name = "slice_differentiator"];
+
+    // slice_service_type: number
+    int64 slice_service_type = 2 [json_name = "slice_service_type"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

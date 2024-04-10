@@ -1,0 +1,1048 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermSynapseFirewallRule version is 0
+message AzurermSynapseFirewallRule {
+  string end_ip_address = 1 [json_name = "end_ip_address"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string start_ip_address = 4 [json_name = "start_ip_address"];
+
+  string synapse_workspace_id = 5 [json_name = "synapse_workspace_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseIntegrationRuntimeAzure version is 1
+message AzurermSynapseIntegrationRuntimeAzure {
+  string compute_type = 1 [json_name = "compute_type"];
+
+  int64 core_count = 2 [json_name = "core_count"];
+
+  string description = 3;
+
+  string id = 4;
+
+  string location = 5;
+
+  string name = 6;
+
+  string synapse_workspace_id = 7 [json_name = "synapse_workspace_id"];
+
+  int64 time_to_live_min = 8 [json_name = "time_to_live_min"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseIntegrationRuntimeSelfHosted version is 1
+message AzurermSynapseIntegrationRuntimeSelfHosted {
+  string authorization_key_primary = 1 [json_name = "authorization_key_primary"];
+
+  string authorization_key_secondary = 2 [json_name = "authorization_key_secondary"];
+
+  string description = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string synapse_workspace_id = 6 [json_name = "synapse_workspace_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseLinkedService version is 1
+message AzurermSynapseLinkedService {
+  map<string, string> additional_properties = 1 [json_name = "additional_properties"];
+
+  repeated string annotations = 2;
+
+  string description = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  map<string, string> parameters = 6;
+
+  string synapse_workspace_id = 7 [json_name = "synapse_workspace_id"];
+
+  string type = 8;
+
+  string type_properties_json = 9 [json_name = "type_properties_json"];
+
+  IntegrationRuntime integration_runtime = 10 [json_name = "integration_runtime"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message IntegrationRuntime {
+    string name = 1;
+
+    map<string, string> parameters = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseManagedPrivateEndpoint version is 0
+message AzurermSynapseManagedPrivateEndpoint {
+  string id = 1;
+
+  string name = 2;
+
+  string subresource_name = 3 [json_name = "subresource_name"];
+
+  string synapse_workspace_id = 4 [json_name = "synapse_workspace_id"];
+
+  string target_resource_id = 5 [json_name = "target_resource_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermSynapsePrivateLinkHub version is 0
+message AzurermSynapsePrivateLinkHub {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseRoleAssignment version is 1
+message AzurermSynapseRoleAssignment {
+  string id = 1;
+
+  string principal_id = 2 [json_name = "principal_id"];
+
+  string principal_type = 3 [json_name = "principal_type"];
+
+  string role_name = 4 [json_name = "role_name"];
+
+  string synapse_spark_pool_id = 5 [json_name = "synapse_spark_pool_id"];
+
+  string synapse_workspace_id = 6 [json_name = "synapse_workspace_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermSynapseSparkPool version is 0
+message AzurermSynapseSparkPool {
+  int64 cache_size = 1 [json_name = "cache_size"];
+
+  bool compute_isolation_enabled = 2 [json_name = "compute_isolation_enabled"];
+
+  bool dynamic_executor_allocation_enabled = 3 [json_name = "dynamic_executor_allocation_enabled"];
+
+  string id = 4;
+
+  int64 max_executors = 5 [json_name = "max_executors"];
+
+  int64 min_executors = 6 [json_name = "min_executors"];
+
+  string name = 7;
+
+  int64 node_count = 8 [json_name = "node_count"];
+
+  string node_size = 9 [json_name = "node_size"];
+
+  string node_size_family = 10 [json_name = "node_size_family"];
+
+  bool session_level_packages_enabled = 11 [json_name = "session_level_packages_enabled"];
+
+  string spark_events_folder = 12 [json_name = "spark_events_folder"];
+
+  string spark_log_folder = 13 [json_name = "spark_log_folder"];
+
+  string spark_version = 14 [json_name = "spark_version"];
+
+  string synapse_workspace_id = 15 [json_name = "synapse_workspace_id"];
+
+  map<string, string> tags = 16;
+
+  AutoPause auto_pause = 17 [json_name = "auto_pause"];
+
+  AutoScale auto_scale = 18 [json_name = "auto_scale"];
+
+  LibraryRequirement library_requirement = 19 [json_name = "library_requirement"];
+
+  SparkConfig spark_config = 20 [json_name = "spark_config"];
+
+  repeated Timeouts timeouts = 21;
+
+  google.protobuf.Value for_each = 22 [json_name = "for_each"];
+
+  repeated string depends_on = 23 [json_name = "depends_on"];
+
+  int32 count = 24;
+
+  string provider = 25;
+
+  terraform.v1.Lifecycle lifecycle = 26;
+
+  message AutoPause {
+    int64 delay_in_minutes = 1 [json_name = "delay_in_minutes"];
+  }
+
+  message AutoScale {
+    int64 max_node_count = 1 [json_name = "max_node_count"];
+
+    int64 min_node_count = 2 [json_name = "min_node_count"];
+  }
+
+  message LibraryRequirement {
+    string content = 1;
+
+    string filename = 2;
+  }
+
+  message SparkConfig {
+    string content = 1;
+
+    string filename = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseSqlPool version is 0
+message AzurermSynapseSqlPool {
+  string collation = 1;
+
+  string create_mode = 2 [json_name = "create_mode"];
+
+  bool data_encrypted = 3 [json_name = "data_encrypted"];
+
+  bool geo_backup_policy_enabled = 4 [json_name = "geo_backup_policy_enabled"];
+
+  string id = 5;
+
+  string name = 6;
+
+  string recovery_database_id = 7 [json_name = "recovery_database_id"];
+
+  string sku_name = 8 [json_name = "sku_name"];
+
+  string storage_account_type = 9 [json_name = "storage_account_type"];
+
+  string synapse_workspace_id = 10 [json_name = "synapse_workspace_id"];
+
+  map<string, string> tags = 11;
+
+  Restore restore = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Restore {
+    string point_in_time = 1 [json_name = "point_in_time"];
+
+    string source_database_id = 2 [json_name = "source_database_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseSqlPoolExtendedAuditingPolicy version is 0
+message AzurermSynapseSqlPoolExtendedAuditingPolicy {
+  string id = 1;
+
+  bool log_monitoring_enabled = 2 [json_name = "log_monitoring_enabled"];
+
+  int64 retention_in_days = 3 [json_name = "retention_in_days"];
+
+  string sql_pool_id = 4 [json_name = "sql_pool_id"];
+
+  string storage_account_access_key = 5 [json_name = "storage_account_access_key"];
+
+  bool storage_account_access_key_is_secondary = 6 [
+    json_name = "storage_account_access_key_is_secondary"
+  ];
+
+  string storage_endpoint = 7 [json_name = "storage_endpoint"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseSqlPoolSecurityAlertPolicy version is 0
+message AzurermSynapseSqlPoolSecurityAlertPolicy {
+  repeated string disabled_alerts = 1 [json_name = "disabled_alerts"];
+
+  bool email_account_admins_enabled = 2 [json_name = "email_account_admins_enabled"];
+
+  repeated string email_addresses = 3 [json_name = "email_addresses"];
+
+  string id = 4;
+
+  string policy_state = 5 [json_name = "policy_state"];
+
+  int64 retention_days = 6 [json_name = "retention_days"];
+
+  string sql_pool_id = 7 [json_name = "sql_pool_id"];
+
+  string storage_account_access_key = 8 [json_name = "storage_account_access_key"];
+
+  string storage_endpoint = 9 [json_name = "storage_endpoint"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseSqlPoolVulnerabilityAssessment version is 0
+message AzurermSynapseSqlPoolVulnerabilityAssessment {
+  string id = 1;
+
+  string sql_pool_security_alert_policy_id = 2 [json_name = "sql_pool_security_alert_policy_id"];
+
+  string storage_account_access_key = 3 [json_name = "storage_account_access_key"];
+
+  string storage_container_path = 4 [json_name = "storage_container_path"];
+
+  string storage_container_sas_key = 5 [json_name = "storage_container_sas_key"];
+
+  RecurringScans recurring_scans = 6 [json_name = "recurring_scans"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message RecurringScans {
+    bool email_subscription_admins_enabled = 1 [json_name = "email_subscription_admins_enabled"];
+
+    repeated string emails = 2;
+
+    bool enabled = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseSqlPoolVulnerabilityAssessmentBaseline version is 0
+message AzurermSynapseSqlPoolVulnerabilityAssessmentBaseline {
+  string id = 1;
+
+  string name = 2;
+
+  string rule_name = 3 [json_name = "rule_name"];
+
+  string sql_pool_vulnerability_assessment_id = 4 [json_name = "sql_pool_vulnerability_assessment_id"];
+
+  repeated Baseline baseline = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Baseline {
+    repeated string result = 1;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseSqlPoolWorkloadClassifier version is 0
+message AzurermSynapseSqlPoolWorkloadClassifier {
+  string context = 1;
+
+  string end_time = 2 [json_name = "end_time"];
+
+  string id = 3;
+
+  string importance = 4;
+
+  string label = 5;
+
+  string member_name = 6 [json_name = "member_name"];
+
+  string name = 7;
+
+  string start_time = 8 [json_name = "start_time"];
+
+  string workload_group_id = 9 [json_name = "workload_group_id"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseSqlPoolWorkloadGroup version is 0
+message AzurermSynapseSqlPoolWorkloadGroup {
+  string id = 1;
+
+  string importance = 2;
+
+  int64 max_resource_percent = 3 [json_name = "max_resource_percent"];
+
+  int64 max_resource_percent_per_request = 4 [json_name = "max_resource_percent_per_request"];
+
+  int64 min_resource_percent = 5 [json_name = "min_resource_percent"];
+
+  int64 min_resource_percent_per_request = 6 [json_name = "min_resource_percent_per_request"];
+
+  string name = 7;
+
+  int64 query_execution_timeout_in_seconds = 8 [json_name = "query_execution_timeout_in_seconds"];
+
+  string sql_pool_id = 9 [json_name = "sql_pool_id"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseWorkspace version is 0
+message AzurermSynapseWorkspace {
+  repeated AadAdmin aad_admin = 1 [json_name = "aad_admin"];
+
+  bool azuread_authentication_only = 2 [json_name = "azuread_authentication_only"];
+
+  string compute_subnet_id = 3 [json_name = "compute_subnet_id"];
+
+  map<string, string> connectivity_endpoints = 4 [json_name = "connectivity_endpoints"];
+
+  bool data_exfiltration_protection_enabled = 5 [json_name = "data_exfiltration_protection_enabled"];
+
+  string id = 6;
+
+  repeated string linking_allowed_for_aad_tenant_ids = 7 [json_name = "linking_allowed_for_aad_tenant_ids"];
+
+  string location = 8;
+
+  string managed_resource_group_name = 9 [json_name = "managed_resource_group_name"];
+
+  bool managed_virtual_network_enabled = 10 [json_name = "managed_virtual_network_enabled"];
+
+  string name = 11;
+
+  bool public_network_access_enabled = 12 [json_name = "public_network_access_enabled"];
+
+  string purview_id = 13 [json_name = "purview_id"];
+
+  string resource_group_name = 14 [json_name = "resource_group_name"];
+
+  repeated SqlAadAdmin sql_aad_admin = 15 [json_name = "sql_aad_admin"];
+
+  string sql_administrator_login = 16 [json_name = "sql_administrator_login"];
+
+  string sql_administrator_login_password = 17 [json_name = "sql_administrator_login_password"];
+
+  bool sql_identity_control_enabled = 18 [json_name = "sql_identity_control_enabled"];
+
+  string storage_data_lake_gen2_filesystem_id = 19 [json_name = "storage_data_lake_gen2_filesystem_id"];
+
+  map<string, string> tags = 20;
+
+  AzureDevopsRepo azure_devops_repo = 21 [json_name = "azure_devops_repo"];
+
+  CustomerManagedKey customer_managed_key = 22 [json_name = "customer_managed_key"];
+
+  GithubRepo github_repo = 23 [json_name = "github_repo"];
+
+  Identity identity = 24;
+
+  repeated Timeouts timeouts = 25;
+
+  google.protobuf.Value for_each = 26 [json_name = "for_each"];
+
+  repeated string depends_on = 27 [json_name = "depends_on"];
+
+  int32 count = 28;
+
+  string provider = 29;
+
+  terraform.v1.Lifecycle lifecycle = 30;
+
+  message AadAdmin {
+    // login: string
+    string login = 1;
+
+    // object_id: string
+    string object_id = 2 [json_name = "object_id"];
+
+    // tenant_id: string
+    string tenant_id = 3 [json_name = "tenant_id"];
+  }
+
+  message SqlAadAdmin {
+    // login: string
+    string login = 1;
+
+    // object_id: string
+    string object_id = 2 [json_name = "object_id"];
+
+    // tenant_id: string
+    string tenant_id = 3 [json_name = "tenant_id"];
+  }
+
+  message AzureDevopsRepo {
+    string account_name = 1 [json_name = "account_name"];
+
+    string branch_name = 2 [json_name = "branch_name"];
+
+    string last_commit_id = 3 [json_name = "last_commit_id"];
+
+    string project_name = 4 [json_name = "project_name"];
+
+    string repository_name = 5 [json_name = "repository_name"];
+
+    string root_folder = 6 [json_name = "root_folder"];
+
+    string tenant_id = 7 [json_name = "tenant_id"];
+  }
+
+  message CustomerManagedKey {
+    string key_name = 1 [json_name = "key_name"];
+
+    string key_versionless_id = 2 [json_name = "key_versionless_id"];
+
+    string user_assigned_identity_id = 3 [json_name = "user_assigned_identity_id"];
+  }
+
+  message GithubRepo {
+    string account_name = 1 [json_name = "account_name"];
+
+    string branch_name = 2 [json_name = "branch_name"];
+
+    string git_url = 3 [json_name = "git_url"];
+
+    string last_commit_id = 4 [json_name = "last_commit_id"];
+
+    string repository_name = 5 [json_name = "repository_name"];
+
+    string root_folder = 6 [json_name = "root_folder"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseWorkspaceAadAdmin version is 0
+message AzurermSynapseWorkspaceAadAdmin {
+  string id = 1;
+
+  string login = 2;
+
+  string object_id = 3 [json_name = "object_id"];
+
+  string synapse_workspace_id = 4 [json_name = "synapse_workspace_id"];
+
+  string tenant_id = 5 [json_name = "tenant_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseWorkspaceExtendedAuditingPolicy version is 0
+message AzurermSynapseWorkspaceExtendedAuditingPolicy {
+  string id = 1;
+
+  bool log_monitoring_enabled = 2 [json_name = "log_monitoring_enabled"];
+
+  int64 retention_in_days = 3 [json_name = "retention_in_days"];
+
+  string storage_account_access_key = 4 [json_name = "storage_account_access_key"];
+
+  bool storage_account_access_key_is_secondary = 5 [
+    json_name = "storage_account_access_key_is_secondary"
+  ];
+
+  string storage_endpoint = 6 [json_name = "storage_endpoint"];
+
+  string synapse_workspace_id = 7 [json_name = "synapse_workspace_id"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseWorkspaceKey version is 0
+message AzurermSynapseWorkspaceKey {
+  bool active = 1;
+
+  string customer_managed_key_name = 2 [json_name = "customer_managed_key_name"];
+
+  string customer_managed_key_versionless_id = 3 [json_name = "customer_managed_key_versionless_id"];
+
+  string id = 4;
+
+  string synapse_workspace_id = 5 [json_name = "synapse_workspace_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseWorkspaceSecurityAlertPolicy version is 0
+message AzurermSynapseWorkspaceSecurityAlertPolicy {
+  repeated string disabled_alerts = 1 [json_name = "disabled_alerts"];
+
+  bool email_account_admins_enabled = 2 [json_name = "email_account_admins_enabled"];
+
+  repeated string email_addresses = 3 [json_name = "email_addresses"];
+
+  string id = 4;
+
+  string policy_state = 5 [json_name = "policy_state"];
+
+  int64 retention_days = 6 [json_name = "retention_days"];
+
+  string storage_account_access_key = 7 [json_name = "storage_account_access_key"];
+
+  string storage_endpoint = 8 [json_name = "storage_endpoint"];
+
+  string synapse_workspace_id = 9 [json_name = "synapse_workspace_id"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseWorkspaceSqlAadAdmin version is 0
+message AzurermSynapseWorkspaceSqlAadAdmin {
+  string id = 1;
+
+  string login = 2;
+
+  string object_id = 3 [json_name = "object_id"];
+
+  string synapse_workspace_id = 4 [json_name = "synapse_workspace_id"];
+
+  string tenant_id = 5 [json_name = "tenant_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSynapseWorkspaceVulnerabilityAssessment version is 0
+message AzurermSynapseWorkspaceVulnerabilityAssessment {
+  string id = 1;
+
+  string storage_account_access_key = 2 [json_name = "storage_account_access_key"];
+
+  string storage_container_path = 3 [json_name = "storage_container_path"];
+
+  string storage_container_sas_key = 4 [json_name = "storage_container_sas_key"];
+
+  string workspace_security_alert_policy_id = 5 [json_name = "workspace_security_alert_policy_id"];
+
+  RecurringScans recurring_scans = 6 [json_name = "recurring_scans"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message RecurringScans {
+    bool email_subscription_admins_enabled = 1 [json_name = "email_subscription_admins_enabled"];
+
+    repeated string emails = 2;
+
+    bool enabled = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

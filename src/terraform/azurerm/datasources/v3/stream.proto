@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermStreamAnalyticsJob version is 1
+message AzurermStreamAnalyticsJob {
+  string compatibility_level = 1 [json_name = "compatibility_level"];
+
+  string data_locale = 2 [json_name = "data_locale"];
+
+  int64 events_late_arrival_max_delay_in_seconds = 3 [
+    json_name = "events_late_arrival_max_delay_in_seconds"
+  ];
+
+  int64 events_out_of_order_max_delay_in_seconds = 4 [
+    json_name = "events_out_of_order_max_delay_in_seconds"
+  ];
+
+  string events_out_of_order_policy = 5 [json_name = "events_out_of_order_policy"];
+
+  string id = 6;
+
+  repeated Identity identity = 7;
+
+  string job_id = 8 [json_name = "job_id"];
+
+  string last_output_time = 9 [json_name = "last_output_time"];
+
+  string location = 10;
+
+  string name = 11;
+
+  string output_error_policy = 12 [json_name = "output_error_policy"];
+
+  string resource_group_name = 13 [json_name = "resource_group_name"];
+
+  string sku_name = 14 [json_name = "sku_name"];
+
+  string start_mode = 15 [json_name = "start_mode"];
+
+  string start_time = 16 [json_name = "start_time"];
+
+  int64 streaming_units = 17 [json_name = "streaming_units"];
+
+  string transformation_query = 18 [json_name = "transformation_query"];
+
+  repeated Timeouts timeouts = 19;
+
+  google.protobuf.Value for_each = 20 [json_name = "for_each"];
+
+  repeated string depends_on = 21 [json_name = "depends_on"];
+
+  int32 count = 22;
+
+  string provider = 23;
+
+  terraform.v1.Lifecycle lifecycle = 24;
+
+  message Identity {
+    // identity_ids: list of string
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    // principal_id: string
+    string principal_id = 2 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 4;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

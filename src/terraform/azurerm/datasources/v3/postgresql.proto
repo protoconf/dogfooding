@@ -1,0 +1,105 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermPostgresqlFlexibleServer version is 0
+message AzurermPostgresqlFlexibleServer {
+  string administrator_login = 1 [json_name = "administrator_login"];
+
+  bool auto_grow_enabled = 2 [json_name = "auto_grow_enabled"];
+
+  int64 backup_retention_days = 3 [json_name = "backup_retention_days"];
+
+  string delegated_subnet_id = 4 [json_name = "delegated_subnet_id"];
+
+  string fqdn = 5;
+
+  string id = 6;
+
+  string location = 7;
+
+  string name = 8;
+
+  bool public_network_access_enabled = 9 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  string sku_name = 11 [json_name = "sku_name"];
+
+  int64 storage_mb = 12 [json_name = "storage_mb"];
+
+  map<string, string> tags = 13;
+
+  string version = 14;
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermPostgresqlServer version is 1
+message AzurermPostgresqlServer {
+  string administrator_login = 1 [json_name = "administrator_login"];
+
+  string fqdn = 2;
+
+  string id = 3;
+
+  repeated Identity identity = 4;
+
+  string location = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string sku_name = 8 [json_name = "sku_name"];
+
+  map<string, string> tags = 9;
+
+  string version = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Identity {
+    // principal_id: string
+    string principal_id = 1 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 2 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 3;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

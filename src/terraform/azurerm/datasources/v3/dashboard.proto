@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermDashboardGrafana version is 0
+message AzurermDashboardGrafana {
+  bool api_key_enabled = 1 [json_name = "api_key_enabled"];
+
+  string auto_generated_domain_name_label_scope = 2 [
+    json_name = "auto_generated_domain_name_label_scope"
+  ];
+
+  repeated AzureMonitorWorkspaceIntegrations azure_monitor_workspace_integrations = 3 [json_name = "azure_monitor_workspace_integrations"];
+
+  bool deterministic_outbound_ip_enabled = 4 [json_name = "deterministic_outbound_ip_enabled"];
+
+  string endpoint = 5;
+
+  string grafana_major_version = 6 [json_name = "grafana_major_version"];
+
+  string grafana_version = 7 [json_name = "grafana_version"];
+
+  string id = 8;
+
+  string location = 9;
+
+  string name = 10;
+
+  repeated string outbound_ips = 11 [json_name = "outbound_ips"];
+
+  bool public_network_access_enabled = 12 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 13 [json_name = "resource_group_name"];
+
+  string sku = 14;
+
+  map<string, string> tags = 15;
+
+  bool zone_redundancy_enabled = 16 [json_name = "zone_redundancy_enabled"];
+
+  Identity identity = 17;
+
+  repeated Timeouts timeouts = 18;
+
+  google.protobuf.Value for_each = 19 [json_name = "for_each"];
+
+  repeated string depends_on = 20 [json_name = "depends_on"];
+
+  int32 count = 21;
+
+  string provider = 22;
+
+  terraform.v1.Lifecycle lifecycle = 23;
+
+  message AzureMonitorWorkspaceIntegrations {
+    // resource_id: string
+    string resource_id = 1 [json_name = "resource_id"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

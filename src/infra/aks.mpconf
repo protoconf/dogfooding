@@ -1,0 +1,258 @@
+load("//terraform/v1/util.pinc", "util", "From", "value")
+
+load("//terraform/azurerm/provider/v3/azurerm.proto", "Azurerm")
+load("//terraform/azurerm/resources/v3/resource.proto", "AzurermResourceGroup")
+
+load("//terraform/kubernetes/provider/v2/kubernetes.proto", "Kubernetes")
+load("//terraform/kubernetes/resources/v2/manifest.proto", "KubernetesManifest")
+load("//terraform/kubernetes/resources/v2/namespace.proto", "KubernetesNamespace")
+
+load("//terraform/helm/provider/v2/helm.proto", "Helm")
+load("//terraform/helm/resources/v2/release.proto", "HelmRelease")
+
+
+load("//terraform/http/provider/v3/http.proto", HttpProvider="Http")
+load("//terraform/http/datasources/v3/http.proto", Http="Http")
+# load("//protoconf_terraform/config/v1/config.proto", "SubscriptionConfig")
+load("encoding/yaml.star", "yaml")
+
+load(
+    "@kubernetes//lib/kubernetes/kubernetes.pinc",
+    "KubernetesDeployment",
+    "KubernetesStatefulSet",
+    "KubernetesDaemonSet",
+)
+AZURE_RESOURCE_GROUP = "ProtoconfDev"
+REGIONS = ["southeastasia", "eastus", "westus", "westeurope", "northeurope"]
+
+
+def AKSCluster(region, *hooks):
+    tf = util.Terraform(
+        util.Provider(
+            Azurerm(
+                features=Azurerm.Features(
+                    resource_group=Azurerm.Features.ResourceGroup(
+                        prevent_deletion_if_contains_resources=False
+                    ),
+                )
+            )
+        ),
+        util.Resource(
+            "resource_group",
+            AzurermResourceGroup(name="pconf-dev-%s" % region, location=region),
+        ),
+        util.WithLink(
+            lambda var: util.Module(
+                "aks_cluster",
+                source="Azure/aks/azurerm",
+                version="7.5.0",
+                resource_group_name=var.azurerm_resource_group.resource_group.name,
+                prefix="pconf-dev-%s" % region,
+                depends_on=[var.azurerm_resource_group.resource_group.self],
+                rbac_aad=False,
+            ),
+        ),
+        util.WithLink(
+            lambda var: util.Provider(
+                Kubernetes(
+                    host=var.module.aks_cluster("host"),
+                    client_certificate=var.module.aks_cluster(
+                        "client_certificate", "base64decode"
+                    ),
+                    client_key=var.module.aks_cluster("client_key", "base64decode"),
+                    cluster_ca_certificate=var.module.aks_cluster(
+                        "cluster_ca_certificate", "base64decode"
+                    ),
+                )
+            )
+        ),
+        util.WithLink(
+            lambda var: util.Provider(
+                Helm(
+                    kubernetes=Helm.Kubernetes(
+                        host=var.module.aks_cluster("host"),
+                        client_certificate=var.module.aks_cluster(
+                            "client_certificate", "base64decode"
+                        ),
+                        client_key=var.module.aks_cluster("client_key", "base64decode"),
+                        cluster_ca_certificate=var.module.aks_cluster(
+                            "cluster_ca_certificate", "base64decode"
+                        ),
+                    )
+                )
+            )
+        ),
+        *hooks
+    )
+    return tf
+
+
+def DefaultCluster(region):
+    return util.Group(
+        util.Provider(HttpProvider()),
+        Uptrace(region),
+        WithinNamespace("protoconf"),
+        Etcd(3),
+        ProtoconfAgent,
+    )
+
+
+def WithinNamespace(namespace, *resources):
+    return util.Resource(
+        namespace,
+        KubernetesNamespace(metadata=KubernetesNamespace.Metadata(name=namespace)),
+        lambda var: util.Group(*resources),
+    )
+
+
+def Etcd(replicas):
+    if replicas not in [3, 5, 7]:
+        fail("Etcd replicas must be 3, 5, or 7")
+
+    return KubernetesStatefulSet(
+    "etcd",
+    lambda k: util.Group(
+        k.SetName("etcd"),
+        k.SetServiceName("etcd"),
+        k.SetNamespace("protoconf"),
+        k.SetReplicas(replicas),
+        k.AddContainer(
+            lambda c: util.Group(
+                c.SetName("etcd"),
+                c.SetImage("quay.io/coreos/etcd:latest"),
+                c.AddServicePort("etcd-client", 2379),
+                c.AddServicePort("etcd", 2380, headless=True, port_name="peer"),
+                c.AddServicePort("etcd", 2379, headless=True, port_name="client"),
+                c.SetEnv(
+                    etcd_listen_peer_urls="http://0.0.0.0:2380",
+                    etcd_listen_client_urls="http://0.0.0.0:2379",
+                    etcd_data_dir="/var/run/etcd/default.etcd",
+                ),
+                c.AddVolume("data", "/var/run/etcd", "10Gi", ""),
+                c.SetCommand(
+                    "sh",
+                    "-c",
+                    " ".join(
+                        [
+                            "etcd",
+                            "--name",
+                            "$${HOSTNAME}",
+                            "--advertise-client-urls",
+                            "http://$${HOSTNAME}.etcd:2379",
+                            "--initial-advertise-peer-urls",
+                            "http://$${HOSTNAME}:2380",
+                            "--initial-cluster",
+                            ",".join(
+                                [
+                                    "etcd-{0}=http://etcd-{0}.etcd:2380".format(i)
+                                    for i in range(0, replicas)
+                                ]
+                            ),
+                        ]
+                    ),
+                ),
+            )
+        ),
+    ),
+)
+
+ProtoconfAgent = KubernetesDaemonSet(
+    "protoconf-agent",
+    lambda k: util.Group(
+        k.SetName("protoconf-agent"),
+        k.SetNamespace("protoconf"),
+        k.AddContainer(
+            lambda c: util.Group(
+                c.SetName("protoconf-agent"),
+                c.SetImage("ghcr.io/protoconf/protoconf:latest"),
+                c.SetCommandArgs(
+                    "agent", "-store", "etcd", "-store-address", "etcd:2380"
+                ),
+                c.AddServicePort("protoconf", 4300),
+            )
+        ),
+    ),
+)
+
+
+
+
+def Uptrace(region):
+    return util.Resource(
+        "uptrace",
+        HelmRelease(
+            name="uptrace",
+            chart="uptrace",
+            namespace="uptrace",
+            repository="https://charts.uptrace.dev",
+            create_namespace=True,
+            depends_on=["module.aks_cluster"],
+            values=[
+                yaml.dumps(
+                    {
+                        "clickhouse": {
+                            "enabled": True,
+                            "imagePullSecrets": [],
+                            "image": {
+                                "repository": "clickhouse/clickhouse-server",
+                                "pullPolicy": "IfNotPresent",
+                                "tag": "23.7",
+                            },
+                            "persistence": {
+                                "enabled": True,
+                                "storageClassName": "",  # leave empty to use the default storage class
+                                "size": "80Gi",
+                            },
+                        },
+                        "postgresql": {
+                            "enabled": True,
+                            "imagePullSecrets": [],
+                            "image": {
+                                "repository": "postgres",
+                                "pullPolicy": "IfNotPresent",
+                                "tag": "15-alpine",
+                            },
+                        },
+                        "otelcol": {"enabled": False},
+                        "ingress": {
+                            "enabled": True,
+                            "annotations": {},
+                            "className": "webapprouting.kubernetes.azure.com",
+                            "hosts": [
+                                {
+                                    "host": "uptrace-%s.protoconf.dev" % region,
+                                    "paths": [{"path": "/", "pathType": "Prefix"}],
+                                }
+                            ],
+                        },
+                    }
+                )
+            ],
+        ),
+    )
+
+
+def KubernetesRemoteManifest(name, url):
+    return util.Group(
+        util.Data(name, Http(url=url), lambda var: util.Local(name, var.response_body)),
+        util.Resource(
+            name,
+            KubernetesManifest(
+                for_each=value('${toset(split("---", local.%s))}' % name),
+                manifest=value("${yamldecode(each.value)}"),
+                depends_on=["module.aks_cluster"],
+            ),
+        ),
+    )
+
+
+def main():
+    return dict(
+        [
+            [
+                "{}/main.tf.json".format(region),
+                AKSCluster(region, DefaultCluster(region)),
+            ]
+            for region in REGIONS
+        ]
+    )

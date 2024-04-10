@@ -1,0 +1,126 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermLighthouseAssignment version is 0
+message AzurermLighthouseAssignment {
+  string id = 1;
+
+  string lighthouse_definition_id = 2 [json_name = "lighthouse_definition_id"];
+
+  string name = 3;
+
+  string scope = 4;
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermLighthouseDefinition version is 0
+message AzurermLighthouseDefinition {
+  string description = 1;
+
+  string id = 2;
+
+  string lighthouse_definition_id = 3 [json_name = "lighthouse_definition_id"];
+
+  string managing_tenant_id = 4 [json_name = "managing_tenant_id"];
+
+  string name = 5;
+
+  string scope = 6;
+
+  repeated Authorization authorization = 7;
+
+  repeated EligibleAuthorization eligible_authorization = 8 [json_name = "eligible_authorization"];
+
+  Plan plan = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Authorization {
+    repeated string delegated_role_definition_ids = 1 [json_name = "delegated_role_definition_ids"];
+
+    string principal_display_name = 2 [json_name = "principal_display_name"];
+
+    string principal_id = 3 [json_name = "principal_id"];
+
+    string role_definition_id = 4 [json_name = "role_definition_id"];
+  }
+
+  message EligibleAuthorization {
+    string principal_display_name = 1 [json_name = "principal_display_name"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string role_definition_id = 3 [json_name = "role_definition_id"];
+
+    JustInTimeAccessPolicy just_in_time_access_policy = 4 [json_name = "just_in_time_access_policy"];
+
+    message JustInTimeAccessPolicy {
+      string maximum_activation_duration = 1 [json_name = "maximum_activation_duration"];
+
+      string multi_factor_auth_provider = 2 [json_name = "multi_factor_auth_provider"];
+
+      repeated Approver approver = 3;
+
+      message Approver {
+        string principal_display_name = 1 [json_name = "principal_display_name"];
+
+        string principal_id = 2 [json_name = "principal_id"];
+      }
+    }
+  }
+
+  message Plan {
+    string name = 1;
+
+    string product = 2;
+
+    string publisher = 3;
+
+    string version = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

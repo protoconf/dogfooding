@@ -1,0 +1,200 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermStaticSite version is 0
+message AzurermStaticSite {
+  string api_key = 1 [json_name = "api_key"];
+
+  map<string, string> app_settings = 2 [json_name = "app_settings"];
+
+  string default_host_name = 3 [json_name = "default_host_name"];
+
+  string id = 4;
+
+  string location = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string sku_size = 8 [json_name = "sku_size"];
+
+  string sku_tier = 9 [json_name = "sku_tier"];
+
+  map<string, string> tags = 10;
+
+  Identity identity = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStaticSiteCustomDomain version is 0
+message AzurermStaticSiteCustomDomain {
+  string domain_name = 1 [json_name = "domain_name"];
+
+  string id = 2;
+
+  string static_site_id = 3 [json_name = "static_site_id"];
+
+  string validation_token = 4 [json_name = "validation_token"];
+
+  string validation_type = 5 [json_name = "validation_type"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermStaticWebApp version is 0
+message AzurermStaticWebApp {
+  string api_key = 1 [json_name = "api_key"];
+
+  map<string, string> app_settings = 2 [json_name = "app_settings"];
+
+  bool configuration_file_changes_enabled = 3 [json_name = "configuration_file_changes_enabled"];
+
+  string default_host_name = 4 [json_name = "default_host_name"];
+
+  string id = 5;
+
+  string location = 6;
+
+  string name = 7;
+
+  bool preview_environments_enabled = 8 [json_name = "preview_environments_enabled"];
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  string sku_size = 10 [json_name = "sku_size"];
+
+  string sku_tier = 11 [json_name = "sku_tier"];
+
+  map<string, string> tags = 12;
+
+  BasicAuth basic_auth = 13 [json_name = "basic_auth"];
+
+  Identity identity = 14;
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message BasicAuth {
+    string environments = 1;
+
+    string password = 2;
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStaticWebAppCustomDomain version is 0
+message AzurermStaticWebAppCustomDomain {
+  string domain_name = 1 [json_name = "domain_name"];
+
+  string id = 2;
+
+  string static_web_app_id = 3 [json_name = "static_web_app_id"];
+
+  string validation_token = 4 [json_name = "validation_token"];
+
+  string validation_type = 5 [json_name = "validation_type"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}

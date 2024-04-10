@@ -1,0 +1,136 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermExpressRouteCircuit version is 0
+message AzurermExpressRouteCircuit {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  repeated Peerings peerings = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string service_key = 6 [json_name = "service_key"];
+
+  repeated ServiceProviderProperties service_provider_properties = 7 [json_name = "service_provider_properties"];
+
+  string service_provider_provisioning_state = 8 [json_name = "service_provider_provisioning_state"];
+
+  repeated Sku sku = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Peerings {
+    // azure_asn: number
+    int64 azure_asn = 1 [json_name = "azure_asn"];
+
+    // peer_asn: number
+    int64 peer_asn = 2 [json_name = "peer_asn"];
+
+    // peering_type: string
+    string peering_type = 3 [json_name = "peering_type"];
+
+    // primary_peer_address_prefix: string
+    string primary_peer_address_prefix = 4 [json_name = "primary_peer_address_prefix"];
+
+    // secondary_peer_address_prefix: string
+    string secondary_peer_address_prefix = 5 [json_name = "secondary_peer_address_prefix"];
+
+    // shared_key: string
+    string shared_key = 6 [json_name = "shared_key"];
+
+    // vlan_id: number
+    int64 vlan_id = 7 [json_name = "vlan_id"];
+  }
+
+  message ServiceProviderProperties {
+    // bandwidth_in_mbps: number
+    int64 bandwidth_in_mbps = 1 [json_name = "bandwidth_in_mbps"];
+
+    // peering_location: string
+    string peering_location = 2 [json_name = "peering_location"];
+
+    // service_provider_name: string
+    string service_provider_name = 3 [json_name = "service_provider_name"];
+  }
+
+  message Sku {
+    // family: string
+    string family = 1;
+
+    // tier: string
+    string tier = 2;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermExpressRouteCircuitPeering version is 0
+message AzurermExpressRouteCircuitPeering {
+  int64 azure_asn = 1 [json_name = "azure_asn"];
+
+  string express_route_circuit_name = 2 [json_name = "express_route_circuit_name"];
+
+  string gateway_manager_etag = 3 [json_name = "gateway_manager_etag"];
+
+  string id = 4;
+
+  bool ipv4_enabled = 5 [json_name = "ipv4_enabled"];
+
+  int64 peer_asn = 6 [json_name = "peer_asn"];
+
+  string peering_type = 7 [json_name = "peering_type"];
+
+  string primary_azure_port = 8 [json_name = "primary_azure_port"];
+
+  string primary_peer_address_prefix = 9 [json_name = "primary_peer_address_prefix"];
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  string route_filter_id = 11 [json_name = "route_filter_id"];
+
+  string secondary_azure_port = 12 [json_name = "secondary_azure_port"];
+
+  string secondary_peer_address_prefix = 13 [json_name = "secondary_peer_address_prefix"];
+
+  string shared_key = 14 [json_name = "shared_key"];
+
+  int64 vlan_id = 15 [json_name = "vlan_id"];
+
+  repeated Timeouts timeouts = 16;
+
+  google.protobuf.Value for_each = 17 [json_name = "for_each"];
+
+  repeated string depends_on = 18 [json_name = "depends_on"];
+
+  int32 count = 19;
+
+  string provider = 20;
+
+  terraform.v1.Lifecycle lifecycle = 21;
+
+  message Timeouts {
+    string read = 1;
+  }
+}

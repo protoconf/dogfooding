@@ -1,0 +1,853 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermApplicationGateway version is 0
+message AzurermApplicationGateway {
+  repeated AuthenticationCertificate authentication_certificate = 1 [json_name = "authentication_certificate"];
+
+  repeated AutoscaleConfiguration autoscale_configuration = 2 [json_name = "autoscale_configuration"];
+
+  repeated BackendAddressPool backend_address_pool = 3 [json_name = "backend_address_pool"];
+
+  repeated BackendHttpSettings backend_http_settings = 4 [json_name = "backend_http_settings"];
+
+  repeated CustomErrorConfiguration custom_error_configuration = 5 [json_name = "custom_error_configuration"];
+
+  bool fips_enabled = 6 [json_name = "fips_enabled"];
+
+  string firewall_policy_id = 7 [json_name = "firewall_policy_id"];
+
+  bool force_firewall_policy_association = 8 [json_name = "force_firewall_policy_association"];
+
+  repeated FrontendIpConfiguration frontend_ip_configuration = 9 [json_name = "frontend_ip_configuration"];
+
+  repeated FrontendPort frontend_port = 10 [json_name = "frontend_port"];
+
+  repeated GatewayIpConfiguration gateway_ip_configuration = 11 [json_name = "gateway_ip_configuration"];
+
+  repeated Global global = 12;
+
+  bool http2_enabled = 13 [json_name = "http2_enabled"];
+
+  repeated HttpListener http_listener = 14 [json_name = "http_listener"];
+
+  string id = 15;
+
+  repeated Identity identity = 16;
+
+  string location = 17;
+
+  string name = 18;
+
+  repeated PrivateEndpointConnection private_endpoint_connection = 19 [json_name = "private_endpoint_connection"];
+
+  repeated PrivateLinkConfiguration private_link_configuration = 20 [json_name = "private_link_configuration"];
+
+  repeated Probe probe = 21;
+
+  repeated RedirectConfiguration redirect_configuration = 22 [json_name = "redirect_configuration"];
+
+  repeated RequestRoutingRule request_routing_rule = 23 [json_name = "request_routing_rule"];
+
+  string resource_group_name = 24 [json_name = "resource_group_name"];
+
+  repeated RewriteRuleSet rewrite_rule_set = 25 [json_name = "rewrite_rule_set"];
+
+  repeated Sku sku = 26;
+
+  repeated SslCertificate ssl_certificate = 27 [json_name = "ssl_certificate"];
+
+  repeated SslPolicy ssl_policy = 28 [json_name = "ssl_policy"];
+
+  repeated SslProfile ssl_profile = 29 [json_name = "ssl_profile"];
+
+  map<string, string> tags = 30;
+
+  repeated TrustedClientCertificate trusted_client_certificate = 31 [json_name = "trusted_client_certificate"];
+
+  repeated TrustedRootCertificate trusted_root_certificate = 32 [json_name = "trusted_root_certificate"];
+
+  repeated UrlPathMap url_path_map = 33 [json_name = "url_path_map"];
+
+  repeated WafConfiguration waf_configuration = 34 [json_name = "waf_configuration"];
+
+  repeated string zones = 35;
+
+  repeated Timeouts timeouts = 36;
+
+  google.protobuf.Value for_each = 37 [json_name = "for_each"];
+
+  repeated string depends_on = 38 [json_name = "depends_on"];
+
+  int32 count = 39;
+
+  string provider = 40;
+
+  terraform.v1.Lifecycle lifecycle = 41;
+
+  message AuthenticationCertificate {
+    // id: string
+    string id = 1;
+
+    // name: string
+    string name = 2;
+  }
+
+  message AutoscaleConfiguration {
+    // max_capacity: number
+    int64 max_capacity = 1 [json_name = "max_capacity"];
+
+    // min_capacity: number
+    int64 min_capacity = 2 [json_name = "min_capacity"];
+  }
+
+  message BackendAddressPool {
+    // fqdns: list of string
+    repeated string fqdns = 1;
+
+    // id: string
+    string id = 2;
+
+    // ip_addresses: list of string
+    repeated string ip_addresses = 3 [json_name = "ip_addresses"];
+
+    // name: string
+    string name = 4;
+  }
+
+  message BackendHttpSettings {
+    // affinity_cookie_name: string
+    string affinity_cookie_name = 1 [json_name = "affinity_cookie_name"];
+
+    // authentication_certificate: list of object
+    repeated AuthenticationCertificate authentication_certificate = 2 [json_name = "authentication_certificate"];
+
+    // connection_draining: list of object
+    repeated ConnectionDraining connection_draining = 3 [json_name = "connection_draining"];
+
+    // cookie_based_affinity: string
+    string cookie_based_affinity = 4 [json_name = "cookie_based_affinity"];
+
+    // host_name: string
+    string host_name = 5 [json_name = "host_name"];
+
+    // id: string
+    string id = 6;
+
+    // name: string
+    string name = 7;
+
+    // path: string
+    string path = 8;
+
+    // pick_host_name_from_backend_address: bool
+    bool pick_host_name_from_backend_address = 9 [json_name = "pick_host_name_from_backend_address"];
+
+    // port: number
+    int64 port = 10;
+
+    // probe_id: string
+    string probe_id = 11 [json_name = "probe_id"];
+
+    // probe_name: string
+    string probe_name = 12 [json_name = "probe_name"];
+
+    // protocol: string
+    string protocol = 13;
+
+    // request_timeout: number
+    int64 request_timeout = 14 [json_name = "request_timeout"];
+
+    // trusted_root_certificate_names: list of string
+    repeated string trusted_root_certificate_names = 15 [json_name = "trusted_root_certificate_names"];
+
+    message AuthenticationCertificate {
+      // id: string
+      string id = 1;
+
+      // name: string
+      string name = 2;
+    }
+
+    message ConnectionDraining {
+      // drain_timeout_sec: number
+      int64 drain_timeout_sec = 1 [json_name = "drain_timeout_sec"];
+
+      // enabled: bool
+      bool enabled = 2;
+    }
+  }
+
+  message CustomErrorConfiguration {
+    // custom_error_page_url: string
+    string custom_error_page_url = 1 [json_name = "custom_error_page_url"];
+
+    // id: string
+    string id = 2;
+
+    // status_code: string
+    string status_code = 3 [json_name = "status_code"];
+  }
+
+  message FrontendIpConfiguration {
+    // id: string
+    string id = 1;
+
+    // name: string
+    string name = 2;
+
+    // private_ip_address: string
+    string private_ip_address = 3 [json_name = "private_ip_address"];
+
+    // private_ip_address_allocation: string
+    string private_ip_address_allocation = 4 [json_name = "private_ip_address_allocation"];
+
+    // private_link_configuration_id: string
+    string private_link_configuration_id = 5 [json_name = "private_link_configuration_id"];
+
+    // private_link_configuration_name: string
+    string private_link_configuration_name = 6 [json_name = "private_link_configuration_name"];
+
+    // public_ip_address_id: string
+    string public_ip_address_id = 7 [json_name = "public_ip_address_id"];
+
+    // subnet_id: string
+    string subnet_id = 8 [json_name = "subnet_id"];
+  }
+
+  message FrontendPort {
+    // id: string
+    string id = 1;
+
+    // name: string
+    string name = 2;
+
+    // port: number
+    int64 port = 3;
+  }
+
+  message GatewayIpConfiguration {
+    // id: string
+    string id = 1;
+
+    // name: string
+    string name = 2;
+
+    // subnet_id: string
+    string subnet_id = 3 [json_name = "subnet_id"];
+  }
+
+  message Global {
+    // request_buffering_enabled: bool
+    bool request_buffering_enabled = 1 [json_name = "request_buffering_enabled"];
+
+    // response_buffering_enabled: bool
+    bool response_buffering_enabled = 2 [json_name = "response_buffering_enabled"];
+  }
+
+  message HttpListener {
+    // custom_error_configuration: list of object
+    repeated CustomErrorConfiguration custom_error_configuration = 1 [json_name = "custom_error_configuration"];
+
+    // firewall_policy_id: string
+    string firewall_policy_id = 2 [json_name = "firewall_policy_id"];
+
+    // frontend_ip_configuration_id: string
+    string frontend_ip_configuration_id = 3 [json_name = "frontend_ip_configuration_id"];
+
+    // frontend_ip_configuration_name: string
+    string frontend_ip_configuration_name = 4 [json_name = "frontend_ip_configuration_name"];
+
+    // frontend_port_id: string
+    string frontend_port_id = 5 [json_name = "frontend_port_id"];
+
+    // frontend_port_name: string
+    string frontend_port_name = 6 [json_name = "frontend_port_name"];
+
+    // host_name: string
+    string host_name = 7 [json_name = "host_name"];
+
+    // host_names: list of string
+    repeated string host_names = 8 [json_name = "host_names"];
+
+    // id: string
+    string id = 9;
+
+    // name: string
+    string name = 10;
+
+    // protocol: string
+    string protocol = 11;
+
+    // require_sni: bool
+    bool require_sni = 12 [json_name = "require_sni"];
+
+    // ssl_certificate_id: string
+    string ssl_certificate_id = 13 [json_name = "ssl_certificate_id"];
+
+    // ssl_certificate_name: string
+    string ssl_certificate_name = 14 [json_name = "ssl_certificate_name"];
+
+    // ssl_profile_id: string
+    string ssl_profile_id = 15 [json_name = "ssl_profile_id"];
+
+    // ssl_profile_name: string
+    string ssl_profile_name = 16 [json_name = "ssl_profile_name"];
+
+    message CustomErrorConfiguration {
+      // custom_error_page_url: string
+      string custom_error_page_url = 1 [json_name = "custom_error_page_url"];
+
+      // id: string
+      string id = 2;
+
+      // status_code: string
+      string status_code = 3 [json_name = "status_code"];
+    }
+  }
+
+  message Identity {
+    // identity_ids: list of string
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    // type: string
+    string type = 2;
+  }
+
+  message PrivateEndpointConnection {
+    // id: string
+    string id = 1;
+
+    // name: string
+    string name = 2;
+  }
+
+  message PrivateLinkConfiguration {
+    // id: string
+    string id = 1;
+
+    // ip_configuration: list of object
+    repeated IpConfiguration ip_configuration = 2 [json_name = "ip_configuration"];
+
+    // name: string
+    string name = 3;
+
+    message IpConfiguration {
+      // name: string
+      string name = 1;
+
+      // primary: bool
+      bool primary = 2;
+
+      // private_ip_address: string
+      string private_ip_address = 3 [json_name = "private_ip_address"];
+
+      // private_ip_address_allocation: string
+      string private_ip_address_allocation = 4 [json_name = "private_ip_address_allocation"];
+
+      // subnet_id: string
+      string subnet_id = 5 [json_name = "subnet_id"];
+    }
+  }
+
+  message Probe {
+    // host: string
+    string host = 1;
+
+    // id: string
+    string id = 2;
+
+    // interval: number
+    int64 interval = 3;
+
+    // match: list of object
+    repeated Match match = 4;
+
+    // minimum_servers: number
+    int64 minimum_servers = 5 [json_name = "minimum_servers"];
+
+    // name: string
+    string name = 6;
+
+    // path: string
+    string path = 7;
+
+    // pick_host_name_from_backend_http_settings: bool
+    bool pick_host_name_from_backend_http_settings = 8 [
+      json_name = "pick_host_name_from_backend_http_settings"
+    ];
+
+    // port: number
+    int64 port = 9;
+
+    // protocol: string
+    string protocol = 10;
+
+    // timeout: number
+    int64 timeout = 11;
+
+    // unhealthy_threshold: number
+    int64 unhealthy_threshold = 12 [json_name = "unhealthy_threshold"];
+
+    message Match {
+      // body: string
+      string body = 1;
+
+      // status_code: list of string
+      repeated string status_code = 2 [json_name = "status_code"];
+    }
+  }
+
+  message RedirectConfiguration {
+    // id: string
+    string id = 1;
+
+    // include_path: bool
+    bool include_path = 2 [json_name = "include_path"];
+
+    // include_query_string: bool
+    bool include_query_string = 3 [json_name = "include_query_string"];
+
+    // name: string
+    string name = 4;
+
+    // redirect_type: string
+    string redirect_type = 5 [json_name = "redirect_type"];
+
+    // target_listener_id: string
+    string target_listener_id = 6 [json_name = "target_listener_id"];
+
+    // target_listener_name: string
+    string target_listener_name = 7 [json_name = "target_listener_name"];
+
+    // target_url: string
+    string target_url = 8 [json_name = "target_url"];
+  }
+
+  message RequestRoutingRule {
+    // backend_address_pool_id: string
+    string backend_address_pool_id = 1 [json_name = "backend_address_pool_id"];
+
+    // backend_address_pool_name: string
+    string backend_address_pool_name = 2 [json_name = "backend_address_pool_name"];
+
+    // backend_http_settings_id: string
+    string backend_http_settings_id = 3 [json_name = "backend_http_settings_id"];
+
+    // backend_http_settings_name: string
+    string backend_http_settings_name = 4 [json_name = "backend_http_settings_name"];
+
+    // http_listener_id: string
+    string http_listener_id = 5 [json_name = "http_listener_id"];
+
+    // http_listener_name: string
+    string http_listener_name = 6 [json_name = "http_listener_name"];
+
+    // id: string
+    string id = 7;
+
+    // name: string
+    string name = 8;
+
+    // priority: number
+    int64 priority = 9;
+
+    // redirect_configuration_id: string
+    string redirect_configuration_id = 10 [json_name = "redirect_configuration_id"];
+
+    // redirect_configuration_name: string
+    string redirect_configuration_name = 11 [json_name = "redirect_configuration_name"];
+
+    // rewrite_rule_set_id: string
+    string rewrite_rule_set_id = 12 [json_name = "rewrite_rule_set_id"];
+
+    // rewrite_rule_set_name: string
+    string rewrite_rule_set_name = 13 [json_name = "rewrite_rule_set_name"];
+
+    // rule_type: string
+    string rule_type = 14 [json_name = "rule_type"];
+
+    // url_path_map_id: string
+    string url_path_map_id = 15 [json_name = "url_path_map_id"];
+
+    // url_path_map_name: string
+    string url_path_map_name = 16 [json_name = "url_path_map_name"];
+  }
+
+  message RewriteRuleSet {
+    // id: string
+    string id = 1;
+
+    // name: string
+    string name = 2;
+
+    // rewrite_rule: list of object
+    repeated RewriteRule rewrite_rule = 3 [json_name = "rewrite_rule"];
+
+    message RewriteRule {
+      // condition: list of object
+      repeated Condition condition = 1;
+
+      // name: string
+      string name = 2;
+
+      // request_header_configuration: list of object
+      repeated RequestHeaderConfiguration request_header_configuration = 3 [json_name = "request_header_configuration"];
+
+      // response_header_configuration: list of object
+      repeated ResponseHeaderConfiguration response_header_configuration = 4 [json_name = "response_header_configuration"];
+
+      // rule_sequence: number
+      int64 rule_sequence = 5 [json_name = "rule_sequence"];
+
+      // url: list of object
+      repeated Url url = 6;
+
+      message Condition {
+        // ignore_case: bool
+        bool ignore_case = 1 [json_name = "ignore_case"];
+
+        // negate: bool
+        bool negate = 2;
+
+        // pattern: string
+        string pattern = 3;
+
+        // variable: string
+        string variable = 4;
+      }
+
+      message RequestHeaderConfiguration {
+        // header_name: string
+        string header_name = 1 [json_name = "header_name"];
+
+        // header_value: string
+        string header_value = 2 [json_name = "header_value"];
+      }
+
+      message ResponseHeaderConfiguration {
+        // header_name: string
+        string header_name = 1 [json_name = "header_name"];
+
+        // header_value: string
+        string header_value = 2 [json_name = "header_value"];
+      }
+
+      message Url {
+        // components: string
+        string components = 1;
+
+        // path: string
+        string path = 2;
+
+        // query_string: string
+        string query_string = 3 [json_name = "query_string"];
+
+        // reroute: bool
+        bool reroute = 4;
+      }
+    }
+  }
+
+  message Sku {
+    // capacity: number
+    int64 capacity = 1;
+
+    // name: string
+    string name = 2;
+
+    // tier: string
+    string tier = 3;
+  }
+
+  message SslCertificate {
+    // id: string
+    string id = 1;
+
+    // key_vault_secret_id: string
+    string key_vault_secret_id = 2 [json_name = "key_vault_secret_id"];
+
+    // name: string
+    string name = 3;
+
+    // public_cert_data: string
+    string public_cert_data = 4 [json_name = "public_cert_data"];
+  }
+
+  message SslPolicy {
+    // cipher_suites: list of string
+    repeated string cipher_suites = 1 [json_name = "cipher_suites"];
+
+    // disabled_protocols: list of string
+    repeated string disabled_protocols = 2 [json_name = "disabled_protocols"];
+
+    // min_protocol_version: string
+    string min_protocol_version = 3 [json_name = "min_protocol_version"];
+
+    // policy_name: string
+    string policy_name = 4 [json_name = "policy_name"];
+
+    // policy_type: string
+    string policy_type = 5 [json_name = "policy_type"];
+  }
+
+  message SslProfile {
+    // id: string
+    string id = 1;
+
+    // name: string
+    string name = 2;
+
+    // ssl_policy: list of object
+    repeated SslPolicy ssl_policy = 3 [json_name = "ssl_policy"];
+
+    // trusted_client_certificate_names: list of string
+    repeated string trusted_client_certificate_names = 4 [json_name = "trusted_client_certificate_names"];
+
+    // verify_client_certificate_issuer_dn: bool
+    bool verify_client_certificate_issuer_dn = 5 [json_name = "verify_client_certificate_issuer_dn"];
+
+    // verify_client_certificate_revocation: string
+    string verify_client_certificate_revocation = 6 [json_name = "verify_client_certificate_revocation"];
+
+    message SslPolicy {
+      // cipher_suites: list of string
+      repeated string cipher_suites = 1 [json_name = "cipher_suites"];
+
+      // disabled_protocols: list of string
+      repeated string disabled_protocols = 2 [json_name = "disabled_protocols"];
+
+      // min_protocol_version: string
+      string min_protocol_version = 3 [json_name = "min_protocol_version"];
+
+      // policy_name: string
+      string policy_name = 4 [json_name = "policy_name"];
+
+      // policy_type: string
+      string policy_type = 5 [json_name = "policy_type"];
+    }
+  }
+
+  message TrustedClientCertificate {
+    // data: string
+    string data = 1;
+
+    // id: string
+    string id = 2;
+
+    // name: string
+    string name = 3;
+  }
+
+  message TrustedRootCertificate {
+    // id: string
+    string id = 1;
+
+    // key_vault_secret_id: string
+    string key_vault_secret_id = 2 [json_name = "key_vault_secret_id"];
+
+    // name: string
+    string name = 3;
+  }
+
+  message UrlPathMap {
+    // default_backend_address_pool_id: string
+    string default_backend_address_pool_id = 1 [json_name = "default_backend_address_pool_id"];
+
+    // default_backend_address_pool_name: string
+    string default_backend_address_pool_name = 2 [json_name = "default_backend_address_pool_name"];
+
+    // default_backend_http_settings_id: string
+    string default_backend_http_settings_id = 3 [json_name = "default_backend_http_settings_id"];
+
+    // default_backend_http_settings_name: string
+    string default_backend_http_settings_name = 4 [json_name = "default_backend_http_settings_name"];
+
+    // default_redirect_configuration_id: string
+    string default_redirect_configuration_id = 5 [json_name = "default_redirect_configuration_id"];
+
+    // default_redirect_configuration_name: string
+    string default_redirect_configuration_name = 6 [json_name = "default_redirect_configuration_name"];
+
+    // default_rewrite_rule_set_id: string
+    string default_rewrite_rule_set_id = 7 [json_name = "default_rewrite_rule_set_id"];
+
+    // default_rewrite_rule_set_name: string
+    string default_rewrite_rule_set_name = 8 [json_name = "default_rewrite_rule_set_name"];
+
+    // id: string
+    string id = 9;
+
+    // name: string
+    string name = 10;
+
+    // path_rule: list of object
+    repeated PathRule path_rule = 11 [json_name = "path_rule"];
+
+    message PathRule {
+      // backend_address_pool_id: string
+      string backend_address_pool_id = 1 [json_name = "backend_address_pool_id"];
+
+      // backend_address_pool_name: string
+      string backend_address_pool_name = 2 [json_name = "backend_address_pool_name"];
+
+      // backend_http_settings_id: string
+      string backend_http_settings_id = 3 [json_name = "backend_http_settings_id"];
+
+      // backend_http_settings_name: string
+      string backend_http_settings_name = 4 [json_name = "backend_http_settings_name"];
+
+      // firewall_policy_id: string
+      string firewall_policy_id = 5 [json_name = "firewall_policy_id"];
+
+      // id: string
+      string id = 6;
+
+      // name: string
+      string name = 7;
+
+      // paths: list of string
+      repeated string paths = 8;
+
+      // redirect_configuration_id: string
+      string redirect_configuration_id = 9 [json_name = "redirect_configuration_id"];
+
+      // redirect_configuration_name: string
+      string redirect_configuration_name = 10 [json_name = "redirect_configuration_name"];
+
+      // rewrite_rule_set_id: string
+      string rewrite_rule_set_id = 11 [json_name = "rewrite_rule_set_id"];
+
+      // rewrite_rule_set_name: string
+      string rewrite_rule_set_name = 12 [json_name = "rewrite_rule_set_name"];
+    }
+  }
+
+  message WafConfiguration {
+    // disabled_rule_group: list of object
+    repeated DisabledRuleGroup disabled_rule_group = 1 [json_name = "disabled_rule_group"];
+
+    // enabled: bool
+    bool enabled = 2;
+
+    // exclusion: list of object
+    repeated Exclusion exclusion = 3;
+
+    // file_upload_limit_mb: number
+    int64 file_upload_limit_mb = 4 [json_name = "file_upload_limit_mb"];
+
+    // firewall_mode: string
+    string firewall_mode = 5 [json_name = "firewall_mode"];
+
+    // max_request_body_size_kb: number
+    int64 max_request_body_size_kb = 6 [json_name = "max_request_body_size_kb"];
+
+    // request_body_check: bool
+    bool request_body_check = 7 [json_name = "request_body_check"];
+
+    // rule_set_type: string
+    string rule_set_type = 8 [json_name = "rule_set_type"];
+
+    // rule_set_version: string
+    string rule_set_version = 9 [json_name = "rule_set_version"];
+
+    message DisabledRuleGroup {
+      // rule_group_name: string
+      string rule_group_name = 1 [json_name = "rule_group_name"];
+
+      // rules: list of number
+      repeated int64 rules = 2;
+    }
+
+    message Exclusion {
+      // match_variable: string
+      string match_variable = 1 [json_name = "match_variable"];
+
+      // selector: string
+      string selector = 2;
+
+      // selector_match_operator: string
+      string selector_match_operator = 3 [json_name = "selector_match_operator"];
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermApplicationInsights version is 1
+message AzurermApplicationInsights {
+  string app_id = 1 [json_name = "app_id"];
+
+  string application_type = 2 [json_name = "application_type"];
+
+  string connection_string = 3 [json_name = "connection_string"];
+
+  string id = 4;
+
+  string instrumentation_key = 5 [json_name = "instrumentation_key"];
+
+  string location = 6;
+
+  string name = 7;
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  int64 retention_in_days = 9 [json_name = "retention_in_days"];
+
+  map<string, string> tags = 10;
+
+  string workspace_id = 11 [json_name = "workspace_id"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermApplicationSecurityGroup version is 0
+message AzurermApplicationSecurityGroup {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string read = 1;
+  }
+}

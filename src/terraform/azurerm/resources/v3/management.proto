@@ -1,0 +1,341 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermManagementGroup version is 0
+message AzurermManagementGroup {
+  string display_name = 1 [json_name = "display_name"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string parent_management_group_id = 4 [json_name = "parent_management_group_id"];
+
+  repeated string subscription_ids = 5 [json_name = "subscription_ids"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermManagementGroupPolicyAssignment version is 0
+message AzurermManagementGroupPolicyAssignment {
+  string description = 1;
+
+  string display_name = 2 [json_name = "display_name"];
+
+  bool enforce = 3;
+
+  string id = 4;
+
+  string location = 5;
+
+  string management_group_id = 6 [json_name = "management_group_id"];
+
+  string metadata = 7;
+
+  string name = 8;
+
+  repeated string not_scopes = 9 [json_name = "not_scopes"];
+
+  string parameters = 10;
+
+  string policy_definition_id = 11 [json_name = "policy_definition_id"];
+
+  Identity identity = 12;
+
+  repeated NonComplianceMessage non_compliance_message = 13 [json_name = "non_compliance_message"];
+
+  repeated Overrides overrides = 14;
+
+  repeated ResourceSelectors resource_selectors = 15 [json_name = "resource_selectors"];
+
+  repeated Timeouts timeouts = 16;
+
+  google.protobuf.Value for_each = 17 [json_name = "for_each"];
+
+  repeated string depends_on = 18 [json_name = "depends_on"];
+
+  int32 count = 19;
+
+  string provider = 20;
+
+  terraform.v1.Lifecycle lifecycle = 21;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message NonComplianceMessage {
+    string content = 1;
+
+    string policy_definition_reference_id = 2 [json_name = "policy_definition_reference_id"];
+  }
+
+  message Overrides {
+    string value = 1;
+
+    repeated Selectors selectors = 2;
+
+    message Selectors {
+      repeated string in = 1;
+
+      string kind = 2;
+
+      repeated string not_in = 3 [json_name = "not_in"];
+    }
+  }
+
+  message ResourceSelectors {
+    string name = 1;
+
+    repeated Selectors selectors = 2;
+
+    message Selectors {
+      repeated string in = 1;
+
+      string kind = 2;
+
+      repeated string not_in = 3 [json_name = "not_in"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermManagementGroupPolicyExemption version is 0
+message AzurermManagementGroupPolicyExemption {
+  string description = 1;
+
+  string display_name = 2 [json_name = "display_name"];
+
+  string exemption_category = 3 [json_name = "exemption_category"];
+
+  string expires_on = 4 [json_name = "expires_on"];
+
+  string id = 5;
+
+  string management_group_id = 6 [json_name = "management_group_id"];
+
+  string metadata = 7;
+
+  string name = 8;
+
+  string policy_assignment_id = 9 [json_name = "policy_assignment_id"];
+
+  repeated string policy_definition_reference_ids = 10 [json_name = "policy_definition_reference_ids"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermManagementGroupPolicyRemediation version is 0
+message AzurermManagementGroupPolicyRemediation {
+  int64 failure_percentage = 1 [json_name = "failure_percentage"];
+
+  string id = 2;
+
+  repeated string location_filters = 3 [json_name = "location_filters"];
+
+  string management_group_id = 4 [json_name = "management_group_id"];
+
+  string name = 5;
+
+  int64 parallel_deployments = 6 [json_name = "parallel_deployments"];
+
+  string policy_assignment_id = 7 [json_name = "policy_assignment_id"];
+
+  string policy_definition_id = 8 [json_name = "policy_definition_id"];
+
+  string policy_definition_reference_id = 9 [json_name = "policy_definition_reference_id"];
+
+  int64 resource_count = 10 [json_name = "resource_count"];
+
+  string resource_discovery_mode = 11 [json_name = "resource_discovery_mode"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermManagementGroupSubscriptionAssociation version is 0
+message AzurermManagementGroupSubscriptionAssociation {
+  string id = 1;
+
+  string management_group_id = 2 [json_name = "management_group_id"];
+
+  string subscription_id = 3 [json_name = "subscription_id"];
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermManagementGroupTemplateDeployment version is 0
+message AzurermManagementGroupTemplateDeployment {
+  string debug_level = 1 [json_name = "debug_level"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string management_group_id = 4 [json_name = "management_group_id"];
+
+  string name = 5;
+
+  string output_content = 6 [json_name = "output_content"];
+
+  string parameters_content = 7 [json_name = "parameters_content"];
+
+  map<string, string> tags = 8;
+
+  string template_content = 9 [json_name = "template_content"];
+
+  string template_spec_version_id = 10 [json_name = "template_spec_version_id"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermManagementLock version is 0
+message AzurermManagementLock {
+  string id = 1;
+
+  string lock_level = 2 [json_name = "lock_level"];
+
+  string name = 3;
+
+  string notes = 4;
+
+  string scope = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}

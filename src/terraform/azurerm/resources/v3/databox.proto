@@ -1,0 +1,204 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermDataboxEdgeDevice version is 0
+message AzurermDataboxEdgeDevice {
+  repeated DeviceProperties device_properties = 1 [json_name = "device_properties"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string sku_name = 6 [json_name = "sku_name"];
+
+  map<string, string> tags = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message DeviceProperties {
+    // capacity: number
+    int64 capacity = 1;
+
+    // configured_role_types: list of string
+    repeated string configured_role_types = 2 [json_name = "configured_role_types"];
+
+    // culture: string
+    string culture = 3;
+
+    // hcs_version: string
+    string hcs_version = 4 [json_name = "hcs_version"];
+
+    // model: string
+    string model = 5;
+
+    // node_count: number
+    int64 node_count = 6 [json_name = "node_count"];
+
+    // serial_number: string
+    string serial_number = 7 [json_name = "serial_number"];
+
+    // software_version: string
+    string software_version = 8 [json_name = "software_version"];
+
+    // status: string
+    string status = 9;
+
+    // time_zone: string
+    string time_zone = 10 [json_name = "time_zone"];
+
+    // type: string
+    string type = 11;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDataboxEdgeOrder version is 1
+message AzurermDataboxEdgeOrder {
+  string device_name = 1 [json_name = "device_name"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  repeated ReturnTracking return_tracking = 5 [json_name = "return_tracking"];
+
+  string serial_number = 6 [json_name = "serial_number"];
+
+  repeated ShipmentHistory shipment_history = 7 [json_name = "shipment_history"];
+
+  repeated ShipmentTracking shipment_tracking = 8 [json_name = "shipment_tracking"];
+
+  repeated Status status = 9;
+
+  Contact contact = 10;
+
+  ShipmentAddress shipment_address = 11 [json_name = "shipment_address"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message ReturnTracking {
+    // carrier_name: string
+    string carrier_name = 1 [json_name = "carrier_name"];
+
+    // serial_number: string
+    string serial_number = 2 [json_name = "serial_number"];
+
+    // tracking_id: string
+    string tracking_id = 3 [json_name = "tracking_id"];
+
+    // tracking_url: string
+    string tracking_url = 4 [json_name = "tracking_url"];
+  }
+
+  message ShipmentHistory {
+    // additional_details: map of string
+    map<string, string> additional_details = 1 [json_name = "additional_details"];
+
+    // comments: string
+    string comments = 2;
+
+    // last_update: string
+    string last_update = 3 [json_name = "last_update"];
+  }
+
+  message ShipmentTracking {
+    // carrier_name: string
+    string carrier_name = 1 [json_name = "carrier_name"];
+
+    // serial_number: string
+    string serial_number = 2 [json_name = "serial_number"];
+
+    // tracking_id: string
+    string tracking_id = 3 [json_name = "tracking_id"];
+
+    // tracking_url: string
+    string tracking_url = 4 [json_name = "tracking_url"];
+  }
+
+  message Status {
+    // additional_details: map of string
+    map<string, string> additional_details = 1 [json_name = "additional_details"];
+
+    // comments: string
+    string comments = 2;
+
+    // info: string
+    string info = 3;
+
+    // last_update: string
+    string last_update = 4 [json_name = "last_update"];
+  }
+
+  message Contact {
+    string company_name = 1 [json_name = "company_name"];
+
+    repeated string emails = 2;
+
+    string name = 3;
+
+    string phone_number = 4 [json_name = "phone_number"];
+  }
+
+  message ShipmentAddress {
+    repeated string address = 1;
+
+    string city = 2;
+
+    string country = 3;
+
+    string postal_code = 4 [json_name = "postal_code"];
+
+    string state = 5;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

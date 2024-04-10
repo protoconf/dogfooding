@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermAutomanageConfiguration version is 0
+message AzurermAutomanageConfiguration {
+  bool automation_account_enabled = 1 [json_name = "automation_account_enabled"];
+
+  bool boot_diagnostics_enabled = 2 [json_name = "boot_diagnostics_enabled"];
+
+  bool defender_for_cloud_enabled = 3 [json_name = "defender_for_cloud_enabled"];
+
+  bool guest_configuration_enabled = 4 [json_name = "guest_configuration_enabled"];
+
+  string id = 5;
+
+  string location = 6;
+
+  bool log_analytics_enabled = 7 [json_name = "log_analytics_enabled"];
+
+  string name = 8;
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  bool status_change_alert_enabled = 10 [json_name = "status_change_alert_enabled"];
+
+  map<string, string> tags = 11;
+
+  Antimalware antimalware = 12;
+
+  AzureSecurityBaseline azure_security_baseline = 13 [json_name = "azure_security_baseline"];
+
+  Backup backup = 14;
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message Antimalware {
+    bool real_time_protection_enabled = 1 [json_name = "real_time_protection_enabled"];
+
+    int64 scheduled_scan_day = 2 [json_name = "scheduled_scan_day"];
+
+    bool scheduled_scan_enabled = 3 [json_name = "scheduled_scan_enabled"];
+
+    int64 scheduled_scan_time_in_minutes = 4 [json_name = "scheduled_scan_time_in_minutes"];
+
+    string scheduled_scan_type = 5 [json_name = "scheduled_scan_type"];
+
+    Exclusions exclusions = 6;
+
+    message Exclusions {
+      string extensions = 1;
+
+      string paths = 2;
+
+      string processes = 3;
+    }
+  }
+
+  message AzureSecurityBaseline {
+    string assignment_type = 1 [json_name = "assignment_type"];
+  }
+
+  message Backup {
+    int64 instant_rp_retention_range_in_days = 1 [json_name = "instant_rp_retention_range_in_days"];
+
+    string policy_name = 2 [json_name = "policy_name"];
+
+    string time_zone = 3 [json_name = "time_zone"];
+
+    RetentionPolicy retention_policy = 4 [json_name = "retention_policy"];
+
+    SchedulePolicy schedule_policy = 5 [json_name = "schedule_policy"];
+
+    message RetentionPolicy {
+      string retention_policy_type = 1 [json_name = "retention_policy_type"];
+
+      DailySchedule daily_schedule = 2 [json_name = "daily_schedule"];
+
+      WeeklySchedule weekly_schedule = 3 [json_name = "weekly_schedule"];
+
+      message DailySchedule {
+        repeated string retention_times = 1 [json_name = "retention_times"];
+
+        RetentionDuration retention_duration = 2 [json_name = "retention_duration"];
+
+        message RetentionDuration {
+          int64 count = 1;
+
+          string duration_type = 2 [json_name = "duration_type"];
+        }
+      }
+
+      message WeeklySchedule {
+        repeated string retention_times = 1 [json_name = "retention_times"];
+
+        RetentionDuration retention_duration = 2 [json_name = "retention_duration"];
+
+        message RetentionDuration {
+          int64 count = 1;
+
+          string duration_type = 2 [json_name = "duration_type"];
+        }
+      }
+    }
+
+    message SchedulePolicy {
+      string schedule_policy_type = 1 [json_name = "schedule_policy_type"];
+
+      repeated string schedule_run_days = 2 [json_name = "schedule_run_days"];
+
+      string schedule_run_frequency = 3 [json_name = "schedule_run_frequency"];
+
+      repeated string schedule_run_times = 4 [json_name = "schedule_run_times"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

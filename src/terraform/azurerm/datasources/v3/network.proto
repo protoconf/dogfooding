@@ -1,0 +1,366 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermNetworkDdosProtectionPlan version is 0
+message AzurermNetworkDdosProtectionPlan {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 5;
+
+  repeated string virtual_network_ids = 6 [json_name = "virtual_network_ids"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermNetworkInterface version is 0
+message AzurermNetworkInterface {
+  repeated string applied_dns_servers = 1 [json_name = "applied_dns_servers"];
+
+  repeated string dns_servers = 2 [json_name = "dns_servers"];
+
+  bool enable_accelerated_networking = 3 [json_name = "enable_accelerated_networking"];
+
+  bool enable_ip_forwarding = 4 [json_name = "enable_ip_forwarding"];
+
+  string id = 5;
+
+  string internal_dns_name_label = 6 [json_name = "internal_dns_name_label"];
+
+  repeated IpConfiguration ip_configuration = 7 [json_name = "ip_configuration"];
+
+  string location = 8;
+
+  string mac_address = 9 [json_name = "mac_address"];
+
+  string name = 10;
+
+  string network_security_group_id = 11 [json_name = "network_security_group_id"];
+
+  string private_ip_address = 12 [json_name = "private_ip_address"];
+
+  repeated string private_ip_addresses = 13 [json_name = "private_ip_addresses"];
+
+  string resource_group_name = 14 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 15;
+
+  string virtual_machine_id = 16 [json_name = "virtual_machine_id"];
+
+  repeated Timeouts timeouts = 17;
+
+  google.protobuf.Value for_each = 18 [json_name = "for_each"];
+
+  repeated string depends_on = 19 [json_name = "depends_on"];
+
+  int32 count = 20;
+
+  string provider = 21;
+
+  terraform.v1.Lifecycle lifecycle = 22;
+
+  message IpConfiguration {
+    // application_gateway_backend_address_pools_ids: set of string
+    repeated string application_gateway_backend_address_pools_ids = 1 [
+      json_name = "application_gateway_backend_address_pools_ids"
+    ];
+
+    // application_security_group_ids: set of string
+    repeated string application_security_group_ids = 2 [json_name = "application_security_group_ids"];
+
+    // gateway_load_balancer_frontend_ip_configuration_id: string
+    string gateway_load_balancer_frontend_ip_configuration_id = 3 [
+      json_name = "gateway_load_balancer_frontend_ip_configuration_id"
+    ];
+
+    // load_balancer_backend_address_pools_ids: set of string
+    repeated string load_balancer_backend_address_pools_ids = 4 [
+      json_name = "load_balancer_backend_address_pools_ids"
+    ];
+
+    // load_balancer_inbound_nat_rules_ids: set of string
+    repeated string load_balancer_inbound_nat_rules_ids = 5 [json_name = "load_balancer_inbound_nat_rules_ids"];
+
+    // name: string
+    string name = 6;
+
+    // primary: bool
+    bool primary = 7;
+
+    // private_ip_address: string
+    string private_ip_address = 8 [json_name = "private_ip_address"];
+
+    // private_ip_address_allocation: string
+    string private_ip_address_allocation = 9 [json_name = "private_ip_address_allocation"];
+
+    // private_ip_address_version: string
+    string private_ip_address_version = 10 [json_name = "private_ip_address_version"];
+
+    // public_ip_address_id: string
+    string public_ip_address_id = 11 [json_name = "public_ip_address_id"];
+
+    // subnet_id: string
+    string subnet_id = 12 [json_name = "subnet_id"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermNetworkManager version is 0
+message AzurermNetworkManager {
+  repeated CrossTenantScopes cross_tenant_scopes = 1 [json_name = "cross_tenant_scopes"];
+
+  string description = 2;
+
+  string id = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  repeated Scope scope = 7;
+
+  repeated string scope_accesses = 8 [json_name = "scope_accesses"];
+
+  map<string, string> tags = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message CrossTenantScopes {
+    // management_groups: list of string
+    repeated string management_groups = 1 [json_name = "management_groups"];
+
+    // subscriptions: list of string
+    repeated string subscriptions = 2;
+
+    // tenant_id: string
+    string tenant_id = 3 [json_name = "tenant_id"];
+  }
+
+  message Scope {
+    // management_group_ids: list of string
+    repeated string management_group_ids = 1 [json_name = "management_group_ids"];
+
+    // subscription_ids: list of string
+    repeated string subscription_ids = 2 [json_name = "subscription_ids"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermNetworkManagerNetworkGroup version is 0
+message AzurermNetworkManagerNetworkGroup {
+  string description = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  string network_manager_id = 4 [json_name = "network_manager_id"];
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermNetworkSecurityGroup version is 0
+message AzurermNetworkSecurityGroup {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  repeated SecurityRule security_rule = 5 [json_name = "security_rule"];
+
+  map<string, string> tags = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message SecurityRule {
+    // access: string
+    string access = 1;
+
+    // description: string
+    string description = 2;
+
+    // destination_address_prefix: string
+    string destination_address_prefix = 3 [json_name = "destination_address_prefix"];
+
+    // destination_address_prefixes: set of string
+    repeated string destination_address_prefixes = 4 [json_name = "destination_address_prefixes"];
+
+    // destination_application_security_group_ids: set of string
+    repeated string destination_application_security_group_ids = 5 [
+      json_name = "destination_application_security_group_ids"
+    ];
+
+    // destination_port_range: string
+    string destination_port_range = 6 [json_name = "destination_port_range"];
+
+    // destination_port_ranges: set of string
+    repeated string destination_port_ranges = 7 [json_name = "destination_port_ranges"];
+
+    // direction: string
+    string direction = 8;
+
+    // name: string
+    string name = 9;
+
+    // priority: number
+    int64 priority = 10;
+
+    // protocol: string
+    string protocol = 11;
+
+    // source_address_prefix: string
+    string source_address_prefix = 12 [json_name = "source_address_prefix"];
+
+    // source_address_prefixes: set of string
+    repeated string source_address_prefixes = 13 [json_name = "source_address_prefixes"];
+
+    // source_application_security_group_ids: set of string
+    repeated string source_application_security_group_ids = 14 [
+      json_name = "source_application_security_group_ids"
+    ];
+
+    // source_port_range: string
+    string source_port_range = 15 [json_name = "source_port_range"];
+
+    // source_port_ranges: set of string
+    repeated string source_port_ranges = 16 [json_name = "source_port_ranges"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermNetworkServiceTags version is 0
+message AzurermNetworkServiceTags {
+  repeated string address_prefixes = 1 [json_name = "address_prefixes"];
+
+  string id = 2;
+
+  repeated string ipv4_cidrs = 3 [json_name = "ipv4_cidrs"];
+
+  repeated string ipv6_cidrs = 4 [json_name = "ipv6_cidrs"];
+
+  string location = 5;
+
+  string location_filter = 6 [json_name = "location_filter"];
+
+  string name = 7;
+
+  string service = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermNetworkWatcher version is 0
+message AzurermNetworkWatcher {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string read = 1;
+  }
+}

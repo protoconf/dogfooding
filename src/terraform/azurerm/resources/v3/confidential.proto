@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermConfidentialLedger version is 0
+message AzurermConfidentialLedger {
+  string id = 1;
+
+  string identity_service_endpoint = 2 [json_name = "identity_service_endpoint"];
+
+  string ledger_endpoint = 3 [json_name = "ledger_endpoint"];
+
+  string ledger_type = 4 [json_name = "ledger_type"];
+
+  string location = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 8;
+
+  repeated AzureadBasedServicePrincipal azuread_based_service_principal = 9 [json_name = "azuread_based_service_principal"];
+
+  repeated CertificateBasedSecurityPrincipal certificate_based_security_principal = 10 [json_name = "certificate_based_security_principal"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message AzureadBasedServicePrincipal {
+    string ledger_role_name = 1 [json_name = "ledger_role_name"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+  }
+
+  message CertificateBasedSecurityPrincipal {
+    string ledger_role_name = 1 [json_name = "ledger_role_name"];
+
+    string pem_public_key = 2 [json_name = "pem_public_key"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

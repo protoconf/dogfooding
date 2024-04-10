@@ -1,0 +1,1134 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermStreamAnalyticsCluster version is 1
+message AzurermStreamAnalyticsCluster {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  int64 streaming_capacity = 5 [json_name = "streaming_capacity"];
+
+  map<string, string> tags = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsFunctionJavascriptUda version is 1
+message AzurermStreamAnalyticsFunctionJavascriptUda {
+  string id = 1;
+
+  string name = 2;
+
+  string script = 3;
+
+  string stream_analytics_job_id = 4 [json_name = "stream_analytics_job_id"];
+
+  repeated Input input = 5;
+
+  Output output = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Input {
+    bool configuration_parameter = 1 [json_name = "configuration_parameter"];
+
+    string type = 2;
+  }
+
+  message Output {
+    string type = 1;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsFunctionJavascriptUdf version is 1
+message AzurermStreamAnalyticsFunctionJavascriptUdf {
+  string id = 1;
+
+  string name = 2;
+
+  string resource_group_name = 3 [json_name = "resource_group_name"];
+
+  string script = 4;
+
+  string stream_analytics_job_name = 5 [json_name = "stream_analytics_job_name"];
+
+  repeated Input input = 6;
+
+  Output output = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Input {
+    bool configuration_parameter = 1 [json_name = "configuration_parameter"];
+
+    string type = 2;
+  }
+
+  message Output {
+    string type = 1;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsJob version is 1
+message AzurermStreamAnalyticsJob {
+  string compatibility_level = 1 [json_name = "compatibility_level"];
+
+  string content_storage_policy = 2 [json_name = "content_storage_policy"];
+
+  string data_locale = 3 [json_name = "data_locale"];
+
+  int64 events_late_arrival_max_delay_in_seconds = 4 [
+    json_name = "events_late_arrival_max_delay_in_seconds"
+  ];
+
+  int64 events_out_of_order_max_delay_in_seconds = 5 [
+    json_name = "events_out_of_order_max_delay_in_seconds"
+  ];
+
+  string events_out_of_order_policy = 6 [json_name = "events_out_of_order_policy"];
+
+  string id = 7;
+
+  string job_id = 8 [json_name = "job_id"];
+
+  string location = 9;
+
+  string name = 10;
+
+  string output_error_policy = 11 [json_name = "output_error_policy"];
+
+  string resource_group_name = 12 [json_name = "resource_group_name"];
+
+  string sku_name = 13 [json_name = "sku_name"];
+
+  string stream_analytics_cluster_id = 14 [json_name = "stream_analytics_cluster_id"];
+
+  int64 streaming_units = 15 [json_name = "streaming_units"];
+
+  map<string, string> tags = 16;
+
+  string transformation_query = 17 [json_name = "transformation_query"];
+
+  string type = 18;
+
+  Identity identity = 19;
+
+  repeated JobStorageAccount job_storage_account = 20 [json_name = "job_storage_account"];
+
+  repeated Timeouts timeouts = 21;
+
+  google.protobuf.Value for_each = 22 [json_name = "for_each"];
+
+  repeated string depends_on = 23 [json_name = "depends_on"];
+
+  int32 count = 24;
+
+  string provider = 25;
+
+  terraform.v1.Lifecycle lifecycle = 26;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message JobStorageAccount {
+    string account_key = 1 [json_name = "account_key"];
+
+    string account_name = 2 [json_name = "account_name"];
+
+    string authentication_mode = 3 [json_name = "authentication_mode"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsJobSchedule version is 1
+message AzurermStreamAnalyticsJobSchedule {
+  string id = 1;
+
+  string last_output_time = 2 [json_name = "last_output_time"];
+
+  string start_mode = 3 [json_name = "start_mode"];
+
+  string start_time = 4 [json_name = "start_time"];
+
+  string stream_analytics_job_id = 5 [json_name = "stream_analytics_job_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsManagedPrivateEndpoint version is 1
+message AzurermStreamAnalyticsManagedPrivateEndpoint {
+  string id = 1;
+
+  string name = 2;
+
+  string resource_group_name = 3 [json_name = "resource_group_name"];
+
+  string stream_analytics_cluster_name = 4 [json_name = "stream_analytics_cluster_name"];
+
+  string subresource_name = 5 [json_name = "subresource_name"];
+
+  string target_resource_id = 6 [json_name = "target_resource_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermStreamAnalyticsOutputBlob version is 1
+message AzurermStreamAnalyticsOutputBlob {
+  string authentication_mode = 1 [json_name = "authentication_mode"];
+
+  string batch_max_wait_time = 2 [json_name = "batch_max_wait_time"];
+
+  int64 batch_min_rows = 3 [json_name = "batch_min_rows"];
+
+  string blob_write_mode = 4 [json_name = "blob_write_mode"];
+
+  string date_format = 5 [json_name = "date_format"];
+
+  string id = 6;
+
+  string name = 7;
+
+  string path_pattern = 8 [json_name = "path_pattern"];
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  string storage_account_key = 10 [json_name = "storage_account_key"];
+
+  string storage_account_name = 11 [json_name = "storage_account_name"];
+
+  string storage_container_name = 12 [json_name = "storage_container_name"];
+
+  string stream_analytics_job_name = 13 [json_name = "stream_analytics_job_name"];
+
+  string time_format = 14 [json_name = "time_format"];
+
+  Serialization serialization = 15;
+
+  repeated Timeouts timeouts = 16;
+
+  google.protobuf.Value for_each = 17 [json_name = "for_each"];
+
+  repeated string depends_on = 18 [json_name = "depends_on"];
+
+  int32 count = 19;
+
+  string provider = 20;
+
+  terraform.v1.Lifecycle lifecycle = 21;
+
+  message Serialization {
+    string encoding = 1;
+
+    string field_delimiter = 2 [json_name = "field_delimiter"];
+
+    string format = 3;
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsOutputCosmosdb version is 1
+message AzurermStreamAnalyticsOutputCosmosdb {
+  string container_name = 1 [json_name = "container_name"];
+
+  string cosmosdb_account_key = 2 [json_name = "cosmosdb_account_key"];
+
+  string cosmosdb_sql_database_id = 3 [json_name = "cosmosdb_sql_database_id"];
+
+  string document_id = 4 [json_name = "document_id"];
+
+  string id = 5;
+
+  string name = 6;
+
+  string partition_key = 7 [json_name = "partition_key"];
+
+  string stream_analytics_job_id = 8 [json_name = "stream_analytics_job_id"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsOutputEventhub version is 1
+message AzurermStreamAnalyticsOutputEventhub {
+  string authentication_mode = 1 [json_name = "authentication_mode"];
+
+  string eventhub_name = 2 [json_name = "eventhub_name"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string partition_key = 5 [json_name = "partition_key"];
+
+  repeated string property_columns = 6 [json_name = "property_columns"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string servicebus_namespace = 8 [json_name = "servicebus_namespace"];
+
+  string shared_access_policy_key = 9 [json_name = "shared_access_policy_key"];
+
+  string shared_access_policy_name = 10 [json_name = "shared_access_policy_name"];
+
+  string stream_analytics_job_name = 11 [json_name = "stream_analytics_job_name"];
+
+  Serialization serialization = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Serialization {
+    string encoding = 1;
+
+    string field_delimiter = 2 [json_name = "field_delimiter"];
+
+    string format = 3;
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsOutputFunction version is 1
+message AzurermStreamAnalyticsOutputFunction {
+  string api_key = 1 [json_name = "api_key"];
+
+  int64 batch_max_count = 2 [json_name = "batch_max_count"];
+
+  int64 batch_max_in_bytes = 3 [json_name = "batch_max_in_bytes"];
+
+  string function_app = 4 [json_name = "function_app"];
+
+  string function_name = 5 [json_name = "function_name"];
+
+  string id = 6;
+
+  string name = 7;
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  string stream_analytics_job_name = 9 [json_name = "stream_analytics_job_name"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsOutputMssql version is 1
+message AzurermStreamAnalyticsOutputMssql {
+  string authentication_mode = 1 [json_name = "authentication_mode"];
+
+  string database = 2;
+
+  string id = 3;
+
+  int64 max_batch_count = 4 [json_name = "max_batch_count"];
+
+  int64 max_writer_count = 5 [json_name = "max_writer_count"];
+
+  string name = 6;
+
+  string password = 7;
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  string server = 9;
+
+  string stream_analytics_job_name = 10 [json_name = "stream_analytics_job_name"];
+
+  string table = 11;
+
+  string user = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsOutputPowerbi version is 1
+message AzurermStreamAnalyticsOutputPowerbi {
+  string dataset = 1;
+
+  string group_id = 2 [json_name = "group_id"];
+
+  string group_name = 3 [json_name = "group_name"];
+
+  string id = 4;
+
+  string name = 5;
+
+  string stream_analytics_job_id = 6 [json_name = "stream_analytics_job_id"];
+
+  string table = 7;
+
+  string token_user_display_name = 8 [json_name = "token_user_display_name"];
+
+  string token_user_principal_name = 9 [json_name = "token_user_principal_name"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsOutputServicebusQueue version is 1
+message AzurermStreamAnalyticsOutputServicebusQueue {
+  string authentication_mode = 1 [json_name = "authentication_mode"];
+
+  string id = 2;
+
+  string name = 3;
+
+  repeated string property_columns = 4 [json_name = "property_columns"];
+
+  string queue_name = 5 [json_name = "queue_name"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string servicebus_namespace = 7 [json_name = "servicebus_namespace"];
+
+  string shared_access_policy_key = 8 [json_name = "shared_access_policy_key"];
+
+  string shared_access_policy_name = 9 [json_name = "shared_access_policy_name"];
+
+  string stream_analytics_job_name = 10 [json_name = "stream_analytics_job_name"];
+
+  map<string, string> system_property_columns = 11 [json_name = "system_property_columns"];
+
+  Serialization serialization = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Serialization {
+    string encoding = 1;
+
+    string field_delimiter = 2 [json_name = "field_delimiter"];
+
+    string format = 3;
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsOutputServicebusTopic version is 1
+message AzurermStreamAnalyticsOutputServicebusTopic {
+  string authentication_mode = 1 [json_name = "authentication_mode"];
+
+  string id = 2;
+
+  string name = 3;
+
+  repeated string property_columns = 4 [json_name = "property_columns"];
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string servicebus_namespace = 6 [json_name = "servicebus_namespace"];
+
+  string shared_access_policy_key = 7 [json_name = "shared_access_policy_key"];
+
+  string shared_access_policy_name = 8 [json_name = "shared_access_policy_name"];
+
+  string stream_analytics_job_name = 9 [json_name = "stream_analytics_job_name"];
+
+  map<string, string> system_property_columns = 10 [json_name = "system_property_columns"];
+
+  string topic_name = 11 [json_name = "topic_name"];
+
+  Serialization serialization = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Serialization {
+    string encoding = 1;
+
+    string field_delimiter = 2 [json_name = "field_delimiter"];
+
+    string format = 3;
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsOutputSynapse version is 1
+message AzurermStreamAnalyticsOutputSynapse {
+  string database = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  string password = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string server = 6;
+
+  string stream_analytics_job_name = 7 [json_name = "stream_analytics_job_name"];
+
+  string table = 8;
+
+  string user = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsOutputTable version is 1
+message AzurermStreamAnalyticsOutputTable {
+  int64 batch_size = 1 [json_name = "batch_size"];
+
+  repeated string columns_to_remove = 2 [json_name = "columns_to_remove"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string partition_key = 5 [json_name = "partition_key"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string row_key = 7 [json_name = "row_key"];
+
+  string storage_account_key = 8 [json_name = "storage_account_key"];
+
+  string storage_account_name = 9 [json_name = "storage_account_name"];
+
+  string stream_analytics_job_name = 10 [json_name = "stream_analytics_job_name"];
+
+  string table = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsReferenceInputBlob version is 1
+message AzurermStreamAnalyticsReferenceInputBlob {
+  string authentication_mode = 1 [json_name = "authentication_mode"];
+
+  string date_format = 2 [json_name = "date_format"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string path_pattern = 5 [json_name = "path_pattern"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string storage_account_key = 7 [json_name = "storage_account_key"];
+
+  string storage_account_name = 8 [json_name = "storage_account_name"];
+
+  string storage_container_name = 9 [json_name = "storage_container_name"];
+
+  string stream_analytics_job_name = 10 [json_name = "stream_analytics_job_name"];
+
+  string time_format = 11 [json_name = "time_format"];
+
+  Serialization serialization = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Serialization {
+    string encoding = 1;
+
+    string field_delimiter = 2 [json_name = "field_delimiter"];
+
+    string type = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsReferenceInputMssql version is 1
+message AzurermStreamAnalyticsReferenceInputMssql {
+  string database = 1;
+
+  string delta_snapshot_query = 2 [json_name = "delta_snapshot_query"];
+
+  string full_snapshot_query = 3 [json_name = "full_snapshot_query"];
+
+  string id = 4;
+
+  string name = 5;
+
+  string password = 6;
+
+  string refresh_interval_duration = 7 [json_name = "refresh_interval_duration"];
+
+  string refresh_type = 8 [json_name = "refresh_type"];
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  string server = 10;
+
+  string stream_analytics_job_name = 11 [json_name = "stream_analytics_job_name"];
+
+  string table = 12;
+
+  string username = 13;
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsStreamInputBlob version is 1
+message AzurermStreamAnalyticsStreamInputBlob {
+  string date_format = 1 [json_name = "date_format"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string path_pattern = 4 [json_name = "path_pattern"];
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string storage_account_key = 6 [json_name = "storage_account_key"];
+
+  string storage_account_name = 7 [json_name = "storage_account_name"];
+
+  string storage_container_name = 8 [json_name = "storage_container_name"];
+
+  string stream_analytics_job_name = 9 [json_name = "stream_analytics_job_name"];
+
+  string time_format = 10 [json_name = "time_format"];
+
+  Serialization serialization = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Serialization {
+    string encoding = 1;
+
+    string field_delimiter = 2 [json_name = "field_delimiter"];
+
+    string type = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsStreamInputEventhub version is 1
+message AzurermStreamAnalyticsStreamInputEventhub {
+  string authentication_mode = 1 [json_name = "authentication_mode"];
+
+  string eventhub_consumer_group_name = 2 [json_name = "eventhub_consumer_group_name"];
+
+  string eventhub_name = 3 [json_name = "eventhub_name"];
+
+  string id = 4;
+
+  string name = 5;
+
+  string partition_key = 6 [json_name = "partition_key"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string servicebus_namespace = 8 [json_name = "servicebus_namespace"];
+
+  string shared_access_policy_key = 9 [json_name = "shared_access_policy_key"];
+
+  string shared_access_policy_name = 10 [json_name = "shared_access_policy_name"];
+
+  string stream_analytics_job_name = 11 [json_name = "stream_analytics_job_name"];
+
+  Serialization serialization = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Serialization {
+    string encoding = 1;
+
+    string field_delimiter = 2 [json_name = "field_delimiter"];
+
+    string type = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsStreamInputEventhubV2 version is 1
+message AzurermStreamAnalyticsStreamInputEventhubV2 {
+  string authentication_mode = 1 [json_name = "authentication_mode"];
+
+  string eventhub_consumer_group_name = 2 [json_name = "eventhub_consumer_group_name"];
+
+  string eventhub_name = 3 [json_name = "eventhub_name"];
+
+  string id = 4;
+
+  string name = 5;
+
+  string partition_key = 6 [json_name = "partition_key"];
+
+  string servicebus_namespace = 7 [json_name = "servicebus_namespace"];
+
+  string shared_access_policy_key = 8 [json_name = "shared_access_policy_key"];
+
+  string shared_access_policy_name = 9 [json_name = "shared_access_policy_name"];
+
+  string stream_analytics_job_id = 10 [json_name = "stream_analytics_job_id"];
+
+  Serialization serialization = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Serialization {
+    string encoding = 1;
+
+    string field_delimiter = 2 [json_name = "field_delimiter"];
+
+    string type = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStreamAnalyticsStreamInputIothub version is 1
+message AzurermStreamAnalyticsStreamInputIothub {
+  string endpoint = 1;
+
+  string eventhub_consumer_group_name = 2 [json_name = "eventhub_consumer_group_name"];
+
+  string id = 3;
+
+  string iothub_namespace = 4 [json_name = "iothub_namespace"];
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string shared_access_policy_key = 7 [json_name = "shared_access_policy_key"];
+
+  string shared_access_policy_name = 8 [json_name = "shared_access_policy_name"];
+
+  string stream_analytics_job_name = 9 [json_name = "stream_analytics_job_name"];
+
+  Serialization serialization = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Serialization {
+    string encoding = 1;
+
+    string field_delimiter = 2 [json_name = "field_delimiter"];
+
+    string type = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

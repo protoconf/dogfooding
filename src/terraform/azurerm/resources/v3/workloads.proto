@@ -1,0 +1,440 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermWorkloadsSapSingleNodeVirtualInstance version is 0
+message AzurermWorkloadsSapSingleNodeVirtualInstance {
+  string app_location = 1 [json_name = "app_location"];
+
+  string environment = 2;
+
+  string id = 3;
+
+  string location = 4;
+
+  string managed_resource_group_name = 5 [json_name = "managed_resource_group_name"];
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string sap_fqdn = 8 [json_name = "sap_fqdn"];
+
+  string sap_product = 9 [json_name = "sap_product"];
+
+  map<string, string> tags = 10;
+
+  Identity identity = 11;
+
+  SingleServerConfiguration single_server_configuration = 12 [json_name = "single_server_configuration"];
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string type = 2;
+  }
+
+  message SingleServerConfiguration {
+    string app_resource_group_name = 1 [json_name = "app_resource_group_name"];
+
+    string database_type = 2 [json_name = "database_type"];
+
+    bool secondary_ip_enabled = 3 [json_name = "secondary_ip_enabled"];
+
+    string subnet_id = 4 [json_name = "subnet_id"];
+
+    repeated DiskVolumeConfiguration disk_volume_configuration = 5 [json_name = "disk_volume_configuration"];
+
+    VirtualMachineConfiguration virtual_machine_configuration = 6 [json_name = "virtual_machine_configuration"];
+
+    VirtualMachineResourceNames virtual_machine_resource_names = 7 [json_name = "virtual_machine_resource_names"];
+
+    message DiskVolumeConfiguration {
+      int64 number_of_disks = 1 [json_name = "number_of_disks"];
+
+      int64 size_in_gb = 2 [json_name = "size_in_gb"];
+
+      string sku_name = 3 [json_name = "sku_name"];
+
+      string volume_name = 4 [json_name = "volume_name"];
+    }
+
+    message VirtualMachineConfiguration {
+      string virtual_machine_size = 1 [json_name = "virtual_machine_size"];
+
+      Image image = 2;
+
+      OsProfile os_profile = 3 [json_name = "os_profile"];
+
+      message Image {
+        string offer = 1;
+
+        string publisher = 2;
+
+        string sku = 3;
+
+        string version = 4;
+      }
+
+      message OsProfile {
+        string admin_username = 1 [json_name = "admin_username"];
+
+        string ssh_private_key = 2 [json_name = "ssh_private_key"];
+
+        string ssh_public_key = 3 [json_name = "ssh_public_key"];
+      }
+    }
+
+    message VirtualMachineResourceNames {
+      string host_name = 1 [json_name = "host_name"];
+
+      repeated string network_interface_names = 2 [json_name = "network_interface_names"];
+
+      string os_disk_name = 3 [json_name = "os_disk_name"];
+
+      string virtual_machine_name = 4 [json_name = "virtual_machine_name"];
+
+      repeated DataDisk data_disk = 5 [json_name = "data_disk"];
+
+      message DataDisk {
+        repeated string names = 1;
+
+        string volume_name = 2 [json_name = "volume_name"];
+      }
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermWorkloadsSapThreeTierVirtualInstance version is 0
+message AzurermWorkloadsSapThreeTierVirtualInstance {
+  string app_location = 1 [json_name = "app_location"];
+
+  string environment = 2;
+
+  string id = 3;
+
+  string location = 4;
+
+  string managed_resource_group_name = 5 [json_name = "managed_resource_group_name"];
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string sap_fqdn = 8 [json_name = "sap_fqdn"];
+
+  string sap_product = 9 [json_name = "sap_product"];
+
+  map<string, string> tags = 10;
+
+  Identity identity = 11;
+
+  ThreeTierConfiguration three_tier_configuration = 12 [json_name = "three_tier_configuration"];
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string type = 2;
+  }
+
+  message ThreeTierConfiguration {
+    string app_resource_group_name = 1 [json_name = "app_resource_group_name"];
+
+    string high_availability_type = 2 [json_name = "high_availability_type"];
+
+    bool secondary_ip_enabled = 3 [json_name = "secondary_ip_enabled"];
+
+    ApplicationServerConfiguration application_server_configuration = 4 [json_name = "application_server_configuration"];
+
+    CentralServerConfiguration central_server_configuration = 5 [json_name = "central_server_configuration"];
+
+    DatabaseServerConfiguration database_server_configuration = 6 [json_name = "database_server_configuration"];
+
+    ResourceNames resource_names = 7 [json_name = "resource_names"];
+
+    TransportCreateAndMount transport_create_and_mount = 8 [json_name = "transport_create_and_mount"];
+
+    message ApplicationServerConfiguration {
+      int64 instance_count = 1 [json_name = "instance_count"];
+
+      string subnet_id = 2 [json_name = "subnet_id"];
+
+      VirtualMachineConfiguration virtual_machine_configuration = 3 [json_name = "virtual_machine_configuration"];
+
+      message VirtualMachineConfiguration {
+        string virtual_machine_size = 1 [json_name = "virtual_machine_size"];
+
+        Image image = 2;
+
+        OsProfile os_profile = 3 [json_name = "os_profile"];
+
+        message Image {
+          string offer = 1;
+
+          string publisher = 2;
+
+          string sku = 3;
+
+          string version = 4;
+        }
+
+        message OsProfile {
+          string admin_username = 1 [json_name = "admin_username"];
+
+          string ssh_private_key = 2 [json_name = "ssh_private_key"];
+
+          string ssh_public_key = 3 [json_name = "ssh_public_key"];
+        }
+      }
+    }
+
+    message CentralServerConfiguration {
+      int64 instance_count = 1 [json_name = "instance_count"];
+
+      string subnet_id = 2 [json_name = "subnet_id"];
+
+      VirtualMachineConfiguration virtual_machine_configuration = 3 [json_name = "virtual_machine_configuration"];
+
+      message VirtualMachineConfiguration {
+        string virtual_machine_size = 1 [json_name = "virtual_machine_size"];
+
+        Image image = 2;
+
+        OsProfile os_profile = 3 [json_name = "os_profile"];
+
+        message Image {
+          string offer = 1;
+
+          string publisher = 2;
+
+          string sku = 3;
+
+          string version = 4;
+        }
+
+        message OsProfile {
+          string admin_username = 1 [json_name = "admin_username"];
+
+          string ssh_private_key = 2 [json_name = "ssh_private_key"];
+
+          string ssh_public_key = 3 [json_name = "ssh_public_key"];
+        }
+      }
+    }
+
+    message DatabaseServerConfiguration {
+      string database_type = 1 [json_name = "database_type"];
+
+      int64 instance_count = 2 [json_name = "instance_count"];
+
+      string subnet_id = 3 [json_name = "subnet_id"];
+
+      repeated DiskVolumeConfiguration disk_volume_configuration = 4 [json_name = "disk_volume_configuration"];
+
+      VirtualMachineConfiguration virtual_machine_configuration = 5 [json_name = "virtual_machine_configuration"];
+
+      message DiskVolumeConfiguration {
+        int64 number_of_disks = 1 [json_name = "number_of_disks"];
+
+        int64 size_in_gb = 2 [json_name = "size_in_gb"];
+
+        string sku_name = 3 [json_name = "sku_name"];
+
+        string volume_name = 4 [json_name = "volume_name"];
+      }
+
+      message VirtualMachineConfiguration {
+        string virtual_machine_size = 1 [json_name = "virtual_machine_size"];
+
+        Image image = 2;
+
+        OsProfile os_profile = 3 [json_name = "os_profile"];
+
+        message Image {
+          string offer = 1;
+
+          string publisher = 2;
+
+          string sku = 3;
+
+          string version = 4;
+        }
+
+        message OsProfile {
+          string admin_username = 1 [json_name = "admin_username"];
+
+          string ssh_private_key = 2 [json_name = "ssh_private_key"];
+
+          string ssh_public_key = 3 [json_name = "ssh_public_key"];
+        }
+      }
+    }
+
+    message ResourceNames {
+      ApplicationServer application_server = 1 [json_name = "application_server"];
+
+      CentralServer central_server = 2 [json_name = "central_server"];
+
+      DatabaseServer database_server = 3 [json_name = "database_server"];
+
+      SharedStorage shared_storage = 4 [json_name = "shared_storage"];
+
+      message ApplicationServer {
+        string availability_set_name = 1 [json_name = "availability_set_name"];
+
+        repeated VirtualMachine virtual_machine = 2 [json_name = "virtual_machine"];
+
+        message VirtualMachine {
+          string host_name = 1 [json_name = "host_name"];
+
+          repeated string network_interface_names = 2 [json_name = "network_interface_names"];
+
+          string os_disk_name = 3 [json_name = "os_disk_name"];
+
+          string virtual_machine_name = 4 [json_name = "virtual_machine_name"];
+
+          repeated DataDisk data_disk = 5 [json_name = "data_disk"];
+
+          message DataDisk {
+            repeated string names = 1;
+
+            string volume_name = 2 [json_name = "volume_name"];
+          }
+        }
+      }
+
+      message CentralServer {
+        string availability_set_name = 1 [json_name = "availability_set_name"];
+
+        LoadBalancer load_balancer = 2 [json_name = "load_balancer"];
+
+        repeated VirtualMachine virtual_machine = 3 [json_name = "virtual_machine"];
+
+        message LoadBalancer {
+          repeated string backend_pool_names = 1 [json_name = "backend_pool_names"];
+
+          repeated string frontend_ip_configuration_names = 2 [json_name = "frontend_ip_configuration_names"];
+
+          repeated string health_probe_names = 3 [json_name = "health_probe_names"];
+
+          string name = 4;
+        }
+
+        message VirtualMachine {
+          string host_name = 1 [json_name = "host_name"];
+
+          repeated string network_interface_names = 2 [json_name = "network_interface_names"];
+
+          string os_disk_name = 3 [json_name = "os_disk_name"];
+
+          string virtual_machine_name = 4 [json_name = "virtual_machine_name"];
+
+          repeated DataDisk data_disk = 5 [json_name = "data_disk"];
+
+          message DataDisk {
+            repeated string names = 1;
+
+            string volume_name = 2 [json_name = "volume_name"];
+          }
+        }
+      }
+
+      message DatabaseServer {
+        string availability_set_name = 1 [json_name = "availability_set_name"];
+
+        LoadBalancer load_balancer = 2 [json_name = "load_balancer"];
+
+        repeated VirtualMachine virtual_machine = 3 [json_name = "virtual_machine"];
+
+        message LoadBalancer {
+          repeated string backend_pool_names = 1 [json_name = "backend_pool_names"];
+
+          repeated string frontend_ip_configuration_names = 2 [json_name = "frontend_ip_configuration_names"];
+
+          repeated string health_probe_names = 3 [json_name = "health_probe_names"];
+
+          string name = 4;
+        }
+
+        message VirtualMachine {
+          string host_name = 1 [json_name = "host_name"];
+
+          repeated string network_interface_names = 2 [json_name = "network_interface_names"];
+
+          string os_disk_name = 3 [json_name = "os_disk_name"];
+
+          string virtual_machine_name = 4 [json_name = "virtual_machine_name"];
+
+          repeated DataDisk data_disk = 5 [json_name = "data_disk"];
+
+          message DataDisk {
+            repeated string names = 1;
+
+            string volume_name = 2 [json_name = "volume_name"];
+          }
+        }
+      }
+
+      message SharedStorage {
+        string account_name = 1 [json_name = "account_name"];
+
+        string private_endpoint_name = 2 [json_name = "private_endpoint_name"];
+      }
+    }
+
+    message TransportCreateAndMount {
+      string resource_group_id = 1 [json_name = "resource_group_id"];
+
+      string storage_account_name = 2 [json_name = "storage_account_name"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

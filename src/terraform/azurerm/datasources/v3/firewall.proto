@@ -1,0 +1,161 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermFirewall version is 0
+message AzurermFirewall {
+  bool dns_proxy_enabled = 1 [json_name = "dns_proxy_enabled"];
+
+  repeated string dns_servers = 2 [json_name = "dns_servers"];
+
+  string firewall_policy_id = 3 [json_name = "firewall_policy_id"];
+
+  string id = 4;
+
+  repeated IpConfiguration ip_configuration = 5 [json_name = "ip_configuration"];
+
+  string location = 6;
+
+  repeated ManagementIpConfiguration management_ip_configuration = 7 [json_name = "management_ip_configuration"];
+
+  string name = 8;
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  string sku_name = 10 [json_name = "sku_name"];
+
+  string sku_tier = 11 [json_name = "sku_tier"];
+
+  map<string, string> tags = 12;
+
+  string threat_intel_mode = 13 [json_name = "threat_intel_mode"];
+
+  repeated VirtualHub virtual_hub = 14 [json_name = "virtual_hub"];
+
+  repeated string zones = 15;
+
+  repeated Timeouts timeouts = 16;
+
+  google.protobuf.Value for_each = 17 [json_name = "for_each"];
+
+  repeated string depends_on = 18 [json_name = "depends_on"];
+
+  int32 count = 19;
+
+  string provider = 20;
+
+  terraform.v1.Lifecycle lifecycle = 21;
+
+  message IpConfiguration {
+    // name: string
+    string name = 1;
+
+    // private_ip_address: string
+    string private_ip_address = 2 [json_name = "private_ip_address"];
+
+    // public_ip_address_id: string
+    string public_ip_address_id = 3 [json_name = "public_ip_address_id"];
+
+    // subnet_id: string
+    string subnet_id = 4 [json_name = "subnet_id"];
+  }
+
+  message ManagementIpConfiguration {
+    // name: string
+    string name = 1;
+
+    // private_ip_address: string
+    string private_ip_address = 2 [json_name = "private_ip_address"];
+
+    // public_ip_address_id: string
+    string public_ip_address_id = 3 [json_name = "public_ip_address_id"];
+
+    // subnet_id: string
+    string subnet_id = 4 [json_name = "subnet_id"];
+  }
+
+  message VirtualHub {
+    // private_ip_address: string
+    string private_ip_address = 1 [json_name = "private_ip_address"];
+
+    // public_ip_addresses: list of string
+    repeated string public_ip_addresses = 2 [json_name = "public_ip_addresses"];
+
+    // public_ip_count: number
+    int64 public_ip_count = 3 [json_name = "public_ip_count"];
+
+    // virtual_hub_id: string
+    string virtual_hub_id = 4 [json_name = "virtual_hub_id"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermFirewallPolicy version is 0
+message AzurermFirewallPolicy {
+  string base_policy_id = 1 [json_name = "base_policy_id"];
+
+  repeated string child_policies = 2 [json_name = "child_policies"];
+
+  repeated Dns dns = 3;
+
+  repeated string firewalls = 4;
+
+  string id = 5;
+
+  string location = 6;
+
+  string name = 7;
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  repeated string rule_collection_groups = 9 [json_name = "rule_collection_groups"];
+
+  map<string, string> tags = 10;
+
+  repeated ThreatIntelligenceAllowlist threat_intelligence_allowlist = 11 [json_name = "threat_intelligence_allowlist"];
+
+  string threat_intelligence_mode = 12 [json_name = "threat_intelligence_mode"];
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Dns {
+    // network_rule_fqdn_enabled: bool
+    bool network_rule_fqdn_enabled = 1 [json_name = "network_rule_fqdn_enabled"];
+
+    // proxy_enabled: bool
+    bool proxy_enabled = 2 [json_name = "proxy_enabled"];
+
+    // servers: list of string
+    repeated string servers = 3;
+  }
+
+  message ThreatIntelligenceAllowlist {
+    // fqdns: list of string
+    repeated string fqdns = 1;
+
+    // ip_addresses: list of string
+    repeated string ip_addresses = 2 [json_name = "ip_addresses"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

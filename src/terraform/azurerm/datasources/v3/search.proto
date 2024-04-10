@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermSearchService version is 0
+message AzurermSearchService {
+  string id = 1;
+
+  repeated Identity identity = 2;
+
+  string name = 3;
+
+  int64 partition_count = 4 [json_name = "partition_count"];
+
+  string primary_key = 5 [json_name = "primary_key"];
+
+  bool public_network_access_enabled = 6 [json_name = "public_network_access_enabled"];
+
+  repeated QueryKeys query_keys = 7 [json_name = "query_keys"];
+
+  int64 replica_count = 8 [json_name = "replica_count"];
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  string secondary_key = 10 [json_name = "secondary_key"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Identity {
+    // principal_id: string
+    string principal_id = 1 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 2 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 3;
+  }
+
+  message QueryKeys {
+    // key: string
+    string key = 1;
+
+    // name: string
+    string name = 2;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

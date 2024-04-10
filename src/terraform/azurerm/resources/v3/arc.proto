@@ -1,0 +1,398 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermArcKubernetesCluster version is 0
+message AzurermArcKubernetesCluster {
+  string agent_public_key_certificate = 1 [json_name = "agent_public_key_certificate"];
+
+  string agent_version = 2 [json_name = "agent_version"];
+
+  string distribution = 3;
+
+  string id = 4;
+
+  string infrastructure = 5;
+
+  string kubernetes_version = 6 [json_name = "kubernetes_version"];
+
+  string location = 7;
+
+  string name = 8;
+
+  string offering = 9;
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 11;
+
+  int64 total_core_count = 12 [json_name = "total_core_count"];
+
+  int64 total_node_count = 13 [json_name = "total_node_count"];
+
+  Identity identity = 14;
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message Identity {
+    string principal_id = 1 [json_name = "principal_id"];
+
+    string tenant_id = 2 [json_name = "tenant_id"];
+
+    string type = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermArcKubernetesClusterExtension version is 0
+message AzurermArcKubernetesClusterExtension {
+  string cluster_id = 1 [json_name = "cluster_id"];
+
+  map<string, string> configuration_protected_settings = 2 [json_name = "configuration_protected_settings"];
+
+  map<string, string> configuration_settings = 3 [json_name = "configuration_settings"];
+
+  string current_version = 4 [json_name = "current_version"];
+
+  string extension_type = 5 [json_name = "extension_type"];
+
+  string id = 6;
+
+  string name = 7;
+
+  string release_namespace = 8 [json_name = "release_namespace"];
+
+  string release_train = 9 [json_name = "release_train"];
+
+  string target_namespace = 10 [json_name = "target_namespace"];
+
+  string version = 11;
+
+  Identity identity = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Identity {
+    string principal_id = 1 [json_name = "principal_id"];
+
+    string tenant_id = 2 [json_name = "tenant_id"];
+
+    string type = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermArcKubernetesFluxConfiguration version is 0
+message AzurermArcKubernetesFluxConfiguration {
+  string cluster_id = 1 [json_name = "cluster_id"];
+
+  bool continuous_reconciliation_enabled = 2 [json_name = "continuous_reconciliation_enabled"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string namespace = 5;
+
+  string scope = 6;
+
+  BlobStorage blob_storage = 7 [json_name = "blob_storage"];
+
+  Bucket bucket = 8;
+
+  GitRepository git_repository = 9 [json_name = "git_repository"];
+
+  repeated Kustomizations kustomizations = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message BlobStorage {
+    string account_key = 1 [json_name = "account_key"];
+
+    string container_id = 2 [json_name = "container_id"];
+
+    string local_auth_reference = 3 [json_name = "local_auth_reference"];
+
+    string sas_token = 4 [json_name = "sas_token"];
+
+    int64 sync_interval_in_seconds = 5 [json_name = "sync_interval_in_seconds"];
+
+    int64 timeout_in_seconds = 6 [json_name = "timeout_in_seconds"];
+
+    ServicePrincipal service_principal = 7 [json_name = "service_principal"];
+
+    message ServicePrincipal {
+      string client_certificate_base64 = 1 [json_name = "client_certificate_base64"];
+
+      string client_certificate_password = 2 [json_name = "client_certificate_password"];
+
+      bool client_certificate_send_chain = 3 [json_name = "client_certificate_send_chain"];
+
+      string client_id = 4 [json_name = "client_id"];
+
+      string client_secret = 5 [json_name = "client_secret"];
+
+      string tenant_id = 6 [json_name = "tenant_id"];
+    }
+  }
+
+  message Bucket {
+    string access_key = 1 [json_name = "access_key"];
+
+    string bucket_name = 2 [json_name = "bucket_name"];
+
+    string local_auth_reference = 3 [json_name = "local_auth_reference"];
+
+    string secret_key_base64 = 4 [json_name = "secret_key_base64"];
+
+    int64 sync_interval_in_seconds = 5 [json_name = "sync_interval_in_seconds"];
+
+    int64 timeout_in_seconds = 6 [json_name = "timeout_in_seconds"];
+
+    bool tls_enabled = 7 [json_name = "tls_enabled"];
+
+    string url = 8;
+  }
+
+  message GitRepository {
+    string https_ca_cert_base64 = 1 [json_name = "https_ca_cert_base64"];
+
+    string https_key_base64 = 2 [json_name = "https_key_base64"];
+
+    string https_user = 3 [json_name = "https_user"];
+
+    string local_auth_reference = 4 [json_name = "local_auth_reference"];
+
+    string reference_type = 5 [json_name = "reference_type"];
+
+    string reference_value = 6 [json_name = "reference_value"];
+
+    string ssh_known_hosts_base64 = 7 [json_name = "ssh_known_hosts_base64"];
+
+    string ssh_private_key_base64 = 8 [json_name = "ssh_private_key_base64"];
+
+    int64 sync_interval_in_seconds = 9 [json_name = "sync_interval_in_seconds"];
+
+    int64 timeout_in_seconds = 10 [json_name = "timeout_in_seconds"];
+
+    string url = 11;
+  }
+
+  message Kustomizations {
+    repeated string depends_on = 1 [json_name = "depends_on"];
+
+    bool garbage_collection_enabled = 2 [json_name = "garbage_collection_enabled"];
+
+    string name = 3;
+
+    string path = 4;
+
+    bool recreating_enabled = 5 [json_name = "recreating_enabled"];
+
+    int64 retry_interval_in_seconds = 6 [json_name = "retry_interval_in_seconds"];
+
+    int64 sync_interval_in_seconds = 7 [json_name = "sync_interval_in_seconds"];
+
+    int64 timeout_in_seconds = 8 [json_name = "timeout_in_seconds"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermArcMachineExtension version is 0
+message AzurermArcMachineExtension {
+  string arc_machine_id = 1 [json_name = "arc_machine_id"];
+
+  bool automatic_upgrade_enabled = 2 [json_name = "automatic_upgrade_enabled"];
+
+  string force_update_tag = 3 [json_name = "force_update_tag"];
+
+  string id = 4;
+
+  string location = 5;
+
+  string name = 6;
+
+  string protected_settings = 7 [json_name = "protected_settings"];
+
+  string publisher = 8;
+
+  string settings = 9;
+
+  map<string, string> tags = 10;
+
+  string type = 11;
+
+  string type_handler_version = 12 [json_name = "type_handler_version"];
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermArcPrivateLinkScope version is 0
+message AzurermArcPrivateLinkScope {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  bool public_network_access_enabled = 4 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermArcResourceBridgeAppliance version is 0
+message AzurermArcResourceBridgeAppliance {
+  string distro = 1;
+
+  string id = 2;
+
+  string infrastructure_provider = 3 [json_name = "infrastructure_provider"];
+
+  string location = 4;
+
+  string name = 5;
+
+  string public_key_base64 = 6 [json_name = "public_key_base64"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 8;
+
+  Identity identity = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Identity {
+    string principal_id = 1 [json_name = "principal_id"];
+
+    string tenant_id = 2 [json_name = "tenant_id"];
+
+    string type = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

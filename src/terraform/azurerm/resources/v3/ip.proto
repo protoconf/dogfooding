@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermIpGroup version is 0
+message AzurermIpGroup {
+  repeated string cidrs = 1;
+
+  repeated string firewall_ids = 2 [json_name = "firewall_ids"];
+
+  repeated string firewall_policy_ids = 3 [json_name = "firewall_policy_ids"];
+
+  string id = 4;
+
+  string location = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIpGroupCidr version is 0
+message AzurermIpGroupCidr {
+  string cidr = 1;
+
+  string id = 2;
+
+  string ip_group_id = 3 [json_name = "ip_group_id"];
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}

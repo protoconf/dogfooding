@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermSynapseWorkspace version is 0
+message AzurermSynapseWorkspace {
+  map<string, string> connectivity_endpoints = 1 [json_name = "connectivity_endpoints"];
+
+  string id = 2;
+
+  repeated Identity identity = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Identity {
+    // identity_ids: list of string
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    // principal_id: string
+    string principal_id = 2 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 4;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

@@ -1,0 +1,578 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermWebAppActiveSlot version is 0
+message AzurermWebAppActiveSlot {
+  string id = 1;
+
+  // The timestamp of the last successful swap with `Production`
+  string last_successful_swap = 2 [json_name = "last_successful_swap"];
+
+  // The swap action should overwrite the Production slot's network configuration with
+  // the configuration from this slot. Defaults to `true`.
+  bool overwrite_network_config = 3 [json_name = "overwrite_network_config"];
+
+  // The ID of the Slot to swap with `Production`.
+  string slot_id = 4 [json_name = "slot_id"];
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermWebAppHybridConnection version is 0
+message AzurermWebAppHybridConnection {
+  // The hostname of the endpoint.
+  string hostname = 1;
+
+  string id = 2;
+
+  // The name of the Relay Namespace.
+  string namespace_name = 3 [json_name = "namespace_name"];
+
+  // The port to use for the endpoint
+  int64 port = 4;
+
+  // The ID of the Relay Hybrid Connection to use.
+  string relay_id = 5 [json_name = "relay_id"];
+
+  // The name of the Relay in use.
+  string relay_name = 6 [json_name = "relay_name"];
+
+  // The name of the Relay key with `Send` permission to use. Defaults to
+  // `RootManageSharedAccessKey`
+  string send_key_name = 7 [json_name = "send_key_name"];
+
+  // The Primary Access Key for the `send_key_name`
+  string send_key_value = 8 [json_name = "send_key_value"];
+
+  // The Service Bus Namespace.
+  string service_bus_namespace = 9 [json_name = "service_bus_namespace"];
+
+  // The suffix for the endpoint.
+  string service_bus_suffix = 10 [json_name = "service_bus_suffix"];
+
+  // The ID of the Web App for this Hybrid Connection.
+  string web_app_id = 11 [json_name = "web_app_id"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermWebApplicationFirewallPolicy version is 1
+message AzurermWebApplicationFirewallPolicy {
+  repeated string http_listener_ids = 1 [json_name = "http_listener_ids"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  repeated string path_based_rule_ids = 5 [json_name = "path_based_rule_ids"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 7;
+
+  repeated CustomRules custom_rules = 8 [json_name = "custom_rules"];
+
+  ManagedRules managed_rules = 9 [json_name = "managed_rules"];
+
+  PolicySettings policy_settings = 10 [json_name = "policy_settings"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message CustomRules {
+    string action = 1;
+
+    bool enabled = 2;
+
+    string group_rate_limit_by = 3 [json_name = "group_rate_limit_by"];
+
+    string name = 4;
+
+    int64 priority = 5;
+
+    string rate_limit_duration = 6 [json_name = "rate_limit_duration"];
+
+    int64 rate_limit_threshold = 7 [json_name = "rate_limit_threshold"];
+
+    string rule_type = 8 [json_name = "rule_type"];
+
+    repeated MatchConditions match_conditions = 9 [json_name = "match_conditions"];
+
+    message MatchConditions {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negation_condition = 2 [json_name = "negation_condition"];
+
+      string operator = 3;
+
+      repeated string transforms = 4;
+
+      repeated MatchVariables match_variables = 5 [json_name = "match_variables"];
+
+      message MatchVariables {
+        string selector = 1;
+
+        string variable_name = 2 [json_name = "variable_name"];
+      }
+    }
+  }
+
+  message ManagedRules {
+    repeated Exclusion exclusion = 1;
+
+    repeated ManagedRuleSet managed_rule_set = 2 [json_name = "managed_rule_set"];
+
+    message Exclusion {
+      string match_variable = 1 [json_name = "match_variable"];
+
+      string selector = 2;
+
+      string selector_match_operator = 3 [json_name = "selector_match_operator"];
+
+      ExcludedRuleSet excluded_rule_set = 4 [json_name = "excluded_rule_set"];
+
+      message ExcludedRuleSet {
+        string type = 1;
+
+        string version = 2;
+
+        repeated RuleGroup rule_group = 3 [json_name = "rule_group"];
+
+        message RuleGroup {
+          repeated string excluded_rules = 1 [json_name = "excluded_rules"];
+
+          string rule_group_name = 2 [json_name = "rule_group_name"];
+        }
+      }
+    }
+
+    message ManagedRuleSet {
+      string type = 1;
+
+      string version = 2;
+
+      repeated RuleGroupOverride rule_group_override = 3 [json_name = "rule_group_override"];
+
+      message RuleGroupOverride {
+        repeated string disabled_rules = 1 [json_name = "disabled_rules"];
+
+        string rule_group_name = 2 [json_name = "rule_group_name"];
+
+        repeated Rule rule = 3;
+
+        message Rule {
+          string action = 1;
+
+          bool enabled = 2;
+
+          string id = 3;
+        }
+      }
+    }
+  }
+
+  message PolicySettings {
+    bool enabled = 1;
+
+    int64 file_upload_limit_in_mb = 2 [json_name = "file_upload_limit_in_mb"];
+
+    int64 max_request_body_size_in_kb = 3 [json_name = "max_request_body_size_in_kb"];
+
+    string mode = 4;
+
+    bool request_body_check = 5 [json_name = "request_body_check"];
+
+    int64 request_body_inspect_limit_in_kb = 6 [json_name = "request_body_inspect_limit_in_kb"];
+
+    LogScrubbing log_scrubbing = 7 [json_name = "log_scrubbing"];
+
+    message LogScrubbing {
+      bool enabled = 1;
+
+      repeated Rule rule = 2;
+
+      message Rule {
+        bool enabled = 1;
+
+        string match_variable = 2 [json_name = "match_variable"];
+
+        // When matchVariable is a collection, operator used to specify which elements in
+        // the collection this rule applies to.
+        string selector = 3;
+
+        string selector_match_operator = 4 [json_name = "selector_match_operator"];
+      }
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermWebPubsub version is 1
+message AzurermWebPubsub {
+  bool aad_auth_enabled = 1 [json_name = "aad_auth_enabled"];
+
+  int64 capacity = 2;
+
+  string external_ip = 3 [json_name = "external_ip"];
+
+  string hostname = 4;
+
+  string id = 5;
+
+  bool local_auth_enabled = 6 [json_name = "local_auth_enabled"];
+
+  string location = 7;
+
+  string name = 8;
+
+  string primary_access_key = 9 [json_name = "primary_access_key"];
+
+  string primary_connection_string = 10 [json_name = "primary_connection_string"];
+
+  bool public_network_access_enabled = 11 [json_name = "public_network_access_enabled"];
+
+  int64 public_port = 12 [json_name = "public_port"];
+
+  string resource_group_name = 13 [json_name = "resource_group_name"];
+
+  string secondary_access_key = 14 [json_name = "secondary_access_key"];
+
+  string secondary_connection_string = 15 [json_name = "secondary_connection_string"];
+
+  int64 server_port = 16 [json_name = "server_port"];
+
+  string sku = 17;
+
+  map<string, string> tags = 18;
+
+  bool tls_client_cert_enabled = 19 [json_name = "tls_client_cert_enabled"];
+
+  string version = 20;
+
+  Identity identity = 21;
+
+  LiveTrace live_trace = 22 [json_name = "live_trace"];
+
+  repeated Timeouts timeouts = 23;
+
+  google.protobuf.Value for_each = 24 [json_name = "for_each"];
+
+  repeated string depends_on = 25 [json_name = "depends_on"];
+
+  int32 count = 26;
+
+  string provider = 27;
+
+  terraform.v1.Lifecycle lifecycle = 28;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message LiveTrace {
+    bool connectivity_logs_enabled = 1 [json_name = "connectivity_logs_enabled"];
+
+    bool enabled = 2;
+
+    bool http_request_logs_enabled = 3 [json_name = "http_request_logs_enabled"];
+
+    bool messaging_logs_enabled = 4 [json_name = "messaging_logs_enabled"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermWebPubsubCustomCertificate version is 0
+message AzurermWebPubsubCustomCertificate {
+  string certificate_version = 1 [json_name = "certificate_version"];
+
+  string custom_certificate_id = 2 [json_name = "custom_certificate_id"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string web_pubsub_id = 5 [json_name = "web_pubsub_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermWebPubsubCustomDomain version is 0
+message AzurermWebPubsubCustomDomain {
+  string domain_name = 1 [json_name = "domain_name"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string web_pubsub_custom_certificate_id = 4 [json_name = "web_pubsub_custom_certificate_id"];
+
+  string web_pubsub_id = 5 [json_name = "web_pubsub_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermWebPubsubHub version is 1
+message AzurermWebPubsubHub {
+  bool anonymous_connections_enabled = 1 [json_name = "anonymous_connections_enabled"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string web_pubsub_id = 4 [json_name = "web_pubsub_id"];
+
+  repeated EventHandler event_handler = 5 [json_name = "event_handler"];
+
+  repeated EventListener event_listener = 6 [json_name = "event_listener"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message EventHandler {
+    repeated string system_events = 1 [json_name = "system_events"];
+
+    string url_template = 2 [json_name = "url_template"];
+
+    string user_event_pattern = 3 [json_name = "user_event_pattern"];
+
+    Auth auth = 4;
+
+    message Auth {
+      string managed_identity_id = 1 [json_name = "managed_identity_id"];
+    }
+  }
+
+  message EventListener {
+    string eventhub_name = 1 [json_name = "eventhub_name"];
+
+    string eventhub_namespace_name = 2 [json_name = "eventhub_namespace_name"];
+
+    repeated string system_event_name_filter = 3 [json_name = "system_event_name_filter"];
+
+    repeated string user_event_name_filter = 4 [json_name = "user_event_name_filter"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermWebPubsubNetworkAcl version is 0
+message AzurermWebPubsubNetworkAcl {
+  string default_action = 1 [json_name = "default_action"];
+
+  string id = 2;
+
+  string web_pubsub_id = 3 [json_name = "web_pubsub_id"];
+
+  repeated PrivateEndpoint private_endpoint = 4 [json_name = "private_endpoint"];
+
+  PublicNetwork public_network = 5 [json_name = "public_network"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message PrivateEndpoint {
+    repeated string allowed_request_types = 1 [json_name = "allowed_request_types"];
+
+    repeated string denied_request_types = 2 [json_name = "denied_request_types"];
+
+    string id = 3;
+  }
+
+  message PublicNetwork {
+    repeated string allowed_request_types = 1 [json_name = "allowed_request_types"];
+
+    repeated string denied_request_types = 2 [json_name = "denied_request_types"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermWebPubsubSharedPrivateLinkResource version is 0
+message AzurermWebPubsubSharedPrivateLinkResource {
+  string id = 1;
+
+  string name = 2;
+
+  string request_message = 3 [json_name = "request_message"];
+
+  string status = 4;
+
+  string subresource_name = 5 [json_name = "subresource_name"];
+
+  string target_resource_id = 6 [json_name = "target_resource_id"];
+
+  string web_pubsub_id = 7 [json_name = "web_pubsub_id"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

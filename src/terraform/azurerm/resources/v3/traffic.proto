@@ -1,0 +1,280 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermTrafficManagerAzureEndpoint version is 0
+message AzurermTrafficManagerAzureEndpoint {
+  bool always_serve_enabled = 1 [json_name = "always_serve_enabled"];
+
+  bool enabled = 2;
+
+  repeated string geo_mappings = 3 [json_name = "geo_mappings"];
+
+  string id = 4;
+
+  string name = 5;
+
+  int64 priority = 6;
+
+  string profile_id = 7 [json_name = "profile_id"];
+
+  string target_resource_id = 8 [json_name = "target_resource_id"];
+
+  int64 weight = 9;
+
+  repeated CustomHeader custom_header = 10 [json_name = "custom_header"];
+
+  repeated Subnet subnet = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message CustomHeader {
+    string name = 1;
+
+    string value = 2;
+  }
+
+  message Subnet {
+    string first = 1;
+
+    string last = 2;
+
+    int64 scope = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermTrafficManagerExternalEndpoint version is 0
+message AzurermTrafficManagerExternalEndpoint {
+  bool always_serve_enabled = 1 [json_name = "always_serve_enabled"];
+
+  bool enabled = 2;
+
+  string endpoint_location = 3 [json_name = "endpoint_location"];
+
+  repeated string geo_mappings = 4 [json_name = "geo_mappings"];
+
+  string id = 5;
+
+  string name = 6;
+
+  int64 priority = 7;
+
+  string profile_id = 8 [json_name = "profile_id"];
+
+  string target = 9;
+
+  int64 weight = 10;
+
+  repeated CustomHeader custom_header = 11 [json_name = "custom_header"];
+
+  repeated Subnet subnet = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message CustomHeader {
+    string name = 1;
+
+    string value = 2;
+  }
+
+  message Subnet {
+    string first = 1;
+
+    string last = 2;
+
+    int64 scope = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermTrafficManagerNestedEndpoint version is 0
+message AzurermTrafficManagerNestedEndpoint {
+  bool enabled = 1;
+
+  string endpoint_location = 2 [json_name = "endpoint_location"];
+
+  repeated string geo_mappings = 3 [json_name = "geo_mappings"];
+
+  string id = 4;
+
+  int64 minimum_child_endpoints = 5 [json_name = "minimum_child_endpoints"];
+
+  int64 minimum_required_child_endpoints_ipv4 = 6 [
+    json_name = "minimum_required_child_endpoints_ipv4"
+  ];
+
+  int64 minimum_required_child_endpoints_ipv6 = 7 [
+    json_name = "minimum_required_child_endpoints_ipv6"
+  ];
+
+  string name = 8;
+
+  int64 priority = 9;
+
+  string profile_id = 10 [json_name = "profile_id"];
+
+  string target_resource_id = 11 [json_name = "target_resource_id"];
+
+  int64 weight = 12;
+
+  repeated CustomHeader custom_header = 13 [json_name = "custom_header"];
+
+  repeated Subnet subnet = 14;
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message CustomHeader {
+    string name = 1;
+
+    string value = 2;
+  }
+
+  message Subnet {
+    string first = 1;
+
+    string last = 2;
+
+    int64 scope = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermTrafficManagerProfile version is 0
+message AzurermTrafficManagerProfile {
+  string fqdn = 1;
+
+  string id = 2;
+
+  int64 max_return = 3 [json_name = "max_return"];
+
+  string name = 4;
+
+  string profile_status = 5 [json_name = "profile_status"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 7;
+
+  string traffic_routing_method = 8 [json_name = "traffic_routing_method"];
+
+  bool traffic_view_enabled = 9 [json_name = "traffic_view_enabled"];
+
+  DnsConfig dns_config = 10 [json_name = "dns_config"];
+
+  MonitorConfig monitor_config = 11 [json_name = "monitor_config"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message DnsConfig {
+    string relative_name = 1 [json_name = "relative_name"];
+
+    int64 ttl = 2;
+  }
+
+  message MonitorConfig {
+    repeated string expected_status_code_ranges = 1 [json_name = "expected_status_code_ranges"];
+
+    int64 interval_in_seconds = 2 [json_name = "interval_in_seconds"];
+
+    string path = 3;
+
+    int64 port = 4;
+
+    string protocol = 5;
+
+    int64 timeout_in_seconds = 6 [json_name = "timeout_in_seconds"];
+
+    int64 tolerated_number_of_failures = 7 [json_name = "tolerated_number_of_failures"];
+
+    repeated CustomHeader custom_header = 8 [json_name = "custom_header"];
+
+    message CustomHeader {
+      string name = 1;
+
+      string value = 2;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

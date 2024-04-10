@@ -1,0 +1,134 @@
+syntax = "proto2";
+
+// Provider: helm 2
+package terraform.helm.provider.v2;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// Helm version is 0
+message Helm {
+  // Helm burst limit. Increase this if you have a cluster with many CRDs
+  optional int64 burst_limit = 1 [json_name = "burst_limit"];
+
+  // Debug indicates whether or not Helm is running in Debug mode.
+  optional bool debug = 2;
+
+  // The backend storage driver. Values are: configmap, secret, memory, sql
+  optional string helm_driver = 3 [json_name = "helm_driver"];
+
+  // The path to the helm plugins directory
+  optional string plugins_path = 4 [json_name = "plugins_path"];
+
+  // The path to the registry config file
+  optional string registry_config_path = 5 [json_name = "registry_config_path"];
+
+  // The path to the file containing cached repository indexes
+  optional string repository_cache = 6 [json_name = "repository_cache"];
+
+  // The path to the file containing repository names and URLs
+  optional string repository_config_path = 7 [json_name = "repository_config_path"];
+
+  optional Experiments experiments = 8;
+
+  optional Kubernetes kubernetes = 9;
+
+  repeated Registry registry = 10;
+
+  optional google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  optional int32 count = 13;
+
+  optional string provider = 14;
+
+  optional terraform.v1.Lifecycle lifecycle = 15;
+
+  optional string alias = 16;
+
+  optional string provider_fqdn = 17 [default = "registry.terraform.io/hashicorp/helm"];
+
+  optional string provider_version = 18 [default = "2.12.1"];
+
+  message Experiments {
+    // Enable full diff by storing the rendered manifest in the state. This has similar
+    // limitations as when using helm install --dry-run. See
+    // /custom_resource_definitions/#install-a-crd-declaration-before-using-the-resource
+    optional bool manifest = 1;
+  }
+
+  message Kubernetes {
+    // PEM-encoded client certificate for TLS authentication.
+    optional string client_certificate = 1 [json_name = "client_certificate"];
+
+    // PEM-encoded client certificate key for TLS authentication.
+    optional string client_key = 2 [json_name = "client_key"];
+
+    // PEM-encoded root certificates bundle for TLS authentication.
+    optional string cluster_ca_certificate = 3 [json_name = "cluster_ca_certificate"];
+
+    optional string config_context = 4 [json_name = "config_context"];
+
+    optional string config_context_auth_info = 5 [json_name = "config_context_auth_info"];
+
+    optional string config_context_cluster = 6 [json_name = "config_context_cluster"];
+
+    // Path to the kube config file. Can be set with KUBE_CONFIG_PATH.
+    optional string config_path = 7 [json_name = "config_path"];
+
+    // A list of paths to kube config files. Can be set with KUBE_CONFIG_PATHS
+    // environment variable.
+    repeated string config_paths = 8 [json_name = "config_paths"];
+
+    // The hostname (in form of URI) of Kubernetes master.
+    optional string host = 9;
+
+    // Whether server should be accessed without verifying the TLS certificate.
+    optional bool insecure = 10;
+
+    // The password to use for HTTP basic authentication when accessing the Kubernetes
+    // master endpoint.
+    optional string password = 11;
+
+    // URL to the proxy to be used for all API requests
+    optional string proxy_url = 12 [json_name = "proxy_url"];
+
+    // Server name passed to the server for SNI and is used in the client to check
+    // server certificates against.
+    optional string tls_server_name = 13 [json_name = "tls_server_name"];
+
+    // Token to authenticate an service account
+    optional string token = 14;
+
+    // The username to use for HTTP basic authentication when accessing the Kubernetes
+    // master endpoint.
+    optional string username = 15;
+
+    optional Exec exec = 16;
+
+    message Exec {
+      optional string api_version = 1 [json_name = "api_version"];
+
+      repeated string args = 2;
+
+      optional string command = 3;
+
+      map<string, string> env = 4;
+    }
+  }
+
+  message Registry {
+    // The password to use for the OCI HTTP basic authentication when accessing the
+    // Kubernetes master endpoint.
+    optional string password = 1;
+
+    // OCI URL in form of oci://host:port or oci://host
+    optional string url = 2;
+
+    // The username to use for the OCI HTTP basic authentication when accessing the
+    // Kubernetes master endpoint.
+    optional string username = 3;
+  }
+}

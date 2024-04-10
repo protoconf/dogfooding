@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermServicePlan version is 1
+message AzurermServicePlan {
+  string app_service_environment_id = 1 [json_name = "app_service_environment_id"];
+
+  string id = 2;
+
+  string kind = 3;
+
+  string location = 4;
+
+  int64 maximum_elastic_worker_count = 5 [json_name = "maximum_elastic_worker_count"];
+
+  string name = 6;
+
+  string os_type = 7 [json_name = "os_type"];
+
+  bool per_site_scaling_enabled = 8 [json_name = "per_site_scaling_enabled"];
+
+  bool reserved = 9;
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  string sku_name = 11 [json_name = "sku_name"];
+
+  map<string, string> tags = 12;
+
+  int64 worker_count = 13 [json_name = "worker_count"];
+
+  bool zone_balancing_enabled = 14 [json_name = "zone_balancing_enabled"];
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message Timeouts {
+    string read = 1;
+  }
+}

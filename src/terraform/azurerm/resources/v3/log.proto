@@ -1,0 +1,608 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermLogAnalyticsCluster version is 0
+message AzurermLogAnalyticsCluster {
+  string cluster_id = 1 [json_name = "cluster_id"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  int64 size_gb = 6 [json_name = "size_gb"];
+
+  map<string, string> tags = 7;
+
+  Identity identity = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Identity {
+    string principal_id = 1 [json_name = "principal_id"];
+
+    string tenant_id = 2 [json_name = "tenant_id"];
+
+    string type = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLogAnalyticsClusterCustomerManagedKey version is 1
+message AzurermLogAnalyticsClusterCustomerManagedKey {
+  string id = 1;
+
+  string key_vault_key_id = 2 [json_name = "key_vault_key_id"];
+
+  string log_analytics_cluster_id = 3 [json_name = "log_analytics_cluster_id"];
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLogAnalyticsDataExportRule version is 1
+message AzurermLogAnalyticsDataExportRule {
+  string destination_resource_id = 1 [json_name = "destination_resource_id"];
+
+  bool enabled = 2;
+
+  string export_rule_id = 3 [json_name = "export_rule_id"];
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  repeated string table_names = 7 [json_name = "table_names"];
+
+  string workspace_resource_id = 8 [json_name = "workspace_resource_id"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLogAnalyticsDatasourceWindowsEvent version is 1
+message AzurermLogAnalyticsDatasourceWindowsEvent {
+  string event_log_name = 1 [json_name = "event_log_name"];
+
+  repeated string event_types = 2 [json_name = "event_types"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string workspace_name = 6 [json_name = "workspace_name"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLogAnalyticsDatasourceWindowsPerformanceCounter version is 1
+message AzurermLogAnalyticsDatasourceWindowsPerformanceCounter {
+  string counter_name = 1 [json_name = "counter_name"];
+
+  string id = 2;
+
+  string instance_name = 3 [json_name = "instance_name"];
+
+  int64 interval_seconds = 4 [json_name = "interval_seconds"];
+
+  string name = 5;
+
+  string object_name = 6 [json_name = "object_name"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string workspace_name = 8 [json_name = "workspace_name"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLogAnalyticsLinkedService version is 0
+message AzurermLogAnalyticsLinkedService {
+  string id = 1;
+
+  string name = 2;
+
+  string read_access_id = 3 [json_name = "read_access_id"];
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  string workspace_id = 5 [json_name = "workspace_id"];
+
+  string write_access_id = 6 [json_name = "write_access_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLogAnalyticsLinkedStorageAccount version is 1
+message AzurermLogAnalyticsLinkedStorageAccount {
+  string data_source_type = 1 [json_name = "data_source_type"];
+
+  string id = 2;
+
+  string resource_group_name = 3 [json_name = "resource_group_name"];
+
+  repeated string storage_account_ids = 4 [json_name = "storage_account_ids"];
+
+  string workspace_resource_id = 5 [json_name = "workspace_resource_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLogAnalyticsQueryPack version is 0
+message AzurermLogAnalyticsQueryPack {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLogAnalyticsQueryPackQuery version is 0
+message AzurermLogAnalyticsQueryPackQuery {
+  string additional_settings_json = 1 [json_name = "additional_settings_json"];
+
+  string body = 2;
+
+  repeated string categories = 3;
+
+  string description = 4;
+
+  string display_name = 5 [json_name = "display_name"];
+
+  string id = 6;
+
+  string name = 7;
+
+  string query_pack_id = 8 [json_name = "query_pack_id"];
+
+  repeated string resource_types = 9 [json_name = "resource_types"];
+
+  repeated string solutions = 10;
+
+  map<string, string> tags = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLogAnalyticsSavedSearch version is 1
+message AzurermLogAnalyticsSavedSearch {
+  string category = 1;
+
+  string display_name = 2 [json_name = "display_name"];
+
+  string function_alias = 3 [json_name = "function_alias"];
+
+  repeated string function_parameters = 4 [json_name = "function_parameters"];
+
+  string id = 5;
+
+  string log_analytics_workspace_id = 6 [json_name = "log_analytics_workspace_id"];
+
+  string name = 7;
+
+  string query = 8;
+
+  map<string, string> tags = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermLogAnalyticsSolution version is 1
+message AzurermLogAnalyticsSolution {
+  string id = 1;
+
+  string location = 2;
+
+  string resource_group_name = 3 [json_name = "resource_group_name"];
+
+  string solution_name = 4 [json_name = "solution_name"];
+
+  map<string, string> tags = 5;
+
+  string workspace_name = 6 [json_name = "workspace_name"];
+
+  string workspace_resource_id = 7 [json_name = "workspace_resource_id"];
+
+  Plan plan = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Plan {
+    string name = 1;
+
+    string product = 2;
+
+    string promotion_code = 3 [json_name = "promotion_code"];
+
+    string publisher = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLogAnalyticsStorageInsights version is 0
+message AzurermLogAnalyticsStorageInsights {
+  repeated string blob_container_names = 1 [json_name = "blob_container_names"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  string storage_account_id = 5 [json_name = "storage_account_id"];
+
+  string storage_account_key = 6 [json_name = "storage_account_key"];
+
+  repeated string table_names = 7 [json_name = "table_names"];
+
+  string workspace_id = 8 [json_name = "workspace_id"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLogAnalyticsWorkspace version is 3
+message AzurermLogAnalyticsWorkspace {
+  bool allow_resource_only_permissions = 1 [json_name = "allow_resource_only_permissions"];
+
+  bool cmk_for_query_forced = 2 [json_name = "cmk_for_query_forced"];
+
+  int64 daily_quota_gb = 3 [json_name = "daily_quota_gb"];
+
+  string data_collection_rule_id = 4 [json_name = "data_collection_rule_id"];
+
+  string id = 5;
+
+  bool immediate_data_purge_on_30_days_enabled = 6 [
+    json_name = "immediate_data_purge_on_30_days_enabled"
+  ];
+
+  bool internet_ingestion_enabled = 7 [json_name = "internet_ingestion_enabled"];
+
+  bool internet_query_enabled = 8 [json_name = "internet_query_enabled"];
+
+  bool local_authentication_disabled = 9 [json_name = "local_authentication_disabled"];
+
+  string location = 10;
+
+  string name = 11;
+
+  string primary_shared_key = 12 [json_name = "primary_shared_key"];
+
+  int64 reservation_capacity_in_gb_per_day = 13 [json_name = "reservation_capacity_in_gb_per_day"];
+
+  string resource_group_name = 14 [json_name = "resource_group_name"];
+
+  int64 retention_in_days = 15 [json_name = "retention_in_days"];
+
+  string secondary_shared_key = 16 [json_name = "secondary_shared_key"];
+
+  string sku = 17;
+
+  map<string, string> tags = 18;
+
+  string workspace_id = 19 [json_name = "workspace_id"];
+
+  Identity identity = 20;
+
+  repeated Timeouts timeouts = 21;
+
+  google.protobuf.Value for_each = 22 [json_name = "for_each"];
+
+  repeated string depends_on = 23 [json_name = "depends_on"];
+
+  int32 count = 24;
+
+  string provider = 25;
+
+  terraform.v1.Lifecycle lifecycle = 26;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLogAnalyticsWorkspaceTable version is 0
+message AzurermLogAnalyticsWorkspaceTable {
+  string id = 1;
+
+  string name = 2;
+
+  string plan = 3;
+
+  int64 retention_in_days = 4 [json_name = "retention_in_days"];
+
+  int64 total_retention_in_days = 5 [json_name = "total_retention_in_days"];
+
+  string workspace_id = 6 [json_name = "workspace_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

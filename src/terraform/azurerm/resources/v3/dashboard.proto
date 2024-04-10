@@ -1,0 +1,140 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermDashboard version is 0
+message AzurermDashboard {
+  string dashboard_properties = 1 [json_name = "dashboard_properties"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDashboardGrafana version is 0
+message AzurermDashboardGrafana {
+  bool api_key_enabled = 1 [json_name = "api_key_enabled"];
+
+  string auto_generated_domain_name_label_scope = 2 [
+    json_name = "auto_generated_domain_name_label_scope"
+  ];
+
+  bool deterministic_outbound_ip_enabled = 3 [json_name = "deterministic_outbound_ip_enabled"];
+
+  string endpoint = 4;
+
+  string grafana_major_version = 5 [json_name = "grafana_major_version"];
+
+  string grafana_version = 6 [json_name = "grafana_version"];
+
+  string id = 7;
+
+  string location = 8;
+
+  string name = 9;
+
+  repeated string outbound_ip = 10 [json_name = "outbound_ip"];
+
+  bool public_network_access_enabled = 11 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 12 [json_name = "resource_group_name"];
+
+  string sku = 13;
+
+  map<string, string> tags = 14;
+
+  bool zone_redundancy_enabled = 15 [json_name = "zone_redundancy_enabled"];
+
+  repeated AzureMonitorWorkspaceIntegrations azure_monitor_workspace_integrations = 16 [json_name = "azure_monitor_workspace_integrations"];
+
+  Identity identity = 17;
+
+  Smtp smtp = 18;
+
+  repeated Timeouts timeouts = 19;
+
+  google.protobuf.Value for_each = 20 [json_name = "for_each"];
+
+  repeated string depends_on = 21 [json_name = "depends_on"];
+
+  int32 count = 22;
+
+  string provider = 23;
+
+  terraform.v1.Lifecycle lifecycle = 24;
+
+  message AzureMonitorWorkspaceIntegrations {
+    string resource_id = 1 [json_name = "resource_id"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Smtp {
+    bool enabled = 1;
+
+    string from_address = 2 [json_name = "from_address"];
+
+    string from_name = 3 [json_name = "from_name"];
+
+    string host = 4;
+
+    string password = 5;
+
+    string start_tls_policy = 6 [json_name = "start_tls_policy"];
+
+    string user = 7;
+
+    bool verification_skip_enabled = 8 [json_name = "verification_skip_enabled"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

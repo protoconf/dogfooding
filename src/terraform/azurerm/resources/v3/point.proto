@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermPointToSiteVpnGateway version is 0
+message AzurermPointToSiteVpnGateway {
+  repeated string dns_servers = 1 [json_name = "dns_servers"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  bool routing_preference_internet_enabled = 6 [json_name = "routing_preference_internet_enabled"];
+
+  int64 scale_unit = 7 [json_name = "scale_unit"];
+
+  map<string, string> tags = 8;
+
+  string virtual_hub_id = 9 [json_name = "virtual_hub_id"];
+
+  string vpn_server_configuration_id = 10 [json_name = "vpn_server_configuration_id"];
+
+  repeated ConnectionConfiguration connection_configuration = 11 [json_name = "connection_configuration"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message ConnectionConfiguration {
+    bool internet_security_enabled = 1 [json_name = "internet_security_enabled"];
+
+    string name = 2;
+
+    Route route = 3;
+
+    VpnClientAddressPool vpn_client_address_pool = 4 [json_name = "vpn_client_address_pool"];
+
+    message Route {
+      string associated_route_table_id = 1 [json_name = "associated_route_table_id"];
+
+      string inbound_route_map_id = 2 [json_name = "inbound_route_map_id"];
+
+      string outbound_route_map_id = 3 [json_name = "outbound_route_map_id"];
+
+      PropagatedRouteTable propagated_route_table = 4 [json_name = "propagated_route_table"];
+
+      message PropagatedRouteTable {
+        repeated string ids = 1;
+
+        repeated string labels = 2;
+      }
+    }
+
+    message VpnClientAddressPool {
+      repeated string address_prefixes = 1 [json_name = "address_prefixes"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

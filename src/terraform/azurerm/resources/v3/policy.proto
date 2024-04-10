@@ -1,0 +1,175 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermPolicyDefinition version is 0
+message AzurermPolicyDefinition {
+  string description = 1;
+
+  string display_name = 2 [json_name = "display_name"];
+
+  string id = 3;
+
+  string management_group_id = 4 [json_name = "management_group_id"];
+
+  string metadata = 5;
+
+  string mode = 6;
+
+  string name = 7;
+
+  string parameters = 8;
+
+  string policy_rule = 9 [json_name = "policy_rule"];
+
+  string policy_type = 10 [json_name = "policy_type"];
+
+  repeated string role_definition_ids = 11 [json_name = "role_definition_ids"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermPolicySetDefinition version is 0
+message AzurermPolicySetDefinition {
+  string description = 1;
+
+  string display_name = 2 [json_name = "display_name"];
+
+  string id = 3;
+
+  string management_group_id = 4 [json_name = "management_group_id"];
+
+  string metadata = 5;
+
+  string name = 6;
+
+  string parameters = 7;
+
+  string policy_type = 8 [json_name = "policy_type"];
+
+  repeated PolicyDefinitionGroup policy_definition_group = 9 [json_name = "policy_definition_group"];
+
+  repeated PolicyDefinitionReference policy_definition_reference = 10 [json_name = "policy_definition_reference"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message PolicyDefinitionGroup {
+    string additional_metadata_resource_id = 1 [json_name = "additional_metadata_resource_id"];
+
+    string category = 2;
+
+    string description = 3;
+
+    string display_name = 4 [json_name = "display_name"];
+
+    string name = 5;
+  }
+
+  message PolicyDefinitionReference {
+    string parameter_values = 1 [json_name = "parameter_values"];
+
+    string policy_definition_id = 2 [json_name = "policy_definition_id"];
+
+    repeated string policy_group_names = 3 [json_name = "policy_group_names"];
+
+    string reference_id = 4 [json_name = "reference_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermPolicyVirtualMachineConfigurationAssignment version is 0
+message AzurermPolicyVirtualMachineConfigurationAssignment {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string virtual_machine_id = 4 [json_name = "virtual_machine_id"];
+
+  Configuration configuration = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Configuration {
+    string assignment_type = 1 [json_name = "assignment_type"];
+
+    string content_hash = 2 [json_name = "content_hash"];
+
+    string content_uri = 3 [json_name = "content_uri"];
+
+    string version = 4;
+
+    repeated Parameter parameter = 5;
+
+    message Parameter {
+      string name = 1;
+
+      string value = 2;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

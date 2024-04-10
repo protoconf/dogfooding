@@ -1,0 +1,466 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermSecurityCenterAssessment version is 0
+message AzurermSecurityCenterAssessment {
+  map<string, string> additional_data = 1 [json_name = "additional_data"];
+
+  string assessment_policy_id = 2 [json_name = "assessment_policy_id"];
+
+  string id = 3;
+
+  string target_resource_id = 4 [json_name = "target_resource_id"];
+
+  Status status = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Status {
+    string cause = 1;
+
+    string code = 2;
+
+    string description = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSecurityCenterAssessmentPolicy version is 0
+message AzurermSecurityCenterAssessmentPolicy {
+  repeated string categories = 1;
+
+  string description = 2;
+
+  string display_name = 3 [json_name = "display_name"];
+
+  string id = 4;
+
+  string implementation_effort = 5 [json_name = "implementation_effort"];
+
+  string name = 6;
+
+  string remediation_description = 7 [json_name = "remediation_description"];
+
+  string severity = 8;
+
+  repeated string threats = 9;
+
+  string user_impact = 10 [json_name = "user_impact"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSecurityCenterAutoProvisioning version is 1
+message AzurermSecurityCenterAutoProvisioning {
+  string auto_provision = 1 [json_name = "auto_provision"];
+
+  string id = 2;
+
+  repeated Timeouts timeouts = 3;
+
+  google.protobuf.Value for_each = 4 [json_name = "for_each"];
+
+  repeated string depends_on = 5 [json_name = "depends_on"];
+
+  int32 count = 6;
+
+  string provider = 7;
+
+  terraform.v1.Lifecycle lifecycle = 8;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSecurityCenterAutomation version is 0
+message AzurermSecurityCenterAutomation {
+  string description = 1;
+
+  bool enabled = 2;
+
+  string id = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  repeated string scopes = 7;
+
+  map<string, string> tags = 8;
+
+  repeated Action action = 9;
+
+  repeated Source source = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Action {
+    string connection_string = 1 [json_name = "connection_string"];
+
+    string resource_id = 2 [json_name = "resource_id"];
+
+    string trigger_url = 3 [json_name = "trigger_url"];
+
+    string type = 4;
+  }
+
+  message Source {
+    string event_source = 1 [json_name = "event_source"];
+
+    repeated RuleSet rule_set = 2 [json_name = "rule_set"];
+
+    message RuleSet {
+      repeated Rule rule = 1;
+
+      message Rule {
+        string expected_value = 1 [json_name = "expected_value"];
+
+        string operator = 2;
+
+        string property_path = 3 [json_name = "property_path"];
+
+        string property_type = 4 [json_name = "property_type"];
+      }
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSecurityCenterContact version is 0
+message AzurermSecurityCenterContact {
+  bool alert_notifications = 1 [json_name = "alert_notifications"];
+
+  bool alerts_to_admins = 2 [json_name = "alerts_to_admins"];
+
+  string email = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string phone = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSecurityCenterServerVulnerabilityAssessment version is 0
+message AzurermSecurityCenterServerVulnerabilityAssessment {
+  string hybrid_machine_id = 1 [json_name = "hybrid_machine_id"];
+
+  string id = 2;
+
+  string virtual_machine_id = 3 [json_name = "virtual_machine_id"];
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermSecurityCenterServerVulnerabilityAssessmentVirtualMachine version is 0
+message AzurermSecurityCenterServerVulnerabilityAssessmentVirtualMachine {
+  string id = 1;
+
+  string virtual_machine_id = 2 [json_name = "virtual_machine_id"];
+
+  repeated Timeouts timeouts = 3;
+
+  google.protobuf.Value for_each = 4 [json_name = "for_each"];
+
+  repeated string depends_on = 5 [json_name = "depends_on"];
+
+  int32 count = 6;
+
+  string provider = 7;
+
+  terraform.v1.Lifecycle lifecycle = 8;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermSecurityCenterServerVulnerabilityAssessmentsSetting version is 0
+message AzurermSecurityCenterServerVulnerabilityAssessmentsSetting {
+  string id = 1;
+
+  string vulnerability_assessment_provider = 2 [json_name = "vulnerability_assessment_provider"];
+
+  repeated Timeouts timeouts = 3;
+
+  google.protobuf.Value for_each = 4 [json_name = "for_each"];
+
+  repeated string depends_on = 5 [json_name = "depends_on"];
+
+  int32 count = 6;
+
+  string provider = 7;
+
+  terraform.v1.Lifecycle lifecycle = 8;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSecurityCenterSetting version is 1
+message AzurermSecurityCenterSetting {
+  bool enabled = 1;
+
+  string id = 2;
+
+  string setting_name = 3 [json_name = "setting_name"];
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSecurityCenterStorageDefender version is 0
+message AzurermSecurityCenterStorageDefender {
+  string id = 1;
+
+  int64 malware_scanning_on_upload_cap_gb_per_month = 2 [
+    json_name = "malware_scanning_on_upload_cap_gb_per_month"
+  ];
+
+  bool malware_scanning_on_upload_enabled = 3 [json_name = "malware_scanning_on_upload_enabled"];
+
+  bool override_subscription_settings_enabled = 4 [
+    json_name = "override_subscription_settings_enabled"
+  ];
+
+  bool sensitive_data_discovery_enabled = 5 [json_name = "sensitive_data_discovery_enabled"];
+
+  string storage_account_id = 6 [json_name = "storage_account_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSecurityCenterSubscriptionPricing version is 1
+message AzurermSecurityCenterSubscriptionPricing {
+  string id = 1;
+
+  string resource_type = 2 [json_name = "resource_type"];
+
+  string subplan = 3;
+
+  string tier = 4;
+
+  repeated Extension extension = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Extension {
+    map<string, string> additional_extension_properties = 1 [json_name = "additional_extension_properties"];
+
+    string name = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSecurityCenterWorkspace version is 0
+message AzurermSecurityCenterWorkspace {
+  string id = 1;
+
+  string scope = 2;
+
+  string workspace_id = 3 [json_name = "workspace_id"];
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

@@ -1,0 +1,298 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermCosmosdbAccount version is 0
+message AzurermCosmosdbAccount {
+  repeated Capabilities capabilities = 1;
+
+  repeated string connection_strings = 2 [json_name = "connection_strings"];
+
+  repeated ConsistencyPolicy consistency_policy = 3 [json_name = "consistency_policy"];
+
+  bool enable_automatic_failover = 4 [json_name = "enable_automatic_failover"];
+
+  bool enable_free_tier = 5 [json_name = "enable_free_tier"];
+
+  bool enable_multiple_write_locations = 6 [json_name = "enable_multiple_write_locations"];
+
+  string endpoint = 7;
+
+  repeated GeoLocation geo_location = 8 [json_name = "geo_location"];
+
+  string id = 9;
+
+  string ip_range_filter = 10 [json_name = "ip_range_filter"];
+
+  bool is_virtual_network_filter_enabled = 11 [json_name = "is_virtual_network_filter_enabled"];
+
+  string key_vault_key_id = 12 [json_name = "key_vault_key_id"];
+
+  string kind = 13;
+
+  string location = 14;
+
+  string name = 15;
+
+  string offer_type = 16 [json_name = "offer_type"];
+
+  string primary_key = 17 [json_name = "primary_key"];
+
+  string primary_mongodb_connection_string = 18 [json_name = "primary_mongodb_connection_string"];
+
+  string primary_readonly_key = 19 [json_name = "primary_readonly_key"];
+
+  string primary_readonly_mongodb_connection_string = 20 [
+    json_name = "primary_readonly_mongodb_connection_string"
+  ];
+
+  string primary_readonly_sql_connection_string = 21 [
+    json_name = "primary_readonly_sql_connection_string"
+  ];
+
+  string primary_sql_connection_string = 22 [json_name = "primary_sql_connection_string"];
+
+  repeated string read_endpoints = 23 [json_name = "read_endpoints"];
+
+  string resource_group_name = 24 [json_name = "resource_group_name"];
+
+  string secondary_key = 25 [json_name = "secondary_key"];
+
+  string secondary_mongodb_connection_string = 26 [json_name = "secondary_mongodb_connection_string"];
+
+  string secondary_readonly_key = 27 [json_name = "secondary_readonly_key"];
+
+  string secondary_readonly_mongodb_connection_string = 28 [
+    json_name = "secondary_readonly_mongodb_connection_string"
+  ];
+
+  string secondary_readonly_sql_connection_string = 29 [
+    json_name = "secondary_readonly_sql_connection_string"
+  ];
+
+  string secondary_sql_connection_string = 30 [json_name = "secondary_sql_connection_string"];
+
+  map<string, string> tags = 31;
+
+  repeated VirtualNetworkRule virtual_network_rule = 32 [json_name = "virtual_network_rule"];
+
+  repeated string write_endpoints = 33 [json_name = "write_endpoints"];
+
+  repeated Timeouts timeouts = 34;
+
+  google.protobuf.Value for_each = 35 [json_name = "for_each"];
+
+  repeated string depends_on = 36 [json_name = "depends_on"];
+
+  int32 count = 37;
+
+  string provider = 38;
+
+  terraform.v1.Lifecycle lifecycle = 39;
+
+  message Capabilities {
+    // name: string
+    string name = 1;
+  }
+
+  message ConsistencyPolicy {
+    // consistency_level: string
+    string consistency_level = 1 [json_name = "consistency_level"];
+
+    // max_interval_in_seconds: number
+    int64 max_interval_in_seconds = 2 [json_name = "max_interval_in_seconds"];
+
+    // max_staleness_prefix: number
+    int64 max_staleness_prefix = 3 [json_name = "max_staleness_prefix"];
+  }
+
+  message GeoLocation {
+    // failover_priority: number
+    int64 failover_priority = 1 [json_name = "failover_priority"];
+
+    // id: string
+    string id = 2;
+
+    // location: string
+    string location = 3;
+  }
+
+  message VirtualNetworkRule {
+    // id: string
+    string id = 1;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermCosmosdbMongoDatabase version is 1
+message AzurermCosmosdbMongoDatabase {
+  string account_name = 1 [json_name = "account_name"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermCosmosdbRestorableDatabaseAccounts version is 0
+message AzurermCosmosdbRestorableDatabaseAccounts {
+  repeated Accounts accounts = 1;
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Accounts {
+    // api_type: string
+    string api_type = 1 [json_name = "api_type"];
+
+    // creation_time: string
+    string creation_time = 2 [json_name = "creation_time"];
+
+    // deletion_time: string
+    string deletion_time = 3 [json_name = "deletion_time"];
+
+    // id: string
+    string id = 4;
+
+    // restorable_locations: list of object
+    repeated RestorableLocations restorable_locations = 5 [json_name = "restorable_locations"];
+
+    message RestorableLocations {
+      // creation_time: string
+      string creation_time = 1 [json_name = "creation_time"];
+
+      // deletion_time: string
+      string deletion_time = 2 [json_name = "deletion_time"];
+
+      // location: string
+      string location = 3;
+
+      // regional_database_account_instance_id: string
+      string regional_database_account_instance_id = 4 [
+        json_name = "regional_database_account_instance_id"
+      ];
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermCosmosdbSqlDatabase version is 1
+message AzurermCosmosdbSqlDatabase {
+  string account_name = 1 [json_name = "account_name"];
+
+  repeated AutoscaleSettings autoscale_settings = 2 [json_name = "autoscale_settings"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  int64 throughput = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message AutoscaleSettings {
+    // max_throughput: number
+    int64 max_throughput = 1 [json_name = "max_throughput"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermCosmosdbSqlRoleDefinition version is 0
+message AzurermCosmosdbSqlRoleDefinition {
+  string account_name = 1 [json_name = "account_name"];
+
+  repeated string assignable_scopes = 2 [json_name = "assignable_scopes"];
+
+  string id = 3;
+
+  string name = 4;
+
+  repeated Permissions permissions = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string role_definition_id = 7 [json_name = "role_definition_id"];
+
+  string type = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Permissions {
+    // data_actions: set of string
+    repeated string data_actions = 1 [json_name = "data_actions"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

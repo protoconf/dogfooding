@@ -1,0 +1,195 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermMysqlFlexibleServer version is 0
+message AzurermMysqlFlexibleServer {
+  string administrator_login = 1 [json_name = "administrator_login"];
+
+  int64 backup_retention_days = 2 [json_name = "backup_retention_days"];
+
+  string delegated_subnet_id = 3 [json_name = "delegated_subnet_id"];
+
+  string fqdn = 4;
+
+  bool geo_redundant_backup_enabled = 5 [json_name = "geo_redundant_backup_enabled"];
+
+  repeated HighAvailability high_availability = 6 [json_name = "high_availability"];
+
+  string id = 7;
+
+  string location = 8;
+
+  repeated MaintenanceWindow maintenance_window = 9 [json_name = "maintenance_window"];
+
+  string name = 10;
+
+  string private_dns_zone_id = 11 [json_name = "private_dns_zone_id"];
+
+  bool public_network_access_enabled = 12 [json_name = "public_network_access_enabled"];
+
+  int64 replica_capacity = 13 [json_name = "replica_capacity"];
+
+  string replication_role = 14 [json_name = "replication_role"];
+
+  string resource_group_name = 15 [json_name = "resource_group_name"];
+
+  string restore_point_in_time = 16 [json_name = "restore_point_in_time"];
+
+  string sku_name = 17 [json_name = "sku_name"];
+
+  repeated Storage storage = 18;
+
+  map<string, string> tags = 19;
+
+  string version = 20;
+
+  string zone = 21;
+
+  repeated Timeouts timeouts = 22;
+
+  google.protobuf.Value for_each = 23 [json_name = "for_each"];
+
+  repeated string depends_on = 24 [json_name = "depends_on"];
+
+  int32 count = 25;
+
+  string provider = 26;
+
+  terraform.v1.Lifecycle lifecycle = 27;
+
+  message HighAvailability {
+    // mode: string
+    string mode = 1;
+
+    // standby_availability_zone: string
+    string standby_availability_zone = 2 [json_name = "standby_availability_zone"];
+  }
+
+  message MaintenanceWindow {
+    // day_of_week: number
+    int64 day_of_week = 1 [json_name = "day_of_week"];
+
+    // start_hour: number
+    int64 start_hour = 2 [json_name = "start_hour"];
+
+    // start_minute: number
+    int64 start_minute = 3 [json_name = "start_minute"];
+  }
+
+  message Storage {
+    // auto_grow_enabled: bool
+    bool auto_grow_enabled = 1 [json_name = "auto_grow_enabled"];
+
+    // io_scaling_enabled: bool
+    bool io_scaling_enabled = 2 [json_name = "io_scaling_enabled"];
+
+    // iops: number
+    int64 iops = 3;
+
+    // size_gb: number
+    int64 size_gb = 4 [json_name = "size_gb"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMysqlServer version is 0
+message AzurermMysqlServer {
+  string administrator_login = 1 [json_name = "administrator_login"];
+
+  bool auto_grow_enabled = 2 [json_name = "auto_grow_enabled"];
+
+  int64 backup_retention_days = 3 [json_name = "backup_retention_days"];
+
+  string fqdn = 4;
+
+  bool geo_redundant_backup_enabled = 5 [json_name = "geo_redundant_backup_enabled"];
+
+  string id = 6;
+
+  repeated Identity identity = 7;
+
+  bool infrastructure_encryption_enabled = 8 [json_name = "infrastructure_encryption_enabled"];
+
+  string location = 9;
+
+  string name = 10;
+
+  bool public_network_access_enabled = 11 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 12 [json_name = "resource_group_name"];
+
+  string restore_point_in_time = 13 [json_name = "restore_point_in_time"];
+
+  string sku_name = 14 [json_name = "sku_name"];
+
+  bool ssl_enforcement_enabled = 15 [json_name = "ssl_enforcement_enabled"];
+
+  string ssl_minimal_tls_version_enforced = 16 [json_name = "ssl_minimal_tls_version_enforced"];
+
+  int64 storage_mb = 17 [json_name = "storage_mb"];
+
+  map<string, string> tags = 18;
+
+  repeated ThreatDetectionPolicy threat_detection_policy = 19 [json_name = "threat_detection_policy"];
+
+  string version = 20;
+
+  repeated Timeouts timeouts = 21;
+
+  google.protobuf.Value for_each = 22 [json_name = "for_each"];
+
+  repeated string depends_on = 23 [json_name = "depends_on"];
+
+  int32 count = 24;
+
+  string provider = 25;
+
+  terraform.v1.Lifecycle lifecycle = 26;
+
+  message Identity {
+    // principal_id: string
+    string principal_id = 1 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 2 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 3;
+  }
+
+  message ThreatDetectionPolicy {
+    // disabled_alerts: set of string
+    repeated string disabled_alerts = 1 [json_name = "disabled_alerts"];
+
+    // email_account_admins: bool
+    bool email_account_admins = 2 [json_name = "email_account_admins"];
+
+    // email_addresses: set of string
+    repeated string email_addresses = 3 [json_name = "email_addresses"];
+
+    // enabled: bool
+    bool enabled = 4;
+
+    // retention_days: number
+    int64 retention_days = 5 [json_name = "retention_days"];
+
+    // storage_account_access_key: string
+    string storage_account_access_key = 6 [json_name = "storage_account_access_key"];
+
+    // storage_endpoint: string
+    string storage_endpoint = 7 [json_name = "storage_endpoint"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

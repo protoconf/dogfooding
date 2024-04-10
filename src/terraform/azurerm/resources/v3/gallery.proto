@@ -1,0 +1,130 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermGalleryApplication version is 0
+message AzurermGalleryApplication {
+  string description = 1;
+
+  string end_of_life_date = 2 [json_name = "end_of_life_date"];
+
+  string eula = 3;
+
+  string gallery_id = 4 [json_name = "gallery_id"];
+
+  string id = 5;
+
+  string location = 6;
+
+  string name = 7;
+
+  string privacy_statement_uri = 8 [json_name = "privacy_statement_uri"];
+
+  string release_note_uri = 9 [json_name = "release_note_uri"];
+
+  string supported_os_type = 10 [json_name = "supported_os_type"];
+
+  map<string, string> tags = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermGalleryApplicationVersion version is 0
+message AzurermGalleryApplicationVersion {
+  string config_file = 1 [json_name = "config_file"];
+
+  bool enable_health_check = 2 [json_name = "enable_health_check"];
+
+  string end_of_life_date = 3 [json_name = "end_of_life_date"];
+
+  bool exclude_from_latest = 4 [json_name = "exclude_from_latest"];
+
+  string gallery_application_id = 5 [json_name = "gallery_application_id"];
+
+  string id = 6;
+
+  string location = 7;
+
+  string name = 8;
+
+  string package_file = 9 [json_name = "package_file"];
+
+  map<string, string> tags = 10;
+
+  ManageAction manage_action = 11 [json_name = "manage_action"];
+
+  Source source = 12;
+
+  repeated TargetRegion target_region = 13 [json_name = "target_region"];
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message ManageAction {
+    string install = 1;
+
+    string remove = 2;
+
+    string update = 3;
+  }
+
+  message Source {
+    string default_configuration_link = 1 [json_name = "default_configuration_link"];
+
+    string media_link = 2 [json_name = "media_link"];
+  }
+
+  message TargetRegion {
+    bool exclude_from_latest = 1 [json_name = "exclude_from_latest"];
+
+    string name = 2;
+
+    int64 regional_replica_count = 3 [json_name = "regional_replica_count"];
+
+    string storage_account_type = 4 [json_name = "storage_account_type"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

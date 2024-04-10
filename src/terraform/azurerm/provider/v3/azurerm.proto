@@ -1,0 +1,260 @@
+syntax = "proto2";
+
+// Provider: azurerm 3
+package terraform.azurerm.provider.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// Azurerm version is 0
+message Azurerm {
+  repeated string auxiliary_tenant_ids = 1 [json_name = "auxiliary_tenant_ids"];
+
+  // Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service
+  // Principal using a Client Certificate
+  optional string client_certificate = 2 [json_name = "client_certificate"];
+
+  // The password associated with the Client Certificate. For use when authenticating
+  // as a Service Principal using a Client Certificate
+  optional string client_certificate_password = 3 [json_name = "client_certificate_password"];
+
+  // The path to the Client Certificate associated with the Service Principal for use
+  // when authenticating as a Service Principal using a Client Certificate.
+  optional string client_certificate_path = 4 [json_name = "client_certificate_path"];
+
+  // The Client ID which should be used.
+  optional string client_id = 5 [json_name = "client_id"];
+
+  // The path to a file containing the Client ID which should be used.
+  optional string client_id_file_path = 6 [json_name = "client_id_file_path"];
+
+  // The Client Secret which should be used. For use When authenticating as a Service
+  // Principal using a Client Secret.
+  optional string client_secret = 7 [json_name = "client_secret"];
+
+  // The path to a file containing the Client Secret which should be used. For use
+  // When authenticating as a Service Principal using a Client Secret.
+  optional string client_secret_file_path = 8 [json_name = "client_secret_file_path"];
+
+  // This will disable the x-ms-correlation-request-id header.
+  optional bool disable_correlation_request_id = 9 [json_name = "disable_correlation_request_id"];
+
+  // This will disable the Terraform Partner ID which is used if a custom `partner_id`
+  // isn't specified.
+  optional bool disable_terraform_partner_id = 10 [json_name = "disable_terraform_partner_id"];
+
+  // The Cloud Environment which should be used. Possible values are public,
+  // usgovernment, and china. Defaults to public.
+  optional string environment = 11;
+
+  // The Hostname which should be used for the Azure Metadata Service.
+  optional string metadata_host = 12 [json_name = "metadata_host"];
+
+  // The path to a custom endpoint for Managed Service Identity - in most
+  // circumstances this should be detected automatically.
+  optional string msi_endpoint = 13 [json_name = "msi_endpoint"];
+
+  // The bearer token for the request to the OIDC provider. For use when
+  // authenticating as a Service Principal using OpenID Connect.
+  optional string oidc_request_token = 14 [json_name = "oidc_request_token"];
+
+  // The URL for the OIDC provider from which to request an ID token. For use when
+  // authenticating as a Service Principal using OpenID Connect.
+  optional string oidc_request_url = 15 [json_name = "oidc_request_url"];
+
+  // The OIDC ID token for use when authenticating as a Service Principal using OpenID
+  // Connect.
+  optional string oidc_token = 16 [json_name = "oidc_token"];
+
+  // The path to a file containing an OIDC ID token for use when authenticating as a
+  // Service Principal using OpenID Connect.
+  optional string oidc_token_file_path = 17 [json_name = "oidc_token_file_path"];
+
+  // A GUID/UUID that is registered with Microsoft to facilitate partner resource
+  // usage attribution.
+  optional string partner_id = 18 [json_name = "partner_id"];
+
+  // Should the AzureRM Provider skip registering all of the Resource Providers that
+  // it supports, if they're not already registered?
+  optional bool skip_provider_registration = 19 [json_name = "skip_provider_registration"];
+
+  // Should the AzureRM Provider use AzureAD to access the Storage Data Plane API's?
+  optional bool storage_use_azuread = 20 [json_name = "storage_use_azuread"];
+
+  // The Subscription ID which should be used.
+  optional string subscription_id = 21 [json_name = "subscription_id"];
+
+  // The Tenant ID which should be used.
+  optional string tenant_id = 22 [json_name = "tenant_id"];
+
+  // Allow Azure AKS Workload Identity to be used for Authentication.
+  optional bool use_aks_workload_identity = 23 [json_name = "use_aks_workload_identity"];
+
+  // Allow Azure CLI to be used for Authentication.
+  optional bool use_cli = 24 [json_name = "use_cli"];
+
+  // Allow Managed Service Identity to be used for Authentication.
+  optional bool use_msi = 25 [json_name = "use_msi"];
+
+  // Allow OpenID Connect to be used for authentication
+  optional bool use_oidc = 26 [json_name = "use_oidc"];
+
+  optional Features features = 27;
+
+  optional google.protobuf.Value for_each = 28 [json_name = "for_each"];
+
+  repeated string depends_on = 29 [json_name = "depends_on"];
+
+  optional int32 count = 30;
+
+  optional string provider = 31;
+
+  optional terraform.v1.Lifecycle lifecycle = 32;
+
+  optional string alias = 33;
+
+  optional string provider_fqdn = 34 [
+    default = "registry.terraform.io/hashicorp/azurerm"
+  ];
+
+  optional string provider_version = 35 [default = "3.95.0"];
+
+  message Features {
+    optional ApiManagement api_management = 1 [json_name = "api_management"];
+
+    optional AppConfiguration app_configuration = 2 [json_name = "app_configuration"];
+
+    optional ApplicationInsights application_insights = 3 [json_name = "application_insights"];
+
+    optional CognitiveAccount cognitive_account = 4 [json_name = "cognitive_account"];
+
+    optional KeyVault key_vault = 5 [json_name = "key_vault"];
+
+    optional LogAnalyticsWorkspace log_analytics_workspace = 6 [json_name = "log_analytics_workspace"];
+
+    optional ManagedDisk managed_disk = 7 [json_name = "managed_disk"];
+
+    optional PostgresqlFlexibleServer postgresql_flexible_server = 8 [json_name = "postgresql_flexible_server"];
+
+    optional ResourceGroup resource_group = 9 [json_name = "resource_group"];
+
+    optional Subscription subscription = 10;
+
+    optional TemplateDeployment template_deployment = 11 [json_name = "template_deployment"];
+
+    optional VirtualMachine virtual_machine = 12 [json_name = "virtual_machine"];
+
+    optional VirtualMachineScaleSet virtual_machine_scale_set = 13 [json_name = "virtual_machine_scale_set"];
+
+    message ApiManagement {
+      optional bool purge_soft_delete_on_destroy = 1 [json_name = "purge_soft_delete_on_destroy"];
+
+      optional bool recover_soft_deleted = 2 [json_name = "recover_soft_deleted"];
+    }
+
+    message AppConfiguration {
+      optional bool purge_soft_delete_on_destroy = 1 [json_name = "purge_soft_delete_on_destroy"];
+
+      optional bool recover_soft_deleted = 2 [json_name = "recover_soft_deleted"];
+    }
+
+    message ApplicationInsights {
+      optional bool disable_generated_rule = 1 [json_name = "disable_generated_rule"];
+    }
+
+    message CognitiveAccount {
+      optional bool purge_soft_delete_on_destroy = 1 [json_name = "purge_soft_delete_on_destroy"];
+    }
+
+    message KeyVault {
+      // When enabled soft-deleted `azurerm_key_vault` resources will be permanently
+      // deleted (e.g purged), when destroyed
+      optional bool purge_soft_delete_on_destroy = 1 [json_name = "purge_soft_delete_on_destroy"];
+
+      // When enabled soft-deleted `azurerm_key_vault_certificate` resources will be
+      // permanently deleted (e.g purged), when destroyed
+      optional bool purge_soft_deleted_certificates_on_destroy = 2 [
+        json_name = "purge_soft_deleted_certificates_on_destroy"
+      ];
+
+      // When enabled soft-deleted `azurerm_key_vault_managed_hardware_security_module`
+      // resources will be permanently deleted (e.g purged), when destroyed
+      optional bool purge_soft_deleted_hardware_security_modules_on_destroy = 3 [
+        json_name = "purge_soft_deleted_hardware_security_modules_on_destroy"
+      ];
+
+      // When enabled soft-deleted `azurerm_key_vault_key` resources will be permanently
+      // deleted (e.g purged), when destroyed
+      optional bool purge_soft_deleted_keys_on_destroy = 4 [json_name = "purge_soft_deleted_keys_on_destroy"];
+
+      // When enabled soft-deleted `azurerm_key_vault_secret` resources will be
+      // permanently deleted (e.g purged), when destroyed
+      optional bool purge_soft_deleted_secrets_on_destroy = 5 [
+        json_name = "purge_soft_deleted_secrets_on_destroy"
+      ];
+
+      // When enabled soft-deleted `azurerm_key_vault_certificate` resources will be
+      // restored, instead of creating new ones
+      optional bool recover_soft_deleted_certificates = 6 [json_name = "recover_soft_deleted_certificates"];
+
+      // When enabled soft-deleted `azurerm_key_vault` resources will be restored, instead
+      // of creating new ones
+      optional bool recover_soft_deleted_key_vaults = 7 [json_name = "recover_soft_deleted_key_vaults"];
+
+      // When enabled soft-deleted `azurerm_key_vault_key` resources will be restored,
+      // instead of creating new ones
+      optional bool recover_soft_deleted_keys = 8 [json_name = "recover_soft_deleted_keys"];
+
+      // When enabled soft-deleted `azurerm_key_vault_secret` resources will be restored,
+      // instead of creating new ones
+      optional bool recover_soft_deleted_secrets = 9 [json_name = "recover_soft_deleted_secrets"];
+    }
+
+    message LogAnalyticsWorkspace {
+      optional bool permanently_delete_on_destroy = 1 [json_name = "permanently_delete_on_destroy"];
+    }
+
+    message ManagedDisk {
+      optional bool expand_without_downtime = 1 [json_name = "expand_without_downtime"];
+    }
+
+    message PostgresqlFlexibleServer {
+      optional bool restart_server_on_configuration_value_change = 1 [
+        json_name = "restart_server_on_configuration_value_change"
+      ];
+    }
+
+    message ResourceGroup {
+      optional bool prevent_deletion_if_contains_resources = 1 [
+        json_name = "prevent_deletion_if_contains_resources"
+      ];
+    }
+
+    message Subscription {
+      optional bool prevent_cancellation_on_destroy = 1 [json_name = "prevent_cancellation_on_destroy"];
+    }
+
+    message TemplateDeployment {
+      optional bool delete_nested_items_during_deletion = 1 [json_name = "delete_nested_items_during_deletion"];
+    }
+
+    message VirtualMachine {
+      optional bool delete_os_disk_on_deletion = 1 [json_name = "delete_os_disk_on_deletion"];
+
+      optional bool graceful_shutdown = 2 [json_name = "graceful_shutdown"];
+
+      optional bool skip_shutdown_and_force_delete = 3 [json_name = "skip_shutdown_and_force_delete"];
+    }
+
+    message VirtualMachineScaleSet {
+      optional bool force_delete = 1 [json_name = "force_delete"];
+
+      optional bool reimage_on_manual_upgrade = 2 [json_name = "reimage_on_manual_upgrade"];
+
+      optional bool roll_instances_when_required = 3 [json_name = "roll_instances_when_required"];
+
+      optional bool scale_to_zero_before_deletion = 4 [json_name = "scale_to_zero_before_deletion"];
+    }
+  }
+}

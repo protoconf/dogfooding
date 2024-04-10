@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermImage version is 0
+message AzurermImage {
+  string hyper_v_generation = 1 [json_name = "hyper_v_generation"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string source_virtual_machine_id = 6 [json_name = "source_virtual_machine_id"];
+
+  map<string, string> tags = 7;
+
+  bool zone_resilient = 8 [json_name = "zone_resilient"];
+
+  repeated DataDisk data_disk = 9 [json_name = "data_disk"];
+
+  OsDisk os_disk = 10 [json_name = "os_disk"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message DataDisk {
+    string blob_uri = 1 [json_name = "blob_uri"];
+
+    string caching = 2;
+
+    int64 lun = 3;
+
+    string managed_disk_id = 4 [json_name = "managed_disk_id"];
+
+    int64 size_gb = 5 [json_name = "size_gb"];
+  }
+
+  message OsDisk {
+    string blob_uri = 1 [json_name = "blob_uri"];
+
+    string caching = 2;
+
+    string disk_encryption_set_id = 3 [json_name = "disk_encryption_set_id"];
+
+    string managed_disk_id = 4 [json_name = "managed_disk_id"];
+
+    string os_state = 5 [json_name = "os_state"];
+
+    string os_type = 6 [json_name = "os_type"];
+
+    int64 size_gb = 7 [json_name = "size_gb"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

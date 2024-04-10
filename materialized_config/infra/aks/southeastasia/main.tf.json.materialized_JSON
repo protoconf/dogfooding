@@ -1,0 +1,282 @@
+{
+  "protoFile": "terraform/v1/terraform.proto",
+  "value": {
+    "@type": "type.googleapis.com/terraform.v1.Terraform",
+    "resource": {
+      "azurerm_resource_group": {
+        "resource_group": {
+          "location": "southeastasia",
+          "name": "pconf-dev-southeastasia"
+        }
+      },
+      "helm_release": {
+        "uptrace": {
+          "chart": "uptrace",
+          "create_namespace": true,
+          "name": "uptrace",
+          "namespace": "uptrace",
+          "repository": "https://charts.uptrace.dev",
+          "values": [
+            "clickhouse:\n  enabled: true\n  image:\n    pullPolicy: IfNotPresent\n    repository: clickhouse/clickhouse-server\n    tag: \"23.7\"\n  imagePullSecrets: []\n  persistence:\n    enabled: true\n    size: 80Gi\n    storageClassName: \"\"\ningress:\n  annotations: {}\n  className: webapprouting.kubernetes.azure.com\n  enabled: true\n  hosts:\n  - host: uptrace-southeastasia.protoconf.dev\n    paths:\n    - path: /\n      pathType: Prefix\notelcol:\n  enabled: false\npostgresql:\n  enabled: true\n  image:\n    pullPolicy: IfNotPresent\n    repository: postgres\n    tag: 15-alpine\n  imagePullSecrets: []\n"
+          ],
+          "depends_on": [
+            "module.aks_cluster"
+          ]
+        }
+      },
+      "kubernetes_daemon_set_v1": {
+        "protoconf-agent": {
+          "metadata": {
+            "labels": {
+              "port_name": "protoconf"
+            },
+            "name": "protoconf-agent",
+            "namespace": "protoconf"
+          },
+          "spec": {
+            "selector": {
+              "match_labels": {
+                "port_name": "protoconf"
+              }
+            },
+            "template": {
+              "metadata": {
+                "labels": {
+                  "port_name": "protoconf"
+                }
+              },
+              "spec": {
+                "container": [
+                  {
+                    "args": [
+                      "agent",
+                      "-store",
+                      "etcd",
+                      "-store-address",
+                      "etcd:2380"
+                    ],
+                    "image": "ghcr.io/protoconf/protoconf:latest",
+                    "name": "protoconf-agent",
+                    "port": [
+                      {
+                        "container_port": "4300",
+                        "name": "protoconf",
+                        "protocol": "TCP"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "kubernetes_namespace": {
+        "protoconf": {
+          "metadata": {
+            "name": "protoconf"
+          }
+        }
+      },
+      "kubernetes_service": {
+        "etcd": {
+          "metadata": {
+            "name": "etcd",
+            "namespace": "protoconf"
+          },
+          "spec": {
+            "cluster_ip": "None",
+            "selector": {
+              "port_name": "etcd"
+            },
+            "port": [
+              {
+                "name": "client",
+                "port": "2379",
+                "protocol": "TCP",
+                "target_port": "2379"
+              }
+            ]
+          }
+        },
+        "etcd-client": {
+          "metadata": {
+            "name": "etcd-client",
+            "namespace": "protoconf"
+          },
+          "spec": {
+            "selector": {
+              "port_name": "etcd-client"
+            },
+            "port": [
+              {
+                "name": "etcd-client",
+                "port": "2379",
+                "protocol": "TCP",
+                "target_port": "2379"
+              }
+            ]
+          }
+        },
+        "protoconf": {
+          "metadata": {
+            "name": "protoconf",
+            "namespace": "protoconf"
+          },
+          "spec": {
+            "selector": {
+              "port_name": "protoconf"
+            },
+            "port": [
+              {
+                "name": "protoconf",
+                "port": "4300",
+                "protocol": "TCP",
+                "target_port": "4300"
+              }
+            ]
+          }
+        }
+      },
+      "kubernetes_stateful_set": {
+        "etcd": {
+          "metadata": {
+            "labels": {
+              "port_name": "etcd"
+            },
+            "name": "etcd",
+            "namespace": "protoconf"
+          },
+          "spec": {
+            "replicas": "3",
+            "service_name": "etcd",
+            "selector": {
+              "match_labels": {
+                "port_name": "etcd"
+              }
+            },
+            "template": {
+              "metadata": {
+                "labels": {
+                  "port_name": "etcd"
+                }
+              },
+              "spec": {
+                "container": [
+                  {
+                    "command": [
+                      "sh",
+                      "-c",
+                      "etcd --name $${HOSTNAME} --advertise-client-urls http://$${HOSTNAME}.etcd:2379 --initial-advertise-peer-urls http://$${HOSTNAME}:2380 --initial-cluster etcd-0=http://etcd-0.etcd:2380,etcd-1=http://etcd-1.etcd:2380,etcd-2=http://etcd-2.etcd:2380"
+                    ],
+                    "image": "quay.io/coreos/etcd:latest",
+                    "name": "etcd",
+                    "env": [
+                      {
+                        "name": "ETCD_LISTEN_PEER_URLS",
+                        "value": "http://0.0.0.0:2380"
+                      },
+                      {
+                        "name": "ETCD_LISTEN_CLIENT_URLS",
+                        "value": "http://0.0.0.0:2379"
+                      },
+                      {
+                        "name": "ETCD_DATA_DIR",
+                        "value": "/var/run/etcd/default.etcd"
+                      }
+                    ],
+                    "port": [
+                      {
+                        "container_port": "2379",
+                        "name": "etcd-client",
+                        "protocol": "TCP"
+                      },
+                      {
+                        "container_port": "2380",
+                        "name": "peer",
+                        "protocol": "TCP"
+                      },
+                      {
+                        "container_port": "2379",
+                        "name": "client",
+                        "protocol": "TCP"
+                      }
+                    ],
+                    "volume_mount": [
+                      {
+                        "mount_path": "/var/run/etcd",
+                        "name": "data"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            "volume_claim_template": [
+              {
+                "metadata": {
+                  "name": "data",
+                  "namespace": "protoconf"
+                },
+                "spec": {
+                  "access_modes": [
+                    "ReadWriteOnce"
+                  ],
+                  "resources": {
+                    "requests": {
+                      "storage": "10Gi"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "provider": {
+      "azurerm": [
+        {
+          "features": {
+            "resource_group": {
+              "prevent_deletion_if_contains_resources": false
+            }
+          }
+        }
+      ],
+      "helm": [
+        {
+          "kubernetes": {
+            "client_certificate": "${base64decode(module.aks_cluster.client_certificate)}",
+            "client_key": "${base64decode(module.aks_cluster.client_key)}",
+            "cluster_ca_certificate": "${base64decode(module.aks_cluster.cluster_ca_certificate)}",
+            "host": "${module.aks_cluster.host}"
+          }
+        }
+      ],
+      "http": [
+        {}
+      ],
+      "kubernetes": [
+        {
+          "client_certificate": "${base64decode(module.aks_cluster.client_certificate)}",
+          "client_key": "${base64decode(module.aks_cluster.client_key)}",
+          "cluster_ca_certificate": "${base64decode(module.aks_cluster.cluster_ca_certificate)}",
+          "host": "${module.aks_cluster.host}"
+        }
+      ]
+    },
+    "module": {
+      "aks_cluster": {
+        "depends_on": [
+          "azurerm_resource_group.resource_group"
+        ],
+        "prefix": "pconf-dev-southeastasia",
+        "rbac_aad": false,
+        "resource_group_name": "${azurerm_resource_group.resource_group.name}",
+        "source": "Azure/aks/azurerm",
+        "version": "7.5.0"
+      }
+    }
+  }
+}

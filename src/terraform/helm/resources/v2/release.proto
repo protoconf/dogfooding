@@ -1,0 +1,209 @@
+syntax = "proto3";
+
+// Provider: helm 2
+package terraform.helm.resources.v2;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// HelmRelease version is 1
+message HelmRelease {
+  // If set, installation process purges chart on fail. The wait flag will be set
+  // automatically if atomic is used
+  bool atomic = 1;
+
+  // Chart name to be installed. A path may be used.
+  string chart = 2;
+
+  // Allow deletion of new resources created in this upgrade when upgrade fails
+  bool cleanup_on_fail = 3 [json_name = "cleanup_on_fail"];
+
+  // Create the namespace if it does not exist
+  bool create_namespace = 4 [json_name = "create_namespace"];
+
+  // Run helm dependency update before installing the chart
+  bool dependency_update = 5 [json_name = "dependency_update"];
+
+  // Add a custom description
+  string description = 6;
+
+  // Use chart development versions, too. Equivalent to version '>0.0.0-0'. If
+  // `version` is set, this is ignored
+  bool devel = 7;
+
+  // Prevent CRD hooks from, running, but run other hooks.  See helm install
+  // --no-crd-hook
+  bool disable_crd_hooks = 8 [json_name = "disable_crd_hooks"];
+
+  // If set, the installation process will not validate rendered templates against the
+  // Kubernetes OpenAPI Schema
+  bool disable_openapi_validation = 9 [json_name = "disable_openapi_validation"];
+
+  // Prevent hooks from running.
+  bool disable_webhooks = 10 [json_name = "disable_webhooks"];
+
+  // Force resource update through delete/recreate if needed.
+  bool force_update = 11 [json_name = "force_update"];
+
+  string id = 12;
+
+  // Location of public keys used for verification. Used only if `verify` is true
+  string keyring = 13;
+
+  // Run helm lint when planning
+  bool lint = 14;
+
+  // The rendered manifest as JSON.
+  string manifest = 15;
+
+  // Limit the maximum number of revisions saved per release. Use 0 for no limit
+  int64 max_history = 16 [json_name = "max_history"];
+
+  // Status of the deployed release.
+  repeated Metadata metadata = 17;
+
+  // Release name. The length must not be longer than 53 characters.
+  string name = 18;
+
+  // Namespace to install the release into.
+  string namespace = 19;
+
+  // Pass credentials to all domains
+  bool pass_credentials = 20 [json_name = "pass_credentials"];
+
+  // Perform pods restart during upgrade/rollback
+  bool recreate_pods = 21 [json_name = "recreate_pods"];
+
+  // If set, render subchart notes along with the parent
+  bool render_subchart_notes = 22 [json_name = "render_subchart_notes"];
+
+  // Re-use the given name, even if that name is already used. This is unsafe in
+  // production
+  bool replace = 23;
+
+  // Repository where to locate the requested chart. If is a URL the chart is
+  // installed without installing the repository.
+  string repository = 24;
+
+  // The Repositories CA File
+  string repository_ca_file = 25 [json_name = "repository_ca_file"];
+
+  // The repositories cert file
+  string repository_cert_file = 26 [json_name = "repository_cert_file"];
+
+  // The repositories cert key file
+  string repository_key_file = 27 [json_name = "repository_key_file"];
+
+  // Password for HTTP basic authentication
+  string repository_password = 28 [json_name = "repository_password"];
+
+  // Username for HTTP basic authentication
+  string repository_username = 29 [json_name = "repository_username"];
+
+  // When upgrading, reset the values to the ones built into the chart
+  bool reset_values = 30 [json_name = "reset_values"];
+
+  // When upgrading, reuse the last release's values and merge in any overrides. If
+  // 'reset_values' is specified, this is ignored
+  bool reuse_values = 31 [json_name = "reuse_values"];
+
+  // If set, no CRDs will be installed. By default, CRDs are installed if not already
+  // present
+  bool skip_crds = 32 [json_name = "skip_crds"];
+
+  // Status of the release.
+  string status = 33;
+
+  // Time in seconds to wait for any individual kubernetes operation.
+  int64 timeout = 34;
+
+  // List of values in raw yaml format to pass to helm.
+  repeated string values = 35;
+
+  // Verify the package before installing it.
+  bool verify = 36;
+
+  // Specify the exact chart version to install. If this is not specified, the latest
+  // version is installed.
+  string version = 37;
+
+  // Will wait until all resources are in a ready state before marking the release as
+  // successful.
+  bool wait = 38;
+
+  // If wait is enabled, will wait until all Jobs have been completed before marking
+  // the release as successful.
+  bool wait_for_jobs = 39 [json_name = "wait_for_jobs"];
+
+  Postrender postrender = 40;
+
+  repeated Set set = 41;
+
+  repeated SetList set_list = 42 [json_name = "set_list"];
+
+  repeated SetSensitive set_sensitive = 43 [json_name = "set_sensitive"];
+
+  google.protobuf.Value for_each = 44 [json_name = "for_each"];
+
+  repeated string depends_on = 45 [json_name = "depends_on"];
+
+  int32 count = 46;
+
+  string provider = 47;
+
+  terraform.v1.Lifecycle lifecycle = 48;
+
+  message Metadata {
+    // app_version: string
+    string app_version = 1 [json_name = "app_version"];
+
+    // chart: string
+    string chart = 2;
+
+    // name: string
+    string name = 3;
+
+    // namespace: string
+    string namespace = 4;
+
+    // revision: number
+    int64 revision = 5;
+
+    // values: string
+    string values = 6;
+
+    // version: string
+    string version = 7;
+  }
+
+  message Postrender {
+    // an argument to the post-renderer (can specify multiple)
+    repeated string args = 1;
+
+    // The command binary path.
+    string binary_path = 2 [json_name = "binary_path"];
+  }
+
+  message Set {
+    string name = 1;
+
+    string type = 2;
+
+    string value = 3;
+  }
+
+  message SetList {
+    string name = 1;
+
+    repeated string value = 2;
+  }
+
+  message SetSensitive {
+    string name = 1;
+
+    string type = 2;
+
+    string value = 3;
+  }
+}

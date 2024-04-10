@@ -1,0 +1,148 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermPimActiveRoleAssignment version is 0
+message AzurermPimActiveRoleAssignment {
+  string id = 1;
+
+  // The justification of the role assignment.
+  string justification = 2;
+
+  // The principal id.
+  string principal_id = 3 [json_name = "principal_id"];
+
+  // The type of principal.
+  string principal_type = 4 [json_name = "principal_type"];
+
+  // The role definition id.
+  string role_definition_id = 5 [json_name = "role_definition_id"];
+
+  // The scope.
+  string scope = 6;
+
+  Schedule schedule = 7;
+
+  Ticket ticket = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Schedule {
+    // The start date time.
+    string start_date_time = 1 [json_name = "start_date_time"];
+
+    Expiration expiration = 2;
+
+    message Expiration {
+      // The duration of the assignment in days.
+      int64 duration_days = 1 [json_name = "duration_days"];
+
+      // The duration of the assignment in hours.
+      int64 duration_hours = 2 [json_name = "duration_hours"];
+
+      // The end date time of the assignment.
+      string end_date_time = 3 [json_name = "end_date_time"];
+    }
+  }
+
+  message Ticket {
+    // The ticket number.
+    string number = 1;
+
+    // The ticket system.
+    string system = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermPimEligibleRoleAssignment version is 0
+message AzurermPimEligibleRoleAssignment {
+  string id = 1;
+
+  // The justification of the eligible role assignment.
+  string justification = 2;
+
+  // The principal id.
+  string principal_id = 3 [json_name = "principal_id"];
+
+  // The type of principal.
+  string principal_type = 4 [json_name = "principal_type"];
+
+  // The role definition id.
+  string role_definition_id = 5 [json_name = "role_definition_id"];
+
+  // The scope.
+  string scope = 6;
+
+  Schedule schedule = 7;
+
+  Ticket ticket = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Schedule {
+    // The start date time.
+    string start_date_time = 1 [json_name = "start_date_time"];
+
+    Expiration expiration = 2;
+
+    message Expiration {
+      // The duration of the assignment in days.
+      int64 duration_days = 1 [json_name = "duration_days"];
+
+      // The duration of the assignment in hours.
+      int64 duration_hours = 2 [json_name = "duration_hours"];
+
+      // The end date time of the assignment.
+      string end_date_time = 3 [json_name = "end_date_time"];
+    }
+  }
+
+  message Ticket {
+    // The ticket number.
+    string number = 1;
+
+    // The ticket system.
+    string system = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}

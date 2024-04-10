@@ -1,0 +1,184 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermNginxCertificate version is 0
+message AzurermNginxCertificate {
+  string certificate_virtual_path = 1 [json_name = "certificate_virtual_path"];
+
+  string id = 2;
+
+  string key_vault_secret_id = 3 [json_name = "key_vault_secret_id"];
+
+  string key_virtual_path = 4 [json_name = "key_virtual_path"];
+
+  string name = 5;
+
+  string nginx_deployment_id = 6 [json_name = "nginx_deployment_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermNginxConfiguration version is 0
+message AzurermNginxConfiguration {
+  repeated ConfigFile config_file = 1 [json_name = "config_file"];
+
+  string id = 2;
+
+  string nginx_deployment_id = 3 [json_name = "nginx_deployment_id"];
+
+  string package_data = 4 [json_name = "package_data"];
+
+  repeated ProtectedFile protected_file = 5 [json_name = "protected_file"];
+
+  string root_file = 6 [json_name = "root_file"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message ConfigFile {
+    // content: string
+    string content = 1;
+
+    // virtual_path: string
+    string virtual_path = 2 [json_name = "virtual_path"];
+  }
+
+  message ProtectedFile {
+    // content: string
+    string content = 1;
+
+    // virtual_path: string
+    string virtual_path = 2 [json_name = "virtual_path"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermNginxDeployment version is 0
+message AzurermNginxDeployment {
+  string automatic_upgrade_channel = 1 [json_name = "automatic_upgrade_channel"];
+
+  int64 capacity = 2;
+
+  bool diagnose_support_enabled = 3 [json_name = "diagnose_support_enabled"];
+
+  string email = 4;
+
+  repeated FrontendPrivate frontend_private = 5 [json_name = "frontend_private"];
+
+  repeated FrontendPublic frontend_public = 6 [json_name = "frontend_public"];
+
+  string id = 7;
+
+  repeated Identity identity = 8;
+
+  string ip_address = 9 [json_name = "ip_address"];
+
+  string location = 10;
+
+  repeated LoggingStorageAccount logging_storage_account = 11 [json_name = "logging_storage_account"];
+
+  string managed_resource_group = 12 [json_name = "managed_resource_group"];
+
+  string name = 13;
+
+  repeated NetworkInterface network_interface = 14 [json_name = "network_interface"];
+
+  string nginx_version = 15 [json_name = "nginx_version"];
+
+  string resource_group_name = 16 [json_name = "resource_group_name"];
+
+  string sku = 17;
+
+  map<string, string> tags = 18;
+
+  repeated Timeouts timeouts = 19;
+
+  google.protobuf.Value for_each = 20 [json_name = "for_each"];
+
+  repeated string depends_on = 21 [json_name = "depends_on"];
+
+  int32 count = 22;
+
+  string provider = 23;
+
+  terraform.v1.Lifecycle lifecycle = 24;
+
+  message FrontendPrivate {
+    // allocation_method: string
+    string allocation_method = 1 [json_name = "allocation_method"];
+
+    // ip_address: string
+    string ip_address = 2 [json_name = "ip_address"];
+
+    // subnet_id: string
+    string subnet_id = 3 [json_name = "subnet_id"];
+  }
+
+  message FrontendPublic {
+    // ip_address: list of string
+    repeated string ip_address = 1 [json_name = "ip_address"];
+  }
+
+  message Identity {
+    // identity_ids: list of string
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    // principal_id: string
+    string principal_id = 2 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 4;
+  }
+
+  message LoggingStorageAccount {
+    // container_name: string
+    string container_name = 1 [json_name = "container_name"];
+
+    // name: string
+    string name = 2;
+  }
+
+  message NetworkInterface {
+    // subnet_id: string
+    string subnet_id = 1 [json_name = "subnet_id"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

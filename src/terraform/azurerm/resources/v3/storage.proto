@@ -1,0 +1,1729 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermStorageAccount version is 4
+message AzurermStorageAccount {
+  string access_tier = 1 [json_name = "access_tier"];
+
+  string account_kind = 2 [json_name = "account_kind"];
+
+  string account_replication_type = 3 [json_name = "account_replication_type"];
+
+  string account_tier = 4 [json_name = "account_tier"];
+
+  bool allow_nested_items_to_be_public = 5 [json_name = "allow_nested_items_to_be_public"];
+
+  string allowed_copy_scope = 6 [json_name = "allowed_copy_scope"];
+
+  bool cross_tenant_replication_enabled = 7 [json_name = "cross_tenant_replication_enabled"];
+
+  bool default_to_oauth_authentication = 8 [json_name = "default_to_oauth_authentication"];
+
+  string edge_zone = 9 [json_name = "edge_zone"];
+
+  bool enable_https_traffic_only = 10 [json_name = "enable_https_traffic_only"];
+
+  string id = 11;
+
+  bool infrastructure_encryption_enabled = 12 [json_name = "infrastructure_encryption_enabled"];
+
+  bool is_hns_enabled = 13 [json_name = "is_hns_enabled"];
+
+  bool large_file_share_enabled = 14 [json_name = "large_file_share_enabled"];
+
+  bool local_user_enabled = 15 [json_name = "local_user_enabled"];
+
+  string location = 16;
+
+  string min_tls_version = 17 [json_name = "min_tls_version"];
+
+  string name = 18;
+
+  bool nfsv3_enabled = 19 [json_name = "nfsv3_enabled"];
+
+  string primary_access_key = 20 [json_name = "primary_access_key"];
+
+  string primary_blob_connection_string = 21 [json_name = "primary_blob_connection_string"];
+
+  string primary_blob_endpoint = 22 [json_name = "primary_blob_endpoint"];
+
+  string primary_blob_host = 23 [json_name = "primary_blob_host"];
+
+  string primary_blob_internet_endpoint = 24 [json_name = "primary_blob_internet_endpoint"];
+
+  string primary_blob_internet_host = 25 [json_name = "primary_blob_internet_host"];
+
+  string primary_blob_microsoft_endpoint = 26 [json_name = "primary_blob_microsoft_endpoint"];
+
+  string primary_blob_microsoft_host = 27 [json_name = "primary_blob_microsoft_host"];
+
+  string primary_connection_string = 28 [json_name = "primary_connection_string"];
+
+  string primary_dfs_endpoint = 29 [json_name = "primary_dfs_endpoint"];
+
+  string primary_dfs_host = 30 [json_name = "primary_dfs_host"];
+
+  string primary_dfs_internet_endpoint = 31 [json_name = "primary_dfs_internet_endpoint"];
+
+  string primary_dfs_internet_host = 32 [json_name = "primary_dfs_internet_host"];
+
+  string primary_dfs_microsoft_endpoint = 33 [json_name = "primary_dfs_microsoft_endpoint"];
+
+  string primary_dfs_microsoft_host = 34 [json_name = "primary_dfs_microsoft_host"];
+
+  string primary_file_endpoint = 35 [json_name = "primary_file_endpoint"];
+
+  string primary_file_host = 36 [json_name = "primary_file_host"];
+
+  string primary_file_internet_endpoint = 37 [json_name = "primary_file_internet_endpoint"];
+
+  string primary_file_internet_host = 38 [json_name = "primary_file_internet_host"];
+
+  string primary_file_microsoft_endpoint = 39 [json_name = "primary_file_microsoft_endpoint"];
+
+  string primary_file_microsoft_host = 40 [json_name = "primary_file_microsoft_host"];
+
+  string primary_location = 41 [json_name = "primary_location"];
+
+  string primary_queue_endpoint = 42 [json_name = "primary_queue_endpoint"];
+
+  string primary_queue_host = 43 [json_name = "primary_queue_host"];
+
+  string primary_queue_microsoft_endpoint = 44 [json_name = "primary_queue_microsoft_endpoint"];
+
+  string primary_queue_microsoft_host = 45 [json_name = "primary_queue_microsoft_host"];
+
+  string primary_table_endpoint = 46 [json_name = "primary_table_endpoint"];
+
+  string primary_table_host = 47 [json_name = "primary_table_host"];
+
+  string primary_table_microsoft_endpoint = 48 [json_name = "primary_table_microsoft_endpoint"];
+
+  string primary_table_microsoft_host = 49 [json_name = "primary_table_microsoft_host"];
+
+  string primary_web_endpoint = 50 [json_name = "primary_web_endpoint"];
+
+  string primary_web_host = 51 [json_name = "primary_web_host"];
+
+  string primary_web_internet_endpoint = 52 [json_name = "primary_web_internet_endpoint"];
+
+  string primary_web_internet_host = 53 [json_name = "primary_web_internet_host"];
+
+  string primary_web_microsoft_endpoint = 54 [json_name = "primary_web_microsoft_endpoint"];
+
+  string primary_web_microsoft_host = 55 [json_name = "primary_web_microsoft_host"];
+
+  bool public_network_access_enabled = 56 [json_name = "public_network_access_enabled"];
+
+  string queue_encryption_key_type = 57 [json_name = "queue_encryption_key_type"];
+
+  string resource_group_name = 58 [json_name = "resource_group_name"];
+
+  string secondary_access_key = 59 [json_name = "secondary_access_key"];
+
+  string secondary_blob_connection_string = 60 [json_name = "secondary_blob_connection_string"];
+
+  string secondary_blob_endpoint = 61 [json_name = "secondary_blob_endpoint"];
+
+  string secondary_blob_host = 62 [json_name = "secondary_blob_host"];
+
+  string secondary_blob_internet_endpoint = 63 [json_name = "secondary_blob_internet_endpoint"];
+
+  string secondary_blob_internet_host = 64 [json_name = "secondary_blob_internet_host"];
+
+  string secondary_blob_microsoft_endpoint = 65 [json_name = "secondary_blob_microsoft_endpoint"];
+
+  string secondary_blob_microsoft_host = 66 [json_name = "secondary_blob_microsoft_host"];
+
+  string secondary_connection_string = 67 [json_name = "secondary_connection_string"];
+
+  string secondary_dfs_endpoint = 68 [json_name = "secondary_dfs_endpoint"];
+
+  string secondary_dfs_host = 69 [json_name = "secondary_dfs_host"];
+
+  string secondary_dfs_internet_endpoint = 70 [json_name = "secondary_dfs_internet_endpoint"];
+
+  string secondary_dfs_internet_host = 71 [json_name = "secondary_dfs_internet_host"];
+
+  string secondary_dfs_microsoft_endpoint = 72 [json_name = "secondary_dfs_microsoft_endpoint"];
+
+  string secondary_dfs_microsoft_host = 73 [json_name = "secondary_dfs_microsoft_host"];
+
+  string secondary_file_endpoint = 74 [json_name = "secondary_file_endpoint"];
+
+  string secondary_file_host = 75 [json_name = "secondary_file_host"];
+
+  string secondary_file_internet_endpoint = 76 [json_name = "secondary_file_internet_endpoint"];
+
+  string secondary_file_internet_host = 77 [json_name = "secondary_file_internet_host"];
+
+  string secondary_file_microsoft_endpoint = 78 [json_name = "secondary_file_microsoft_endpoint"];
+
+  string secondary_file_microsoft_host = 79 [json_name = "secondary_file_microsoft_host"];
+
+  string secondary_location = 80 [json_name = "secondary_location"];
+
+  string secondary_queue_endpoint = 81 [json_name = "secondary_queue_endpoint"];
+
+  string secondary_queue_host = 82 [json_name = "secondary_queue_host"];
+
+  string secondary_queue_microsoft_endpoint = 83 [json_name = "secondary_queue_microsoft_endpoint"];
+
+  string secondary_queue_microsoft_host = 84 [json_name = "secondary_queue_microsoft_host"];
+
+  string secondary_table_endpoint = 85 [json_name = "secondary_table_endpoint"];
+
+  string secondary_table_host = 86 [json_name = "secondary_table_host"];
+
+  string secondary_table_microsoft_endpoint = 87 [json_name = "secondary_table_microsoft_endpoint"];
+
+  string secondary_table_microsoft_host = 88 [json_name = "secondary_table_microsoft_host"];
+
+  string secondary_web_endpoint = 89 [json_name = "secondary_web_endpoint"];
+
+  string secondary_web_host = 90 [json_name = "secondary_web_host"];
+
+  string secondary_web_internet_endpoint = 91 [json_name = "secondary_web_internet_endpoint"];
+
+  string secondary_web_internet_host = 92 [json_name = "secondary_web_internet_host"];
+
+  string secondary_web_microsoft_endpoint = 93 [json_name = "secondary_web_microsoft_endpoint"];
+
+  string secondary_web_microsoft_host = 94 [json_name = "secondary_web_microsoft_host"];
+
+  bool sftp_enabled = 95 [json_name = "sftp_enabled"];
+
+  bool shared_access_key_enabled = 96 [json_name = "shared_access_key_enabled"];
+
+  string table_encryption_key_type = 97 [json_name = "table_encryption_key_type"];
+
+  map<string, string> tags = 98;
+
+  AzureFilesAuthentication azure_files_authentication = 99 [json_name = "azure_files_authentication"];
+
+  BlobProperties blob_properties = 100 [json_name = "blob_properties"];
+
+  CustomDomain custom_domain = 101 [json_name = "custom_domain"];
+
+  CustomerManagedKey customer_managed_key = 102 [json_name = "customer_managed_key"];
+
+  Identity identity = 103;
+
+  ImmutabilityPolicy immutability_policy = 104 [json_name = "immutability_policy"];
+
+  NetworkRules network_rules = 105 [json_name = "network_rules"];
+
+  QueueProperties queue_properties = 106 [json_name = "queue_properties"];
+
+  Routing routing = 107;
+
+  SasPolicy sas_policy = 108 [json_name = "sas_policy"];
+
+  ShareProperties share_properties = 109 [json_name = "share_properties"];
+
+  StaticWebsite static_website = 110 [json_name = "static_website"];
+
+  repeated Timeouts timeouts = 111;
+
+  google.protobuf.Value for_each = 112 [json_name = "for_each"];
+
+  repeated string depends_on = 113 [json_name = "depends_on"];
+
+  int32 count = 114;
+
+  string provider = 115;
+
+  terraform.v1.Lifecycle lifecycle = 116;
+
+  message AzureFilesAuthentication {
+    string directory_type = 1 [json_name = "directory_type"];
+
+    ActiveDirectory active_directory = 2 [json_name = "active_directory"];
+
+    message ActiveDirectory {
+      string domain_guid = 1 [json_name = "domain_guid"];
+
+      string domain_name = 2 [json_name = "domain_name"];
+
+      string domain_sid = 3 [json_name = "domain_sid"];
+
+      string forest_name = 4 [json_name = "forest_name"];
+
+      string netbios_domain_name = 5 [json_name = "netbios_domain_name"];
+
+      string storage_sid = 6 [json_name = "storage_sid"];
+    }
+  }
+
+  message BlobProperties {
+    bool change_feed_enabled = 1 [json_name = "change_feed_enabled"];
+
+    int64 change_feed_retention_in_days = 2 [json_name = "change_feed_retention_in_days"];
+
+    string default_service_version = 3 [json_name = "default_service_version"];
+
+    bool last_access_time_enabled = 4 [json_name = "last_access_time_enabled"];
+
+    bool versioning_enabled = 5 [json_name = "versioning_enabled"];
+
+    ContainerDeleteRetentionPolicy container_delete_retention_policy = 6 [json_name = "container_delete_retention_policy"];
+
+    repeated CorsRule cors_rule = 7 [json_name = "cors_rule"];
+
+    DeleteRetentionPolicy delete_retention_policy = 8 [json_name = "delete_retention_policy"];
+
+    RestorePolicy restore_policy = 9 [json_name = "restore_policy"];
+
+    message ContainerDeleteRetentionPolicy {
+      int64 days = 1;
+    }
+
+    message CorsRule {
+      repeated string allowed_headers = 1 [json_name = "allowed_headers"];
+
+      repeated string allowed_methods = 2 [json_name = "allowed_methods"];
+
+      repeated string allowed_origins = 3 [json_name = "allowed_origins"];
+
+      repeated string exposed_headers = 4 [json_name = "exposed_headers"];
+
+      int64 max_age_in_seconds = 5 [json_name = "max_age_in_seconds"];
+    }
+
+    message DeleteRetentionPolicy {
+      int64 days = 1;
+    }
+
+    message RestorePolicy {
+      int64 days = 1;
+    }
+  }
+
+  message CustomDomain {
+    string name = 1;
+
+    bool use_subdomain = 2 [json_name = "use_subdomain"];
+  }
+
+  message CustomerManagedKey {
+    string key_vault_key_id = 1 [json_name = "key_vault_key_id"];
+
+    string user_assigned_identity_id = 2 [json_name = "user_assigned_identity_id"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message ImmutabilityPolicy {
+    bool allow_protected_append_writes = 1 [json_name = "allow_protected_append_writes"];
+
+    int64 period_since_creation_in_days = 2 [json_name = "period_since_creation_in_days"];
+
+    string state = 3;
+  }
+
+  message NetworkRules {
+    repeated string bypass = 1;
+
+    string default_action = 2 [json_name = "default_action"];
+
+    repeated string ip_rules = 3 [json_name = "ip_rules"];
+
+    repeated string virtual_network_subnet_ids = 4 [json_name = "virtual_network_subnet_ids"];
+
+    repeated PrivateLinkAccess private_link_access = 5 [json_name = "private_link_access"];
+
+    message PrivateLinkAccess {
+      string endpoint_resource_id = 1 [json_name = "endpoint_resource_id"];
+
+      string endpoint_tenant_id = 2 [json_name = "endpoint_tenant_id"];
+    }
+  }
+
+  message QueueProperties {
+    repeated CorsRule cors_rule = 1 [json_name = "cors_rule"];
+
+    HourMetrics hour_metrics = 2 [json_name = "hour_metrics"];
+
+    Logging logging = 3;
+
+    MinuteMetrics minute_metrics = 4 [json_name = "minute_metrics"];
+
+    message CorsRule {
+      repeated string allowed_headers = 1 [json_name = "allowed_headers"];
+
+      repeated string allowed_methods = 2 [json_name = "allowed_methods"];
+
+      repeated string allowed_origins = 3 [json_name = "allowed_origins"];
+
+      repeated string exposed_headers = 4 [json_name = "exposed_headers"];
+
+      int64 max_age_in_seconds = 5 [json_name = "max_age_in_seconds"];
+    }
+
+    message HourMetrics {
+      bool enabled = 1;
+
+      bool include_apis = 2 [json_name = "include_apis"];
+
+      int64 retention_policy_days = 3 [json_name = "retention_policy_days"];
+
+      string version = 4;
+    }
+
+    message Logging {
+      bool delete = 1;
+
+      bool read = 2;
+
+      int64 retention_policy_days = 3 [json_name = "retention_policy_days"];
+
+      string version = 4;
+
+      bool write = 5;
+    }
+
+    message MinuteMetrics {
+      bool enabled = 1;
+
+      bool include_apis = 2 [json_name = "include_apis"];
+
+      int64 retention_policy_days = 3 [json_name = "retention_policy_days"];
+
+      string version = 4;
+    }
+  }
+
+  message Routing {
+    string choice = 1;
+
+    bool publish_internet_endpoints = 2 [json_name = "publish_internet_endpoints"];
+
+    bool publish_microsoft_endpoints = 3 [json_name = "publish_microsoft_endpoints"];
+  }
+
+  message SasPolicy {
+    string expiration_action = 1 [json_name = "expiration_action"];
+
+    string expiration_period = 2 [json_name = "expiration_period"];
+  }
+
+  message ShareProperties {
+    repeated CorsRule cors_rule = 1 [json_name = "cors_rule"];
+
+    RetentionPolicy retention_policy = 2 [json_name = "retention_policy"];
+
+    Smb smb = 3;
+
+    message CorsRule {
+      repeated string allowed_headers = 1 [json_name = "allowed_headers"];
+
+      repeated string allowed_methods = 2 [json_name = "allowed_methods"];
+
+      repeated string allowed_origins = 3 [json_name = "allowed_origins"];
+
+      repeated string exposed_headers = 4 [json_name = "exposed_headers"];
+
+      int64 max_age_in_seconds = 5 [json_name = "max_age_in_seconds"];
+    }
+
+    message RetentionPolicy {
+      int64 days = 1;
+    }
+
+    message Smb {
+      repeated string authentication_types = 1 [json_name = "authentication_types"];
+
+      repeated string channel_encryption_type = 2 [json_name = "channel_encryption_type"];
+
+      repeated string kerberos_ticket_encryption_type = 3 [json_name = "kerberos_ticket_encryption_type"];
+
+      bool multichannel_enabled = 4 [json_name = "multichannel_enabled"];
+
+      repeated string versions = 5;
+    }
+  }
+
+  message StaticWebsite {
+    string error_404_document = 1 [json_name = "error_404_document"];
+
+    string index_document = 2 [json_name = "index_document"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageAccountCustomerManagedKey version is 0
+message AzurermStorageAccountCustomerManagedKey {
+  string federated_identity_client_id = 1 [json_name = "federated_identity_client_id"];
+
+  string id = 2;
+
+  string key_name = 3 [json_name = "key_name"];
+
+  string key_vault_id = 4 [json_name = "key_vault_id"];
+
+  string key_vault_uri = 5 [json_name = "key_vault_uri"];
+
+  string key_version = 6 [json_name = "key_version"];
+
+  string storage_account_id = 7 [json_name = "storage_account_id"];
+
+  string user_assigned_identity_id = 8 [json_name = "user_assigned_identity_id"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageAccountLocalUser version is 0
+message AzurermStorageAccountLocalUser {
+  string home_directory = 1 [json_name = "home_directory"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string password = 4;
+
+  string sid = 5;
+
+  bool ssh_key_enabled = 6 [json_name = "ssh_key_enabled"];
+
+  bool ssh_password_enabled = 7 [json_name = "ssh_password_enabled"];
+
+  string storage_account_id = 8 [json_name = "storage_account_id"];
+
+  repeated PermissionScope permission_scope = 9 [json_name = "permission_scope"];
+
+  repeated SshAuthorizedKey ssh_authorized_key = 10 [json_name = "ssh_authorized_key"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message PermissionScope {
+    string resource_name = 1 [json_name = "resource_name"];
+
+    string service = 2;
+
+    Permissions permissions = 3;
+
+    message Permissions {
+      bool create = 1;
+
+      bool delete = 2;
+
+      bool list = 3;
+
+      bool read = 4;
+
+      bool write = 5;
+    }
+  }
+
+  message SshAuthorizedKey {
+    string description = 1;
+
+    string key = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageAccountNetworkRules version is 0
+message AzurermStorageAccountNetworkRules {
+  repeated string bypass = 1;
+
+  string default_action = 2 [json_name = "default_action"];
+
+  string id = 3;
+
+  repeated string ip_rules = 4 [json_name = "ip_rules"];
+
+  string storage_account_id = 5 [json_name = "storage_account_id"];
+
+  repeated string virtual_network_subnet_ids = 6 [json_name = "virtual_network_subnet_ids"];
+
+  repeated PrivateLinkAccess private_link_access = 7 [json_name = "private_link_access"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message PrivateLinkAccess {
+    string endpoint_resource_id = 1 [json_name = "endpoint_resource_id"];
+
+    string endpoint_tenant_id = 2 [json_name = "endpoint_tenant_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageBlob version is 1
+message AzurermStorageBlob {
+  string access_tier = 1 [json_name = "access_tier"];
+
+  string cache_control = 2 [json_name = "cache_control"];
+
+  string content_md5 = 3 [json_name = "content_md5"];
+
+  string content_type = 4 [json_name = "content_type"];
+
+  string id = 5;
+
+  map<string, string> metadata = 6;
+
+  string name = 7;
+
+  int64 parallelism = 8;
+
+  int64 size = 9;
+
+  string source = 10;
+
+  string source_content = 11 [json_name = "source_content"];
+
+  string source_uri = 12 [json_name = "source_uri"];
+
+  string storage_account_name = 13 [json_name = "storage_account_name"];
+
+  string storage_container_name = 14 [json_name = "storage_container_name"];
+
+  string type = 15;
+
+  string url = 16;
+
+  repeated Timeouts timeouts = 17;
+
+  google.protobuf.Value for_each = 18 [json_name = "for_each"];
+
+  repeated string depends_on = 19 [json_name = "depends_on"];
+
+  int32 count = 20;
+
+  string provider = 21;
+
+  terraform.v1.Lifecycle lifecycle = 22;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageBlobInventoryPolicy version is 0
+message AzurermStorageBlobInventoryPolicy {
+  string id = 1;
+
+  string storage_account_id = 2 [json_name = "storage_account_id"];
+
+  repeated Rules rules = 3;
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Rules {
+    string format = 1;
+
+    string name = 2;
+
+    string schedule = 3;
+
+    repeated string schema_fields = 4 [json_name = "schema_fields"];
+
+    string scope = 5;
+
+    string storage_container_name = 6 [json_name = "storage_container_name"];
+
+    Filter filter = 7;
+
+    message Filter {
+      repeated string blob_types = 1 [json_name = "blob_types"];
+
+      repeated string exclude_prefixes = 2 [json_name = "exclude_prefixes"];
+
+      bool include_blob_versions = 3 [json_name = "include_blob_versions"];
+
+      bool include_deleted = 4 [json_name = "include_deleted"];
+
+      bool include_snapshots = 5 [json_name = "include_snapshots"];
+
+      repeated string prefix_match = 6 [json_name = "prefix_match"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageContainer version is 1
+message AzurermStorageContainer {
+  string container_access_type = 1 [json_name = "container_access_type"];
+
+  bool has_immutability_policy = 2 [json_name = "has_immutability_policy"];
+
+  bool has_legal_hold = 3 [json_name = "has_legal_hold"];
+
+  string id = 4;
+
+  map<string, string> metadata = 5;
+
+  string name = 6;
+
+  string resource_manager_id = 7 [json_name = "resource_manager_id"];
+
+  string storage_account_name = 8 [json_name = "storage_account_name"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageDataLakeGen2Filesystem version is 0
+message AzurermStorageDataLakeGen2Filesystem {
+  string group = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  string owner = 4;
+
+  map<string, string> properties = 5;
+
+  string storage_account_id = 6 [json_name = "storage_account_id"];
+
+  repeated Ace ace = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Ace {
+    string id = 1;
+
+    string permissions = 2;
+
+    string scope = 3;
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageDataLakeGen2Path version is 0
+message AzurermStorageDataLakeGen2Path {
+  string filesystem_name = 1 [json_name = "filesystem_name"];
+
+  string group = 2;
+
+  string id = 3;
+
+  string owner = 4;
+
+  string path = 5;
+
+  string resource = 6;
+
+  string storage_account_id = 7 [json_name = "storage_account_id"];
+
+  repeated Ace ace = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Ace {
+    string id = 1;
+
+    string permissions = 2;
+
+    string scope = 3;
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageEncryptionScope version is 0
+message AzurermStorageEncryptionScope {
+  string id = 1;
+
+  bool infrastructure_encryption_required = 2 [json_name = "infrastructure_encryption_required"];
+
+  string key_vault_key_id = 3 [json_name = "key_vault_key_id"];
+
+  string name = 4;
+
+  string source = 5;
+
+  string storage_account_id = 6 [json_name = "storage_account_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageManagementPolicy version is 0
+message AzurermStorageManagementPolicy {
+  string id = 1;
+
+  string storage_account_id = 2 [json_name = "storage_account_id"];
+
+  repeated Rule rule = 3;
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Rule {
+    bool enabled = 1;
+
+    string name = 2;
+
+    Actions actions = 3;
+
+    Filters filters = 4;
+
+    message Actions {
+      BaseBlob base_blob = 1 [json_name = "base_blob"];
+
+      Snapshot snapshot = 2;
+
+      Version version = 3;
+
+      message BaseBlob {
+        bool auto_tier_to_hot_from_cool_enabled = 1 [json_name = "auto_tier_to_hot_from_cool_enabled"];
+
+        int64 delete_after_days_since_creation_greater_than = 2 [
+          json_name = "delete_after_days_since_creation_greater_than"
+        ];
+
+        int64 delete_after_days_since_last_access_time_greater_than = 3 [
+          json_name = "delete_after_days_since_last_access_time_greater_than"
+        ];
+
+        int64 delete_after_days_since_modification_greater_than = 4 [
+          json_name = "delete_after_days_since_modification_greater_than"
+        ];
+
+        int64 tier_to_archive_after_days_since_creation_greater_than = 5 [
+          json_name = "tier_to_archive_after_days_since_creation_greater_than"
+        ];
+
+        int64 tier_to_archive_after_days_since_last_access_time_greater_than = 6 [
+          json_name = "tier_to_archive_after_days_since_last_access_time_greater_than"
+        ];
+
+        int64 tier_to_archive_after_days_since_last_tier_change_greater_than = 7 [
+          json_name = "tier_to_archive_after_days_since_last_tier_change_greater_than"
+        ];
+
+        int64 tier_to_archive_after_days_since_modification_greater_than = 8 [
+          json_name = "tier_to_archive_after_days_since_modification_greater_than"
+        ];
+
+        int64 tier_to_cold_after_days_since_creation_greater_than = 9 [
+          json_name = "tier_to_cold_after_days_since_creation_greater_than"
+        ];
+
+        int64 tier_to_cold_after_days_since_last_access_time_greater_than = 10 [
+          json_name = "tier_to_cold_after_days_since_last_access_time_greater_than"
+        ];
+
+        int64 tier_to_cold_after_days_since_modification_greater_than = 11 [
+          json_name = "tier_to_cold_after_days_since_modification_greater_than"
+        ];
+
+        int64 tier_to_cool_after_days_since_creation_greater_than = 12 [
+          json_name = "tier_to_cool_after_days_since_creation_greater_than"
+        ];
+
+        int64 tier_to_cool_after_days_since_last_access_time_greater_than = 13 [
+          json_name = "tier_to_cool_after_days_since_last_access_time_greater_than"
+        ];
+
+        int64 tier_to_cool_after_days_since_modification_greater_than = 14 [
+          json_name = "tier_to_cool_after_days_since_modification_greater_than"
+        ];
+      }
+
+      message Snapshot {
+        int64 change_tier_to_archive_after_days_since_creation = 1 [
+          json_name = "change_tier_to_archive_after_days_since_creation"
+        ];
+
+        int64 change_tier_to_cool_after_days_since_creation = 2 [
+          json_name = "change_tier_to_cool_after_days_since_creation"
+        ];
+
+        int64 delete_after_days_since_creation_greater_than = 3 [
+          json_name = "delete_after_days_since_creation_greater_than"
+        ];
+
+        int64 tier_to_archive_after_days_since_last_tier_change_greater_than = 4 [
+          json_name = "tier_to_archive_after_days_since_last_tier_change_greater_than"
+        ];
+
+        int64 tier_to_cold_after_days_since_creation_greater_than = 5 [
+          json_name = "tier_to_cold_after_days_since_creation_greater_than"
+        ];
+      }
+
+      message Version {
+        int64 change_tier_to_archive_after_days_since_creation = 1 [
+          json_name = "change_tier_to_archive_after_days_since_creation"
+        ];
+
+        int64 change_tier_to_cool_after_days_since_creation = 2 [
+          json_name = "change_tier_to_cool_after_days_since_creation"
+        ];
+
+        int64 delete_after_days_since_creation = 3 [json_name = "delete_after_days_since_creation"];
+
+        int64 tier_to_archive_after_days_since_last_tier_change_greater_than = 4 [
+          json_name = "tier_to_archive_after_days_since_last_tier_change_greater_than"
+        ];
+
+        int64 tier_to_cold_after_days_since_creation_greater_than = 5 [
+          json_name = "tier_to_cold_after_days_since_creation_greater_than"
+        ];
+      }
+    }
+
+    message Filters {
+      repeated string blob_types = 1 [json_name = "blob_types"];
+
+      repeated string prefix_match = 2 [json_name = "prefix_match"];
+
+      repeated MatchBlobIndexTag match_blob_index_tag = 3 [json_name = "match_blob_index_tag"];
+
+      message MatchBlobIndexTag {
+        string name = 1;
+
+        string operation = 2;
+
+        string value = 3;
+      }
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageMover version is 0
+message AzurermStorageMover {
+  string description = 1;
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageMoverAgent version is 0
+message AzurermStorageMoverAgent {
+  string arc_virtual_machine_id = 1 [json_name = "arc_virtual_machine_id"];
+
+  string arc_virtual_machine_uuid = 2 [json_name = "arc_virtual_machine_uuid"];
+
+  string description = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string storage_mover_id = 6 [json_name = "storage_mover_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageMoverJobDefinition version is 0
+message AzurermStorageMoverJobDefinition {
+  string agent_name = 1 [json_name = "agent_name"];
+
+  string copy_mode = 2 [json_name = "copy_mode"];
+
+  string description = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string source_name = 6 [json_name = "source_name"];
+
+  string source_sub_path = 7 [json_name = "source_sub_path"];
+
+  string storage_mover_project_id = 8 [json_name = "storage_mover_project_id"];
+
+  string target_name = 9 [json_name = "target_name"];
+
+  string target_sub_path = 10 [json_name = "target_sub_path"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageMoverProject version is 0
+message AzurermStorageMoverProject {
+  string description = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  string storage_mover_id = 4 [json_name = "storage_mover_id"];
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageMoverSourceEndpoint version is 0
+message AzurermStorageMoverSourceEndpoint {
+  string description = 1;
+
+  string export = 2;
+
+  string host = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string nfs_version = 6 [json_name = "nfs_version"];
+
+  string storage_mover_id = 7 [json_name = "storage_mover_id"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageMoverTargetEndpoint version is 0
+message AzurermStorageMoverTargetEndpoint {
+  string description = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  string storage_account_id = 4 [json_name = "storage_account_id"];
+
+  string storage_container_name = 5 [json_name = "storage_container_name"];
+
+  string storage_mover_id = 6 [json_name = "storage_mover_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageObjectReplication version is 0
+message AzurermStorageObjectReplication {
+  string destination_object_replication_id = 1 [json_name = "destination_object_replication_id"];
+
+  string destination_storage_account_id = 2 [json_name = "destination_storage_account_id"];
+
+  string id = 3;
+
+  string source_object_replication_id = 4 [json_name = "source_object_replication_id"];
+
+  string source_storage_account_id = 5 [json_name = "source_storage_account_id"];
+
+  repeated Rules rules = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Rules {
+    string copy_blobs_created_after = 1 [json_name = "copy_blobs_created_after"];
+
+    string destination_container_name = 2 [json_name = "destination_container_name"];
+
+    repeated string filter_out_blobs_with_prefix = 3 [json_name = "filter_out_blobs_with_prefix"];
+
+    string name = 4;
+
+    string source_container_name = 5 [json_name = "source_container_name"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageQueue version is 1
+message AzurermStorageQueue {
+  string id = 1;
+
+  map<string, string> metadata = 2;
+
+  string name = 3;
+
+  string resource_manager_id = 4 [json_name = "resource_manager_id"];
+
+  string storage_account_name = 5 [json_name = "storage_account_name"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageShare version is 2
+message AzurermStorageShare {
+  string access_tier = 1 [json_name = "access_tier"];
+
+  string enabled_protocol = 2 [json_name = "enabled_protocol"];
+
+  string id = 3;
+
+  map<string, string> metadata = 4;
+
+  string name = 5;
+
+  int64 quota = 6;
+
+  string resource_manager_id = 7 [json_name = "resource_manager_id"];
+
+  string storage_account_name = 8 [json_name = "storage_account_name"];
+
+  string url = 9;
+
+  repeated Acl acl = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Acl {
+    string id = 1;
+
+    repeated AccessPolicy access_policy = 2 [json_name = "access_policy"];
+
+    message AccessPolicy {
+      string expiry = 1;
+
+      string permissions = 2;
+
+      string start = 3;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageShareDirectory version is 0
+message AzurermStorageShareDirectory {
+  string id = 1;
+
+  map<string, string> metadata = 2;
+
+  string name = 3;
+
+  string share_name = 4 [json_name = "share_name"];
+
+  string storage_account_name = 5 [json_name = "storage_account_name"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageShareFile version is 0
+message AzurermStorageShareFile {
+  string content_disposition = 1 [json_name = "content_disposition"];
+
+  string content_encoding = 2 [json_name = "content_encoding"];
+
+  int64 content_length = 3 [json_name = "content_length"];
+
+  string content_md5 = 4 [json_name = "content_md5"];
+
+  string content_type = 5 [json_name = "content_type"];
+
+  string id = 6;
+
+  map<string, string> metadata = 7;
+
+  string name = 8;
+
+  string path = 9;
+
+  string source = 10;
+
+  string storage_share_id = 11 [json_name = "storage_share_id"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageSync version is 0
+message AzurermStorageSync {
+  string id = 1;
+
+  string incoming_traffic_policy = 2 [json_name = "incoming_traffic_policy"];
+
+  string location = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageSyncCloudEndpoint version is 0
+message AzurermStorageSyncCloudEndpoint {
+  string file_share_name = 1 [json_name = "file_share_name"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string storage_account_id = 4 [json_name = "storage_account_id"];
+
+  string storage_account_tenant_id = 5 [json_name = "storage_account_tenant_id"];
+
+  string storage_sync_group_id = 6 [json_name = "storage_sync_group_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermStorageSyncGroup version is 0
+message AzurermStorageSyncGroup {
+  string id = 1;
+
+  string name = 2;
+
+  string storage_sync_id = 3 [json_name = "storage_sync_id"];
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermStorageTable version is 2
+message AzurermStorageTable {
+  string id = 1;
+
+  string name = 2;
+
+  string storage_account_name = 3 [json_name = "storage_account_name"];
+
+  repeated Acl acl = 4;
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Acl {
+    string id = 1;
+
+    repeated AccessPolicy access_policy = 2 [json_name = "access_policy"];
+
+    message AccessPolicy {
+      string expiry = 1;
+
+      string permissions = 2;
+
+      string start = 3;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermStorageTableEntity version is 0
+message AzurermStorageTableEntity {
+  map<string, string> entity = 1;
+
+  string id = 2;
+
+  string partition_key = 3 [json_name = "partition_key"];
+
+  string row_key = 4 [json_name = "row_key"];
+
+  string storage_account_name = 5 [json_name = "storage_account_name"];
+
+  string table_name = 6 [json_name = "table_name"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

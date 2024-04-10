@@ -1,0 +1,1657 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermSpringCloudAccelerator version is 1
+message AzurermSpringCloudAccelerator {
+  string id = 1;
+
+  string name = 2;
+
+  string spring_cloud_service_id = 3 [json_name = "spring_cloud_service_id"];
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermSpringCloudActiveDeployment version is 1
+message AzurermSpringCloudActiveDeployment {
+  string deployment_name = 1 [json_name = "deployment_name"];
+
+  string id = 2;
+
+  string spring_cloud_app_id = 3 [json_name = "spring_cloud_app_id"];
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudApiPortal version is 1
+message AzurermSpringCloudApiPortal {
+  bool api_try_out_enabled = 1 [json_name = "api_try_out_enabled"];
+
+  repeated string gateway_ids = 2 [json_name = "gateway_ids"];
+
+  bool https_only_enabled = 3 [json_name = "https_only_enabled"];
+
+  string id = 4;
+
+  int64 instance_count = 5 [json_name = "instance_count"];
+
+  string name = 6;
+
+  bool public_network_access_enabled = 7 [json_name = "public_network_access_enabled"];
+
+  string spring_cloud_service_id = 8 [json_name = "spring_cloud_service_id"];
+
+  string url = 9;
+
+  Sso sso = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Sso {
+    string client_id = 1 [json_name = "client_id"];
+
+    string client_secret = 2 [json_name = "client_secret"];
+
+    string issuer_uri = 3 [json_name = "issuer_uri"];
+
+    repeated string scope = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudApiPortalCustomDomain version is 1
+message AzurermSpringCloudApiPortalCustomDomain {
+  string id = 1;
+
+  string name = 2;
+
+  string spring_cloud_api_portal_id = 3 [json_name = "spring_cloud_api_portal_id"];
+
+  string thumbprint = 4;
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudApp version is 1
+message AzurermSpringCloudApp {
+  string addon_json = 1 [json_name = "addon_json"];
+
+  string fqdn = 2;
+
+  bool https_only = 3 [json_name = "https_only"];
+
+  string id = 4;
+
+  bool is_public = 5 [json_name = "is_public"];
+
+  string name = 6;
+
+  bool public_endpoint_enabled = 7 [json_name = "public_endpoint_enabled"];
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  string service_name = 9 [json_name = "service_name"];
+
+  bool tls_enabled = 10 [json_name = "tls_enabled"];
+
+  string url = 11;
+
+  repeated CustomPersistentDisk custom_persistent_disk = 12 [json_name = "custom_persistent_disk"];
+
+  Identity identity = 13;
+
+  IngressSettings ingress_settings = 14 [json_name = "ingress_settings"];
+
+  PersistentDisk persistent_disk = 15 [json_name = "persistent_disk"];
+
+  repeated Timeouts timeouts = 16;
+
+  google.protobuf.Value for_each = 17 [json_name = "for_each"];
+
+  repeated string depends_on = 18 [json_name = "depends_on"];
+
+  int32 count = 19;
+
+  string provider = 20;
+
+  terraform.v1.Lifecycle lifecycle = 21;
+
+  message CustomPersistentDisk {
+    repeated string mount_options = 1 [json_name = "mount_options"];
+
+    string mount_path = 2 [json_name = "mount_path"];
+
+    bool read_only_enabled = 3 [json_name = "read_only_enabled"];
+
+    string share_name = 4 [json_name = "share_name"];
+
+    string storage_name = 5 [json_name = "storage_name"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message IngressSettings {
+    string backend_protocol = 1 [json_name = "backend_protocol"];
+
+    int64 read_timeout_in_seconds = 2 [json_name = "read_timeout_in_seconds"];
+
+    int64 send_timeout_in_seconds = 3 [json_name = "send_timeout_in_seconds"];
+
+    string session_affinity = 4 [json_name = "session_affinity"];
+
+    int64 session_cookie_max_age = 5 [json_name = "session_cookie_max_age"];
+  }
+
+  message PersistentDisk {
+    string mount_path = 1 [json_name = "mount_path"];
+
+    int64 size_in_gb = 2 [json_name = "size_in_gb"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudAppCosmosdbAssociation version is 1
+message AzurermSpringCloudAppCosmosdbAssociation {
+  string api_type = 1 [json_name = "api_type"];
+
+  string cosmosdb_access_key = 2 [json_name = "cosmosdb_access_key"];
+
+  string cosmosdb_account_id = 3 [json_name = "cosmosdb_account_id"];
+
+  string cosmosdb_cassandra_keyspace_name = 4 [json_name = "cosmosdb_cassandra_keyspace_name"];
+
+  string cosmosdb_gremlin_database_name = 5 [json_name = "cosmosdb_gremlin_database_name"];
+
+  string cosmosdb_gremlin_graph_name = 6 [json_name = "cosmosdb_gremlin_graph_name"];
+
+  string cosmosdb_mongo_database_name = 7 [json_name = "cosmosdb_mongo_database_name"];
+
+  string cosmosdb_sql_database_name = 8 [json_name = "cosmosdb_sql_database_name"];
+
+  string id = 9;
+
+  string name = 10;
+
+  string spring_cloud_app_id = 11 [json_name = "spring_cloud_app_id"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudAppDynamicsApplicationPerformanceMonitoring version is 0
+message AzurermSpringCloudAppDynamicsApplicationPerformanceMonitoring {
+  string agent_account_access_key = 1 [json_name = "agent_account_access_key"];
+
+  string agent_account_name = 2 [json_name = "agent_account_name"];
+
+  string agent_application_name = 3 [json_name = "agent_application_name"];
+
+  string agent_node_name = 4 [json_name = "agent_node_name"];
+
+  string agent_tier_name = 5 [json_name = "agent_tier_name"];
+
+  string agent_unique_host_id = 6 [json_name = "agent_unique_host_id"];
+
+  string controller_host_name = 7 [json_name = "controller_host_name"];
+
+  int64 controller_port = 8 [json_name = "controller_port"];
+
+  bool controller_ssl_enabled = 9 [json_name = "controller_ssl_enabled"];
+
+  bool globally_enabled = 10 [json_name = "globally_enabled"];
+
+  string id = 11;
+
+  string name = 12;
+
+  string spring_cloud_service_id = 13 [json_name = "spring_cloud_service_id"];
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudAppMysqlAssociation version is 1
+message AzurermSpringCloudAppMysqlAssociation {
+  string database_name = 1 [json_name = "database_name"];
+
+  string id = 2;
+
+  string mysql_server_id = 3 [json_name = "mysql_server_id"];
+
+  string name = 4;
+
+  string password = 5;
+
+  string spring_cloud_app_id = 6 [json_name = "spring_cloud_app_id"];
+
+  string username = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudAppRedisAssociation version is 1
+message AzurermSpringCloudAppRedisAssociation {
+  string id = 1;
+
+  string name = 2;
+
+  string redis_access_key = 3 [json_name = "redis_access_key"];
+
+  string redis_cache_id = 4 [json_name = "redis_cache_id"];
+
+  string spring_cloud_app_id = 5 [json_name = "spring_cloud_app_id"];
+
+  bool ssl_enabled = 6 [json_name = "ssl_enabled"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudApplicationInsightsApplicationPerformanceMonitoring version is 0
+message AzurermSpringCloudApplicationInsightsApplicationPerformanceMonitoring {
+  string connection_string = 1 [json_name = "connection_string"];
+
+  bool globally_enabled = 2 [json_name = "globally_enabled"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string role_instance = 5 [json_name = "role_instance"];
+
+  string role_name = 6 [json_name = "role_name"];
+
+  int64 sampling_percentage = 7 [json_name = "sampling_percentage"];
+
+  int64 sampling_requests_per_second = 8 [json_name = "sampling_requests_per_second"];
+
+  string spring_cloud_service_id = 9 [json_name = "spring_cloud_service_id"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudApplicationLiveView version is 0
+message AzurermSpringCloudApplicationLiveView {
+  string id = 1;
+
+  string name = 2;
+
+  string spring_cloud_service_id = 3 [json_name = "spring_cloud_service_id"];
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermSpringCloudBuildDeployment version is 1
+message AzurermSpringCloudBuildDeployment {
+  string addon_json = 1 [json_name = "addon_json"];
+
+  repeated string application_performance_monitoring_ids = 2 [
+    json_name = "application_performance_monitoring_ids"
+  ];
+
+  string build_result_id = 3 [json_name = "build_result_id"];
+
+  map<string, string> environment_variables = 4 [json_name = "environment_variables"];
+
+  string id = 5;
+
+  int64 instance_count = 6 [json_name = "instance_count"];
+
+  string name = 7;
+
+  string spring_cloud_app_id = 8 [json_name = "spring_cloud_app_id"];
+
+  Quota quota = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Quota {
+    string cpu = 1;
+
+    string memory = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudBuildPackBinding version is 1
+message AzurermSpringCloudBuildPackBinding {
+  string binding_type = 1 [json_name = "binding_type"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string spring_cloud_builder_id = 4 [json_name = "spring_cloud_builder_id"];
+
+  Launch launch = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Launch {
+    map<string, string> properties = 1;
+
+    map<string, string> secrets = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudBuilder version is 1
+message AzurermSpringCloudBuilder {
+  string id = 1;
+
+  string name = 2;
+
+  string spring_cloud_service_id = 3 [json_name = "spring_cloud_service_id"];
+
+  repeated BuildPackGroup build_pack_group = 4 [json_name = "build_pack_group"];
+
+  Stack stack = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message BuildPackGroup {
+    repeated string build_pack_ids = 1 [json_name = "build_pack_ids"];
+
+    string name = 2;
+  }
+
+  message Stack {
+    string id = 1;
+
+    string version = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudCertificate version is 1
+message AzurermSpringCloudCertificate {
+  string certificate_content = 1 [json_name = "certificate_content"];
+
+  bool exclude_private_key = 2 [json_name = "exclude_private_key"];
+
+  string id = 3;
+
+  string key_vault_certificate_id = 4 [json_name = "key_vault_certificate_id"];
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string service_name = 7 [json_name = "service_name"];
+
+  string thumbprint = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermSpringCloudConfigurationService version is 1
+message AzurermSpringCloudConfigurationService {
+  string generation = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  int64 refresh_interval_in_seconds = 4 [json_name = "refresh_interval_in_seconds"];
+
+  string spring_cloud_service_id = 5 [json_name = "spring_cloud_service_id"];
+
+  repeated Repository repository = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Repository {
+    string ca_certificate_id = 1 [json_name = "ca_certificate_id"];
+
+    string host_key = 2 [json_name = "host_key"];
+
+    string host_key_algorithm = 3 [json_name = "host_key_algorithm"];
+
+    string label = 4;
+
+    string name = 5;
+
+    string password = 6;
+
+    repeated string patterns = 7;
+
+    string private_key = 8 [json_name = "private_key"];
+
+    repeated string search_paths = 9 [json_name = "search_paths"];
+
+    bool strict_host_key_checking = 10 [json_name = "strict_host_key_checking"];
+
+    string uri = 11;
+
+    string username = 12;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudConnection version is 0
+message AzurermSpringCloudConnection {
+  string client_type = 1 [json_name = "client_type"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string spring_cloud_id = 4 [json_name = "spring_cloud_id"];
+
+  string target_resource_id = 5 [json_name = "target_resource_id"];
+
+  string vnet_solution = 6 [json_name = "vnet_solution"];
+
+  Authentication authentication = 7;
+
+  SecretStore secret_store = 8 [json_name = "secret_store"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Authentication {
+    string certificate = 1;
+
+    string client_id = 2 [json_name = "client_id"];
+
+    string name = 3;
+
+    string principal_id = 4 [json_name = "principal_id"];
+
+    string secret = 5;
+
+    string subscription_id = 6 [json_name = "subscription_id"];
+
+    string type = 7;
+  }
+
+  message SecretStore {
+    string key_vault_id = 1 [json_name = "key_vault_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudContainerDeployment version is 1
+message AzurermSpringCloudContainerDeployment {
+  string addon_json = 1 [json_name = "addon_json"];
+
+  repeated string application_performance_monitoring_ids = 2 [
+    json_name = "application_performance_monitoring_ids"
+  ];
+
+  repeated string arguments = 3;
+
+  repeated string commands = 4;
+
+  map<string, string> environment_variables = 5 [json_name = "environment_variables"];
+
+  string id = 6;
+
+  string image = 7;
+
+  int64 instance_count = 8 [json_name = "instance_count"];
+
+  string language_framework = 9 [json_name = "language_framework"];
+
+  string name = 10;
+
+  string server = 11;
+
+  string spring_cloud_app_id = 12 [json_name = "spring_cloud_app_id"];
+
+  Quota quota = 13;
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message Quota {
+    string cpu = 1;
+
+    string memory = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudCustomDomain version is 1
+message AzurermSpringCloudCustomDomain {
+  string certificate_name = 1 [json_name = "certificate_name"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string spring_cloud_app_id = 4 [json_name = "spring_cloud_app_id"];
+
+  string thumbprint = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudCustomizedAccelerator version is 1
+message AzurermSpringCloudCustomizedAccelerator {
+  repeated string accelerator_tags = 1 [json_name = "accelerator_tags"];
+
+  string accelerator_type = 2 [json_name = "accelerator_type"];
+
+  string description = 3;
+
+  string display_name = 4 [json_name = "display_name"];
+
+  string icon_url = 5 [json_name = "icon_url"];
+
+  string id = 6;
+
+  string name = 7;
+
+  string spring_cloud_accelerator_id = 8 [json_name = "spring_cloud_accelerator_id"];
+
+  GitRepository git_repository = 9 [json_name = "git_repository"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message GitRepository {
+    string branch = 1;
+
+    string ca_certificate_id = 2 [json_name = "ca_certificate_id"];
+
+    string commit = 3;
+
+    string git_tag = 4 [json_name = "git_tag"];
+
+    int64 interval_in_seconds = 5 [json_name = "interval_in_seconds"];
+
+    string path = 6;
+
+    string url = 7;
+
+    BasicAuth basic_auth = 8 [json_name = "basic_auth"];
+
+    SshAuth ssh_auth = 9 [json_name = "ssh_auth"];
+
+    message BasicAuth {
+      string password = 1;
+
+      string username = 2;
+    }
+
+    message SshAuth {
+      string host_key = 1 [json_name = "host_key"];
+
+      string host_key_algorithm = 2 [json_name = "host_key_algorithm"];
+
+      string private_key = 3 [json_name = "private_key"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudDevToolPortal version is 0
+message AzurermSpringCloudDevToolPortal {
+  bool application_accelerator_enabled = 1 [json_name = "application_accelerator_enabled"];
+
+  bool application_live_view_enabled = 2 [json_name = "application_live_view_enabled"];
+
+  string id = 3;
+
+  string name = 4;
+
+  bool public_network_access_enabled = 5 [json_name = "public_network_access_enabled"];
+
+  string spring_cloud_service_id = 6 [json_name = "spring_cloud_service_id"];
+
+  Sso sso = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Sso {
+    string client_id = 1 [json_name = "client_id"];
+
+    string client_secret = 2 [json_name = "client_secret"];
+
+    string metadata_url = 3 [json_name = "metadata_url"];
+
+    repeated string scope = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudDynatraceApplicationPerformanceMonitoring version is 0
+message AzurermSpringCloudDynatraceApplicationPerformanceMonitoring {
+  string api_token = 1 [json_name = "api_token"];
+
+  string api_url = 2 [json_name = "api_url"];
+
+  string connection_point = 3 [json_name = "connection_point"];
+
+  string environment_id = 4 [json_name = "environment_id"];
+
+  bool globally_enabled = 5 [json_name = "globally_enabled"];
+
+  string id = 6;
+
+  string name = 7;
+
+  string spring_cloud_service_id = 8 [json_name = "spring_cloud_service_id"];
+
+  string tenant = 9;
+
+  string tenant_token = 10 [json_name = "tenant_token"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudElasticApplicationPerformanceMonitoring version is 0
+message AzurermSpringCloudElasticApplicationPerformanceMonitoring {
+  repeated string application_packages = 1 [json_name = "application_packages"];
+
+  bool globally_enabled = 2 [json_name = "globally_enabled"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string server_url = 5 [json_name = "server_url"];
+
+  string service_name = 6 [json_name = "service_name"];
+
+  string spring_cloud_service_id = 7 [json_name = "spring_cloud_service_id"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudGateway version is 1
+message AzurermSpringCloudGateway {
+  repeated string application_performance_monitoring_ids = 1 [
+    json_name = "application_performance_monitoring_ids"
+  ];
+
+  repeated string application_performance_monitoring_types = 2 [
+    json_name = "application_performance_monitoring_types"
+  ];
+
+  map<string, string> environment_variables = 3 [json_name = "environment_variables"];
+
+  bool https_only = 4 [json_name = "https_only"];
+
+  string id = 5;
+
+  int64 instance_count = 6 [json_name = "instance_count"];
+
+  string name = 7;
+
+  bool public_network_access_enabled = 8 [json_name = "public_network_access_enabled"];
+
+  map<string, string> sensitive_environment_variables = 9 [json_name = "sensitive_environment_variables"];
+
+  string spring_cloud_service_id = 10 [json_name = "spring_cloud_service_id"];
+
+  string url = 11;
+
+  ApiMetadata api_metadata = 12 [json_name = "api_metadata"];
+
+  ClientAuthorization client_authorization = 13 [json_name = "client_authorization"];
+
+  Cors cors = 14;
+
+  LocalResponseCachePerInstance local_response_cache_per_instance = 15 [json_name = "local_response_cache_per_instance"];
+
+  LocalResponseCachePerRoute local_response_cache_per_route = 16 [json_name = "local_response_cache_per_route"];
+
+  Quota quota = 17;
+
+  Sso sso = 18;
+
+  repeated Timeouts timeouts = 19;
+
+  google.protobuf.Value for_each = 20 [json_name = "for_each"];
+
+  repeated string depends_on = 21 [json_name = "depends_on"];
+
+  int32 count = 22;
+
+  string provider = 23;
+
+  terraform.v1.Lifecycle lifecycle = 24;
+
+  message ApiMetadata {
+    string description = 1;
+
+    string documentation_url = 2 [json_name = "documentation_url"];
+
+    string server_url = 3 [json_name = "server_url"];
+
+    string title = 4;
+
+    string version = 5;
+  }
+
+  message ClientAuthorization {
+    repeated string certificate_ids = 1 [json_name = "certificate_ids"];
+
+    bool verification_enabled = 2 [json_name = "verification_enabled"];
+  }
+
+  message Cors {
+    repeated string allowed_headers = 1 [json_name = "allowed_headers"];
+
+    repeated string allowed_methods = 2 [json_name = "allowed_methods"];
+
+    repeated string allowed_origin_patterns = 3 [json_name = "allowed_origin_patterns"];
+
+    repeated string allowed_origins = 4 [json_name = "allowed_origins"];
+
+    bool credentials_allowed = 5 [json_name = "credentials_allowed"];
+
+    repeated string exposed_headers = 6 [json_name = "exposed_headers"];
+
+    int64 max_age_seconds = 7 [json_name = "max_age_seconds"];
+  }
+
+  message LocalResponseCachePerInstance {
+    string size = 1;
+
+    string time_to_live = 2 [json_name = "time_to_live"];
+  }
+
+  message LocalResponseCachePerRoute {
+    string size = 1;
+
+    string time_to_live = 2 [json_name = "time_to_live"];
+  }
+
+  message Quota {
+    string cpu = 1;
+
+    string memory = 2;
+  }
+
+  message Sso {
+    string client_id = 1 [json_name = "client_id"];
+
+    string client_secret = 2 [json_name = "client_secret"];
+
+    string issuer_uri = 3 [json_name = "issuer_uri"];
+
+    repeated string scope = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudGatewayCustomDomain version is 1
+message AzurermSpringCloudGatewayCustomDomain {
+  string id = 1;
+
+  string name = 2;
+
+  string spring_cloud_gateway_id = 3 [json_name = "spring_cloud_gateway_id"];
+
+  string thumbprint = 4;
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudGatewayRouteConfig version is 1
+message AzurermSpringCloudGatewayRouteConfig {
+  repeated string filters = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  repeated string predicates = 4;
+
+  string protocol = 5;
+
+  string spring_cloud_app_id = 6 [json_name = "spring_cloud_app_id"];
+
+  string spring_cloud_gateway_id = 7 [json_name = "spring_cloud_gateway_id"];
+
+  bool sso_validation_enabled = 8 [json_name = "sso_validation_enabled"];
+
+  OpenApi open_api = 9 [json_name = "open_api"];
+
+  repeated Route route = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message OpenApi {
+    string uri = 1;
+  }
+
+  message Route {
+    repeated string classification_tags = 1 [json_name = "classification_tags"];
+
+    string description = 2;
+
+    repeated string filters = 3;
+
+    int64 order = 4;
+
+    repeated string predicates = 5;
+
+    bool sso_validation_enabled = 6 [json_name = "sso_validation_enabled"];
+
+    string title = 7;
+
+    bool token_relay = 8 [json_name = "token_relay"];
+
+    string uri = 9;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudJavaDeployment version is 1
+message AzurermSpringCloudJavaDeployment {
+  map<string, string> environment_variables = 1 [json_name = "environment_variables"];
+
+  string id = 2;
+
+  int64 instance_count = 3 [json_name = "instance_count"];
+
+  string jvm_options = 4 [json_name = "jvm_options"];
+
+  string name = 5;
+
+  string runtime_version = 6 [json_name = "runtime_version"];
+
+  string spring_cloud_app_id = 7 [json_name = "spring_cloud_app_id"];
+
+  Quota quota = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Quota {
+    string cpu = 1;
+
+    string memory = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudNewRelicApplicationPerformanceMonitoring version is 0
+message AzurermSpringCloudNewRelicApplicationPerformanceMonitoring {
+  bool agent_enabled = 1 [json_name = "agent_enabled"];
+
+  string app_name = 2 [json_name = "app_name"];
+
+  int64 app_server_port = 3 [json_name = "app_server_port"];
+
+  bool audit_mode_enabled = 4 [json_name = "audit_mode_enabled"];
+
+  bool auto_app_naming_enabled = 5 [json_name = "auto_app_naming_enabled"];
+
+  bool auto_transaction_naming_enabled = 6 [json_name = "auto_transaction_naming_enabled"];
+
+  bool custom_tracing_enabled = 7 [json_name = "custom_tracing_enabled"];
+
+  bool globally_enabled = 8 [json_name = "globally_enabled"];
+
+  string id = 9;
+
+  map<string, string> labels = 10;
+
+  string license_key = 11 [json_name = "license_key"];
+
+  string name = 12;
+
+  string spring_cloud_service_id = 13 [json_name = "spring_cloud_service_id"];
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSpringCloudService version is 1
+message AzurermSpringCloudService {
+  string build_agent_pool_size = 1 [json_name = "build_agent_pool_size"];
+
+  string id = 2;
+
+  string location = 3;
+
+  bool log_stream_public_endpoint_enabled = 4 [json_name = "log_stream_public_endpoint_enabled"];
+
+  string managed_environment_id = 5 [json_name = "managed_environment_id"];
+
+  string name = 6;
+
+  repeated string outbound_public_ip_addresses = 7 [json_name = "outbound_public_ip_addresses"];
+
+  repeated RequiredNetworkTrafficRules required_network_traffic_rules = 8 [json_name = "required_network_traffic_rules"];
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  bool service_registry_enabled = 10 [json_name = "service_registry_enabled"];
+
+  string service_registry_id = 11 [json_name = "service_registry_id"];
+
+  string sku_name = 12 [json_name = "sku_name"];
+
+  string sku_tier = 13 [json_name = "sku_tier"];
+
+  map<string, string> tags = 14;
+
+  bool zone_redundant = 15 [json_name = "zone_redundant"];
+
+  ConfigServerGitSetting config_server_git_setting = 16 [json_name = "config_server_git_setting"];
+
+  repeated ContainerRegistry container_registry = 17 [json_name = "container_registry"];
+
+  DefaultBuildService default_build_service = 18 [json_name = "default_build_service"];
+
+  Marketplace marketplace = 19;
+
+  Network network = 20;
+
+  repeated Timeouts timeouts = 21;
+
+  Trace trace = 22;
+
+  google.protobuf.Value for_each = 23 [json_name = "for_each"];
+
+  repeated string depends_on = 24 [json_name = "depends_on"];
+
+  int32 count = 25;
+
+  string provider = 26;
+
+  terraform.v1.Lifecycle lifecycle = 27;
+
+  message RequiredNetworkTrafficRules {
+    // direction: string
+    string direction = 1;
+
+    // fqdns: list of string
+    repeated string fqdns = 2;
+
+    // ip_addresses: list of string
+    repeated string ip_addresses = 3 [json_name = "ip_addresses"];
+
+    // port: number
+    int64 port = 4;
+
+    // protocol: string
+    string protocol = 5;
+  }
+
+  message ConfigServerGitSetting {
+    string label = 1;
+
+    repeated string search_paths = 2 [json_name = "search_paths"];
+
+    string uri = 3;
+
+    HttpBasicAuth http_basic_auth = 4 [json_name = "http_basic_auth"];
+
+    repeated Repository repository = 5;
+
+    SshAuth ssh_auth = 6 [json_name = "ssh_auth"];
+
+    message HttpBasicAuth {
+      string password = 1;
+
+      string username = 2;
+    }
+
+    message Repository {
+      string label = 1;
+
+      string name = 2;
+
+      repeated string pattern = 3;
+
+      repeated string search_paths = 4 [json_name = "search_paths"];
+
+      string uri = 5;
+
+      HttpBasicAuth http_basic_auth = 6 [json_name = "http_basic_auth"];
+
+      SshAuth ssh_auth = 7 [json_name = "ssh_auth"];
+
+      message HttpBasicAuth {
+        string password = 1;
+
+        string username = 2;
+      }
+
+      message SshAuth {
+        string host_key = 1 [json_name = "host_key"];
+
+        string host_key_algorithm = 2 [json_name = "host_key_algorithm"];
+
+        string private_key = 3 [json_name = "private_key"];
+
+        bool strict_host_key_checking_enabled = 4 [json_name = "strict_host_key_checking_enabled"];
+      }
+    }
+
+    message SshAuth {
+      string host_key = 1 [json_name = "host_key"];
+
+      string host_key_algorithm = 2 [json_name = "host_key_algorithm"];
+
+      string private_key = 3 [json_name = "private_key"];
+
+      bool strict_host_key_checking_enabled = 4 [json_name = "strict_host_key_checking_enabled"];
+    }
+  }
+
+  message ContainerRegistry {
+    string name = 1;
+
+    string password = 2;
+
+    string server = 3;
+
+    string username = 4;
+  }
+
+  message DefaultBuildService {
+    string container_registry_name = 1 [json_name = "container_registry_name"];
+  }
+
+  message Marketplace {
+    string plan = 1;
+
+    string product = 2;
+
+    string publisher = 3;
+  }
+
+  message Network {
+    string app_network_resource_group = 1 [json_name = "app_network_resource_group"];
+
+    string app_subnet_id = 2 [json_name = "app_subnet_id"];
+
+    repeated string cidr_ranges = 3 [json_name = "cidr_ranges"];
+
+    string outbound_type = 4 [json_name = "outbound_type"];
+
+    int64 read_timeout_seconds = 5 [json_name = "read_timeout_seconds"];
+
+    string service_runtime_network_resource_group = 6 [
+      json_name = "service_runtime_network_resource_group"
+    ];
+
+    string service_runtime_subnet_id = 7 [json_name = "service_runtime_subnet_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message Trace {
+    string connection_string = 1 [json_name = "connection_string"];
+
+    int64 sample_rate = 2 [json_name = "sample_rate"];
+  }
+}
+
+// AzurermSpringCloudStorage version is 1
+message AzurermSpringCloudStorage {
+  string id = 1;
+
+  string name = 2;
+
+  string spring_cloud_service_id = 3 [json_name = "spring_cloud_service_id"];
+
+  string storage_account_key = 4 [json_name = "storage_account_key"];
+
+  string storage_account_name = 5 [json_name = "storage_account_name"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

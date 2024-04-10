@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermMaintenanceConfiguration version is 1
+message AzurermMaintenanceConfiguration {
+  string id = 1;
+
+  string in_guest_user_patch_mode = 2 [json_name = "in_guest_user_patch_mode"];
+
+  repeated InstallPatches install_patches = 3 [json_name = "install_patches"];
+
+  string location = 4;
+
+  string name = 5;
+
+  map<string, string> properties = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string scope = 8;
+
+  map<string, string> tags = 9;
+
+  string visibility = 10;
+
+  repeated Window window = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message InstallPatches {
+    // linux: list of object
+    repeated Linux linux = 1;
+
+    // reboot: string
+    string reboot = 2;
+
+    // windows: list of object
+    repeated Windows windows = 3;
+
+    message Linux {
+      // classifications_to_include: list of string
+      repeated string classifications_to_include = 1 [json_name = "classifications_to_include"];
+
+      // package_names_mask_to_exclude: list of string
+      repeated string package_names_mask_to_exclude = 2 [json_name = "package_names_mask_to_exclude"];
+
+      // package_names_mask_to_include: list of string
+      repeated string package_names_mask_to_include = 3 [json_name = "package_names_mask_to_include"];
+    }
+
+    message Windows {
+      // classifications_to_include: list of string
+      repeated string classifications_to_include = 1 [json_name = "classifications_to_include"];
+
+      // kb_numbers_to_exclude: list of string
+      repeated string kb_numbers_to_exclude = 2 [json_name = "kb_numbers_to_exclude"];
+
+      // kb_numbers_to_include: list of string
+      repeated string kb_numbers_to_include = 3 [json_name = "kb_numbers_to_include"];
+    }
+  }
+
+  message Window {
+    // duration: string
+    string duration = 1;
+
+    // expiration_date_time: string
+    string expiration_date_time = 2 [json_name = "expiration_date_time"];
+
+    // recur_every: string
+    string recur_every = 3 [json_name = "recur_every"];
+
+    // start_date_time: string
+    string start_date_time = 4 [json_name = "start_date_time"];
+
+    // time_zone: string
+    string time_zone = 5 [json_name = "time_zone"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

@@ -1,0 +1,201 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermPublicIp version is 0
+message AzurermPublicIp {
+  string allocation_method = 1 [json_name = "allocation_method"];
+
+  string ddos_protection_mode = 2 [json_name = "ddos_protection_mode"];
+
+  string ddos_protection_plan_id = 3 [json_name = "ddos_protection_plan_id"];
+
+  string domain_name_label = 4 [json_name = "domain_name_label"];
+
+  string fqdn = 5;
+
+  string id = 6;
+
+  int64 idle_timeout_in_minutes = 7 [json_name = "idle_timeout_in_minutes"];
+
+  string ip_address = 8 [json_name = "ip_address"];
+
+  map<string, string> ip_tags = 9 [json_name = "ip_tags"];
+
+  string ip_version = 10 [json_name = "ip_version"];
+
+  string location = 11;
+
+  string name = 12;
+
+  string resource_group_name = 13 [json_name = "resource_group_name"];
+
+  string reverse_fqdn = 14 [json_name = "reverse_fqdn"];
+
+  string sku = 15;
+
+  map<string, string> tags = 16;
+
+  repeated string zones = 17;
+
+  repeated Timeouts timeouts = 18;
+
+  google.protobuf.Value for_each = 19 [json_name = "for_each"];
+
+  repeated string depends_on = 20 [json_name = "depends_on"];
+
+  int32 count = 21;
+
+  string provider = 22;
+
+  terraform.v1.Lifecycle lifecycle = 23;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermPublicIpPrefix version is 0
+message AzurermPublicIpPrefix {
+  string id = 1;
+
+  string ip_prefix = 2 [json_name = "ip_prefix"];
+
+  string location = 3;
+
+  string name = 4;
+
+  int64 prefix_length = 5 [json_name = "prefix_length"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string sku = 7;
+
+  map<string, string> tags = 8;
+
+  repeated string zones = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermPublicIps version is 0
+message AzurermPublicIps {
+  string allocation_type = 1 [json_name = "allocation_type"];
+
+  string attachment_status = 2 [json_name = "attachment_status"];
+
+  string id = 3;
+
+  string name_prefix = 4 [json_name = "name_prefix"];
+
+  repeated PublicIps public_ips = 5 [json_name = "public_ips"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message PublicIps {
+    // domain_name_label: string
+    string domain_name_label = 1 [json_name = "domain_name_label"];
+
+    // fqdn: string
+    string fqdn = 2;
+
+    // id: string
+    string id = 3;
+
+    // ip_address: string
+    string ip_address = 4 [json_name = "ip_address"];
+
+    // name: string
+    string name = 5;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermPublicMaintenanceConfigurations version is 0
+message AzurermPublicMaintenanceConfigurations {
+  repeated Configs configs = 1;
+
+  string id = 2;
+
+  string location = 3;
+
+  string recur_every = 4 [json_name = "recur_every"];
+
+  string scope = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Configs {
+    // description: string
+    string description = 1;
+
+    // duration: string
+    string duration = 2;
+
+    // id: string
+    string id = 3;
+
+    // location: string
+    string location = 4;
+
+    // maintenance_scope: string
+    string maintenance_scope = 5 [json_name = "maintenance_scope"];
+
+    // name: string
+    string name = 6;
+
+    // recur_every: string
+    string recur_every = 7 [json_name = "recur_every"];
+
+    // time_zone: string
+    string time_zone = 8 [json_name = "time_zone"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

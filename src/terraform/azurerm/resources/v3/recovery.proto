@@ -1,0 +1,122 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermRecoveryServicesVault version is 0
+message AzurermRecoveryServicesVault {
+  bool classic_vmware_replication_enabled = 1 [json_name = "classic_vmware_replication_enabled"];
+
+  bool cross_region_restore_enabled = 2 [json_name = "cross_region_restore_enabled"];
+
+  string id = 3;
+
+  string immutability = 4;
+
+  string location = 5;
+
+  string name = 6;
+
+  bool public_network_access_enabled = 7 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  string sku = 9;
+
+  bool soft_delete_enabled = 10 [json_name = "soft_delete_enabled"];
+
+  string storage_mode_type = 11 [json_name = "storage_mode_type"];
+
+  map<string, string> tags = 12;
+
+  Encryption encryption = 13;
+
+  Identity identity = 14;
+
+  Monitoring monitoring = 15;
+
+  repeated Timeouts timeouts = 16;
+
+  google.protobuf.Value for_each = 17 [json_name = "for_each"];
+
+  repeated string depends_on = 18 [json_name = "depends_on"];
+
+  int32 count = 19;
+
+  string provider = 20;
+
+  terraform.v1.Lifecycle lifecycle = 21;
+
+  message Encryption {
+    bool infrastructure_encryption_enabled = 1 [json_name = "infrastructure_encryption_enabled"];
+
+    string key_id = 2 [json_name = "key_id"];
+
+    bool use_system_assigned_identity = 3 [json_name = "use_system_assigned_identity"];
+
+    string user_assigned_identity_id = 4 [json_name = "user_assigned_identity_id"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Monitoring {
+    bool alerts_for_all_job_failures_enabled = 1 [json_name = "alerts_for_all_job_failures_enabled"];
+
+    bool alerts_for_critical_operation_failures_enabled = 2 [
+      json_name = "alerts_for_critical_operation_failures_enabled"
+    ];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermRecoveryServicesVaultResourceGuardAssociation version is 0
+message AzurermRecoveryServicesVaultResourceGuardAssociation {
+  string id = 1;
+
+  string name = 2;
+
+  string resource_guard_id = 3 [json_name = "resource_guard_id"];
+
+  string vault_id = 4 [json_name = "vault_id"];
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}

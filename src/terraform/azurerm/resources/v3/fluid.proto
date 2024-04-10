@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermFluidRelayServer version is 0
+message AzurermFluidRelayServer {
+  string frs_tenant_id = 1 [json_name = "frs_tenant_id"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  repeated string orderer_endpoints = 5 [json_name = "orderer_endpoints"];
+
+  string primary_key = 6 [json_name = "primary_key"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string secondary_key = 8 [json_name = "secondary_key"];
+
+  repeated string service_endpoints = 9 [json_name = "service_endpoints"];
+
+  repeated string storage_endpoints = 10 [json_name = "storage_endpoints"];
+
+  string storage_sku = 11 [json_name = "storage_sku"];
+
+  map<string, string> tags = 12;
+
+  Identity identity = 13;
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

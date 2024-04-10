@@ -1,0 +1,596 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermServicebusNamespace version is 1
+message AzurermServicebusNamespace {
+  int64 capacity = 1;
+
+  string default_primary_connection_string = 2 [json_name = "default_primary_connection_string"];
+
+  string default_primary_key = 3 [json_name = "default_primary_key"];
+
+  string default_secondary_connection_string = 4 [json_name = "default_secondary_connection_string"];
+
+  string default_secondary_key = 5 [json_name = "default_secondary_key"];
+
+  string endpoint = 6;
+
+  string id = 7;
+
+  bool local_auth_enabled = 8 [json_name = "local_auth_enabled"];
+
+  string location = 9;
+
+  string minimum_tls_version = 10 [json_name = "minimum_tls_version"];
+
+  string name = 11;
+
+  int64 premium_messaging_partitions = 12 [json_name = "premium_messaging_partitions"];
+
+  bool public_network_access_enabled = 13 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 14 [json_name = "resource_group_name"];
+
+  string sku = 15;
+
+  map<string, string> tags = 16;
+
+  bool zone_redundant = 17 [json_name = "zone_redundant"];
+
+  CustomerManagedKey customer_managed_key = 18 [json_name = "customer_managed_key"];
+
+  Identity identity = 19;
+
+  NetworkRuleSet network_rule_set = 20 [json_name = "network_rule_set"];
+
+  repeated Timeouts timeouts = 21;
+
+  google.protobuf.Value for_each = 22 [json_name = "for_each"];
+
+  repeated string depends_on = 23 [json_name = "depends_on"];
+
+  int32 count = 24;
+
+  string provider = 25;
+
+  terraform.v1.Lifecycle lifecycle = 26;
+
+  message CustomerManagedKey {
+    string identity_id = 1 [json_name = "identity_id"];
+
+    bool infrastructure_encryption_enabled = 2 [json_name = "infrastructure_encryption_enabled"];
+
+    string key_vault_key_id = 3 [json_name = "key_vault_key_id"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message NetworkRuleSet {
+    string default_action = 1 [json_name = "default_action"];
+
+    repeated string ip_rules = 2 [json_name = "ip_rules"];
+
+    bool public_network_access_enabled = 3 [json_name = "public_network_access_enabled"];
+
+    bool trusted_services_allowed = 4 [json_name = "trusted_services_allowed"];
+
+    repeated NetworkRules network_rules = 5 [json_name = "network_rules"];
+
+    message NetworkRules {
+      bool ignore_missing_vnet_service_endpoint = 1 [json_name = "ignore_missing_vnet_service_endpoint"];
+
+      string subnet_id = 2 [json_name = "subnet_id"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermServicebusNamespaceAuthorizationRule version is 1
+message AzurermServicebusNamespaceAuthorizationRule {
+  string id = 1;
+
+  bool listen = 2;
+
+  bool manage = 3;
+
+  string name = 4;
+
+  string namespace_id = 5 [json_name = "namespace_id"];
+
+  string primary_connection_string = 6 [json_name = "primary_connection_string"];
+
+  string primary_connection_string_alias = 7 [json_name = "primary_connection_string_alias"];
+
+  string primary_key = 8 [json_name = "primary_key"];
+
+  string secondary_connection_string = 9 [json_name = "secondary_connection_string"];
+
+  string secondary_connection_string_alias = 10 [json_name = "secondary_connection_string_alias"];
+
+  string secondary_key = 11 [json_name = "secondary_key"];
+
+  bool send = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermServicebusNamespaceDisasterRecoveryConfig version is 0
+message AzurermServicebusNamespaceDisasterRecoveryConfig {
+  string alias_authorization_rule_id = 1 [json_name = "alias_authorization_rule_id"];
+
+  string default_primary_key = 2 [json_name = "default_primary_key"];
+
+  string default_secondary_key = 3 [json_name = "default_secondary_key"];
+
+  string id = 4;
+
+  string name = 5;
+
+  string partner_namespace_id = 6 [json_name = "partner_namespace_id"];
+
+  string primary_connection_string_alias = 7 [json_name = "primary_connection_string_alias"];
+
+  string primary_namespace_id = 8 [json_name = "primary_namespace_id"];
+
+  string secondary_connection_string_alias = 9 [json_name = "secondary_connection_string_alias"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermServicebusNamespaceNetworkRuleSet version is 1
+message AzurermServicebusNamespaceNetworkRuleSet {
+  string default_action = 1 [json_name = "default_action"];
+
+  string id = 2;
+
+  repeated string ip_rules = 3 [json_name = "ip_rules"];
+
+  string namespace_id = 4 [json_name = "namespace_id"];
+
+  bool public_network_access_enabled = 5 [json_name = "public_network_access_enabled"];
+
+  bool trusted_services_allowed = 6 [json_name = "trusted_services_allowed"];
+
+  repeated NetworkRules network_rules = 7 [json_name = "network_rules"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message NetworkRules {
+    bool ignore_missing_vnet_service_endpoint = 1 [json_name = "ignore_missing_vnet_service_endpoint"];
+
+    string subnet_id = 2 [json_name = "subnet_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermServicebusQueue version is 0
+message AzurermServicebusQueue {
+  string auto_delete_on_idle = 1 [json_name = "auto_delete_on_idle"];
+
+  bool dead_lettering_on_message_expiration = 2 [json_name = "dead_lettering_on_message_expiration"];
+
+  string default_message_ttl = 3 [json_name = "default_message_ttl"];
+
+  string duplicate_detection_history_time_window = 4 [
+    json_name = "duplicate_detection_history_time_window"
+  ];
+
+  bool enable_batched_operations = 5 [json_name = "enable_batched_operations"];
+
+  bool enable_express = 6 [json_name = "enable_express"];
+
+  bool enable_partitioning = 7 [json_name = "enable_partitioning"];
+
+  string forward_dead_lettered_messages_to = 8 [json_name = "forward_dead_lettered_messages_to"];
+
+  string forward_to = 9 [json_name = "forward_to"];
+
+  string id = 10;
+
+  string lock_duration = 11 [json_name = "lock_duration"];
+
+  int64 max_delivery_count = 12 [json_name = "max_delivery_count"];
+
+  int64 max_message_size_in_kilobytes = 13 [json_name = "max_message_size_in_kilobytes"];
+
+  int64 max_size_in_megabytes = 14 [json_name = "max_size_in_megabytes"];
+
+  string name = 15;
+
+  string namespace_id = 16 [json_name = "namespace_id"];
+
+  bool requires_duplicate_detection = 17 [json_name = "requires_duplicate_detection"];
+
+  bool requires_session = 18 [json_name = "requires_session"];
+
+  string status = 19;
+
+  repeated Timeouts timeouts = 20;
+
+  google.protobuf.Value for_each = 21 [json_name = "for_each"];
+
+  repeated string depends_on = 22 [json_name = "depends_on"];
+
+  int32 count = 23;
+
+  string provider = 24;
+
+  terraform.v1.Lifecycle lifecycle = 25;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermServicebusQueueAuthorizationRule version is 0
+message AzurermServicebusQueueAuthorizationRule {
+  string id = 1;
+
+  bool listen = 2;
+
+  bool manage = 3;
+
+  string name = 4;
+
+  string primary_connection_string = 5 [json_name = "primary_connection_string"];
+
+  string primary_connection_string_alias = 6 [json_name = "primary_connection_string_alias"];
+
+  string primary_key = 7 [json_name = "primary_key"];
+
+  string queue_id = 8 [json_name = "queue_id"];
+
+  string secondary_connection_string = 9 [json_name = "secondary_connection_string"];
+
+  string secondary_connection_string_alias = 10 [json_name = "secondary_connection_string_alias"];
+
+  string secondary_key = 11 [json_name = "secondary_key"];
+
+  bool send = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermServicebusSubscription version is 1
+message AzurermServicebusSubscription {
+  string auto_delete_on_idle = 1 [json_name = "auto_delete_on_idle"];
+
+  bool client_scoped_subscription_enabled = 2 [json_name = "client_scoped_subscription_enabled"];
+
+  bool dead_lettering_on_filter_evaluation_error = 3 [
+    json_name = "dead_lettering_on_filter_evaluation_error"
+  ];
+
+  bool dead_lettering_on_message_expiration = 4 [json_name = "dead_lettering_on_message_expiration"];
+
+  string default_message_ttl = 5 [json_name = "default_message_ttl"];
+
+  bool enable_batched_operations = 6 [json_name = "enable_batched_operations"];
+
+  string forward_dead_lettered_messages_to = 7 [json_name = "forward_dead_lettered_messages_to"];
+
+  string forward_to = 8 [json_name = "forward_to"];
+
+  string id = 9;
+
+  string lock_duration = 10 [json_name = "lock_duration"];
+
+  int64 max_delivery_count = 11 [json_name = "max_delivery_count"];
+
+  string name = 12;
+
+  bool requires_session = 13 [json_name = "requires_session"];
+
+  string status = 14;
+
+  string topic_id = 15 [json_name = "topic_id"];
+
+  ClientScopedSubscription client_scoped_subscription = 16 [json_name = "client_scoped_subscription"];
+
+  repeated Timeouts timeouts = 17;
+
+  google.protobuf.Value for_each = 18 [json_name = "for_each"];
+
+  repeated string depends_on = 19 [json_name = "depends_on"];
+
+  int32 count = 20;
+
+  string provider = 21;
+
+  terraform.v1.Lifecycle lifecycle = 22;
+
+  message ClientScopedSubscription {
+    string client_id = 1 [json_name = "client_id"];
+
+    bool is_client_scoped_subscription_durable = 2 [
+      json_name = "is_client_scoped_subscription_durable"
+    ];
+
+    bool is_client_scoped_subscription_shareable = 3 [
+      json_name = "is_client_scoped_subscription_shareable"
+    ];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermServicebusSubscriptionRule version is 0
+message AzurermServicebusSubscriptionRule {
+  string action = 1;
+
+  string filter_type = 2 [json_name = "filter_type"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string sql_filter = 5 [json_name = "sql_filter"];
+
+  int64 sql_filter_compatibility_level = 6 [json_name = "sql_filter_compatibility_level"];
+
+  string subscription_id = 7 [json_name = "subscription_id"];
+
+  CorrelationFilter correlation_filter = 8 [json_name = "correlation_filter"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message CorrelationFilter {
+    string content_type = 1 [json_name = "content_type"];
+
+    string correlation_id = 2 [json_name = "correlation_id"];
+
+    string label = 3;
+
+    string message_id = 4 [json_name = "message_id"];
+
+    map<string, string> properties = 5;
+
+    string reply_to = 6 [json_name = "reply_to"];
+
+    string reply_to_session_id = 7 [json_name = "reply_to_session_id"];
+
+    string session_id = 8 [json_name = "session_id"];
+
+    string to = 9;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermServicebusTopic version is 0
+message AzurermServicebusTopic {
+  string auto_delete_on_idle = 1 [json_name = "auto_delete_on_idle"];
+
+  string default_message_ttl = 2 [json_name = "default_message_ttl"];
+
+  string duplicate_detection_history_time_window = 3 [
+    json_name = "duplicate_detection_history_time_window"
+  ];
+
+  bool enable_batched_operations = 4 [json_name = "enable_batched_operations"];
+
+  bool enable_express = 5 [json_name = "enable_express"];
+
+  bool enable_partitioning = 6 [json_name = "enable_partitioning"];
+
+  string id = 7;
+
+  int64 max_message_size_in_kilobytes = 8 [json_name = "max_message_size_in_kilobytes"];
+
+  int64 max_size_in_megabytes = 9 [json_name = "max_size_in_megabytes"];
+
+  string name = 10;
+
+  string namespace_id = 11 [json_name = "namespace_id"];
+
+  bool requires_duplicate_detection = 12 [json_name = "requires_duplicate_detection"];
+
+  string status = 13;
+
+  bool support_ordering = 14 [json_name = "support_ordering"];
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermServicebusTopicAuthorizationRule version is 0
+message AzurermServicebusTopicAuthorizationRule {
+  string id = 1;
+
+  bool listen = 2;
+
+  bool manage = 3;
+
+  string name = 4;
+
+  string primary_connection_string = 5 [json_name = "primary_connection_string"];
+
+  string primary_connection_string_alias = 6 [json_name = "primary_connection_string_alias"];
+
+  string primary_key = 7 [json_name = "primary_key"];
+
+  string secondary_connection_string = 8 [json_name = "secondary_connection_string"];
+
+  string secondary_connection_string_alias = 9 [json_name = "secondary_connection_string_alias"];
+
+  string secondary_key = 10 [json_name = "secondary_key"];
+
+  bool send = 11;
+
+  string topic_id = 12 [json_name = "topic_id"];
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

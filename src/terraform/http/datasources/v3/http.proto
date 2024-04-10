@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+// Provider: http 3
+package terraform.http.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// Http version is 0
+message Http {
+  // The response body returned as a string. **NOTE**: This is deprecated, use
+  // `response_body` instead.
+  string body = 1;
+
+  // Certificate data of the Certificate Authority (CA) in [PEM (RFC
+  // 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format.
+  string ca_cert_pem = 2 [json_name = "ca_cert_pem"];
+
+  // The URL used for the request.
+  string id = 3;
+
+  // Disables verification of the server's certificate chain and hostname. Defaults to
+  // `false`
+  bool insecure = 4;
+
+  // The HTTP Method for the request. Allowed methods are a subset of methods defined
+  // in [RFC7231](https://datatracker.ietf.org/doc/html/rfc7231#section-4.3) namely,
+  // `GET`, `HEAD`, and `POST`. `POST` support is only intended for read-only URLs,
+  // such as submitting a search.
+  string method = 5;
+
+  // The request body as a string.
+  string request_body = 6 [json_name = "request_body"];
+
+  // A map of request header field names and values.
+  map<string, string> request_headers = 7 [json_name = "request_headers"];
+
+  // The request timeout in milliseconds.
+  int64 request_timeout_ms = 8 [json_name = "request_timeout_ms"];
+
+  // The response body returned as a string.
+  string response_body = 9 [json_name = "response_body"];
+
+  // The response body encoded as base64 (standard) as defined in [RFC
+  // 4648](https://datatracker.ietf.org/doc/html/rfc4648#section-4).
+  string response_body_base64 = 10 [json_name = "response_body_base64"];
+
+  // A map of response header field names and values. Duplicate headers are
+  // concatenated according to
+  // [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.2).
+  map<string, string> response_headers = 11 [json_name = "response_headers"];
+
+  // The HTTP response status code.
+  int64 status_code = 12 [json_name = "status_code"];
+
+  // The URL for the request. Supported schemes are `http` and `https`.
+  string url = 13;
+
+  repeated Retry retry = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message Retry {
+    // The number of times the request is to be retried. For example, if 2 is specified,
+    // the request will be tried a maximum of 3 times.
+    int64 attempts = 1;
+
+    // The maximum delay between retry requests in milliseconds.
+    int64 max_delay_ms = 2 [json_name = "max_delay_ms"];
+
+    // The minimum delay between retry requests in milliseconds.
+    int64 min_delay_ms = 3 [json_name = "min_delay_ms"];
+  }
+}

@@ -1,0 +1,674 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermBotChannelAlexa version is 0
+message AzurermBotChannelAlexa {
+  string bot_name = 1 [json_name = "bot_name"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  string skill_id = 5 [json_name = "skill_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermBotChannelDirectLineSpeech version is 0
+message AzurermBotChannelDirectLineSpeech {
+  string bot_name = 1 [json_name = "bot_name"];
+
+  string cognitive_account_id = 2 [json_name = "cognitive_account_id"];
+
+  string cognitive_service_access_key = 3 [json_name = "cognitive_service_access_key"];
+
+  string cognitive_service_location = 4 [json_name = "cognitive_service_location"];
+
+  string custom_speech_model_id = 5 [json_name = "custom_speech_model_id"];
+
+  string custom_voice_deployment_id = 6 [json_name = "custom_voice_deployment_id"];
+
+  string id = 7;
+
+  string location = 8;
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermBotChannelDirectline version is 0
+message AzurermBotChannelDirectline {
+  string bot_name = 1 [json_name = "bot_name"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  repeated Site site = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Site {
+    bool enabled = 1;
+
+    bool endpoint_parameters_enabled = 2 [json_name = "endpoint_parameters_enabled"];
+
+    bool enhanced_authentication_enabled = 3 [json_name = "enhanced_authentication_enabled"];
+
+    string id = 4;
+
+    string key = 5;
+
+    string key2 = 6;
+
+    string name = 7;
+
+    bool storage_enabled = 8 [json_name = "storage_enabled"];
+
+    repeated string trusted_origins = 9 [json_name = "trusted_origins"];
+
+    bool user_upload_enabled = 10 [json_name = "user_upload_enabled"];
+
+    bool v1_allowed = 11 [json_name = "v1_allowed"];
+
+    bool v3_allowed = 12 [json_name = "v3_allowed"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermBotChannelEmail version is 0
+message AzurermBotChannelEmail {
+  string bot_name = 1 [json_name = "bot_name"];
+
+  string email_address = 2 [json_name = "email_address"];
+
+  string email_password = 3 [json_name = "email_password"];
+
+  string id = 4;
+
+  string location = 5;
+
+  string magic_code = 6 [json_name = "magic_code"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermBotChannelFacebook version is 0
+message AzurermBotChannelFacebook {
+  string bot_name = 1 [json_name = "bot_name"];
+
+  string facebook_application_id = 2 [json_name = "facebook_application_id"];
+
+  string facebook_application_secret = 3 [json_name = "facebook_application_secret"];
+
+  string id = 4;
+
+  string location = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  repeated Page page = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Page {
+    string access_token = 1 [json_name = "access_token"];
+
+    string id = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermBotChannelLine version is 0
+message AzurermBotChannelLine {
+  string bot_name = 1 [json_name = "bot_name"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  repeated LineChannel line_channel = 5 [json_name = "line_channel"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message LineChannel {
+    string access_token = 1 [json_name = "access_token"];
+
+    string secret = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermBotChannelMsTeams version is 0
+message AzurermBotChannelMsTeams {
+  string bot_name = 1 [json_name = "bot_name"];
+
+  string calling_web_hook = 2 [json_name = "calling_web_hook"];
+
+  string deployment_environment = 3 [json_name = "deployment_environment"];
+
+  bool enable_calling = 4 [json_name = "enable_calling"];
+
+  string id = 5;
+
+  string location = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermBotChannelSlack version is 0
+message AzurermBotChannelSlack {
+  string bot_name = 1 [json_name = "bot_name"];
+
+  string client_id = 2 [json_name = "client_id"];
+
+  string client_secret = 3 [json_name = "client_secret"];
+
+  string id = 4;
+
+  string landing_page_url = 5 [json_name = "landing_page_url"];
+
+  string location = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string signing_secret = 8 [json_name = "signing_secret"];
+
+  string verification_token = 9 [json_name = "verification_token"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermBotChannelSms version is 0
+message AzurermBotChannelSms {
+  string bot_name = 1 [json_name = "bot_name"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string phone_number = 4 [json_name = "phone_number"];
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string sms_channel_account_security_id = 6 [json_name = "sms_channel_account_security_id"];
+
+  string sms_channel_auth_token = 7 [json_name = "sms_channel_auth_token"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermBotChannelWebChat version is 0
+message AzurermBotChannelWebChat {
+  string bot_name = 1 [json_name = "bot_name"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  repeated string site_names = 5 [json_name = "site_names"];
+
+  repeated Site site = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Site {
+    bool endpoint_parameters_enabled = 1 [json_name = "endpoint_parameters_enabled"];
+
+    string name = 2;
+
+    bool storage_enabled = 3 [json_name = "storage_enabled"];
+
+    bool user_upload_enabled = 4 [json_name = "user_upload_enabled"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermBotChannelsRegistration version is 0
+message AzurermBotChannelsRegistration {
+  string cmk_key_vault_url = 1 [json_name = "cmk_key_vault_url"];
+
+  string description = 2;
+
+  string developer_app_insights_api_key = 3 [json_name = "developer_app_insights_api_key"];
+
+  string developer_app_insights_application_id = 4 [
+    json_name = "developer_app_insights_application_id"
+  ];
+
+  string developer_app_insights_key = 5 [json_name = "developer_app_insights_key"];
+
+  string display_name = 6 [json_name = "display_name"];
+
+  string endpoint = 7;
+
+  string icon_url = 8 [json_name = "icon_url"];
+
+  string id = 9;
+
+  bool isolated_network_enabled = 10 [json_name = "isolated_network_enabled"];
+
+  string location = 11;
+
+  string microsoft_app_id = 12 [json_name = "microsoft_app_id"];
+
+  string name = 13;
+
+  bool public_network_access_enabled = 14 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 15 [json_name = "resource_group_name"];
+
+  string sku = 16;
+
+  bool streaming_endpoint_enabled = 17 [json_name = "streaming_endpoint_enabled"];
+
+  map<string, string> tags = 18;
+
+  repeated Timeouts timeouts = 19;
+
+  google.protobuf.Value for_each = 20 [json_name = "for_each"];
+
+  repeated string depends_on = 21 [json_name = "depends_on"];
+
+  int32 count = 22;
+
+  string provider = 23;
+
+  terraform.v1.Lifecycle lifecycle = 24;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermBotConnection version is 0
+message AzurermBotConnection {
+  string bot_name = 1 [json_name = "bot_name"];
+
+  string client_id = 2 [json_name = "client_id"];
+
+  string client_secret = 3 [json_name = "client_secret"];
+
+  string id = 4;
+
+  string location = 5;
+
+  string name = 6;
+
+  map<string, string> parameters = 7;
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  string scopes = 9;
+
+  string service_provider_name = 10 [json_name = "service_provider_name"];
+
+  map<string, string> tags = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermBotServiceAzureBot version is 0
+message AzurermBotServiceAzureBot {
+  string developer_app_insights_api_key = 1 [json_name = "developer_app_insights_api_key"];
+
+  string developer_app_insights_application_id = 2 [
+    json_name = "developer_app_insights_application_id"
+  ];
+
+  string developer_app_insights_key = 3 [json_name = "developer_app_insights_key"];
+
+  string display_name = 4 [json_name = "display_name"];
+
+  string endpoint = 5;
+
+  string icon_url = 6 [json_name = "icon_url"];
+
+  string id = 7;
+
+  bool local_authentication_enabled = 8 [json_name = "local_authentication_enabled"];
+
+  string location = 9;
+
+  repeated string luis_app_ids = 10 [json_name = "luis_app_ids"];
+
+  string luis_key = 11 [json_name = "luis_key"];
+
+  string microsoft_app_id = 12 [json_name = "microsoft_app_id"];
+
+  string microsoft_app_msi_id = 13 [json_name = "microsoft_app_msi_id"];
+
+  string microsoft_app_tenant_id = 14 [json_name = "microsoft_app_tenant_id"];
+
+  string microsoft_app_type = 15 [json_name = "microsoft_app_type"];
+
+  string name = 16;
+
+  bool public_network_access_enabled = 17 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 18 [json_name = "resource_group_name"];
+
+  string sku = 19;
+
+  bool streaming_endpoint_enabled = 20 [json_name = "streaming_endpoint_enabled"];
+
+  map<string, string> tags = 21;
+
+  repeated Timeouts timeouts = 22;
+
+  google.protobuf.Value for_each = 23 [json_name = "for_each"];
+
+  repeated string depends_on = 24 [json_name = "depends_on"];
+
+  int32 count = 25;
+
+  string provider = 26;
+
+  terraform.v1.Lifecycle lifecycle = 27;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermBotWebApp version is 0
+message AzurermBotWebApp {
+  string developer_app_insights_api_key = 1 [json_name = "developer_app_insights_api_key"];
+
+  string developer_app_insights_application_id = 2 [
+    json_name = "developer_app_insights_application_id"
+  ];
+
+  string developer_app_insights_key = 3 [json_name = "developer_app_insights_key"];
+
+  string display_name = 4 [json_name = "display_name"];
+
+  string endpoint = 5;
+
+  string id = 6;
+
+  string location = 7;
+
+  repeated string luis_app_ids = 8 [json_name = "luis_app_ids"];
+
+  string luis_key = 9 [json_name = "luis_key"];
+
+  string microsoft_app_id = 10 [json_name = "microsoft_app_id"];
+
+  string name = 11;
+
+  string resource_group_name = 12 [json_name = "resource_group_name"];
+
+  string sku = 13;
+
+  map<string, string> tags = 14;
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

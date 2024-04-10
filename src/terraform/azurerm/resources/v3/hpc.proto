@@ -1,0 +1,341 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermHpcCache version is 0
+message AzurermHpcCache {
+  bool automatically_rotate_key_to_latest_enabled = 1 [
+    json_name = "automatically_rotate_key_to_latest_enabled"
+  ];
+
+  int64 cache_size_in_gb = 2 [json_name = "cache_size_in_gb"];
+
+  string id = 3;
+
+  string key_vault_key_id = 4 [json_name = "key_vault_key_id"];
+
+  string location = 5;
+
+  repeated string mount_addresses = 6 [json_name = "mount_addresses"];
+
+  int64 mtu = 7;
+
+  string name = 8;
+
+  string ntp_server = 9 [json_name = "ntp_server"];
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  string sku_name = 11 [json_name = "sku_name"];
+
+  string subnet_id = 12 [json_name = "subnet_id"];
+
+  map<string, string> tags = 13;
+
+  DefaultAccessPolicy default_access_policy = 14 [json_name = "default_access_policy"];
+
+  DirectoryActiveDirectory directory_active_directory = 15 [json_name = "directory_active_directory"];
+
+  DirectoryFlatFile directory_flat_file = 16 [json_name = "directory_flat_file"];
+
+  DirectoryLdap directory_ldap = 17 [json_name = "directory_ldap"];
+
+  Dns dns = 18;
+
+  Identity identity = 19;
+
+  repeated Timeouts timeouts = 20;
+
+  google.protobuf.Value for_each = 21 [json_name = "for_each"];
+
+  repeated string depends_on = 22 [json_name = "depends_on"];
+
+  int32 count = 23;
+
+  string provider = 24;
+
+  terraform.v1.Lifecycle lifecycle = 25;
+
+  message DefaultAccessPolicy {
+    repeated AccessRule access_rule = 1 [json_name = "access_rule"];
+
+    message AccessRule {
+      string access = 1;
+
+      int64 anonymous_gid = 2 [json_name = "anonymous_gid"];
+
+      int64 anonymous_uid = 3 [json_name = "anonymous_uid"];
+
+      string filter = 4;
+
+      bool root_squash_enabled = 5 [json_name = "root_squash_enabled"];
+
+      string scope = 6;
+
+      bool submount_access_enabled = 7 [json_name = "submount_access_enabled"];
+
+      bool suid_enabled = 8 [json_name = "suid_enabled"];
+    }
+  }
+
+  message DirectoryActiveDirectory {
+    string cache_netbios_name = 1 [json_name = "cache_netbios_name"];
+
+    string dns_primary_ip = 2 [json_name = "dns_primary_ip"];
+
+    string dns_secondary_ip = 3 [json_name = "dns_secondary_ip"];
+
+    string domain_name = 4 [json_name = "domain_name"];
+
+    string domain_netbios_name = 5 [json_name = "domain_netbios_name"];
+
+    string password = 6;
+
+    string username = 7;
+  }
+
+  message DirectoryFlatFile {
+    string group_file_uri = 1 [json_name = "group_file_uri"];
+
+    string password_file_uri = 2 [json_name = "password_file_uri"];
+  }
+
+  message DirectoryLdap {
+    string base_dn = 1 [json_name = "base_dn"];
+
+    string certificate_validation_uri = 2 [json_name = "certificate_validation_uri"];
+
+    bool download_certificate_automatically = 3 [json_name = "download_certificate_automatically"];
+
+    bool encrypted = 4;
+
+    string server = 5;
+
+    Bind bind = 6;
+
+    message Bind {
+      string dn = 1;
+
+      string password = 2;
+    }
+  }
+
+  message Dns {
+    string search_domain = 1 [json_name = "search_domain"];
+
+    repeated string servers = 2;
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermHpcCacheAccessPolicy version is 0
+message AzurermHpcCacheAccessPolicy {
+  string hpc_cache_id = 1 [json_name = "hpc_cache_id"];
+
+  string id = 2;
+
+  string name = 3;
+
+  repeated AccessRule access_rule = 4 [json_name = "access_rule"];
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message AccessRule {
+    string access = 1;
+
+    int64 anonymous_gid = 2 [json_name = "anonymous_gid"];
+
+    int64 anonymous_uid = 3 [json_name = "anonymous_uid"];
+
+    string filter = 4;
+
+    bool root_squash_enabled = 5 [json_name = "root_squash_enabled"];
+
+    string scope = 6;
+
+    bool submount_access_enabled = 7 [json_name = "submount_access_enabled"];
+
+    bool suid_enabled = 8 [json_name = "suid_enabled"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermHpcCacheBlobNfsTarget version is 0
+message AzurermHpcCacheBlobNfsTarget {
+  string access_policy_name = 1 [json_name = "access_policy_name"];
+
+  string cache_name = 2 [json_name = "cache_name"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string namespace_path = 5 [json_name = "namespace_path"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string storage_container_id = 7 [json_name = "storage_container_id"];
+
+  string usage_model = 8 [json_name = "usage_model"];
+
+  int64 verification_timer_in_seconds = 9 [json_name = "verification_timer_in_seconds"];
+
+  int64 write_back_timer_in_seconds = 10 [json_name = "write_back_timer_in_seconds"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermHpcCacheBlobTarget version is 0
+message AzurermHpcCacheBlobTarget {
+  string access_policy_name = 1 [json_name = "access_policy_name"];
+
+  string cache_name = 2 [json_name = "cache_name"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string namespace_path = 5 [json_name = "namespace_path"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string storage_container_id = 7 [json_name = "storage_container_id"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermHpcCacheNfsTarget version is 0
+message AzurermHpcCacheNfsTarget {
+  string cache_name = 1 [json_name = "cache_name"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  string target_host_name = 5 [json_name = "target_host_name"];
+
+  string usage_model = 6 [json_name = "usage_model"];
+
+  int64 verification_timer_in_seconds = 7 [json_name = "verification_timer_in_seconds"];
+
+  int64 write_back_timer_in_seconds = 8 [json_name = "write_back_timer_in_seconds"];
+
+  repeated NamespaceJunction namespace_junction = 9 [json_name = "namespace_junction"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message NamespaceJunction {
+    string access_policy_name = 1 [json_name = "access_policy_name"];
+
+    string namespace_path = 2 [json_name = "namespace_path"];
+
+    string nfs_export = 3 [json_name = "nfs_export"];
+
+    string target_path = 4 [json_name = "target_path"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

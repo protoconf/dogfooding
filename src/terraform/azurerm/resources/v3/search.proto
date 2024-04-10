@@ -1,0 +1,128 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermSearchService version is 0
+message AzurermSearchService {
+  repeated string allowed_ips = 1 [json_name = "allowed_ips"];
+
+  string authentication_failure_mode = 2 [json_name = "authentication_failure_mode"];
+
+  bool customer_managed_key_enforcement_enabled = 3 [
+    json_name = "customer_managed_key_enforcement_enabled"
+  ];
+
+  string hosting_mode = 4 [json_name = "hosting_mode"];
+
+  string id = 5;
+
+  bool local_authentication_enabled = 6 [json_name = "local_authentication_enabled"];
+
+  string location = 7;
+
+  string name = 8;
+
+  int64 partition_count = 9 [json_name = "partition_count"];
+
+  string primary_key = 10 [json_name = "primary_key"];
+
+  bool public_network_access_enabled = 11 [json_name = "public_network_access_enabled"];
+
+  repeated QueryKeys query_keys = 12 [json_name = "query_keys"];
+
+  int64 replica_count = 13 [json_name = "replica_count"];
+
+  string resource_group_name = 14 [json_name = "resource_group_name"];
+
+  string secondary_key = 15 [json_name = "secondary_key"];
+
+  string semantic_search_sku = 16 [json_name = "semantic_search_sku"];
+
+  string sku = 17;
+
+  map<string, string> tags = 18;
+
+  Identity identity = 19;
+
+  repeated Timeouts timeouts = 20;
+
+  google.protobuf.Value for_each = 21 [json_name = "for_each"];
+
+  repeated string depends_on = 22 [json_name = "depends_on"];
+
+  int32 count = 23;
+
+  string provider = 24;
+
+  terraform.v1.Lifecycle lifecycle = 25;
+
+  message QueryKeys {
+    // key: string
+    string key = 1;
+
+    // name: string
+    string name = 2;
+  }
+
+  message Identity {
+    string principal_id = 1 [json_name = "principal_id"];
+
+    string tenant_id = 2 [json_name = "tenant_id"];
+
+    string type = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSearchSharedPrivateLinkService version is 0
+message AzurermSearchSharedPrivateLinkService {
+  string id = 1;
+
+  string name = 2;
+
+  string request_message = 3 [json_name = "request_message"];
+
+  string search_service_id = 4 [json_name = "search_service_id"];
+
+  string status = 5;
+
+  string subresource_name = 6 [json_name = "subresource_name"];
+
+  string target_resource_id = 7 [json_name = "target_resource_id"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

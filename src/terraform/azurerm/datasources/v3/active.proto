@@ -1,0 +1,134 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermActiveDirectoryDomainService version is 0
+message AzurermActiveDirectoryDomainService {
+  string deployment_id = 1 [json_name = "deployment_id"];
+
+  string domain_configuration_type = 2 [json_name = "domain_configuration_type"];
+
+  string domain_name = 3 [json_name = "domain_name"];
+
+  bool filtered_sync_enabled = 4 [json_name = "filtered_sync_enabled"];
+
+  string id = 5;
+
+  string location = 6;
+
+  string name = 7;
+
+  repeated Notifications notifications = 8;
+
+  repeated ReplicaSets replica_sets = 9 [json_name = "replica_sets"];
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  string resource_id = 11 [json_name = "resource_id"];
+
+  repeated SecureLdap secure_ldap = 12 [json_name = "secure_ldap"];
+
+  repeated Security security = 13;
+
+  string sku = 14;
+
+  string sync_owner = 15 [json_name = "sync_owner"];
+
+  map<string, string> tags = 16;
+
+  string tenant_id = 17 [json_name = "tenant_id"];
+
+  int64 version = 18;
+
+  repeated Timeouts timeouts = 19;
+
+  google.protobuf.Value for_each = 20 [json_name = "for_each"];
+
+  repeated string depends_on = 21 [json_name = "depends_on"];
+
+  int32 count = 22;
+
+  string provider = 23;
+
+  terraform.v1.Lifecycle lifecycle = 24;
+
+  message Notifications {
+    // additional_recipients: list of string
+    repeated string additional_recipients = 1 [json_name = "additional_recipients"];
+
+    // notify_dc_admins: bool
+    bool notify_dc_admins = 2 [json_name = "notify_dc_admins"];
+
+    // notify_global_admins: bool
+    bool notify_global_admins = 3 [json_name = "notify_global_admins"];
+  }
+
+  message ReplicaSets {
+    // domain_controller_ip_addresses: list of string
+    repeated string domain_controller_ip_addresses = 1 [json_name = "domain_controller_ip_addresses"];
+
+    // external_access_ip_address: string
+    string external_access_ip_address = 2 [json_name = "external_access_ip_address"];
+
+    // id: string
+    string id = 3;
+
+    // location: string
+    string location = 4;
+
+    // service_status: string
+    string service_status = 5 [json_name = "service_status"];
+
+    // subnet_id: string
+    string subnet_id = 6 [json_name = "subnet_id"];
+  }
+
+  message SecureLdap {
+    // certificate_expiry: string
+    string certificate_expiry = 1 [json_name = "certificate_expiry"];
+
+    // certificate_thumbprint: string
+    string certificate_thumbprint = 2 [json_name = "certificate_thumbprint"];
+
+    // enabled: bool
+    bool enabled = 3;
+
+    // external_access_enabled: bool
+    bool external_access_enabled = 4 [json_name = "external_access_enabled"];
+
+    // public_certificate: string
+    string public_certificate = 5 [json_name = "public_certificate"];
+  }
+
+  message Security {
+    // kerberos_armoring_enabled: bool
+    bool kerberos_armoring_enabled = 1 [json_name = "kerberos_armoring_enabled"];
+
+    // kerberos_rc4_encryption_enabled: bool
+    bool kerberos_rc4_encryption_enabled = 2 [json_name = "kerberos_rc4_encryption_enabled"];
+
+    // ntlm_v1_enabled: bool
+    bool ntlm_v1_enabled = 3 [json_name = "ntlm_v1_enabled"];
+
+    // sync_kerberos_passwords: bool
+    bool sync_kerberos_passwords = 4 [json_name = "sync_kerberos_passwords"];
+
+    // sync_ntlm_passwords: bool
+    bool sync_ntlm_passwords = 5 [json_name = "sync_ntlm_passwords"];
+
+    // sync_on_prem_passwords: bool
+    bool sync_on_prem_passwords = 6 [json_name = "sync_on_prem_passwords"];
+
+    // tls_v1_enabled: bool
+    bool tls_v1_enabled = 7 [json_name = "tls_v1_enabled"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

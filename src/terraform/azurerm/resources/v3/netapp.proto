@@ -1,0 +1,530 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermNetappAccount version is 0
+message AzurermNetappAccount {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 5;
+
+  ActiveDirectory active_directory = 6 [json_name = "active_directory"];
+
+  Identity identity = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message ActiveDirectory {
+    repeated string dns_servers = 1 [json_name = "dns_servers"];
+
+    string domain = 2;
+
+    string organizational_unit = 3 [json_name = "organizational_unit"];
+
+    string password = 4;
+
+    string smb_server_name = 5 [json_name = "smb_server_name"];
+
+    string username = 6;
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermNetappAccountEncryption version is 0
+message AzurermNetappAccountEncryption {
+  // The versionless encryption key url.
+  string encryption_key = 1 [json_name = "encryption_key"];
+
+  string id = 2;
+
+  // The ID of the NetApp Account where encryption will be set.
+  string netapp_account_id = 3 [json_name = "netapp_account_id"];
+
+  // The Principal ID of the System Assigned Identity to use for encryption.
+  string system_assigned_identity_principal_id = 4 [
+    json_name = "system_assigned_identity_principal_id"
+  ];
+
+  // The resource ID of the User Assigned Identity to use for encryption.
+  string user_assigned_identity_id = 5 [json_name = "user_assigned_identity_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermNetappPool version is 0
+message AzurermNetappPool {
+  string account_name = 1 [json_name = "account_name"];
+
+  string encryption_type = 2 [json_name = "encryption_type"];
+
+  string id = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  string qos_type = 6 [json_name = "qos_type"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string service_level = 8 [json_name = "service_level"];
+
+  int64 size_in_tb = 9 [json_name = "size_in_tb"];
+
+  map<string, string> tags = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermNetappSnapshot version is 0
+message AzurermNetappSnapshot {
+  string account_name = 1 [json_name = "account_name"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string pool_name = 5 [json_name = "pool_name"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string volume_name = 7 [json_name = "volume_name"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermNetappSnapshotPolicy version is 0
+message AzurermNetappSnapshotPolicy {
+  string account_name = 1 [json_name = "account_name"];
+
+  bool enabled = 2;
+
+  string id = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 7;
+
+  DailySchedule daily_schedule = 8 [json_name = "daily_schedule"];
+
+  HourlySchedule hourly_schedule = 9 [json_name = "hourly_schedule"];
+
+  MonthlySchedule monthly_schedule = 10 [json_name = "monthly_schedule"];
+
+  repeated Timeouts timeouts = 11;
+
+  WeeklySchedule weekly_schedule = 12 [json_name = "weekly_schedule"];
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message DailySchedule {
+    int64 hour = 1;
+
+    int64 minute = 2;
+
+    int64 snapshots_to_keep = 3 [json_name = "snapshots_to_keep"];
+  }
+
+  message HourlySchedule {
+    int64 minute = 1;
+
+    int64 snapshots_to_keep = 2 [json_name = "snapshots_to_keep"];
+  }
+
+  message MonthlySchedule {
+    repeated int64 days_of_month = 1 [json_name = "days_of_month"];
+
+    int64 hour = 2;
+
+    int64 minute = 3;
+
+    int64 snapshots_to_keep = 4 [json_name = "snapshots_to_keep"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message WeeklySchedule {
+    repeated string days_of_week = 1 [json_name = "days_of_week"];
+
+    int64 hour = 2;
+
+    int64 minute = 3;
+
+    int64 snapshots_to_keep = 4 [json_name = "snapshots_to_keep"];
+  }
+}
+
+// AzurermNetappVolume version is 0
+message AzurermNetappVolume {
+  string account_name = 1 [json_name = "account_name"];
+
+  bool azure_vmware_data_store_enabled = 2 [json_name = "azure_vmware_data_store_enabled"];
+
+  string create_from_snapshot_resource_id = 3 [json_name = "create_from_snapshot_resource_id"];
+
+  string encryption_key_source = 4 [json_name = "encryption_key_source"];
+
+  string id = 5;
+
+  string key_vault_private_endpoint_id = 6 [json_name = "key_vault_private_endpoint_id"];
+
+  string location = 7;
+
+  repeated string mount_ip_addresses = 8 [json_name = "mount_ip_addresses"];
+
+  string name = 9;
+
+  string network_features = 10 [json_name = "network_features"];
+
+  string pool_name = 11 [json_name = "pool_name"];
+
+  repeated string protocols = 12;
+
+  string resource_group_name = 13 [json_name = "resource_group_name"];
+
+  string security_style = 14 [json_name = "security_style"];
+
+  string service_level = 15 [json_name = "service_level"];
+
+  bool smb_access_based_enumeration_enabled = 16 [json_name = "smb_access_based_enumeration_enabled"];
+
+  bool smb_non_browsable_enabled = 17 [json_name = "smb_non_browsable_enabled"];
+
+  bool snapshot_directory_visible = 18 [json_name = "snapshot_directory_visible"];
+
+  int64 storage_quota_in_gb = 19 [json_name = "storage_quota_in_gb"];
+
+  string subnet_id = 20 [json_name = "subnet_id"];
+
+  map<string, string> tags = 21;
+
+  int64 throughput_in_mibps = 22 [json_name = "throughput_in_mibps"];
+
+  string volume_path = 23 [json_name = "volume_path"];
+
+  string zone = 24;
+
+  DataProtectionReplication data_protection_replication = 25 [json_name = "data_protection_replication"];
+
+  DataProtectionSnapshotPolicy data_protection_snapshot_policy = 26 [json_name = "data_protection_snapshot_policy"];
+
+  repeated ExportPolicyRule export_policy_rule = 27 [json_name = "export_policy_rule"];
+
+  repeated Timeouts timeouts = 28;
+
+  google.protobuf.Value for_each = 29 [json_name = "for_each"];
+
+  repeated string depends_on = 30 [json_name = "depends_on"];
+
+  int32 count = 31;
+
+  string provider = 32;
+
+  terraform.v1.Lifecycle lifecycle = 33;
+
+  message DataProtectionReplication {
+    string endpoint_type = 1 [json_name = "endpoint_type"];
+
+    string remote_volume_location = 2 [json_name = "remote_volume_location"];
+
+    string remote_volume_resource_id = 3 [json_name = "remote_volume_resource_id"];
+
+    string replication_frequency = 4 [json_name = "replication_frequency"];
+  }
+
+  message DataProtectionSnapshotPolicy {
+    string snapshot_policy_id = 1 [json_name = "snapshot_policy_id"];
+  }
+
+  message ExportPolicyRule {
+    repeated string allowed_clients = 1 [json_name = "allowed_clients"];
+
+    repeated string protocols_enabled = 2 [json_name = "protocols_enabled"];
+
+    bool root_access_enabled = 3 [json_name = "root_access_enabled"];
+
+    int64 rule_index = 4 [json_name = "rule_index"];
+
+    bool unix_read_only = 5 [json_name = "unix_read_only"];
+
+    bool unix_read_write = 6 [json_name = "unix_read_write"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermNetappVolumeGroupSapHana version is 0
+message AzurermNetappVolumeGroupSapHana {
+  string account_name = 1 [json_name = "account_name"];
+
+  string application_identifier = 2 [json_name = "application_identifier"];
+
+  string group_description = 3 [json_name = "group_description"];
+
+  string id = 4;
+
+  string location = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 8;
+
+  repeated Volume volume = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message Volume {
+    string capacity_pool_id = 1 [json_name = "capacity_pool_id"];
+
+    string id = 2;
+
+    repeated string mount_ip_addresses = 3 [json_name = "mount_ip_addresses"];
+
+    string name = 4;
+
+    repeated string protocols = 5;
+
+    string proximity_placement_group_id = 6 [json_name = "proximity_placement_group_id"];
+
+    string security_style = 7 [json_name = "security_style"];
+
+    string service_level = 8 [json_name = "service_level"];
+
+    bool snapshot_directory_visible = 9 [json_name = "snapshot_directory_visible"];
+
+    int64 storage_quota_in_gb = 10 [json_name = "storage_quota_in_gb"];
+
+    string subnet_id = 11 [json_name = "subnet_id"];
+
+    map<string, string> tags = 12;
+
+    int64 throughput_in_mibps = 13 [json_name = "throughput_in_mibps"];
+
+    string volume_path = 14 [json_name = "volume_path"];
+
+    string volume_spec_name = 15 [json_name = "volume_spec_name"];
+
+    DataProtectionReplication data_protection_replication = 16 [json_name = "data_protection_replication"];
+
+    DataProtectionSnapshotPolicy data_protection_snapshot_policy = 17 [json_name = "data_protection_snapshot_policy"];
+
+    repeated ExportPolicyRule export_policy_rule = 18 [json_name = "export_policy_rule"];
+
+    message DataProtectionReplication {
+      string endpoint_type = 1 [json_name = "endpoint_type"];
+
+      string remote_volume_location = 2 [json_name = "remote_volume_location"];
+
+      string remote_volume_resource_id = 3 [json_name = "remote_volume_resource_id"];
+
+      string replication_frequency = 4 [json_name = "replication_frequency"];
+    }
+
+    message DataProtectionSnapshotPolicy {
+      string snapshot_policy_id = 1 [json_name = "snapshot_policy_id"];
+    }
+
+    message ExportPolicyRule {
+      string allowed_clients = 1 [json_name = "allowed_clients"];
+
+      bool nfsv3_enabled = 2 [json_name = "nfsv3_enabled"];
+
+      bool nfsv41_enabled = 3 [json_name = "nfsv41_enabled"];
+
+      bool root_access_enabled = 4 [json_name = "root_access_enabled"];
+
+      int64 rule_index = 5 [json_name = "rule_index"];
+
+      bool unix_read_only = 6 [json_name = "unix_read_only"];
+
+      bool unix_read_write = 7 [json_name = "unix_read_write"];
+    }
+  }
+}
+
+// AzurermNetappVolumeQuotaRule version is 0
+message AzurermNetappVolumeQuotaRule {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  int64 quota_size_in_kib = 4 [json_name = "quota_size_in_kib"];
+
+  string quota_target = 5 [json_name = "quota_target"];
+
+  string quota_type = 6 [json_name = "quota_type"];
+
+  string volume_id = 7 [json_name = "volume_id"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

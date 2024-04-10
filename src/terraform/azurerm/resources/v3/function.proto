@@ -1,0 +1,844 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermFunctionApp version is 0
+message AzurermFunctionApp {
+  string app_service_plan_id = 1 [json_name = "app_service_plan_id"];
+
+  map<string, string> app_settings = 2 [json_name = "app_settings"];
+
+  string client_cert_mode = 3 [json_name = "client_cert_mode"];
+
+  string custom_domain_verification_id = 4 [json_name = "custom_domain_verification_id"];
+
+  int64 daily_memory_time_quota = 5 [json_name = "daily_memory_time_quota"];
+
+  string default_hostname = 6 [json_name = "default_hostname"];
+
+  bool enable_builtin_logging = 7 [json_name = "enable_builtin_logging"];
+
+  bool enabled = 8;
+
+  bool https_only = 9 [json_name = "https_only"];
+
+  string id = 10;
+
+  string key_vault_reference_identity_id = 11 [json_name = "key_vault_reference_identity_id"];
+
+  string kind = 12;
+
+  string location = 13;
+
+  string name = 14;
+
+  string os_type = 15 [json_name = "os_type"];
+
+  string outbound_ip_addresses = 16 [json_name = "outbound_ip_addresses"];
+
+  string possible_outbound_ip_addresses = 17 [json_name = "possible_outbound_ip_addresses"];
+
+  string resource_group_name = 18 [json_name = "resource_group_name"];
+
+  repeated SiteCredential site_credential = 19 [json_name = "site_credential"];
+
+  string storage_account_access_key = 20 [json_name = "storage_account_access_key"];
+
+  string storage_account_name = 21 [json_name = "storage_account_name"];
+
+  map<string, string> tags = 22;
+
+  string version = 23;
+
+  AuthSettings auth_settings = 24 [json_name = "auth_settings"];
+
+  repeated ConnectionString connection_string = 25 [json_name = "connection_string"];
+
+  Identity identity = 26;
+
+  SiteConfig site_config = 27 [json_name = "site_config"];
+
+  SourceControl source_control = 28 [json_name = "source_control"];
+
+  repeated Timeouts timeouts = 29;
+
+  google.protobuf.Value for_each = 30 [json_name = "for_each"];
+
+  repeated string depends_on = 31 [json_name = "depends_on"];
+
+  int32 count = 32;
+
+  string provider = 33;
+
+  terraform.v1.Lifecycle lifecycle = 34;
+
+  message SiteCredential {
+    // password: string
+    string password = 1;
+
+    // username: string
+    string username = 2;
+  }
+
+  message AuthSettings {
+    map<string, string> additional_login_params = 1 [json_name = "additional_login_params"];
+
+    repeated string allowed_external_redirect_urls = 2 [json_name = "allowed_external_redirect_urls"];
+
+    string default_provider = 3 [json_name = "default_provider"];
+
+    bool enabled = 4;
+
+    string issuer = 5;
+
+    string runtime_version = 6 [json_name = "runtime_version"];
+
+    int64 token_refresh_extension_hours = 7 [json_name = "token_refresh_extension_hours"];
+
+    bool token_store_enabled = 8 [json_name = "token_store_enabled"];
+
+    string unauthenticated_client_action = 9 [json_name = "unauthenticated_client_action"];
+
+    ActiveDirectory active_directory = 10 [json_name = "active_directory"];
+
+    Facebook facebook = 11;
+
+    Google google = 12;
+
+    Microsoft microsoft = 13;
+
+    Twitter twitter = 14;
+
+    message ActiveDirectory {
+      repeated string allowed_audiences = 1 [json_name = "allowed_audiences"];
+
+      string client_id = 2 [json_name = "client_id"];
+
+      string client_secret = 3 [json_name = "client_secret"];
+    }
+
+    message Facebook {
+      string app_id = 1 [json_name = "app_id"];
+
+      string app_secret = 2 [json_name = "app_secret"];
+
+      repeated string oauth_scopes = 3 [json_name = "oauth_scopes"];
+    }
+
+    message Google {
+      string client_id = 1 [json_name = "client_id"];
+
+      string client_secret = 2 [json_name = "client_secret"];
+
+      repeated string oauth_scopes = 3 [json_name = "oauth_scopes"];
+    }
+
+    message Microsoft {
+      string client_id = 1 [json_name = "client_id"];
+
+      string client_secret = 2 [json_name = "client_secret"];
+
+      repeated string oauth_scopes = 3 [json_name = "oauth_scopes"];
+    }
+
+    message Twitter {
+      string consumer_key = 1 [json_name = "consumer_key"];
+
+      string consumer_secret = 2 [json_name = "consumer_secret"];
+    }
+  }
+
+  message ConnectionString {
+    string name = 1;
+
+    string type = 2;
+
+    string value = 3;
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message SiteConfig {
+    bool always_on = 1 [json_name = "always_on"];
+
+    int64 app_scale_limit = 2 [json_name = "app_scale_limit"];
+
+    string auto_swap_slot_name = 3 [json_name = "auto_swap_slot_name"];
+
+    string dotnet_framework_version = 4 [json_name = "dotnet_framework_version"];
+
+    int64 elastic_instance_minimum = 5 [json_name = "elastic_instance_minimum"];
+
+    string ftps_state = 6 [json_name = "ftps_state"];
+
+    string health_check_path = 7 [json_name = "health_check_path"];
+
+    bool http2_enabled = 8 [json_name = "http2_enabled"];
+
+    repeated IpRestriction ip_restriction = 9 [json_name = "ip_restriction"];
+
+    string java_version = 10 [json_name = "java_version"];
+
+    string linux_fx_version = 11 [json_name = "linux_fx_version"];
+
+    string min_tls_version = 12 [json_name = "min_tls_version"];
+
+    int64 pre_warmed_instance_count = 13 [json_name = "pre_warmed_instance_count"];
+
+    bool runtime_scale_monitoring_enabled = 14 [json_name = "runtime_scale_monitoring_enabled"];
+
+    repeated ScmIpRestriction scm_ip_restriction = 15 [json_name = "scm_ip_restriction"];
+
+    string scm_type = 16 [json_name = "scm_type"];
+
+    bool scm_use_main_ip_restriction = 17 [json_name = "scm_use_main_ip_restriction"];
+
+    bool use_32_bit_worker_process = 18 [json_name = "use_32_bit_worker_process"];
+
+    bool vnet_route_all_enabled = 19 [json_name = "vnet_route_all_enabled"];
+
+    bool websockets_enabled = 20 [json_name = "websockets_enabled"];
+
+    Cors cors = 21;
+
+    message IpRestriction {
+      // action: string
+      string action = 1;
+
+      // headers: list of object
+      repeated Headers headers = 2;
+
+      // ip_address: string
+      string ip_address = 3 [json_name = "ip_address"];
+
+      // name: string
+      string name = 4;
+
+      // priority: number
+      int64 priority = 5;
+
+      // service_tag: string
+      string service_tag = 6 [json_name = "service_tag"];
+
+      // virtual_network_subnet_id: string
+      string virtual_network_subnet_id = 7 [json_name = "virtual_network_subnet_id"];
+
+      message Headers {
+        // x_azure_fdid: set of string
+        repeated string x_azure_fdid = 1 [json_name = "x_azure_fdid"];
+
+        // x_fd_health_probe: set of string
+        repeated string x_fd_health_probe = 2 [json_name = "x_fd_health_probe"];
+
+        // x_forwarded_for: set of string
+        repeated string x_forwarded_for = 3 [json_name = "x_forwarded_for"];
+
+        // x_forwarded_host: set of string
+        repeated string x_forwarded_host = 4 [json_name = "x_forwarded_host"];
+      }
+    }
+
+    message ScmIpRestriction {
+      // action: string
+      string action = 1;
+
+      // headers: list of object
+      repeated Headers headers = 2;
+
+      // ip_address: string
+      string ip_address = 3 [json_name = "ip_address"];
+
+      // name: string
+      string name = 4;
+
+      // priority: number
+      int64 priority = 5;
+
+      // service_tag: string
+      string service_tag = 6 [json_name = "service_tag"];
+
+      // virtual_network_subnet_id: string
+      string virtual_network_subnet_id = 7 [json_name = "virtual_network_subnet_id"];
+
+      message Headers {
+        // x_azure_fdid: set of string
+        repeated string x_azure_fdid = 1 [json_name = "x_azure_fdid"];
+
+        // x_fd_health_probe: set of string
+        repeated string x_fd_health_probe = 2 [json_name = "x_fd_health_probe"];
+
+        // x_forwarded_for: set of string
+        repeated string x_forwarded_for = 3 [json_name = "x_forwarded_for"];
+
+        // x_forwarded_host: set of string
+        repeated string x_forwarded_host = 4 [json_name = "x_forwarded_host"];
+      }
+    }
+
+    message Cors {
+      repeated string allowed_origins = 1 [json_name = "allowed_origins"];
+
+      bool support_credentials = 2 [json_name = "support_credentials"];
+    }
+  }
+
+  message SourceControl {
+    string branch = 1;
+
+    bool manual_integration = 2 [json_name = "manual_integration"];
+
+    string repo_url = 3 [json_name = "repo_url"];
+
+    bool rollback_enabled = 4 [json_name = "rollback_enabled"];
+
+    bool use_mercurial = 5 [json_name = "use_mercurial"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermFunctionAppActiveSlot version is 0
+message AzurermFunctionAppActiveSlot {
+  string id = 1;
+
+  // The timestamp of the last successful swap with `Production`
+  string last_successful_swap = 2 [json_name = "last_successful_swap"];
+
+  // The swap action should overwrite the Production slot's network configuration with
+  // the configuration from this slot. Defaults to `true`.
+  bool overwrite_network_config = 3 [json_name = "overwrite_network_config"];
+
+  // The ID of the Slot to swap with `Production`.
+  string slot_id = 4 [json_name = "slot_id"];
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermFunctionAppConnection version is 0
+message AzurermFunctionAppConnection {
+  string client_type = 1 [json_name = "client_type"];
+
+  string function_app_id = 2 [json_name = "function_app_id"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string target_resource_id = 5 [json_name = "target_resource_id"];
+
+  string vnet_solution = 6 [json_name = "vnet_solution"];
+
+  Authentication authentication = 7;
+
+  SecretStore secret_store = 8 [json_name = "secret_store"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Authentication {
+    string certificate = 1;
+
+    string client_id = 2 [json_name = "client_id"];
+
+    string name = 3;
+
+    string principal_id = 4 [json_name = "principal_id"];
+
+    string secret = 5;
+
+    string subscription_id = 6 [json_name = "subscription_id"];
+
+    string type = 7;
+  }
+
+  message SecretStore {
+    string key_vault_id = 1 [json_name = "key_vault_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermFunctionAppFunction version is 0
+message AzurermFunctionAppFunction {
+  // The config for this Function in JSON format.
+  string config_json = 1 [json_name = "config_json"];
+
+  // The URL of the configuration JSON.
+  string config_url = 2 [json_name = "config_url"];
+
+  // Should this function be enabled. Defaults to `true`.
+  bool enabled = 3;
+
+  // The ID of the Function App in which this function should reside.
+  string function_app_id = 4 [json_name = "function_app_id"];
+
+  string id = 5;
+
+  // The invocation URL.
+  string invocation_url = 6 [json_name = "invocation_url"];
+
+  // The language the Function is written in.
+  string language = 7;
+
+  // The name of the function.
+  string name = 8;
+
+  // The Script root path URL.
+  string script_root_path_url = 9 [json_name = "script_root_path_url"];
+
+  // The script URL.
+  string script_url = 10 [json_name = "script_url"];
+
+  // The URL for the Secrets File.
+  string secrets_file_url = 11 [json_name = "secrets_file_url"];
+
+  // The test data for the function.
+  string test_data = 12 [json_name = "test_data"];
+
+  // The Test data URL.
+  string test_data_url = 13 [json_name = "test_data_url"];
+
+  // The function URL.
+  string url = 14;
+
+  repeated File file = 15;
+
+  repeated Timeouts timeouts = 16;
+
+  google.protobuf.Value for_each = 17 [json_name = "for_each"];
+
+  repeated string depends_on = 18 [json_name = "depends_on"];
+
+  int32 count = 19;
+
+  string provider = 20;
+
+  terraform.v1.Lifecycle lifecycle = 21;
+
+  message File {
+    // The content of the file.
+    string content = 1;
+
+    // The filename of the file to be uploaded.
+    string name = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermFunctionAppHybridConnection version is 0
+message AzurermFunctionAppHybridConnection {
+  // The ID of the Function App for this Hybrid Connection.
+  string function_app_id = 1 [json_name = "function_app_id"];
+
+  // The hostname of the endpoint.
+  string hostname = 2;
+
+  string id = 3;
+
+  // The name of the Relay Namespace.
+  string namespace_name = 4 [json_name = "namespace_name"];
+
+  // The port to use for the endpoint
+  int64 port = 5;
+
+  // The ID of the Relay Hybrid Connection to use.
+  string relay_id = 6 [json_name = "relay_id"];
+
+  // The name of the Relay in use.
+  string relay_name = 7 [json_name = "relay_name"];
+
+  // The name of the Relay key with `Send` permission to use. Defaults to
+  // `RootManageSharedAccessKey`
+  string send_key_name = 8 [json_name = "send_key_name"];
+
+  // The Primary Access Key for the `send_key_name`
+  string send_key_value = 9 [json_name = "send_key_value"];
+
+  // The Service Bus Namespace.
+  string service_bus_namespace = 10 [json_name = "service_bus_namespace"];
+
+  // The suffix for the endpoint.
+  string service_bus_suffix = 11 [json_name = "service_bus_suffix"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermFunctionAppSlot version is 0
+message AzurermFunctionAppSlot {
+  string app_service_plan_id = 1 [json_name = "app_service_plan_id"];
+
+  map<string, string> app_settings = 2 [json_name = "app_settings"];
+
+  int64 daily_memory_time_quota = 3 [json_name = "daily_memory_time_quota"];
+
+  string default_hostname = 4 [json_name = "default_hostname"];
+
+  bool enable_builtin_logging = 5 [json_name = "enable_builtin_logging"];
+
+  bool enabled = 6;
+
+  string function_app_name = 7 [json_name = "function_app_name"];
+
+  bool https_only = 8 [json_name = "https_only"];
+
+  string id = 9;
+
+  string kind = 10;
+
+  string location = 11;
+
+  string name = 12;
+
+  string os_type = 13 [json_name = "os_type"];
+
+  string outbound_ip_addresses = 14 [json_name = "outbound_ip_addresses"];
+
+  string possible_outbound_ip_addresses = 15 [json_name = "possible_outbound_ip_addresses"];
+
+  string resource_group_name = 16 [json_name = "resource_group_name"];
+
+  repeated SiteCredential site_credential = 17 [json_name = "site_credential"];
+
+  string storage_account_access_key = 18 [json_name = "storage_account_access_key"];
+
+  string storage_account_name = 19 [json_name = "storage_account_name"];
+
+  map<string, string> tags = 20;
+
+  string version = 21;
+
+  AuthSettings auth_settings = 22 [json_name = "auth_settings"];
+
+  repeated ConnectionString connection_string = 23 [json_name = "connection_string"];
+
+  Identity identity = 24;
+
+  SiteConfig site_config = 25 [json_name = "site_config"];
+
+  repeated Timeouts timeouts = 26;
+
+  google.protobuf.Value for_each = 27 [json_name = "for_each"];
+
+  repeated string depends_on = 28 [json_name = "depends_on"];
+
+  int32 count = 29;
+
+  string provider = 30;
+
+  terraform.v1.Lifecycle lifecycle = 31;
+
+  message SiteCredential {
+    // password: string
+    string password = 1;
+
+    // username: string
+    string username = 2;
+  }
+
+  message AuthSettings {
+    map<string, string> additional_login_params = 1 [json_name = "additional_login_params"];
+
+    repeated string allowed_external_redirect_urls = 2 [json_name = "allowed_external_redirect_urls"];
+
+    string default_provider = 3 [json_name = "default_provider"];
+
+    bool enabled = 4;
+
+    string issuer = 5;
+
+    string runtime_version = 6 [json_name = "runtime_version"];
+
+    int64 token_refresh_extension_hours = 7 [json_name = "token_refresh_extension_hours"];
+
+    bool token_store_enabled = 8 [json_name = "token_store_enabled"];
+
+    string unauthenticated_client_action = 9 [json_name = "unauthenticated_client_action"];
+
+    ActiveDirectory active_directory = 10 [json_name = "active_directory"];
+
+    Facebook facebook = 11;
+
+    Google google = 12;
+
+    Microsoft microsoft = 13;
+
+    Twitter twitter = 14;
+
+    message ActiveDirectory {
+      repeated string allowed_audiences = 1 [json_name = "allowed_audiences"];
+
+      string client_id = 2 [json_name = "client_id"];
+
+      string client_secret = 3 [json_name = "client_secret"];
+    }
+
+    message Facebook {
+      string app_id = 1 [json_name = "app_id"];
+
+      string app_secret = 2 [json_name = "app_secret"];
+
+      repeated string oauth_scopes = 3 [json_name = "oauth_scopes"];
+    }
+
+    message Google {
+      string client_id = 1 [json_name = "client_id"];
+
+      string client_secret = 2 [json_name = "client_secret"];
+
+      repeated string oauth_scopes = 3 [json_name = "oauth_scopes"];
+    }
+
+    message Microsoft {
+      string client_id = 1 [json_name = "client_id"];
+
+      string client_secret = 2 [json_name = "client_secret"];
+
+      repeated string oauth_scopes = 3 [json_name = "oauth_scopes"];
+    }
+
+    message Twitter {
+      string consumer_key = 1 [json_name = "consumer_key"];
+
+      string consumer_secret = 2 [json_name = "consumer_secret"];
+    }
+  }
+
+  message ConnectionString {
+    string name = 1;
+
+    string type = 2;
+
+    string value = 3;
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message SiteConfig {
+    bool always_on = 1 [json_name = "always_on"];
+
+    int64 app_scale_limit = 2 [json_name = "app_scale_limit"];
+
+    string auto_swap_slot_name = 3 [json_name = "auto_swap_slot_name"];
+
+    string dotnet_framework_version = 4 [json_name = "dotnet_framework_version"];
+
+    int64 elastic_instance_minimum = 5 [json_name = "elastic_instance_minimum"];
+
+    string ftps_state = 6 [json_name = "ftps_state"];
+
+    string health_check_path = 7 [json_name = "health_check_path"];
+
+    bool http2_enabled = 8 [json_name = "http2_enabled"];
+
+    repeated IpRestriction ip_restriction = 9 [json_name = "ip_restriction"];
+
+    string java_version = 10 [json_name = "java_version"];
+
+    string linux_fx_version = 11 [json_name = "linux_fx_version"];
+
+    string min_tls_version = 12 [json_name = "min_tls_version"];
+
+    int64 pre_warmed_instance_count = 13 [json_name = "pre_warmed_instance_count"];
+
+    bool runtime_scale_monitoring_enabled = 14 [json_name = "runtime_scale_monitoring_enabled"];
+
+    repeated ScmIpRestriction scm_ip_restriction = 15 [json_name = "scm_ip_restriction"];
+
+    string scm_type = 16 [json_name = "scm_type"];
+
+    bool scm_use_main_ip_restriction = 17 [json_name = "scm_use_main_ip_restriction"];
+
+    bool use_32_bit_worker_process = 18 [json_name = "use_32_bit_worker_process"];
+
+    bool vnet_route_all_enabled = 19 [json_name = "vnet_route_all_enabled"];
+
+    bool websockets_enabled = 20 [json_name = "websockets_enabled"];
+
+    Cors cors = 21;
+
+    message IpRestriction {
+      // action: string
+      string action = 1;
+
+      // headers: list of object
+      repeated Headers headers = 2;
+
+      // ip_address: string
+      string ip_address = 3 [json_name = "ip_address"];
+
+      // name: string
+      string name = 4;
+
+      // priority: number
+      int64 priority = 5;
+
+      // service_tag: string
+      string service_tag = 6 [json_name = "service_tag"];
+
+      // virtual_network_subnet_id: string
+      string virtual_network_subnet_id = 7 [json_name = "virtual_network_subnet_id"];
+
+      message Headers {
+        // x_azure_fdid: set of string
+        repeated string x_azure_fdid = 1 [json_name = "x_azure_fdid"];
+
+        // x_fd_health_probe: set of string
+        repeated string x_fd_health_probe = 2 [json_name = "x_fd_health_probe"];
+
+        // x_forwarded_for: set of string
+        repeated string x_forwarded_for = 3 [json_name = "x_forwarded_for"];
+
+        // x_forwarded_host: set of string
+        repeated string x_forwarded_host = 4 [json_name = "x_forwarded_host"];
+      }
+    }
+
+    message ScmIpRestriction {
+      // action: string
+      string action = 1;
+
+      // headers: list of object
+      repeated Headers headers = 2;
+
+      // ip_address: string
+      string ip_address = 3 [json_name = "ip_address"];
+
+      // name: string
+      string name = 4;
+
+      // priority: number
+      int64 priority = 5;
+
+      // service_tag: string
+      string service_tag = 6 [json_name = "service_tag"];
+
+      // virtual_network_subnet_id: string
+      string virtual_network_subnet_id = 7 [json_name = "virtual_network_subnet_id"];
+
+      message Headers {
+        // x_azure_fdid: set of string
+        repeated string x_azure_fdid = 1 [json_name = "x_azure_fdid"];
+
+        // x_fd_health_probe: set of string
+        repeated string x_fd_health_probe = 2 [json_name = "x_fd_health_probe"];
+
+        // x_forwarded_for: set of string
+        repeated string x_forwarded_for = 3 [json_name = "x_forwarded_for"];
+
+        // x_forwarded_host: set of string
+        repeated string x_forwarded_host = 4 [json_name = "x_forwarded_host"];
+      }
+    }
+
+    message Cors {
+      repeated string allowed_origins = 1 [json_name = "allowed_origins"];
+
+      bool support_credentials = 2 [json_name = "support_credentials"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermMarketplaceAgreement version is 0
+message AzurermMarketplaceAgreement {
+  string id = 1;
+
+  string license_text_link = 2 [json_name = "license_text_link"];
+
+  string offer = 3;
+
+  string plan = 4;
+
+  string privacy_policy_link = 5 [json_name = "privacy_policy_link"];
+
+  string publisher = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string read = 1;
+  }
+}

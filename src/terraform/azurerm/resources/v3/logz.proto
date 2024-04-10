@@ -1,0 +1,214 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermLogzMonitor version is 0
+message AzurermLogzMonitor {
+  string company_name = 1 [json_name = "company_name"];
+
+  bool enabled = 2;
+
+  string enterprise_app_id = 3 [json_name = "enterprise_app_id"];
+
+  string id = 4;
+
+  string location = 5;
+
+  string logz_organization_id = 6 [json_name = "logz_organization_id"];
+
+  string name = 7;
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  string single_sign_on_url = 9 [json_name = "single_sign_on_url"];
+
+  map<string, string> tags = 10;
+
+  Plan plan = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  User user = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Plan {
+    string billing_cycle = 1 [json_name = "billing_cycle"];
+
+    string effective_date = 2 [json_name = "effective_date"];
+
+    string plan_id = 3 [json_name = "plan_id"];
+
+    string usage_type = 4 [json_name = "usage_type"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message User {
+    string email = 1;
+
+    string first_name = 2 [json_name = "first_name"];
+
+    string last_name = 3 [json_name = "last_name"];
+
+    string phone_number = 4 [json_name = "phone_number"];
+  }
+}
+
+// AzurermLogzSubAccount version is 0
+message AzurermLogzSubAccount {
+  bool enabled = 1;
+
+  string id = 2;
+
+  string logz_monitor_id = 3 [json_name = "logz_monitor_id"];
+
+  string name = 4;
+
+  map<string, string> tags = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  User user = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message User {
+    string email = 1;
+
+    string first_name = 2 [json_name = "first_name"];
+
+    string last_name = 3 [json_name = "last_name"];
+
+    string phone_number = 4 [json_name = "phone_number"];
+  }
+}
+
+// AzurermLogzSubAccountTagRule version is 0
+message AzurermLogzSubAccountTagRule {
+  string id = 1;
+
+  string logz_sub_account_id = 2 [json_name = "logz_sub_account_id"];
+
+  bool send_aad_logs = 3 [json_name = "send_aad_logs"];
+
+  bool send_activity_logs = 4 [json_name = "send_activity_logs"];
+
+  bool send_subscription_logs = 5 [json_name = "send_subscription_logs"];
+
+  repeated TagFilter tag_filter = 6 [json_name = "tag_filter"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message TagFilter {
+    string action = 1;
+
+    string name = 2;
+
+    string value = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLogzTagRule version is 0
+message AzurermLogzTagRule {
+  string id = 1;
+
+  string logz_monitor_id = 2 [json_name = "logz_monitor_id"];
+
+  bool send_aad_logs = 3 [json_name = "send_aad_logs"];
+
+  bool send_activity_logs = 4 [json_name = "send_activity_logs"];
+
+  bool send_subscription_logs = 5 [json_name = "send_subscription_logs"];
+
+  repeated TagFilter tag_filter = 6 [json_name = "tag_filter"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message TagFilter {
+    string action = 1;
+
+    string name = 2;
+
+    string value = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

@@ -1,0 +1,2251 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermMonitorAadDiagnosticSetting version is 0
+message AzurermMonitorAadDiagnosticSetting {
+  string eventhub_authorization_rule_id = 1 [json_name = "eventhub_authorization_rule_id"];
+
+  string eventhub_name = 2 [json_name = "eventhub_name"];
+
+  string id = 3;
+
+  string log_analytics_workspace_id = 4 [json_name = "log_analytics_workspace_id"];
+
+  string name = 5;
+
+  string storage_account_id = 6 [json_name = "storage_account_id"];
+
+  repeated EnabledLog enabled_log = 7 [json_name = "enabled_log"];
+
+  repeated Log log = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message EnabledLog {
+    string category = 1;
+
+    RetentionPolicy retention_policy = 2 [json_name = "retention_policy"];
+
+    message RetentionPolicy {
+      int64 days = 1;
+
+      bool enabled = 2;
+    }
+  }
+
+  message Log {
+    string category = 1;
+
+    bool enabled = 2;
+
+    RetentionPolicy retention_policy = 3 [json_name = "retention_policy"];
+
+    message RetentionPolicy {
+      int64 days = 1;
+
+      bool enabled = 2;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorActionGroup version is 1
+message AzurermMonitorActionGroup {
+  bool enabled = 1;
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string short_name = 6 [json_name = "short_name"];
+
+  map<string, string> tags = 7;
+
+  repeated ArmRoleReceiver arm_role_receiver = 8 [json_name = "arm_role_receiver"];
+
+  repeated AutomationRunbookReceiver automation_runbook_receiver = 9 [json_name = "automation_runbook_receiver"];
+
+  repeated AzureAppPushReceiver azure_app_push_receiver = 10 [json_name = "azure_app_push_receiver"];
+
+  repeated AzureFunctionReceiver azure_function_receiver = 11 [json_name = "azure_function_receiver"];
+
+  repeated EmailReceiver email_receiver = 12 [json_name = "email_receiver"];
+
+  repeated EventHubReceiver event_hub_receiver = 13 [json_name = "event_hub_receiver"];
+
+  repeated ItsmReceiver itsm_receiver = 14 [json_name = "itsm_receiver"];
+
+  repeated LogicAppReceiver logic_app_receiver = 15 [json_name = "logic_app_receiver"];
+
+  repeated SmsReceiver sms_receiver = 16 [json_name = "sms_receiver"];
+
+  repeated Timeouts timeouts = 17;
+
+  repeated VoiceReceiver voice_receiver = 18 [json_name = "voice_receiver"];
+
+  repeated WebhookReceiver webhook_receiver = 19 [json_name = "webhook_receiver"];
+
+  google.protobuf.Value for_each = 20 [json_name = "for_each"];
+
+  repeated string depends_on = 21 [json_name = "depends_on"];
+
+  int32 count = 22;
+
+  string provider = 23;
+
+  terraform.v1.Lifecycle lifecycle = 24;
+
+  message ArmRoleReceiver {
+    string name = 1;
+
+    string role_id = 2 [json_name = "role_id"];
+
+    bool use_common_alert_schema = 3 [json_name = "use_common_alert_schema"];
+  }
+
+  message AutomationRunbookReceiver {
+    string automation_account_id = 1 [json_name = "automation_account_id"];
+
+    bool is_global_runbook = 2 [json_name = "is_global_runbook"];
+
+    string name = 3;
+
+    string runbook_name = 4 [json_name = "runbook_name"];
+
+    string service_uri = 5 [json_name = "service_uri"];
+
+    bool use_common_alert_schema = 6 [json_name = "use_common_alert_schema"];
+
+    string webhook_resource_id = 7 [json_name = "webhook_resource_id"];
+  }
+
+  message AzureAppPushReceiver {
+    string email_address = 1 [json_name = "email_address"];
+
+    string name = 2;
+  }
+
+  message AzureFunctionReceiver {
+    string function_app_resource_id = 1 [json_name = "function_app_resource_id"];
+
+    string function_name = 2 [json_name = "function_name"];
+
+    string http_trigger_url = 3 [json_name = "http_trigger_url"];
+
+    string name = 4;
+
+    bool use_common_alert_schema = 5 [json_name = "use_common_alert_schema"];
+  }
+
+  message EmailReceiver {
+    string email_address = 1 [json_name = "email_address"];
+
+    string name = 2;
+
+    bool use_common_alert_schema = 3 [json_name = "use_common_alert_schema"];
+  }
+
+  message EventHubReceiver {
+    string event_hub_id = 1 [json_name = "event_hub_id"];
+
+    string event_hub_name = 2 [json_name = "event_hub_name"];
+
+    string event_hub_namespace = 3 [json_name = "event_hub_namespace"];
+
+    string name = 4;
+
+    string subscription_id = 5 [json_name = "subscription_id"];
+
+    string tenant_id = 6 [json_name = "tenant_id"];
+
+    bool use_common_alert_schema = 7 [json_name = "use_common_alert_schema"];
+  }
+
+  message ItsmReceiver {
+    string connection_id = 1 [json_name = "connection_id"];
+
+    string name = 2;
+
+    string region = 3;
+
+    string ticket_configuration = 4 [json_name = "ticket_configuration"];
+
+    string workspace_id = 5 [json_name = "workspace_id"];
+  }
+
+  message LogicAppReceiver {
+    string callback_url = 1 [json_name = "callback_url"];
+
+    string name = 2;
+
+    string resource_id = 3 [json_name = "resource_id"];
+
+    bool use_common_alert_schema = 4 [json_name = "use_common_alert_schema"];
+  }
+
+  message SmsReceiver {
+    string country_code = 1 [json_name = "country_code"];
+
+    string name = 2;
+
+    string phone_number = 3 [json_name = "phone_number"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message VoiceReceiver {
+    string country_code = 1 [json_name = "country_code"];
+
+    string name = 2;
+
+    string phone_number = 3 [json_name = "phone_number"];
+  }
+
+  message WebhookReceiver {
+    string name = 1;
+
+    string service_uri = 2 [json_name = "service_uri"];
+
+    bool use_common_alert_schema = 3 [json_name = "use_common_alert_schema"];
+
+    AadAuth aad_auth = 4 [json_name = "aad_auth"];
+
+    message AadAuth {
+      string identifier_uri = 1 [json_name = "identifier_uri"];
+
+      string object_id = 2 [json_name = "object_id"];
+
+      string tenant_id = 3 [json_name = "tenant_id"];
+    }
+  }
+}
+
+// AzurermMonitorActionRuleActionGroup version is 0
+message AzurermMonitorActionRuleActionGroup {
+  string action_group_id = 1 [json_name = "action_group_id"];
+
+  string description = 2;
+
+  bool enabled = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 7;
+
+  Condition condition = 8;
+
+  Scope scope = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Condition {
+    AlertContext alert_context = 1 [json_name = "alert_context"];
+
+    AlertRuleId alert_rule_id = 2 [json_name = "alert_rule_id"];
+
+    Description description = 3;
+
+    Monitor monitor = 4;
+
+    MonitorService monitor_service = 5 [json_name = "monitor_service"];
+
+    Severity severity = 6;
+
+    TargetResourceType target_resource_type = 7 [json_name = "target_resource_type"];
+
+    message AlertContext {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message AlertRuleId {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message Description {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message Monitor {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message MonitorService {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message Severity {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message TargetResourceType {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+  }
+
+  message Scope {
+    repeated string resource_ids = 1 [json_name = "resource_ids"];
+
+    string type = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorActionRuleSuppression version is 0
+message AzurermMonitorActionRuleSuppression {
+  string description = 1;
+
+  bool enabled = 2;
+
+  string id = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 6;
+
+  Condition condition = 7;
+
+  Scope scope = 8;
+
+  Suppression suppression = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Condition {
+    AlertContext alert_context = 1 [json_name = "alert_context"];
+
+    AlertRuleId alert_rule_id = 2 [json_name = "alert_rule_id"];
+
+    Description description = 3;
+
+    Monitor monitor = 4;
+
+    MonitorService monitor_service = 5 [json_name = "monitor_service"];
+
+    Severity severity = 6;
+
+    TargetResourceType target_resource_type = 7 [json_name = "target_resource_type"];
+
+    message AlertContext {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message AlertRuleId {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message Description {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message Monitor {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message MonitorService {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message Severity {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message TargetResourceType {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+  }
+
+  message Scope {
+    repeated string resource_ids = 1 [json_name = "resource_ids"];
+
+    string type = 2;
+  }
+
+  message Suppression {
+    string recurrence_type = 1 [json_name = "recurrence_type"];
+
+    Schedule schedule = 2;
+
+    message Schedule {
+      string end_date_utc = 1 [json_name = "end_date_utc"];
+
+      repeated int64 recurrence_monthly = 2 [json_name = "recurrence_monthly"];
+
+      repeated string recurrence_weekly = 3 [json_name = "recurrence_weekly"];
+
+      string start_date_utc = 4 [json_name = "start_date_utc"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorActivityLogAlert version is 1
+message AzurermMonitorActivityLogAlert {
+  string description = 1;
+
+  bool enabled = 2;
+
+  string id = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  repeated string scopes = 6;
+
+  map<string, string> tags = 7;
+
+  repeated Action action = 8;
+
+  Criteria criteria = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Action {
+    string action_group_id = 1 [json_name = "action_group_id"];
+
+    map<string, string> webhook_properties = 2 [json_name = "webhook_properties"];
+  }
+
+  message Criteria {
+    string caller = 1;
+
+    string category = 2;
+
+    string level = 3;
+
+    repeated string levels = 4;
+
+    string operation_name = 5 [json_name = "operation_name"];
+
+    string recommendation_category = 6 [json_name = "recommendation_category"];
+
+    string recommendation_impact = 7 [json_name = "recommendation_impact"];
+
+    string recommendation_type = 8 [json_name = "recommendation_type"];
+
+    string resource_group = 9 [json_name = "resource_group"];
+
+    repeated string resource_groups = 10 [json_name = "resource_groups"];
+
+    string resource_id = 11 [json_name = "resource_id"];
+
+    repeated string resource_ids = 12 [json_name = "resource_ids"];
+
+    string resource_provider = 13 [json_name = "resource_provider"];
+
+    repeated string resource_providers = 14 [json_name = "resource_providers"];
+
+    string resource_type = 15 [json_name = "resource_type"];
+
+    repeated string resource_types = 16 [json_name = "resource_types"];
+
+    string status = 17;
+
+    repeated string statuses = 18;
+
+    string sub_status = 19 [json_name = "sub_status"];
+
+    repeated string sub_statuses = 20 [json_name = "sub_statuses"];
+
+    ResourceHealth resource_health = 21 [json_name = "resource_health"];
+
+    ServiceHealth service_health = 22 [json_name = "service_health"];
+
+    message ResourceHealth {
+      repeated string current = 1;
+
+      repeated string previous = 2;
+
+      repeated string reason = 3;
+    }
+
+    message ServiceHealth {
+      repeated string events = 1;
+
+      repeated string locations = 2;
+
+      repeated string services = 3;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorAlertProcessingRuleActionGroup version is 0
+message AzurermMonitorAlertProcessingRuleActionGroup {
+  repeated string add_action_group_ids = 1 [json_name = "add_action_group_ids"];
+
+  string description = 2;
+
+  bool enabled = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  repeated string scopes = 7;
+
+  map<string, string> tags = 8;
+
+  Condition condition = 9;
+
+  Schedule schedule = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Condition {
+    AlertContext alert_context = 1 [json_name = "alert_context"];
+
+    AlertRuleId alert_rule_id = 2 [json_name = "alert_rule_id"];
+
+    AlertRuleName alert_rule_name = 3 [json_name = "alert_rule_name"];
+
+    Description description = 4;
+
+    MonitorCondition monitor_condition = 5 [json_name = "monitor_condition"];
+
+    MonitorService monitor_service = 6 [json_name = "monitor_service"];
+
+    Severity severity = 7;
+
+    SignalType signal_type = 8 [json_name = "signal_type"];
+
+    TargetResource target_resource = 9 [json_name = "target_resource"];
+
+    TargetResourceGroup target_resource_group = 10 [json_name = "target_resource_group"];
+
+    TargetResourceType target_resource_type = 11 [json_name = "target_resource_type"];
+
+    message AlertContext {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message AlertRuleId {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message AlertRuleName {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message Description {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message MonitorCondition {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message MonitorService {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message Severity {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message SignalType {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message TargetResource {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message TargetResourceGroup {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message TargetResourceType {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+  }
+
+  message Schedule {
+    string effective_from = 1 [json_name = "effective_from"];
+
+    string effective_until = 2 [json_name = "effective_until"];
+
+    string time_zone = 3 [json_name = "time_zone"];
+
+    Recurrence recurrence = 4;
+
+    message Recurrence {
+      repeated Daily daily = 1;
+
+      repeated Monthly monthly = 2;
+
+      repeated Weekly weekly = 3;
+
+      message Daily {
+        string end_time = 1 [json_name = "end_time"];
+
+        string start_time = 2 [json_name = "start_time"];
+      }
+
+      message Monthly {
+        repeated int64 days_of_month = 1 [json_name = "days_of_month"];
+
+        string end_time = 2 [json_name = "end_time"];
+
+        string start_time = 3 [json_name = "start_time"];
+      }
+
+      message Weekly {
+        repeated string days_of_week = 1 [json_name = "days_of_week"];
+
+        string end_time = 2 [json_name = "end_time"];
+
+        string start_time = 3 [json_name = "start_time"];
+      }
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorAlertProcessingRuleSuppression version is 0
+message AzurermMonitorAlertProcessingRuleSuppression {
+  string description = 1;
+
+  bool enabled = 2;
+
+  string id = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  repeated string scopes = 6;
+
+  map<string, string> tags = 7;
+
+  Condition condition = 8;
+
+  Schedule schedule = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Condition {
+    AlertContext alert_context = 1 [json_name = "alert_context"];
+
+    AlertRuleId alert_rule_id = 2 [json_name = "alert_rule_id"];
+
+    AlertRuleName alert_rule_name = 3 [json_name = "alert_rule_name"];
+
+    Description description = 4;
+
+    MonitorCondition monitor_condition = 5 [json_name = "monitor_condition"];
+
+    MonitorService monitor_service = 6 [json_name = "monitor_service"];
+
+    Severity severity = 7;
+
+    SignalType signal_type = 8 [json_name = "signal_type"];
+
+    TargetResource target_resource = 9 [json_name = "target_resource"];
+
+    TargetResourceGroup target_resource_group = 10 [json_name = "target_resource_group"];
+
+    TargetResourceType target_resource_type = 11 [json_name = "target_resource_type"];
+
+    message AlertContext {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message AlertRuleId {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message AlertRuleName {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message Description {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message MonitorCondition {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message MonitorService {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message Severity {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message SignalType {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message TargetResource {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message TargetResourceGroup {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+
+    message TargetResourceType {
+      string operator = 1;
+
+      repeated string values = 2;
+    }
+  }
+
+  message Schedule {
+    string effective_from = 1 [json_name = "effective_from"];
+
+    string effective_until = 2 [json_name = "effective_until"];
+
+    string time_zone = 3 [json_name = "time_zone"];
+
+    Recurrence recurrence = 4;
+
+    message Recurrence {
+      repeated Daily daily = 1;
+
+      repeated Monthly monthly = 2;
+
+      repeated Weekly weekly = 3;
+
+      message Daily {
+        string end_time = 1 [json_name = "end_time"];
+
+        string start_time = 2 [json_name = "start_time"];
+      }
+
+      message Monthly {
+        repeated int64 days_of_month = 1 [json_name = "days_of_month"];
+
+        string end_time = 2 [json_name = "end_time"];
+
+        string start_time = 3 [json_name = "start_time"];
+      }
+
+      message Weekly {
+        repeated string days_of_week = 1 [json_name = "days_of_week"];
+
+        string end_time = 2 [json_name = "end_time"];
+
+        string start_time = 3 [json_name = "start_time"];
+      }
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorAlertPrometheusRuleGroup version is 0
+message AzurermMonitorAlertPrometheusRuleGroup {
+  string cluster_name = 1 [json_name = "cluster_name"];
+
+  string description = 2;
+
+  string id = 3;
+
+  string interval = 4;
+
+  string location = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  bool rule_group_enabled = 8 [json_name = "rule_group_enabled"];
+
+  repeated string scopes = 9;
+
+  map<string, string> tags = 10;
+
+  repeated Rule rule = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Rule {
+    string alert = 1;
+
+    map<string, string> annotations = 2;
+
+    bool enabled = 3;
+
+    string expression = 4;
+
+    string for = 5;
+
+    map<string, string> labels = 6;
+
+    string record = 7;
+
+    int64 severity = 8;
+
+    repeated Action action = 9;
+
+    AlertResolution alert_resolution = 10 [json_name = "alert_resolution"];
+
+    message Action {
+      string action_group_id = 1 [json_name = "action_group_id"];
+
+      map<string, string> action_properties = 2 [json_name = "action_properties"];
+    }
+
+    message AlertResolution {
+      bool auto_resolved = 1 [json_name = "auto_resolved"];
+
+      string time_to_resolve = 2 [json_name = "time_to_resolve"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorAutoscaleSetting version is 2
+message AzurermMonitorAutoscaleSetting {
+  bool enabled = 1;
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 6;
+
+  string target_resource_id = 7 [json_name = "target_resource_id"];
+
+  Notification notification = 8;
+
+  Predictive predictive = 9;
+
+  repeated Profile profile = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Notification {
+    Email email = 1;
+
+    repeated Webhook webhook = 2;
+
+    message Email {
+      repeated string custom_emails = 1 [json_name = "custom_emails"];
+
+      bool send_to_subscription_administrator = 2 [json_name = "send_to_subscription_administrator"];
+
+      bool send_to_subscription_co_administrator = 3 [
+        json_name = "send_to_subscription_co_administrator"
+      ];
+    }
+
+    message Webhook {
+      map<string, string> properties = 1;
+
+      string service_uri = 2 [json_name = "service_uri"];
+    }
+  }
+
+  message Predictive {
+    string look_ahead_time = 1 [json_name = "look_ahead_time"];
+
+    string scale_mode = 2 [json_name = "scale_mode"];
+  }
+
+  message Profile {
+    string name = 1;
+
+    Capacity capacity = 2;
+
+    FixedDate fixed_date = 3 [json_name = "fixed_date"];
+
+    Recurrence recurrence = 4;
+
+    repeated Rule rule = 5;
+
+    message Capacity {
+      int64 default = 1;
+
+      int64 maximum = 2;
+
+      int64 minimum = 3;
+    }
+
+    message FixedDate {
+      string end = 1;
+
+      string start = 2;
+
+      string timezone = 3;
+    }
+
+    message Recurrence {
+      repeated string days = 1;
+
+      repeated int64 hours = 2;
+
+      repeated int64 minutes = 3;
+
+      string timezone = 4;
+    }
+
+    message Rule {
+      MetricTrigger metric_trigger = 1 [json_name = "metric_trigger"];
+
+      ScaleAction scale_action = 2 [json_name = "scale_action"];
+
+      message MetricTrigger {
+        bool divide_by_instance_count = 1 [json_name = "divide_by_instance_count"];
+
+        string metric_name = 2 [json_name = "metric_name"];
+
+        string metric_namespace = 3 [json_name = "metric_namespace"];
+
+        string metric_resource_id = 4 [json_name = "metric_resource_id"];
+
+        string operator = 5;
+
+        string statistic = 6;
+
+        int64 threshold = 7;
+
+        string time_aggregation = 8 [json_name = "time_aggregation"];
+
+        string time_grain = 9 [json_name = "time_grain"];
+
+        string time_window = 10 [json_name = "time_window"];
+
+        repeated Dimensions dimensions = 11;
+
+        message Dimensions {
+          string name = 1;
+
+          string operator = 2;
+
+          repeated string values = 3;
+        }
+      }
+
+      message ScaleAction {
+        string cooldown = 1;
+
+        string direction = 2;
+
+        string type = 3;
+
+        int64 value = 4;
+      }
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorDataCollectionEndpoint version is 0
+message AzurermMonitorDataCollectionEndpoint {
+  string configuration_access_endpoint = 1 [json_name = "configuration_access_endpoint"];
+
+  string description = 2;
+
+  string id = 3;
+
+  string kind = 4;
+
+  string location = 5;
+
+  string logs_ingestion_endpoint = 6 [json_name = "logs_ingestion_endpoint"];
+
+  string name = 7;
+
+  bool public_network_access_enabled = 8 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorDataCollectionRule version is 0
+message AzurermMonitorDataCollectionRule {
+  string data_collection_endpoint_id = 1 [json_name = "data_collection_endpoint_id"];
+
+  string description = 2;
+
+  string id = 3;
+
+  string immutable_id = 4 [json_name = "immutable_id"];
+
+  string kind = 5;
+
+  string location = 6;
+
+  string name = 7;
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 9;
+
+  repeated DataFlow data_flow = 10 [json_name = "data_flow"];
+
+  DataSources data_sources = 11 [json_name = "data_sources"];
+
+  Destinations destinations = 12;
+
+  Identity identity = 13;
+
+  repeated StreamDeclaration stream_declaration = 14 [json_name = "stream_declaration"];
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message DataFlow {
+    string built_in_transform = 1 [json_name = "built_in_transform"];
+
+    repeated string destinations = 2;
+
+    string output_stream = 3 [json_name = "output_stream"];
+
+    repeated string streams = 4;
+
+    string transform_kql = 5 [json_name = "transform_kql"];
+  }
+
+  message DataSources {
+    DataImport data_import = 1 [json_name = "data_import"];
+
+    repeated Extension extension = 2;
+
+    repeated IisLog iis_log = 3 [json_name = "iis_log"];
+
+    repeated LogFile log_file = 4 [json_name = "log_file"];
+
+    repeated PerformanceCounter performance_counter = 5 [json_name = "performance_counter"];
+
+    repeated PlatformTelemetry platform_telemetry = 6 [json_name = "platform_telemetry"];
+
+    repeated PrometheusForwarder prometheus_forwarder = 7 [json_name = "prometheus_forwarder"];
+
+    repeated Syslog syslog = 8;
+
+    repeated WindowsEventLog windows_event_log = 9 [json_name = "windows_event_log"];
+
+    repeated WindowsFirewallLog windows_firewall_log = 10 [json_name = "windows_firewall_log"];
+
+    message DataImport {
+      repeated EventHubDataSource event_hub_data_source = 1 [json_name = "event_hub_data_source"];
+
+      message EventHubDataSource {
+        string consumer_group = 1 [json_name = "consumer_group"];
+
+        string name = 2;
+
+        string stream = 3;
+      }
+    }
+
+    message Extension {
+      string extension_json = 1 [json_name = "extension_json"];
+
+      string extension_name = 2 [json_name = "extension_name"];
+
+      repeated string input_data_sources = 3 [json_name = "input_data_sources"];
+
+      string name = 4;
+
+      repeated string streams = 5;
+    }
+
+    message IisLog {
+      repeated string log_directories = 1 [json_name = "log_directories"];
+
+      string name = 2;
+
+      repeated string streams = 3;
+    }
+
+    message LogFile {
+      repeated string file_patterns = 1 [json_name = "file_patterns"];
+
+      string format = 2;
+
+      string name = 3;
+
+      repeated string streams = 4;
+
+      Settings settings = 5;
+
+      message Settings {
+        Text text = 1;
+
+        message Text {
+          string record_start_timestamp_format = 1 [json_name = "record_start_timestamp_format"];
+        }
+      }
+    }
+
+    message PerformanceCounter {
+      repeated string counter_specifiers = 1 [json_name = "counter_specifiers"];
+
+      string name = 2;
+
+      int64 sampling_frequency_in_seconds = 3 [json_name = "sampling_frequency_in_seconds"];
+
+      repeated string streams = 4;
+    }
+
+    message PlatformTelemetry {
+      string name = 1;
+
+      repeated string streams = 2;
+    }
+
+    message PrometheusForwarder {
+      string name = 1;
+
+      repeated string streams = 2;
+
+      repeated LabelIncludeFilter label_include_filter = 3 [json_name = "label_include_filter"];
+
+      message LabelIncludeFilter {
+        string label = 1;
+
+        string value = 2;
+      }
+    }
+
+    message Syslog {
+      repeated string facility_names = 1 [json_name = "facility_names"];
+
+      repeated string log_levels = 2 [json_name = "log_levels"];
+
+      string name = 3;
+
+      repeated string streams = 4;
+    }
+
+    message WindowsEventLog {
+      string name = 1;
+
+      repeated string streams = 2;
+
+      repeated string x_path_queries = 3 [json_name = "x_path_queries"];
+    }
+
+    message WindowsFirewallLog {
+      string name = 1;
+
+      repeated string streams = 2;
+    }
+  }
+
+  message Destinations {
+    AzureMonitorMetrics azure_monitor_metrics = 1 [json_name = "azure_monitor_metrics"];
+
+    EventHub event_hub = 2 [json_name = "event_hub"];
+
+    EventHubDirect event_hub_direct = 3 [json_name = "event_hub_direct"];
+
+    repeated LogAnalytics log_analytics = 4 [json_name = "log_analytics"];
+
+    repeated MonitorAccount monitor_account = 5 [json_name = "monitor_account"];
+
+    repeated StorageBlob storage_blob = 6 [json_name = "storage_blob"];
+
+    repeated StorageBlobDirect storage_blob_direct = 7 [json_name = "storage_blob_direct"];
+
+    repeated StorageTableDirect storage_table_direct = 8 [json_name = "storage_table_direct"];
+
+    message AzureMonitorMetrics {
+      string name = 1;
+    }
+
+    message EventHub {
+      string event_hub_id = 1 [json_name = "event_hub_id"];
+
+      string name = 2;
+    }
+
+    message EventHubDirect {
+      string event_hub_id = 1 [json_name = "event_hub_id"];
+
+      string name = 2;
+    }
+
+    message LogAnalytics {
+      string name = 1;
+
+      string workspace_resource_id = 2 [json_name = "workspace_resource_id"];
+    }
+
+    message MonitorAccount {
+      string monitor_account_id = 1 [json_name = "monitor_account_id"];
+
+      string name = 2;
+    }
+
+    message StorageBlob {
+      string container_name = 1 [json_name = "container_name"];
+
+      string name = 2;
+
+      string storage_account_id = 3 [json_name = "storage_account_id"];
+    }
+
+    message StorageBlobDirect {
+      string container_name = 1 [json_name = "container_name"];
+
+      string name = 2;
+
+      string storage_account_id = 3 [json_name = "storage_account_id"];
+    }
+
+    message StorageTableDirect {
+      string name = 1;
+
+      string storage_account_id = 2 [json_name = "storage_account_id"];
+
+      string table_name = 3 [json_name = "table_name"];
+    }
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message StreamDeclaration {
+    string stream_name = 1 [json_name = "stream_name"];
+
+    repeated Column column = 2;
+
+    message Column {
+      string name = 1;
+
+      string type = 2;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorDataCollectionRuleAssociation version is 0
+message AzurermMonitorDataCollectionRuleAssociation {
+  string data_collection_endpoint_id = 1 [json_name = "data_collection_endpoint_id"];
+
+  string data_collection_rule_id = 2 [json_name = "data_collection_rule_id"];
+
+  string description = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string target_resource_id = 6 [json_name = "target_resource_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorDiagnosticSetting version is 0
+message AzurermMonitorDiagnosticSetting {
+  string eventhub_authorization_rule_id = 1 [json_name = "eventhub_authorization_rule_id"];
+
+  string eventhub_name = 2 [json_name = "eventhub_name"];
+
+  string id = 3;
+
+  string log_analytics_destination_type = 4 [json_name = "log_analytics_destination_type"];
+
+  string log_analytics_workspace_id = 5 [json_name = "log_analytics_workspace_id"];
+
+  string name = 6;
+
+  string partner_solution_id = 7 [json_name = "partner_solution_id"];
+
+  string storage_account_id = 8 [json_name = "storage_account_id"];
+
+  string target_resource_id = 9 [json_name = "target_resource_id"];
+
+  repeated EnabledLog enabled_log = 10 [json_name = "enabled_log"];
+
+  repeated Log log = 11;
+
+  repeated Metric metric = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message EnabledLog {
+    string category = 1;
+
+    string category_group = 2 [json_name = "category_group"];
+
+    RetentionPolicy retention_policy = 3 [json_name = "retention_policy"];
+
+    message RetentionPolicy {
+      int64 days = 1;
+
+      bool enabled = 2;
+    }
+  }
+
+  message Log {
+    string category = 1;
+
+    string category_group = 2 [json_name = "category_group"];
+
+    bool enabled = 3;
+
+    RetentionPolicy retention_policy = 4 [json_name = "retention_policy"];
+
+    message RetentionPolicy {
+      int64 days = 1;
+
+      bool enabled = 2;
+    }
+  }
+
+  message Metric {
+    string category = 1;
+
+    bool enabled = 2;
+
+    RetentionPolicy retention_policy = 3 [json_name = "retention_policy"];
+
+    message RetentionPolicy {
+      int64 days = 1;
+
+      bool enabled = 2;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorLogProfile version is 1
+message AzurermMonitorLogProfile {
+  repeated string categories = 1;
+
+  string id = 2;
+
+  repeated string locations = 3;
+
+  string name = 4;
+
+  string servicebus_rule_id = 5 [json_name = "servicebus_rule_id"];
+
+  string storage_account_id = 6 [json_name = "storage_account_id"];
+
+  RetentionPolicy retention_policy = 7 [json_name = "retention_policy"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message RetentionPolicy {
+    int64 days = 1;
+
+    bool enabled = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorMetricAlert version is 1
+message AzurermMonitorMetricAlert {
+  bool auto_mitigate = 1 [json_name = "auto_mitigate"];
+
+  string description = 2;
+
+  bool enabled = 3;
+
+  string frequency = 4;
+
+  string id = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  repeated string scopes = 8;
+
+  int64 severity = 9;
+
+  map<string, string> tags = 10;
+
+  // The location of the target pluginsdk. Required when using subscription, resource
+  // group scope or multiple scopes.
+  string target_resource_location = 11 [json_name = "target_resource_location"];
+
+  // The resource type (e.g. Microsoft.Compute/virtualMachines) of the target
+  // pluginsdk. Required when using subscription, resource group scope or multiple
+  // scopes.
+  string target_resource_type = 12 [json_name = "target_resource_type"];
+
+  string window_size = 13 [json_name = "window_size"];
+
+  repeated Action action = 14;
+
+  ApplicationInsightsWebTestLocationAvailabilityCriteria application_insights_web_test_location_availability_criteria = 15 [
+    json_name = "application_insights_web_test_location_availability_criteria"
+  ];
+
+  repeated Criteria criteria = 16;
+
+  DynamicCriteria dynamic_criteria = 17 [json_name = "dynamic_criteria"];
+
+  repeated Timeouts timeouts = 18;
+
+  google.protobuf.Value for_each = 19 [json_name = "for_each"];
+
+  repeated string depends_on = 20 [json_name = "depends_on"];
+
+  int32 count = 21;
+
+  string provider = 22;
+
+  terraform.v1.Lifecycle lifecycle = 23;
+
+  message Action {
+    string action_group_id = 1 [json_name = "action_group_id"];
+
+    map<string, string> webhook_properties = 2 [json_name = "webhook_properties"];
+  }
+
+  message ApplicationInsightsWebTestLocationAvailabilityCriteria {
+    string component_id = 1 [json_name = "component_id"];
+
+    int64 failed_location_count = 2 [json_name = "failed_location_count"];
+
+    string web_test_id = 3 [json_name = "web_test_id"];
+  }
+
+  message Criteria {
+    string aggregation = 1;
+
+    string metric_name = 2 [json_name = "metric_name"];
+
+    string metric_namespace = 3 [json_name = "metric_namespace"];
+
+    string operator = 4;
+
+    bool skip_metric_validation = 5 [json_name = "skip_metric_validation"];
+
+    int64 threshold = 6;
+
+    repeated Dimension dimension = 7;
+
+    message Dimension {
+      string name = 1;
+
+      string operator = 2;
+
+      repeated string values = 3;
+    }
+  }
+
+  message DynamicCriteria {
+    string aggregation = 1;
+
+    string alert_sensitivity = 2 [json_name = "alert_sensitivity"];
+
+    int64 evaluation_failure_count = 3 [json_name = "evaluation_failure_count"];
+
+    int64 evaluation_total_count = 4 [json_name = "evaluation_total_count"];
+
+    string ignore_data_before = 5 [json_name = "ignore_data_before"];
+
+    string metric_name = 6 [json_name = "metric_name"];
+
+    string metric_namespace = 7 [json_name = "metric_namespace"];
+
+    string operator = 8;
+
+    bool skip_metric_validation = 9 [json_name = "skip_metric_validation"];
+
+    repeated Dimension dimension = 10;
+
+    message Dimension {
+      string name = 1;
+
+      string operator = 2;
+
+      repeated string values = 3;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorPrivateLinkScope version is 0
+message AzurermMonitorPrivateLinkScope {
+  string id = 1;
+
+  string name = 2;
+
+  string resource_group_name = 3 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 4;
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorPrivateLinkScopedService version is 0
+message AzurermMonitorPrivateLinkScopedService {
+  string id = 1;
+
+  string linked_resource_id = 2 [json_name = "linked_resource_id"];
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  string scope_name = 5 [json_name = "scope_name"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermMonitorScheduledQueryRulesAlert version is 1
+message AzurermMonitorScheduledQueryRulesAlert {
+  repeated string authorized_resource_ids = 1 [json_name = "authorized_resource_ids"];
+
+  bool auto_mitigation_enabled = 2 [json_name = "auto_mitigation_enabled"];
+
+  string data_source_id = 3 [json_name = "data_source_id"];
+
+  string description = 4;
+
+  bool enabled = 5;
+
+  int64 frequency = 6;
+
+  string id = 7;
+
+  string location = 8;
+
+  string name = 9;
+
+  string query = 10;
+
+  string query_type = 11 [json_name = "query_type"];
+
+  string resource_group_name = 12 [json_name = "resource_group_name"];
+
+  int64 severity = 13;
+
+  map<string, string> tags = 14;
+
+  int64 throttling = 15;
+
+  int64 time_window = 16 [json_name = "time_window"];
+
+  Action action = 17;
+
+  repeated Timeouts timeouts = 18;
+
+  Trigger trigger = 19;
+
+  google.protobuf.Value for_each = 20 [json_name = "for_each"];
+
+  repeated string depends_on = 21 [json_name = "depends_on"];
+
+  int32 count = 22;
+
+  string provider = 23;
+
+  terraform.v1.Lifecycle lifecycle = 24;
+
+  message Action {
+    repeated string action_group = 1 [json_name = "action_group"];
+
+    string custom_webhook_payload = 2 [json_name = "custom_webhook_payload"];
+
+    string email_subject = 3 [json_name = "email_subject"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message Trigger {
+    string operator = 1;
+
+    int64 threshold = 2;
+
+    MetricTrigger metric_trigger = 3 [json_name = "metric_trigger"];
+
+    message MetricTrigger {
+      string metric_column = 1 [json_name = "metric_column"];
+
+      string metric_trigger_type = 2 [json_name = "metric_trigger_type"];
+
+      string operator = 3;
+
+      int64 threshold = 4;
+    }
+  }
+}
+
+// AzurermMonitorScheduledQueryRulesAlertV2 version is 0
+message AzurermMonitorScheduledQueryRulesAlertV2 {
+  bool auto_mitigation_enabled = 1 [json_name = "auto_mitigation_enabled"];
+
+  string created_with_api_version = 2 [json_name = "created_with_api_version"];
+
+  string description = 3;
+
+  string display_name = 4 [json_name = "display_name"];
+
+  bool enabled = 5;
+
+  string evaluation_frequency = 6 [json_name = "evaluation_frequency"];
+
+  string id = 7;
+
+  bool is_a_legacy_log_analytics_rule = 8 [json_name = "is_a_legacy_log_analytics_rule"];
+
+  bool is_workspace_alerts_storage_configured = 9 [
+    json_name = "is_workspace_alerts_storage_configured"
+  ];
+
+  string location = 10;
+
+  string mute_actions_after_alert_duration = 11 [json_name = "mute_actions_after_alert_duration"];
+
+  string name = 12;
+
+  string query_time_range_override = 13 [json_name = "query_time_range_override"];
+
+  string resource_group_name = 14 [json_name = "resource_group_name"];
+
+  repeated string scopes = 15;
+
+  int64 severity = 16;
+
+  bool skip_query_validation = 17 [json_name = "skip_query_validation"];
+
+  map<string, string> tags = 18;
+
+  repeated string target_resource_types = 19 [json_name = "target_resource_types"];
+
+  string window_duration = 20 [json_name = "window_duration"];
+
+  bool workspace_alerts_storage_enabled = 21 [json_name = "workspace_alerts_storage_enabled"];
+
+  Action action = 22;
+
+  repeated Criteria criteria = 23;
+
+  repeated Timeouts timeouts = 24;
+
+  google.protobuf.Value for_each = 25 [json_name = "for_each"];
+
+  repeated string depends_on = 26 [json_name = "depends_on"];
+
+  int32 count = 27;
+
+  string provider = 28;
+
+  terraform.v1.Lifecycle lifecycle = 29;
+
+  message Action {
+    repeated string action_groups = 1 [json_name = "action_groups"];
+
+    map<string, string> custom_properties = 2 [json_name = "custom_properties"];
+  }
+
+  message Criteria {
+    string metric_measure_column = 1 [json_name = "metric_measure_column"];
+
+    string operator = 2;
+
+    string query = 3;
+
+    string resource_id_column = 4 [json_name = "resource_id_column"];
+
+    int64 threshold = 5;
+
+    string time_aggregation_method = 6 [json_name = "time_aggregation_method"];
+
+    repeated Dimension dimension = 7;
+
+    FailingPeriods failing_periods = 8 [json_name = "failing_periods"];
+
+    message Dimension {
+      string name = 1;
+
+      string operator = 2;
+
+      repeated string values = 3;
+    }
+
+    message FailingPeriods {
+      int64 minimum_failing_periods_to_trigger_alert = 1 [
+        json_name = "minimum_failing_periods_to_trigger_alert"
+      ];
+
+      int64 number_of_evaluation_periods = 2 [json_name = "number_of_evaluation_periods"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorScheduledQueryRulesLog version is 1
+message AzurermMonitorScheduledQueryRulesLog {
+  repeated string authorized_resource_ids = 1 [json_name = "authorized_resource_ids"];
+
+  string data_source_id = 2 [json_name = "data_source_id"];
+
+  string description = 3;
+
+  bool enabled = 4;
+
+  string id = 5;
+
+  string location = 6;
+
+  string name = 7;
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 9;
+
+  Criteria criteria = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Criteria {
+    string metric_name = 1 [json_name = "metric_name"];
+
+    repeated Dimension dimension = 2;
+
+    message Dimension {
+      string name = 1;
+
+      string operator = 2;
+
+      repeated string values = 3;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorSmartDetectorAlertRule version is 1
+message AzurermMonitorSmartDetectorAlertRule {
+  string description = 1;
+
+  string detector_type = 2 [json_name = "detector_type"];
+
+  bool enabled = 3;
+
+  string frequency = 4;
+
+  string id = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  repeated string scope_resource_ids = 8 [json_name = "scope_resource_ids"];
+
+  string severity = 9;
+
+  map<string, string> tags = 10;
+
+  string throttling_duration = 11 [json_name = "throttling_duration"];
+
+  ActionGroup action_group = 12 [json_name = "action_group"];
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message ActionGroup {
+    string email_subject = 1 [json_name = "email_subject"];
+
+    repeated string ids = 2;
+
+    string webhook_payload = 3 [json_name = "webhook_payload"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMonitorWorkspace version is 0
+message AzurermMonitorWorkspace {
+  string default_data_collection_endpoint_id = 1 [json_name = "default_data_collection_endpoint_id"];
+
+  string default_data_collection_rule_id = 2 [json_name = "default_data_collection_rule_id"];
+
+  string id = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  bool public_network_access_enabled = 6 [json_name = "public_network_access_enabled"];
+
+  string query_endpoint = 7 [json_name = "query_endpoint"];
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

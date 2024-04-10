@@ -1,0 +1,569 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermKubernetesCluster version is 2
+message AzurermKubernetesCluster {
+  repeated AciConnectorLinux aci_connector_linux = 1 [json_name = "aci_connector_linux"];
+
+  repeated AgentPoolProfile agent_pool_profile = 2 [json_name = "agent_pool_profile"];
+
+  repeated string api_server_authorized_ip_ranges = 3 [json_name = "api_server_authorized_ip_ranges"];
+
+  repeated AzureActiveDirectoryRoleBasedAccessControl azure_active_directory_role_based_access_control = 4 [
+    json_name = "azure_active_directory_role_based_access_control"
+  ];
+
+  bool azure_policy_enabled = 5 [json_name = "azure_policy_enabled"];
+
+  string current_kubernetes_version = 6 [json_name = "current_kubernetes_version"];
+
+  repeated string custom_ca_trust_certificates_base64 = 7 [json_name = "custom_ca_trust_certificates_base64"];
+
+  string disk_encryption_set_id = 8 [json_name = "disk_encryption_set_id"];
+
+  string dns_prefix = 9 [json_name = "dns_prefix"];
+
+  string fqdn = 10;
+
+  bool http_application_routing_enabled = 11 [json_name = "http_application_routing_enabled"];
+
+  string http_application_routing_zone_name = 12 [json_name = "http_application_routing_zone_name"];
+
+  string id = 13;
+
+  repeated Identity identity = 14;
+
+  repeated IngressApplicationGateway ingress_application_gateway = 15 [json_name = "ingress_application_gateway"];
+
+  repeated KeyManagementService key_management_service = 16 [json_name = "key_management_service"];
+
+  repeated KeyVaultSecretsProvider key_vault_secrets_provider = 17 [json_name = "key_vault_secrets_provider"];
+
+  repeated KubeAdminConfig kube_admin_config = 18 [json_name = "kube_admin_config"];
+
+  string kube_admin_config_raw = 19 [json_name = "kube_admin_config_raw"];
+
+  repeated KubeConfig kube_config = 20 [json_name = "kube_config"];
+
+  string kube_config_raw = 21 [json_name = "kube_config_raw"];
+
+  repeated KubeletIdentity kubelet_identity = 22 [json_name = "kubelet_identity"];
+
+  string kubernetes_version = 23 [json_name = "kubernetes_version"];
+
+  repeated LinuxProfile linux_profile = 24 [json_name = "linux_profile"];
+
+  string location = 25;
+
+  repeated MicrosoftDefender microsoft_defender = 26 [json_name = "microsoft_defender"];
+
+  string name = 27;
+
+  repeated NetworkProfile network_profile = 28 [json_name = "network_profile"];
+
+  string node_resource_group = 29 [json_name = "node_resource_group"];
+
+  string node_resource_group_id = 30 [json_name = "node_resource_group_id"];
+
+  bool oidc_issuer_enabled = 31 [json_name = "oidc_issuer_enabled"];
+
+  string oidc_issuer_url = 32 [json_name = "oidc_issuer_url"];
+
+  repeated OmsAgent oms_agent = 33 [json_name = "oms_agent"];
+
+  bool open_service_mesh_enabled = 34 [json_name = "open_service_mesh_enabled"];
+
+  bool private_cluster_enabled = 35 [json_name = "private_cluster_enabled"];
+
+  string private_fqdn = 36 [json_name = "private_fqdn"];
+
+  string resource_group_name = 37 [json_name = "resource_group_name"];
+
+  bool role_based_access_control_enabled = 38 [json_name = "role_based_access_control_enabled"];
+
+  repeated ServiceMeshProfile service_mesh_profile = 39 [json_name = "service_mesh_profile"];
+
+  repeated ServicePrincipal service_principal = 40 [json_name = "service_principal"];
+
+  repeated StorageProfile storage_profile = 41 [json_name = "storage_profile"];
+
+  map<string, string> tags = 42;
+
+  repeated WindowsProfile windows_profile = 43 [json_name = "windows_profile"];
+
+  repeated Timeouts timeouts = 44;
+
+  google.protobuf.Value for_each = 45 [json_name = "for_each"];
+
+  repeated string depends_on = 46 [json_name = "depends_on"];
+
+  int32 count = 47;
+
+  string provider = 48;
+
+  terraform.v1.Lifecycle lifecycle = 49;
+
+  message AciConnectorLinux {
+    // subnet_name: string
+    string subnet_name = 1 [json_name = "subnet_name"];
+  }
+
+  message AgentPoolProfile {
+    // count: number
+    int64 count = 1;
+
+    // enable_auto_scaling: bool
+    bool enable_auto_scaling = 2 [json_name = "enable_auto_scaling"];
+
+    // enable_node_public_ip: bool
+    bool enable_node_public_ip = 3 [json_name = "enable_node_public_ip"];
+
+    // max_count: number
+    int64 max_count = 4 [json_name = "max_count"];
+
+    // max_pods: number
+    int64 max_pods = 5 [json_name = "max_pods"];
+
+    // min_count: number
+    int64 min_count = 6 [json_name = "min_count"];
+
+    // name: string
+    string name = 7;
+
+    // node_labels: map of string
+    map<string, string> node_labels = 8 [json_name = "node_labels"];
+
+    // node_public_ip_prefix_id: string
+    string node_public_ip_prefix_id = 9 [json_name = "node_public_ip_prefix_id"];
+
+    // node_taints: list of string
+    repeated string node_taints = 10 [json_name = "node_taints"];
+
+    // orchestrator_version: string
+    string orchestrator_version = 11 [json_name = "orchestrator_version"];
+
+    // os_disk_size_gb: number
+    int64 os_disk_size_gb = 12 [json_name = "os_disk_size_gb"];
+
+    // os_type: string
+    string os_type = 13 [json_name = "os_type"];
+
+    // tags: map of string
+    map<string, string> tags = 14;
+
+    // type: string
+    string type = 15;
+
+    // upgrade_settings: list of object
+    repeated UpgradeSettings upgrade_settings = 16 [json_name = "upgrade_settings"];
+
+    // vm_size: string
+    string vm_size = 17 [json_name = "vm_size"];
+
+    // vnet_subnet_id: string
+    string vnet_subnet_id = 18 [json_name = "vnet_subnet_id"];
+
+    // zones: list of string
+    repeated string zones = 19;
+
+    message UpgradeSettings {
+      // max_surge: string
+      string max_surge = 1 [json_name = "max_surge"];
+    }
+  }
+
+  message AzureActiveDirectoryRoleBasedAccessControl {
+    // admin_group_object_ids: list of string
+    repeated string admin_group_object_ids = 1 [json_name = "admin_group_object_ids"];
+
+    // azure_rbac_enabled: bool
+    bool azure_rbac_enabled = 2 [json_name = "azure_rbac_enabled"];
+
+    // client_app_id: string
+    string client_app_id = 3 [json_name = "client_app_id"];
+
+    // managed: bool
+    bool managed = 4;
+
+    // server_app_id: string
+    string server_app_id = 5 [json_name = "server_app_id"];
+
+    // tenant_id: string
+    string tenant_id = 6 [json_name = "tenant_id"];
+  }
+
+  message Identity {
+    // identity_ids: list of string
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    // principal_id: string
+    string principal_id = 2 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 4;
+  }
+
+  message IngressApplicationGateway {
+    // effective_gateway_id: string
+    string effective_gateway_id = 1 [json_name = "effective_gateway_id"];
+
+    // gateway_id: string
+    string gateway_id = 2 [json_name = "gateway_id"];
+
+    // gateway_name: string
+    string gateway_name = 3 [json_name = "gateway_name"];
+
+    // ingress_application_gateway_identity: list of object
+    repeated IngressApplicationGatewayIdentity ingress_application_gateway_identity = 4 [json_name = "ingress_application_gateway_identity"];
+
+    // subnet_cidr: string
+    string subnet_cidr = 5 [json_name = "subnet_cidr"];
+
+    // subnet_id: string
+    string subnet_id = 6 [json_name = "subnet_id"];
+
+    message IngressApplicationGatewayIdentity {
+      // client_id: string
+      string client_id = 1 [json_name = "client_id"];
+
+      // object_id: string
+      string object_id = 2 [json_name = "object_id"];
+
+      // user_assigned_identity_id: string
+      string user_assigned_identity_id = 3 [json_name = "user_assigned_identity_id"];
+    }
+  }
+
+  message KeyManagementService {
+    // key_vault_key_id: string
+    string key_vault_key_id = 1 [json_name = "key_vault_key_id"];
+
+    // key_vault_network_access: string
+    string key_vault_network_access = 2 [json_name = "key_vault_network_access"];
+  }
+
+  message KeyVaultSecretsProvider {
+    // secret_identity: list of object
+    repeated SecretIdentity secret_identity = 1 [json_name = "secret_identity"];
+
+    // secret_rotation_enabled: bool
+    bool secret_rotation_enabled = 2 [json_name = "secret_rotation_enabled"];
+
+    // secret_rotation_interval: string
+    string secret_rotation_interval = 3 [json_name = "secret_rotation_interval"];
+
+    message SecretIdentity {
+      // client_id: string
+      string client_id = 1 [json_name = "client_id"];
+
+      // object_id: string
+      string object_id = 2 [json_name = "object_id"];
+
+      // user_assigned_identity_id: string
+      string user_assigned_identity_id = 3 [json_name = "user_assigned_identity_id"];
+    }
+  }
+
+  message KubeAdminConfig {
+    // client_certificate: string
+    string client_certificate = 1 [json_name = "client_certificate"];
+
+    // client_key: string
+    string client_key = 2 [json_name = "client_key"];
+
+    // cluster_ca_certificate: string
+    string cluster_ca_certificate = 3 [json_name = "cluster_ca_certificate"];
+
+    // host: string
+    string host = 4;
+
+    // password: string
+    string password = 5;
+
+    // username: string
+    string username = 6;
+  }
+
+  message KubeConfig {
+    // client_certificate: string
+    string client_certificate = 1 [json_name = "client_certificate"];
+
+    // client_key: string
+    string client_key = 2 [json_name = "client_key"];
+
+    // cluster_ca_certificate: string
+    string cluster_ca_certificate = 3 [json_name = "cluster_ca_certificate"];
+
+    // host: string
+    string host = 4;
+
+    // password: string
+    string password = 5;
+
+    // username: string
+    string username = 6;
+  }
+
+  message KubeletIdentity {
+    // client_id: string
+    string client_id = 1 [json_name = "client_id"];
+
+    // object_id: string
+    string object_id = 2 [json_name = "object_id"];
+
+    // user_assigned_identity_id: string
+    string user_assigned_identity_id = 3 [json_name = "user_assigned_identity_id"];
+  }
+
+  message LinuxProfile {
+    // admin_username: string
+    string admin_username = 1 [json_name = "admin_username"];
+
+    // ssh_key: list of object
+    repeated SshKey ssh_key = 2 [json_name = "ssh_key"];
+
+    message SshKey {
+      // key_data: string
+      string key_data = 1 [json_name = "key_data"];
+    }
+  }
+
+  message MicrosoftDefender {
+    // log_analytics_workspace_id: string
+    string log_analytics_workspace_id = 1 [json_name = "log_analytics_workspace_id"];
+  }
+
+  message NetworkProfile {
+    // dns_service_ip: string
+    string dns_service_ip = 1 [json_name = "dns_service_ip"];
+
+    // docker_bridge_cidr: string
+    string docker_bridge_cidr = 2 [json_name = "docker_bridge_cidr"];
+
+    // load_balancer_sku: string
+    string load_balancer_sku = 3 [json_name = "load_balancer_sku"];
+
+    // network_plugin: string
+    string network_plugin = 4 [json_name = "network_plugin"];
+
+    // network_policy: string
+    string network_policy = 5 [json_name = "network_policy"];
+
+    // pod_cidr: string
+    string pod_cidr = 6 [json_name = "pod_cidr"];
+
+    // service_cidr: string
+    string service_cidr = 7 [json_name = "service_cidr"];
+  }
+
+  message OmsAgent {
+    // log_analytics_workspace_id: string
+    string log_analytics_workspace_id = 1 [json_name = "log_analytics_workspace_id"];
+
+    // msi_auth_for_monitoring_enabled: bool
+    bool msi_auth_for_monitoring_enabled = 2 [json_name = "msi_auth_for_monitoring_enabled"];
+
+    // oms_agent_identity: list of object
+    repeated OmsAgentIdentity oms_agent_identity = 3 [json_name = "oms_agent_identity"];
+
+    message OmsAgentIdentity {
+      // client_id: string
+      string client_id = 1 [json_name = "client_id"];
+
+      // object_id: string
+      string object_id = 2 [json_name = "object_id"];
+
+      // user_assigned_identity_id: string
+      string user_assigned_identity_id = 3 [json_name = "user_assigned_identity_id"];
+    }
+  }
+
+  message ServiceMeshProfile {
+    // external_ingress_gateway_enabled: bool
+    bool external_ingress_gateway_enabled = 1 [json_name = "external_ingress_gateway_enabled"];
+
+    // internal_ingress_gateway_enabled: bool
+    bool internal_ingress_gateway_enabled = 2 [json_name = "internal_ingress_gateway_enabled"];
+
+    // mode: string
+    string mode = 3;
+  }
+
+  message ServicePrincipal {
+    // client_id: string
+    string client_id = 1 [json_name = "client_id"];
+  }
+
+  message StorageProfile {
+    // blob_driver_enabled: bool
+    bool blob_driver_enabled = 1 [json_name = "blob_driver_enabled"];
+
+    // disk_driver_enabled: bool
+    bool disk_driver_enabled = 2 [json_name = "disk_driver_enabled"];
+
+    // disk_driver_version: string
+    string disk_driver_version = 3 [json_name = "disk_driver_version"];
+
+    // file_driver_enabled: bool
+    bool file_driver_enabled = 4 [json_name = "file_driver_enabled"];
+
+    // snapshot_controller_enabled: bool
+    bool snapshot_controller_enabled = 5 [json_name = "snapshot_controller_enabled"];
+  }
+
+  message WindowsProfile {
+    // admin_username: string
+    string admin_username = 1 [json_name = "admin_username"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermKubernetesClusterNodePool version is 1
+message AzurermKubernetesClusterNodePool {
+  bool enable_auto_scaling = 1 [json_name = "enable_auto_scaling"];
+
+  bool enable_node_public_ip = 2 [json_name = "enable_node_public_ip"];
+
+  string eviction_policy = 3 [json_name = "eviction_policy"];
+
+  string id = 4;
+
+  string kubernetes_cluster_name = 5 [json_name = "kubernetes_cluster_name"];
+
+  int64 max_count = 6 [json_name = "max_count"];
+
+  int64 max_pods = 7 [json_name = "max_pods"];
+
+  int64 min_count = 8 [json_name = "min_count"];
+
+  string mode = 9;
+
+  string name = 10;
+
+  int64 node_count = 11 [json_name = "node_count"];
+
+  map<string, string> node_labels = 12 [json_name = "node_labels"];
+
+  string node_public_ip_prefix_id = 13 [json_name = "node_public_ip_prefix_id"];
+
+  repeated string node_taints = 14 [json_name = "node_taints"];
+
+  string orchestrator_version = 15 [json_name = "orchestrator_version"];
+
+  int64 os_disk_size_gb = 16 [json_name = "os_disk_size_gb"];
+
+  string os_disk_type = 17 [json_name = "os_disk_type"];
+
+  string os_type = 18 [json_name = "os_type"];
+
+  string priority = 19;
+
+  string proximity_placement_group_id = 20 [json_name = "proximity_placement_group_id"];
+
+  string resource_group_name = 21 [json_name = "resource_group_name"];
+
+  int64 spot_max_price = 22 [json_name = "spot_max_price"];
+
+  map<string, string> tags = 23;
+
+  repeated UpgradeSettings upgrade_settings = 24 [json_name = "upgrade_settings"];
+
+  string vm_size = 25 [json_name = "vm_size"];
+
+  string vnet_subnet_id = 26 [json_name = "vnet_subnet_id"];
+
+  repeated string zones = 27;
+
+  repeated Timeouts timeouts = 28;
+
+  google.protobuf.Value for_each = 29 [json_name = "for_each"];
+
+  repeated string depends_on = 30 [json_name = "depends_on"];
+
+  int32 count = 31;
+
+  string provider = 32;
+
+  terraform.v1.Lifecycle lifecycle = 33;
+
+  message UpgradeSettings {
+    // max_surge: string
+    string max_surge = 1 [json_name = "max_surge"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermKubernetesNodePoolSnapshot version is 0
+message AzurermKubernetesNodePoolSnapshot {
+  string id = 1;
+
+  string name = 2;
+
+  string resource_group_name = 3 [json_name = "resource_group_name"];
+
+  string source_node_pool_id = 4 [json_name = "source_node_pool_id"];
+
+  map<string, string> tags = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermKubernetesServiceVersions version is 0
+message AzurermKubernetesServiceVersions {
+  string id = 1;
+
+  bool include_preview = 2 [json_name = "include_preview"];
+
+  string latest_version = 3 [json_name = "latest_version"];
+
+  string location = 4;
+
+  string version_prefix = 5 [json_name = "version_prefix"];
+
+  repeated string versions = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string read = 1;
+  }
+}

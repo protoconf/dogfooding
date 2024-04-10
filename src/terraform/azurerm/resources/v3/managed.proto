@@ -1,0 +1,355 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermManagedApplication version is 0
+message AzurermManagedApplication {
+  string application_definition_id = 1 [json_name = "application_definition_id"];
+
+  string id = 2;
+
+  string kind = 3;
+
+  string location = 4;
+
+  string managed_resource_group_name = 5 [json_name = "managed_resource_group_name"];
+
+  string name = 6;
+
+  map<string, string> outputs = 7;
+
+  string parameter_values = 8 [json_name = "parameter_values"];
+
+  map<string, string> parameters = 9;
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 11;
+
+  Plan plan = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Plan {
+    string name = 1;
+
+    string product = 2;
+
+    string promotion_code = 3 [json_name = "promotion_code"];
+
+    string publisher = 4;
+
+    string version = 5;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermManagedApplicationDefinition version is 0
+message AzurermManagedApplicationDefinition {
+  string create_ui_definition = 1 [json_name = "create_ui_definition"];
+
+  string description = 2;
+
+  string display_name = 3 [json_name = "display_name"];
+
+  string id = 4;
+
+  string location = 5;
+
+  string lock_level = 6 [json_name = "lock_level"];
+
+  string main_template = 7 [json_name = "main_template"];
+
+  string name = 8;
+
+  bool package_enabled = 9 [json_name = "package_enabled"];
+
+  string package_file_uri = 10 [json_name = "package_file_uri"];
+
+  string resource_group_name = 11 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 12;
+
+  repeated Authorization authorization = 13;
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message Authorization {
+    string role_definition_id = 1 [json_name = "role_definition_id"];
+
+    string service_principal_id = 2 [json_name = "service_principal_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermManagedDisk version is 1
+message AzurermManagedDisk {
+  string create_option = 1 [json_name = "create_option"];
+
+  string disk_access_id = 2 [json_name = "disk_access_id"];
+
+  string disk_encryption_set_id = 3 [json_name = "disk_encryption_set_id"];
+
+  int64 disk_iops_read_only = 4 [json_name = "disk_iops_read_only"];
+
+  int64 disk_iops_read_write = 5 [json_name = "disk_iops_read_write"];
+
+  int64 disk_mbps_read_only = 6 [json_name = "disk_mbps_read_only"];
+
+  int64 disk_mbps_read_write = 7 [json_name = "disk_mbps_read_write"];
+
+  int64 disk_size_gb = 8 [json_name = "disk_size_gb"];
+
+  string edge_zone = 9 [json_name = "edge_zone"];
+
+  string gallery_image_reference_id = 10 [json_name = "gallery_image_reference_id"];
+
+  string hyper_v_generation = 11 [json_name = "hyper_v_generation"];
+
+  string id = 12;
+
+  string image_reference_id = 13 [json_name = "image_reference_id"];
+
+  string location = 14;
+
+  int64 logical_sector_size = 15 [json_name = "logical_sector_size"];
+
+  int64 max_shares = 16 [json_name = "max_shares"];
+
+  string name = 17;
+
+  string network_access_policy = 18 [json_name = "network_access_policy"];
+
+  bool on_demand_bursting_enabled = 19 [json_name = "on_demand_bursting_enabled"];
+
+  bool optimized_frequent_attach_enabled = 20 [json_name = "optimized_frequent_attach_enabled"];
+
+  string os_type = 21 [json_name = "os_type"];
+
+  bool performance_plus_enabled = 22 [json_name = "performance_plus_enabled"];
+
+  bool public_network_access_enabled = 23 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 24 [json_name = "resource_group_name"];
+
+  string secure_vm_disk_encryption_set_id = 25 [json_name = "secure_vm_disk_encryption_set_id"];
+
+  string security_type = 26 [json_name = "security_type"];
+
+  string source_resource_id = 27 [json_name = "source_resource_id"];
+
+  string source_uri = 28 [json_name = "source_uri"];
+
+  string storage_account_id = 29 [json_name = "storage_account_id"];
+
+  string storage_account_type = 30 [json_name = "storage_account_type"];
+
+  map<string, string> tags = 31;
+
+  string tier = 32;
+
+  bool trusted_launch_enabled = 33 [json_name = "trusted_launch_enabled"];
+
+  int64 upload_size_bytes = 34 [json_name = "upload_size_bytes"];
+
+  string zone = 35;
+
+  EncryptionSettings encryption_settings = 36 [json_name = "encryption_settings"];
+
+  repeated Timeouts timeouts = 37;
+
+  google.protobuf.Value for_each = 38 [json_name = "for_each"];
+
+  repeated string depends_on = 39 [json_name = "depends_on"];
+
+  int32 count = 40;
+
+  string provider = 41;
+
+  terraform.v1.Lifecycle lifecycle = 42;
+
+  message EncryptionSettings {
+    bool enabled = 1;
+
+    DiskEncryptionKey disk_encryption_key = 2 [json_name = "disk_encryption_key"];
+
+    KeyEncryptionKey key_encryption_key = 3 [json_name = "key_encryption_key"];
+
+    message DiskEncryptionKey {
+      string secret_url = 1 [json_name = "secret_url"];
+
+      string source_vault_id = 2 [json_name = "source_vault_id"];
+    }
+
+    message KeyEncryptionKey {
+      string key_url = 1 [json_name = "key_url"];
+
+      string source_vault_id = 2 [json_name = "source_vault_id"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermManagedDiskSasToken version is 0
+message AzurermManagedDiskSasToken {
+  string access_level = 1 [json_name = "access_level"];
+
+  int64 duration_in_seconds = 2 [json_name = "duration_in_seconds"];
+
+  string id = 3;
+
+  string managed_disk_id = 4 [json_name = "managed_disk_id"];
+
+  string sas_url = 5 [json_name = "sas_url"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermManagedLustreFileSystem version is 0
+message AzurermManagedLustreFileSystem {
+  string id = 1;
+
+  string location = 2;
+
+  string mgs_address = 3 [json_name = "mgs_address"];
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string sku_name = 6 [json_name = "sku_name"];
+
+  int64 storage_capacity_in_tb = 7 [json_name = "storage_capacity_in_tb"];
+
+  string subnet_id = 8 [json_name = "subnet_id"];
+
+  map<string, string> tags = 9;
+
+  repeated string zones = 10;
+
+  EncryptionKey encryption_key = 11 [json_name = "encryption_key"];
+
+  HsmSetting hsm_setting = 12 [json_name = "hsm_setting"];
+
+  Identity identity = 13;
+
+  MaintenanceWindow maintenance_window = 14 [json_name = "maintenance_window"];
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message EncryptionKey {
+    string key_url = 1 [json_name = "key_url"];
+
+    string source_vault_id = 2 [json_name = "source_vault_id"];
+  }
+
+  message HsmSetting {
+    string container_id = 1 [json_name = "container_id"];
+
+    string import_prefix = 2 [json_name = "import_prefix"];
+
+    string logging_container_id = 3 [json_name = "logging_container_id"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string type = 2;
+  }
+
+  message MaintenanceWindow {
+    string day_of_week = 1 [json_name = "day_of_week"];
+
+    string time_of_day_in_utc = 2 [json_name = "time_of_day_in_utc"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

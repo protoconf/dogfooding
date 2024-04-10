@@ -1,0 +1,596 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermBatchAccount version is 0
+message AzurermBatchAccount {
+  string account_endpoint = 1 [json_name = "account_endpoint"];
+
+  repeated Encryption encryption = 2;
+
+  string id = 3;
+
+  repeated KeyVaultReference key_vault_reference = 4 [json_name = "key_vault_reference"];
+
+  string location = 5;
+
+  string name = 6;
+
+  string pool_allocation_mode = 7 [json_name = "pool_allocation_mode"];
+
+  string primary_access_key = 8 [json_name = "primary_access_key"];
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  string secondary_access_key = 10 [json_name = "secondary_access_key"];
+
+  string storage_account_id = 11 [json_name = "storage_account_id"];
+
+  map<string, string> tags = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Encryption {
+    // key_vault_key_id: string
+    string key_vault_key_id = 1 [json_name = "key_vault_key_id"];
+  }
+
+  message KeyVaultReference {
+    // id: string
+    string id = 1;
+
+    // url: string
+    string url = 2;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermBatchApplication version is 0
+message AzurermBatchApplication {
+  string account_name = 1 [json_name = "account_name"];
+
+  bool allow_updates = 2 [json_name = "allow_updates"];
+
+  string default_version = 3 [json_name = "default_version"];
+
+  string display_name = 4 [json_name = "display_name"];
+
+  string id = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermBatchCertificate version is 0
+message AzurermBatchCertificate {
+  string account_name = 1 [json_name = "account_name"];
+
+  string format = 2;
+
+  string id = 3;
+
+  string name = 4;
+
+  string public_data = 5 [json_name = "public_data"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string thumbprint = 7;
+
+  string thumbprint_algorithm = 8 [json_name = "thumbprint_algorithm"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermBatchPool version is 0
+message AzurermBatchPool {
+  string account_name = 1 [json_name = "account_name"];
+
+  repeated AutoScale auto_scale = 2 [json_name = "auto_scale"];
+
+  repeated Certificate certificate = 3;
+
+  repeated ContainerConfiguration container_configuration = 4 [json_name = "container_configuration"];
+
+  repeated DataDisks data_disks = 5 [json_name = "data_disks"];
+
+  repeated DiskEncryption disk_encryption = 6 [json_name = "disk_encryption"];
+
+  string display_name = 7 [json_name = "display_name"];
+
+  repeated Extensions extensions = 8;
+
+  repeated FixedScale fixed_scale = 9 [json_name = "fixed_scale"];
+
+  string id = 10;
+
+  string inter_node_communication = 11 [json_name = "inter_node_communication"];
+
+  string license_type = 12 [json_name = "license_type"];
+
+  int64 max_tasks_per_node = 13 [json_name = "max_tasks_per_node"];
+
+  map<string, string> metadata = 14;
+
+  repeated Mount mount = 15;
+
+  string name = 16;
+
+  repeated NetworkConfiguration network_configuration = 17 [json_name = "network_configuration"];
+
+  string node_agent_sku_id = 18 [json_name = "node_agent_sku_id"];
+
+  repeated NodePlacement node_placement = 19 [json_name = "node_placement"];
+
+  string os_disk_placement = 20 [json_name = "os_disk_placement"];
+
+  string resource_group_name = 21 [json_name = "resource_group_name"];
+
+  repeated StartTask start_task = 22 [json_name = "start_task"];
+
+  repeated StorageImageReference storage_image_reference = 23 [json_name = "storage_image_reference"];
+
+  repeated TaskSchedulingPolicy task_scheduling_policy = 24 [json_name = "task_scheduling_policy"];
+
+  repeated UserAccounts user_accounts = 25 [json_name = "user_accounts"];
+
+  string vm_size = 26 [json_name = "vm_size"];
+
+  repeated Windows windows = 27;
+
+  repeated Timeouts timeouts = 28;
+
+  google.protobuf.Value for_each = 29 [json_name = "for_each"];
+
+  repeated string depends_on = 30 [json_name = "depends_on"];
+
+  int32 count = 31;
+
+  string provider = 32;
+
+  terraform.v1.Lifecycle lifecycle = 33;
+
+  message AutoScale {
+    // evaluation_interval: string
+    string evaluation_interval = 1 [json_name = "evaluation_interval"];
+
+    // formula: string
+    string formula = 2;
+  }
+
+  message Certificate {
+    // id: string
+    string id = 1;
+
+    // store_location: string
+    string store_location = 2 [json_name = "store_location"];
+
+    // store_name: string
+    string store_name = 3 [json_name = "store_name"];
+
+    // visibility: set of string
+    repeated string visibility = 4;
+  }
+
+  message ContainerConfiguration {
+    // container_image_names: set of string
+    repeated string container_image_names = 1 [json_name = "container_image_names"];
+
+    // container_registries: list of object
+    repeated ContainerRegistries container_registries = 2 [json_name = "container_registries"];
+
+    // type: string
+    string type = 3;
+
+    message ContainerRegistries {
+      // password: string
+      string password = 1;
+
+      // registry_server: string
+      string registry_server = 2 [json_name = "registry_server"];
+
+      // user_assigned_identity_id: string
+      string user_assigned_identity_id = 3 [json_name = "user_assigned_identity_id"];
+
+      // user_name: string
+      string user_name = 4 [json_name = "user_name"];
+    }
+  }
+
+  message DataDisks {
+    // caching: string
+    string caching = 1;
+
+    // disk_size_gb: number
+    int64 disk_size_gb = 2 [json_name = "disk_size_gb"];
+
+    // lun: number
+    int64 lun = 3;
+
+    // storage_account_type: string
+    string storage_account_type = 4 [json_name = "storage_account_type"];
+  }
+
+  message DiskEncryption {
+    // disk_encryption_target: string
+    string disk_encryption_target = 1 [json_name = "disk_encryption_target"];
+  }
+
+  message Extensions {
+    // auto_upgrade_minor_version: bool
+    bool auto_upgrade_minor_version = 1 [json_name = "auto_upgrade_minor_version"];
+
+    // name: string
+    string name = 2;
+
+    // protected_settings: string
+    string protected_settings = 3 [json_name = "protected_settings"];
+
+    // provision_after_extensions: set of string
+    repeated string provision_after_extensions = 4 [json_name = "provision_after_extensions"];
+
+    // publisher: string
+    string publisher = 5;
+
+    // settings_json: string
+    string settings_json = 6 [json_name = "settings_json"];
+
+    // type: string
+    string type = 7;
+
+    // type_handler_version: string
+    string type_handler_version = 8 [json_name = "type_handler_version"];
+  }
+
+  message FixedScale {
+    // resize_timeout: string
+    string resize_timeout = 1 [json_name = "resize_timeout"];
+
+    // target_dedicated_nodes: number
+    int64 target_dedicated_nodes = 2 [json_name = "target_dedicated_nodes"];
+
+    // target_low_priority_nodes: number
+    int64 target_low_priority_nodes = 3 [json_name = "target_low_priority_nodes"];
+  }
+
+  message Mount {
+    // azure_blob_file_system: list of object
+    repeated AzureBlobFileSystem azure_blob_file_system = 1 [json_name = "azure_blob_file_system"];
+
+    // azure_file_share: list of object
+    repeated AzureFileShare azure_file_share = 2 [json_name = "azure_file_share"];
+
+    // cifs_mount: list of object
+    repeated CifsMount cifs_mount = 3 [json_name = "cifs_mount"];
+
+    // nfs_mount: list of object
+    repeated NfsMount nfs_mount = 4 [json_name = "nfs_mount"];
+
+    message AzureBlobFileSystem {
+      // account_key: string
+      string account_key = 1 [json_name = "account_key"];
+
+      // account_name: string
+      string account_name = 2 [json_name = "account_name"];
+
+      // blobfuse_options: string
+      string blobfuse_options = 3 [json_name = "blobfuse_options"];
+
+      // container_name: string
+      string container_name = 4 [json_name = "container_name"];
+
+      // identity_id: string
+      string identity_id = 5 [json_name = "identity_id"];
+
+      // relative_mount_path: string
+      string relative_mount_path = 6 [json_name = "relative_mount_path"];
+
+      // sas_key: string
+      string sas_key = 7 [json_name = "sas_key"];
+    }
+
+    message AzureFileShare {
+      // account_key: string
+      string account_key = 1 [json_name = "account_key"];
+
+      // account_name: string
+      string account_name = 2 [json_name = "account_name"];
+
+      // azure_file_url: string
+      string azure_file_url = 3 [json_name = "azure_file_url"];
+
+      // mount_options: string
+      string mount_options = 4 [json_name = "mount_options"];
+
+      // relative_mount_path: string
+      string relative_mount_path = 5 [json_name = "relative_mount_path"];
+    }
+
+    message CifsMount {
+      // mount_options: string
+      string mount_options = 1 [json_name = "mount_options"];
+
+      // password: string
+      string password = 2;
+
+      // relative_mount_path: string
+      string relative_mount_path = 3 [json_name = "relative_mount_path"];
+
+      // source: string
+      string source = 4;
+
+      // user_name: string
+      string user_name = 5 [json_name = "user_name"];
+    }
+
+    message NfsMount {
+      // mount_options: string
+      string mount_options = 1 [json_name = "mount_options"];
+
+      // relative_mount_path: string
+      string relative_mount_path = 2 [json_name = "relative_mount_path"];
+
+      // source: string
+      string source = 3;
+    }
+  }
+
+  message NetworkConfiguration {
+    // accelerated_networking_enabled: bool
+    bool accelerated_networking_enabled = 1 [json_name = "accelerated_networking_enabled"];
+
+    // dynamic_vnet_assignment_scope: string
+    string dynamic_vnet_assignment_scope = 2 [json_name = "dynamic_vnet_assignment_scope"];
+
+    // endpoint_configuration: list of object
+    repeated EndpointConfiguration endpoint_configuration = 3 [json_name = "endpoint_configuration"];
+
+    // public_address_provisioning_type: string
+    string public_address_provisioning_type = 4 [json_name = "public_address_provisioning_type"];
+
+    // public_ips: set of string
+    repeated string public_ips = 5 [json_name = "public_ips"];
+
+    // subnet_id: string
+    string subnet_id = 6 [json_name = "subnet_id"];
+
+    message EndpointConfiguration {
+      // backend_port: number
+      int64 backend_port = 1 [json_name = "backend_port"];
+
+      // frontend_port_range: string
+      string frontend_port_range = 2 [json_name = "frontend_port_range"];
+
+      // name: string
+      string name = 3;
+
+      // network_security_group_rules: list of object
+      repeated NetworkSecurityGroupRules network_security_group_rules = 4 [json_name = "network_security_group_rules"];
+
+      // protocol: string
+      string protocol = 5;
+
+      message NetworkSecurityGroupRules {
+        // access: string
+        string access = 1;
+
+        // priority: number
+        int64 priority = 2;
+
+        // source_address_prefix: string
+        string source_address_prefix = 3 [json_name = "source_address_prefix"];
+
+        // source_port_ranges: list of string
+        repeated string source_port_ranges = 4 [json_name = "source_port_ranges"];
+      }
+    }
+  }
+
+  message NodePlacement {
+    // policy: string
+    string policy = 1;
+  }
+
+  message StartTask {
+    // command_line: string
+    string command_line = 1 [json_name = "command_line"];
+
+    // common_environment_properties: map of string
+    map<string, string> common_environment_properties = 2 [json_name = "common_environment_properties"];
+
+    // container: list of object
+    repeated Container container = 3;
+
+    // resource_file: list of object
+    repeated ResourceFile resource_file = 4 [json_name = "resource_file"];
+
+    // task_retry_maximum: number
+    int64 task_retry_maximum = 5 [json_name = "task_retry_maximum"];
+
+    // user_identity: list of object
+    repeated UserIdentity user_identity = 6 [json_name = "user_identity"];
+
+    // wait_for_success: bool
+    bool wait_for_success = 7 [json_name = "wait_for_success"];
+
+    message Container {
+      // image_name: string
+      string image_name = 1 [json_name = "image_name"];
+
+      // registry: list of object
+      repeated Registry registry = 2;
+
+      // run_options: string
+      string run_options = 3 [json_name = "run_options"];
+
+      // working_directory: string
+      string working_directory = 4 [json_name = "working_directory"];
+
+      message Registry {
+        // password: string
+        string password = 1;
+
+        // registry_server: string
+        string registry_server = 2 [json_name = "registry_server"];
+
+        // user_assigned_identity_id: string
+        string user_assigned_identity_id = 3 [json_name = "user_assigned_identity_id"];
+
+        // user_name: string
+        string user_name = 4 [json_name = "user_name"];
+      }
+    }
+
+    message ResourceFile {
+      // auto_storage_container_name: string
+      string auto_storage_container_name = 1 [json_name = "auto_storage_container_name"];
+
+      // blob_prefix: string
+      string blob_prefix = 2 [json_name = "blob_prefix"];
+
+      // file_mode: string
+      string file_mode = 3 [json_name = "file_mode"];
+
+      // file_path: string
+      string file_path = 4 [json_name = "file_path"];
+
+      // http_url: string
+      string http_url = 5 [json_name = "http_url"];
+
+      // storage_container_url: string
+      string storage_container_url = 6 [json_name = "storage_container_url"];
+
+      // user_assigned_identity_id: string
+      string user_assigned_identity_id = 7 [json_name = "user_assigned_identity_id"];
+    }
+
+    message UserIdentity {
+      // auto_user: list of object
+      repeated AutoUser auto_user = 1 [json_name = "auto_user"];
+
+      // user_name: string
+      string user_name = 2 [json_name = "user_name"];
+
+      message AutoUser {
+        // elevation_level: string
+        string elevation_level = 1 [json_name = "elevation_level"];
+
+        // scope: string
+        string scope = 2;
+      }
+    }
+  }
+
+  message StorageImageReference {
+    // id: string
+    string id = 1;
+
+    // offer: string
+    string offer = 2;
+
+    // publisher: string
+    string publisher = 3;
+
+    // sku: string
+    string sku = 4;
+
+    // version: string
+    string version = 5;
+  }
+
+  message TaskSchedulingPolicy {
+    // node_fill_type: string
+    string node_fill_type = 1 [json_name = "node_fill_type"];
+  }
+
+  message UserAccounts {
+    // elevation_level: string
+    string elevation_level = 1 [json_name = "elevation_level"];
+
+    // linux_user_configuration: list of object
+    repeated LinuxUserConfiguration linux_user_configuration = 2 [json_name = "linux_user_configuration"];
+
+    // name: string
+    string name = 3;
+
+    // password: string
+    string password = 4;
+
+    // windows_user_configuration: list of object
+    repeated WindowsUserConfiguration windows_user_configuration = 5 [json_name = "windows_user_configuration"];
+
+    message LinuxUserConfiguration {
+      // gid: number
+      int64 gid = 1;
+
+      // ssh_private_key: string
+      string ssh_private_key = 2 [json_name = "ssh_private_key"];
+
+      // uid: number
+      int64 uid = 3;
+    }
+
+    message WindowsUserConfiguration {
+      // login_mode: string
+      string login_mode = 1 [json_name = "login_mode"];
+    }
+  }
+
+  message Windows {
+    // enable_automatic_updates: bool
+    bool enable_automatic_updates = 1 [json_name = "enable_automatic_updates"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

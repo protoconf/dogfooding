@@ -1,0 +1,107 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermNotificationHub version is 1
+message AzurermNotificationHub {
+  repeated ApnsCredential apns_credential = 1 [json_name = "apns_credential"];
+
+  repeated GcmCredential gcm_credential = 2 [json_name = "gcm_credential"];
+
+  string id = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  string namespace_name = 6 [json_name = "namespace_name"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message ApnsCredential {
+    // application_mode: string
+    string application_mode = 1 [json_name = "application_mode"];
+
+    // bundle_id: string
+    string bundle_id = 2 [json_name = "bundle_id"];
+
+    // key_id: string
+    string key_id = 3 [json_name = "key_id"];
+
+    // team_id: string
+    string team_id = 4 [json_name = "team_id"];
+
+    // token: string
+    string token = 5;
+  }
+
+  message GcmCredential {
+    // api_key: string
+    string api_key = 1 [json_name = "api_key"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermNotificationHubNamespace version is 1
+message AzurermNotificationHubNamespace {
+  bool enabled = 1;
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string namespace_type = 5 [json_name = "namespace_type"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string servicebus_endpoint = 7 [json_name = "servicebus_endpoint"];
+
+  repeated Sku sku = 8;
+
+  map<string, string> tags = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Sku {
+    // name: string
+    string name = 1;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

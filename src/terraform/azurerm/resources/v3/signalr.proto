@@ -1,0 +1,287 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermSignalrService version is 1
+message AzurermSignalrService {
+  bool aad_auth_enabled = 1 [json_name = "aad_auth_enabled"];
+
+  bool connectivity_logs_enabled = 2 [json_name = "connectivity_logs_enabled"];
+
+  string hostname = 3;
+
+  bool http_request_logs_enabled = 4 [json_name = "http_request_logs_enabled"];
+
+  string id = 5;
+
+  string ip_address = 6 [json_name = "ip_address"];
+
+  bool live_trace_enabled = 7 [json_name = "live_trace_enabled"];
+
+  bool local_auth_enabled = 8 [json_name = "local_auth_enabled"];
+
+  string location = 9;
+
+  bool messaging_logs_enabled = 10 [json_name = "messaging_logs_enabled"];
+
+  string name = 11;
+
+  string primary_access_key = 12 [json_name = "primary_access_key"];
+
+  string primary_connection_string = 13 [json_name = "primary_connection_string"];
+
+  bool public_network_access_enabled = 14 [json_name = "public_network_access_enabled"];
+
+  int64 public_port = 15 [json_name = "public_port"];
+
+  string resource_group_name = 16 [json_name = "resource_group_name"];
+
+  string secondary_access_key = 17 [json_name = "secondary_access_key"];
+
+  string secondary_connection_string = 18 [json_name = "secondary_connection_string"];
+
+  int64 server_port = 19 [json_name = "server_port"];
+
+  int64 serverless_connection_timeout_in_seconds = 20 [
+    json_name = "serverless_connection_timeout_in_seconds"
+  ];
+
+  string service_mode = 21 [json_name = "service_mode"];
+
+  map<string, string> tags = 22;
+
+  bool tls_client_cert_enabled = 23 [json_name = "tls_client_cert_enabled"];
+
+  repeated Cors cors = 24;
+
+  Identity identity = 25;
+
+  LiveTrace live_trace = 26 [json_name = "live_trace"];
+
+  Sku sku = 27;
+
+  repeated Timeouts timeouts = 28;
+
+  repeated UpstreamEndpoint upstream_endpoint = 29 [json_name = "upstream_endpoint"];
+
+  google.protobuf.Value for_each = 30 [json_name = "for_each"];
+
+  repeated string depends_on = 31 [json_name = "depends_on"];
+
+  int32 count = 32;
+
+  string provider = 33;
+
+  terraform.v1.Lifecycle lifecycle = 34;
+
+  message Cors {
+    repeated string allowed_origins = 1 [json_name = "allowed_origins"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message LiveTrace {
+    bool connectivity_logs_enabled = 1 [json_name = "connectivity_logs_enabled"];
+
+    bool enabled = 2;
+
+    bool http_request_logs_enabled = 3 [json_name = "http_request_logs_enabled"];
+
+    bool messaging_logs_enabled = 4 [json_name = "messaging_logs_enabled"];
+  }
+
+  message Sku {
+    int64 capacity = 1;
+
+    string name = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message UpstreamEndpoint {
+    repeated string category_pattern = 1 [json_name = "category_pattern"];
+
+    repeated string event_pattern = 2 [json_name = "event_pattern"];
+
+    repeated string hub_pattern = 3 [json_name = "hub_pattern"];
+
+    string url_template = 4 [json_name = "url_template"];
+
+    string user_assigned_identity_id = 5 [json_name = "user_assigned_identity_id"];
+  }
+}
+
+// AzurermSignalrServiceCustomCertificate version is 0
+message AzurermSignalrServiceCustomCertificate {
+  string certificate_version = 1 [json_name = "certificate_version"];
+
+  string custom_certificate_id = 2 [json_name = "custom_certificate_id"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string signalr_service_id = 5 [json_name = "signalr_service_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermSignalrServiceCustomDomain version is 0
+message AzurermSignalrServiceCustomDomain {
+  string domain_name = 1 [json_name = "domain_name"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string signalr_custom_certificate_id = 4 [json_name = "signalr_custom_certificate_id"];
+
+  string signalr_service_id = 5 [json_name = "signalr_service_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermSignalrServiceNetworkAcl version is 1
+message AzurermSignalrServiceNetworkAcl {
+  string default_action = 1 [json_name = "default_action"];
+
+  string id = 2;
+
+  string signalr_service_id = 3 [json_name = "signalr_service_id"];
+
+  repeated PrivateEndpoint private_endpoint = 4 [json_name = "private_endpoint"];
+
+  PublicNetwork public_network = 5 [json_name = "public_network"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message PrivateEndpoint {
+    repeated string allowed_request_types = 1 [json_name = "allowed_request_types"];
+
+    repeated string denied_request_types = 2 [json_name = "denied_request_types"];
+
+    string id = 3;
+  }
+
+  message PublicNetwork {
+    repeated string allowed_request_types = 1 [json_name = "allowed_request_types"];
+
+    repeated string denied_request_types = 2 [json_name = "denied_request_types"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSignalrSharedPrivateLinkResource version is 0
+message AzurermSignalrSharedPrivateLinkResource {
+  string id = 1;
+
+  string name = 2;
+
+  string request_message = 3 [json_name = "request_message"];
+
+  string signalr_service_id = 4 [json_name = "signalr_service_id"];
+
+  string status = 5;
+
+  string sub_resource_name = 6 [json_name = "sub_resource_name"];
+
+  string target_resource_id = 7 [json_name = "target_resource_id"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

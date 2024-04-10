@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermTrafficManagerGeographicalLocation version is 0
+message AzurermTrafficManagerGeographicalLocation {
+  string id = 1;
+
+  string name = 2;
+
+  repeated Timeouts timeouts = 3;
+
+  google.protobuf.Value for_each = 4 [json_name = "for_each"];
+
+  repeated string depends_on = 5 [json_name = "depends_on"];
+
+  int32 count = 6;
+
+  string provider = 7;
+
+  terraform.v1.Lifecycle lifecycle = 8;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermTrafficManagerProfile version is 0
+message AzurermTrafficManagerProfile {
+  repeated DnsConfig dns_config = 1 [json_name = "dns_config"];
+
+  string fqdn = 2;
+
+  string id = 3;
+
+  repeated MonitorConfig monitor_config = 4 [json_name = "monitor_config"];
+
+  string name = 5;
+
+  string profile_status = 6 [json_name = "profile_status"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 8;
+
+  string traffic_routing_method = 9 [json_name = "traffic_routing_method"];
+
+  bool traffic_view_enabled = 10 [json_name = "traffic_view_enabled"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message DnsConfig {
+    // relative_name: string
+    string relative_name = 1 [json_name = "relative_name"];
+
+    // ttl: number
+    int64 ttl = 2;
+  }
+
+  message MonitorConfig {
+    // custom_header: list of object
+    repeated CustomHeader custom_header = 1 [json_name = "custom_header"];
+
+    // expected_status_code_ranges: list of string
+    repeated string expected_status_code_ranges = 2 [json_name = "expected_status_code_ranges"];
+
+    // interval_in_seconds: number
+    int64 interval_in_seconds = 3 [json_name = "interval_in_seconds"];
+
+    // path: string
+    string path = 4;
+
+    // port: number
+    int64 port = 5;
+
+    // protocol: string
+    string protocol = 6;
+
+    // timeout_in_seconds: number
+    int64 timeout_in_seconds = 7 [json_name = "timeout_in_seconds"];
+
+    // tolerated_number_of_failures: number
+    int64 tolerated_number_of_failures = 8 [json_name = "tolerated_number_of_failures"];
+
+    message CustomHeader {
+      // name: string
+      string name = 1;
+
+      // value: string
+      string value = 2;
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

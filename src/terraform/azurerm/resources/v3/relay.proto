@@ -1,0 +1,188 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermRelayHybridConnection version is 0
+message AzurermRelayHybridConnection {
+  string id = 1;
+
+  string name = 2;
+
+  string relay_namespace_name = 3 [json_name = "relay_namespace_name"];
+
+  bool requires_client_authorization = 4 [json_name = "requires_client_authorization"];
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string user_metadata = 6 [json_name = "user_metadata"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermRelayHybridConnectionAuthorizationRule version is 0
+message AzurermRelayHybridConnectionAuthorizationRule {
+  string hybrid_connection_name = 1 [json_name = "hybrid_connection_name"];
+
+  string id = 2;
+
+  bool listen = 3;
+
+  bool manage = 4;
+
+  string name = 5;
+
+  string namespace_name = 6 [json_name = "namespace_name"];
+
+  string primary_connection_string = 7 [json_name = "primary_connection_string"];
+
+  string primary_key = 8 [json_name = "primary_key"];
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  string secondary_connection_string = 10 [json_name = "secondary_connection_string"];
+
+  string secondary_key = 11 [json_name = "secondary_key"];
+
+  bool send = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermRelayNamespace version is 0
+message AzurermRelayNamespace {
+  string id = 1;
+
+  string location = 2;
+
+  string metric_id = 3 [json_name = "metric_id"];
+
+  string name = 4;
+
+  string primary_connection_string = 5 [json_name = "primary_connection_string"];
+
+  string primary_key = 6 [json_name = "primary_key"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string secondary_connection_string = 8 [json_name = "secondary_connection_string"];
+
+  string secondary_key = 9 [json_name = "secondary_key"];
+
+  string sku_name = 10 [json_name = "sku_name"];
+
+  map<string, string> tags = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermRelayNamespaceAuthorizationRule version is 0
+message AzurermRelayNamespaceAuthorizationRule {
+  string id = 1;
+
+  bool listen = 2;
+
+  bool manage = 3;
+
+  string name = 4;
+
+  string namespace_name = 5 [json_name = "namespace_name"];
+
+  string primary_connection_string = 6 [json_name = "primary_connection_string"];
+
+  string primary_key = 7 [json_name = "primary_key"];
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  string secondary_connection_string = 9 [json_name = "secondary_connection_string"];
+
+  string secondary_key = 10 [json_name = "secondary_key"];
+
+  bool send = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

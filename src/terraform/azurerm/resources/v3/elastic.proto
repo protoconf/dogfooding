@@ -1,0 +1,211 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermElasticCloudElasticsearch version is 0
+message AzurermElasticCloudElasticsearch {
+  string elastic_cloud_deployment_id = 1 [json_name = "elastic_cloud_deployment_id"];
+
+  string elastic_cloud_email_address = 2 [json_name = "elastic_cloud_email_address"];
+
+  string elastic_cloud_sso_default_url = 3 [json_name = "elastic_cloud_sso_default_url"];
+
+  string elastic_cloud_user_id = 4 [json_name = "elastic_cloud_user_id"];
+
+  string elasticsearch_service_url = 5 [json_name = "elasticsearch_service_url"];
+
+  string id = 6;
+
+  string kibana_service_url = 7 [json_name = "kibana_service_url"];
+
+  string kibana_sso_uri = 8 [json_name = "kibana_sso_uri"];
+
+  string location = 9;
+
+  bool monitoring_enabled = 10 [json_name = "monitoring_enabled"];
+
+  string name = 11;
+
+  string resource_group_name = 12 [json_name = "resource_group_name"];
+
+  string sku_name = 13 [json_name = "sku_name"];
+
+  map<string, string> tags = 14;
+
+  Logs logs = 15;
+
+  repeated Timeouts timeouts = 16;
+
+  google.protobuf.Value for_each = 17 [json_name = "for_each"];
+
+  repeated string depends_on = 18 [json_name = "depends_on"];
+
+  int32 count = 19;
+
+  string provider = 20;
+
+  terraform.v1.Lifecycle lifecycle = 21;
+
+  message Logs {
+    bool send_activity_logs = 1 [json_name = "send_activity_logs"];
+
+    bool send_azuread_logs = 2 [json_name = "send_azuread_logs"];
+
+    bool send_subscription_logs = 3 [json_name = "send_subscription_logs"];
+
+    repeated FilteringTag filtering_tag = 4 [json_name = "filtering_tag"];
+
+    message FilteringTag {
+      string action = 1;
+
+      string name = 2;
+
+      string value = 3;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermElasticSan version is 0
+message AzurermElasticSan {
+  int64 base_size_in_tib = 1 [json_name = "base_size_in_tib"];
+
+  int64 extended_size_in_tib = 2 [json_name = "extended_size_in_tib"];
+
+  string id = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 7;
+
+  int64 total_iops = 8 [json_name = "total_iops"];
+
+  int64 total_mbps = 9 [json_name = "total_mbps"];
+
+  int64 total_size_in_tib = 10 [json_name = "total_size_in_tib"];
+
+  int64 total_volume_size_in_gib = 11 [json_name = "total_volume_size_in_gib"];
+
+  int64 volume_group_count = 12 [json_name = "volume_group_count"];
+
+  repeated string zones = 13;
+
+  Sku sku = 14;
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message Sku {
+    string name = 1;
+
+    string tier = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermElasticSanVolumeGroup version is 0
+message AzurermElasticSanVolumeGroup {
+  string elastic_san_id = 1 [json_name = "elastic_san_id"];
+
+  string encryption_type = 2 [json_name = "encryption_type"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string protocol_type = 5 [json_name = "protocol_type"];
+
+  Encryption encryption = 6;
+
+  Identity identity = 7;
+
+  repeated NetworkRule network_rule = 8 [json_name = "network_rule"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Encryption {
+    string current_versioned_key_expiration_timestamp = 1 [
+      json_name = "current_versioned_key_expiration_timestamp"
+    ];
+
+    string current_versioned_key_id = 2 [json_name = "current_versioned_key_id"];
+
+    string key_vault_key_id = 3 [json_name = "key_vault_key_id"];
+
+    string last_key_rotation_timestamp = 4 [json_name = "last_key_rotation_timestamp"];
+
+    string user_assigned_identity_id = 5 [json_name = "user_assigned_identity_id"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message NetworkRule {
+    string action = 1;
+
+    string subnet_id = 2 [json_name = "subnet_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

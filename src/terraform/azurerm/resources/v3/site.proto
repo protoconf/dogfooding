@@ -1,0 +1,900 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermSiteRecoveryFabric version is 0
+message AzurermSiteRecoveryFabric {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string recovery_vault_name = 4 [json_name = "recovery_vault_name"];
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermSiteRecoveryHypervNetworkMapping version is 0
+message AzurermSiteRecoveryHypervNetworkMapping {
+  string id = 1;
+
+  string name = 2;
+
+  string recovery_vault_id = 3 [json_name = "recovery_vault_id"];
+
+  string source_network_name = 4 [json_name = "source_network_name"];
+
+  string source_system_center_virtual_machine_manager_name = 5 [
+    json_name = "source_system_center_virtual_machine_manager_name"
+  ];
+
+  string target_network_id = 6 [json_name = "target_network_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermSiteRecoveryHypervReplicationPolicy version is 0
+message AzurermSiteRecoveryHypervReplicationPolicy {
+  int64 application_consistent_snapshot_frequency_in_hours = 1 [
+    json_name = "application_consistent_snapshot_frequency_in_hours"
+  ];
+
+  string id = 2;
+
+  string name = 3;
+
+  int64 recovery_point_retention_in_hours = 4 [json_name = "recovery_point_retention_in_hours"];
+
+  string recovery_vault_id = 5 [json_name = "recovery_vault_id"];
+
+  int64 replication_interval_in_seconds = 6 [json_name = "replication_interval_in_seconds"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSiteRecoveryHypervReplicationPolicyAssociation version is 0
+message AzurermSiteRecoveryHypervReplicationPolicyAssociation {
+  string hyperv_site_id = 1 [json_name = "hyperv_site_id"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string policy_id = 4 [json_name = "policy_id"];
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermSiteRecoveryNetworkMapping version is 0
+message AzurermSiteRecoveryNetworkMapping {
+  string id = 1;
+
+  string name = 2;
+
+  string recovery_vault_name = 3 [json_name = "recovery_vault_name"];
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  string source_network_id = 5 [json_name = "source_network_id"];
+
+  string source_recovery_fabric_name = 6 [json_name = "source_recovery_fabric_name"];
+
+  string target_network_id = 7 [json_name = "target_network_id"];
+
+  string target_recovery_fabric_name = 8 [json_name = "target_recovery_fabric_name"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermSiteRecoveryProtectionContainer version is 0
+message AzurermSiteRecoveryProtectionContainer {
+  string id = 1;
+
+  string name = 2;
+
+  string recovery_fabric_name = 3 [json_name = "recovery_fabric_name"];
+
+  string recovery_vault_name = 4 [json_name = "recovery_vault_name"];
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermSiteRecoveryProtectionContainerMapping version is 0
+message AzurermSiteRecoveryProtectionContainerMapping {
+  string id = 1;
+
+  string name = 2;
+
+  string recovery_fabric_name = 3 [json_name = "recovery_fabric_name"];
+
+  string recovery_replication_policy_id = 4 [json_name = "recovery_replication_policy_id"];
+
+  string recovery_source_protection_container_name = 5 [
+    json_name = "recovery_source_protection_container_name"
+  ];
+
+  string recovery_target_protection_container_id = 6 [
+    json_name = "recovery_target_protection_container_id"
+  ];
+
+  string recovery_vault_name = 7 [json_name = "recovery_vault_name"];
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  AutomaticUpdate automatic_update = 9 [json_name = "automatic_update"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message AutomaticUpdate {
+    string authentication_type = 1 [json_name = "authentication_type"];
+
+    string automation_account_id = 2 [json_name = "automation_account_id"];
+
+    bool enabled = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSiteRecoveryReplicatedVm version is 0
+message AzurermSiteRecoveryReplicatedVm {
+  string id = 1;
+
+  repeated ManagedDisk managed_disk = 2 [json_name = "managed_disk"];
+
+  string multi_vm_group_name = 3 [json_name = "multi_vm_group_name"];
+
+  string name = 4;
+
+  repeated NetworkInterface network_interface = 5 [json_name = "network_interface"];
+
+  string recovery_replication_policy_id = 6 [json_name = "recovery_replication_policy_id"];
+
+  string recovery_vault_name = 7 [json_name = "recovery_vault_name"];
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  string source_recovery_fabric_name = 9 [json_name = "source_recovery_fabric_name"];
+
+  string source_recovery_protection_container_name = 10 [
+    json_name = "source_recovery_protection_container_name"
+  ];
+
+  string source_vm_id = 11 [json_name = "source_vm_id"];
+
+  string target_availability_set_id = 12 [json_name = "target_availability_set_id"];
+
+  string target_boot_diagnostic_storage_account_id = 13 [
+    json_name = "target_boot_diagnostic_storage_account_id"
+  ];
+
+  string target_capacity_reservation_group_id = 14 [json_name = "target_capacity_reservation_group_id"];
+
+  string target_edge_zone = 15 [json_name = "target_edge_zone"];
+
+  string target_network_id = 16 [json_name = "target_network_id"];
+
+  string target_proximity_placement_group_id = 17 [json_name = "target_proximity_placement_group_id"];
+
+  string target_recovery_fabric_id = 18 [json_name = "target_recovery_fabric_id"];
+
+  string target_recovery_protection_container_id = 19 [
+    json_name = "target_recovery_protection_container_id"
+  ];
+
+  string target_resource_group_id = 20 [json_name = "target_resource_group_id"];
+
+  string target_virtual_machine_scale_set_id = 21 [json_name = "target_virtual_machine_scale_set_id"];
+
+  string target_zone = 22 [json_name = "target_zone"];
+
+  string test_network_id = 23 [json_name = "test_network_id"];
+
+  repeated UnmanagedDisk unmanaged_disk = 24 [json_name = "unmanaged_disk"];
+
+  repeated Timeouts timeouts = 25;
+
+  google.protobuf.Value for_each = 26 [json_name = "for_each"];
+
+  repeated string depends_on = 27 [json_name = "depends_on"];
+
+  int32 count = 28;
+
+  string provider = 29;
+
+  terraform.v1.Lifecycle lifecycle = 30;
+
+  message ManagedDisk {
+    // disk_id: string
+    string disk_id = 1 [json_name = "disk_id"];
+
+    // staging_storage_account_id: string
+    string staging_storage_account_id = 2 [json_name = "staging_storage_account_id"];
+
+    // target_disk_encryption: list of object
+    repeated TargetDiskEncryption target_disk_encryption = 3 [json_name = "target_disk_encryption"];
+
+    // target_disk_encryption_set_id: string
+    string target_disk_encryption_set_id = 4 [json_name = "target_disk_encryption_set_id"];
+
+    // target_disk_type: string
+    string target_disk_type = 5 [json_name = "target_disk_type"];
+
+    // target_replica_disk_type: string
+    string target_replica_disk_type = 6 [json_name = "target_replica_disk_type"];
+
+    // target_resource_group_id: string
+    string target_resource_group_id = 7 [json_name = "target_resource_group_id"];
+
+    message TargetDiskEncryption {
+      // disk_encryption_key: list of object
+      repeated DiskEncryptionKey disk_encryption_key = 1 [json_name = "disk_encryption_key"];
+
+      // key_encryption_key: list of object
+      repeated KeyEncryptionKey key_encryption_key = 2 [json_name = "key_encryption_key"];
+
+      message DiskEncryptionKey {
+        // secret_url: string
+        string secret_url = 1 [json_name = "secret_url"];
+
+        // vault_id: string
+        string vault_id = 2 [json_name = "vault_id"];
+      }
+
+      message KeyEncryptionKey {
+        // key_url: string
+        string key_url = 1 [json_name = "key_url"];
+
+        // vault_id: string
+        string vault_id = 2 [json_name = "vault_id"];
+      }
+    }
+  }
+
+  message NetworkInterface {
+    // failover_test_public_ip_address_id: string
+    string failover_test_public_ip_address_id = 1 [json_name = "failover_test_public_ip_address_id"];
+
+    // failover_test_static_ip: string
+    string failover_test_static_ip = 2 [json_name = "failover_test_static_ip"];
+
+    // failover_test_subnet_name: string
+    string failover_test_subnet_name = 3 [json_name = "failover_test_subnet_name"];
+
+    // is_primary: bool
+    bool is_primary = 4 [json_name = "is_primary"];
+
+    // recovery_public_ip_address_id: string
+    string recovery_public_ip_address_id = 5 [json_name = "recovery_public_ip_address_id"];
+
+    // source_network_interface_id: string
+    string source_network_interface_id = 6 [json_name = "source_network_interface_id"];
+
+    // target_static_ip: string
+    string target_static_ip = 7 [json_name = "target_static_ip"];
+
+    // target_subnet_name: string
+    string target_subnet_name = 8 [json_name = "target_subnet_name"];
+  }
+
+  message UnmanagedDisk {
+    // disk_uri: string
+    string disk_uri = 1 [json_name = "disk_uri"];
+
+    // staging_storage_account_id: string
+    string staging_storage_account_id = 2 [json_name = "staging_storage_account_id"];
+
+    // target_storage_account_id: string
+    string target_storage_account_id = 3 [json_name = "target_storage_account_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSiteRecoveryReplicationPolicy version is 0
+message AzurermSiteRecoveryReplicationPolicy {
+  int64 application_consistent_snapshot_frequency_in_minutes = 1 [
+    json_name = "application_consistent_snapshot_frequency_in_minutes"
+  ];
+
+  string id = 2;
+
+  string name = 3;
+
+  int64 recovery_point_retention_in_minutes = 4 [json_name = "recovery_point_retention_in_minutes"];
+
+  string recovery_vault_name = 5 [json_name = "recovery_vault_name"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSiteRecoveryReplicationRecoveryPlan version is 0
+message AzurermSiteRecoveryReplicationRecoveryPlan {
+  string id = 1;
+
+  string name = 2;
+
+  string recovery_vault_id = 3 [json_name = "recovery_vault_id"];
+
+  string source_recovery_fabric_id = 4 [json_name = "source_recovery_fabric_id"];
+
+  string target_recovery_fabric_id = 5 [json_name = "target_recovery_fabric_id"];
+
+  AzureToAzureSettings azure_to_azure_settings = 6 [json_name = "azure_to_azure_settings"];
+
+  repeated BootRecoveryGroup boot_recovery_group = 7 [json_name = "boot_recovery_group"];
+
+  FailoverRecoveryGroup failover_recovery_group = 8 [json_name = "failover_recovery_group"];
+
+  repeated RecoveryGroup recovery_group = 9 [json_name = "recovery_group"];
+
+  ShutdownRecoveryGroup shutdown_recovery_group = 10 [json_name = "shutdown_recovery_group"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message AzureToAzureSettings {
+    string primary_edge_zone = 1 [json_name = "primary_edge_zone"];
+
+    string primary_zone = 2 [json_name = "primary_zone"];
+
+    string recovery_edge_zone = 3 [json_name = "recovery_edge_zone"];
+
+    string recovery_zone = 4 [json_name = "recovery_zone"];
+  }
+
+  message BootRecoveryGroup {
+    repeated string replicated_protected_items = 1 [json_name = "replicated_protected_items"];
+
+    repeated PostAction post_action = 2 [json_name = "post_action"];
+
+    repeated PreAction pre_action = 3 [json_name = "pre_action"];
+
+    message PostAction {
+      string fabric_location = 1 [json_name = "fabric_location"];
+
+      repeated string fail_over_directions = 2 [json_name = "fail_over_directions"];
+
+      repeated string fail_over_types = 3 [json_name = "fail_over_types"];
+
+      string manual_action_instruction = 4 [json_name = "manual_action_instruction"];
+
+      string name = 5;
+
+      string runbook_id = 6 [json_name = "runbook_id"];
+
+      string script_path = 7 [json_name = "script_path"];
+
+      string type = 8;
+    }
+
+    message PreAction {
+      string fabric_location = 1 [json_name = "fabric_location"];
+
+      repeated string fail_over_directions = 2 [json_name = "fail_over_directions"];
+
+      repeated string fail_over_types = 3 [json_name = "fail_over_types"];
+
+      string manual_action_instruction = 4 [json_name = "manual_action_instruction"];
+
+      string name = 5;
+
+      string runbook_id = 6 [json_name = "runbook_id"];
+
+      string script_path = 7 [json_name = "script_path"];
+
+      string type = 8;
+    }
+  }
+
+  message FailoverRecoveryGroup {
+    repeated PostAction post_action = 1 [json_name = "post_action"];
+
+    repeated PreAction pre_action = 2 [json_name = "pre_action"];
+
+    message PostAction {
+      string fabric_location = 1 [json_name = "fabric_location"];
+
+      repeated string fail_over_directions = 2 [json_name = "fail_over_directions"];
+
+      repeated string fail_over_types = 3 [json_name = "fail_over_types"];
+
+      string manual_action_instruction = 4 [json_name = "manual_action_instruction"];
+
+      string name = 5;
+
+      string runbook_id = 6 [json_name = "runbook_id"];
+
+      string script_path = 7 [json_name = "script_path"];
+
+      string type = 8;
+    }
+
+    message PreAction {
+      string fabric_location = 1 [json_name = "fabric_location"];
+
+      repeated string fail_over_directions = 2 [json_name = "fail_over_directions"];
+
+      repeated string fail_over_types = 3 [json_name = "fail_over_types"];
+
+      string manual_action_instruction = 4 [json_name = "manual_action_instruction"];
+
+      string name = 5;
+
+      string runbook_id = 6 [json_name = "runbook_id"];
+
+      string script_path = 7 [json_name = "script_path"];
+
+      string type = 8;
+    }
+  }
+
+  message RecoveryGroup {
+    repeated string replicated_protected_items = 1 [json_name = "replicated_protected_items"];
+
+    string type = 2;
+
+    repeated PostAction post_action = 3 [json_name = "post_action"];
+
+    repeated PreAction pre_action = 4 [json_name = "pre_action"];
+
+    message PostAction {
+      string fabric_location = 1 [json_name = "fabric_location"];
+
+      repeated string fail_over_directions = 2 [json_name = "fail_over_directions"];
+
+      repeated string fail_over_types = 3 [json_name = "fail_over_types"];
+
+      string manual_action_instruction = 4 [json_name = "manual_action_instruction"];
+
+      string name = 5;
+
+      string runbook_id = 6 [json_name = "runbook_id"];
+
+      string script_path = 7 [json_name = "script_path"];
+
+      string type = 8;
+    }
+
+    message PreAction {
+      string fabric_location = 1 [json_name = "fabric_location"];
+
+      repeated string fail_over_directions = 2 [json_name = "fail_over_directions"];
+
+      repeated string fail_over_types = 3 [json_name = "fail_over_types"];
+
+      string manual_action_instruction = 4 [json_name = "manual_action_instruction"];
+
+      string name = 5;
+
+      string runbook_id = 6 [json_name = "runbook_id"];
+
+      string script_path = 7 [json_name = "script_path"];
+
+      string type = 8;
+    }
+  }
+
+  message ShutdownRecoveryGroup {
+    repeated PostAction post_action = 1 [json_name = "post_action"];
+
+    repeated PreAction pre_action = 2 [json_name = "pre_action"];
+
+    message PostAction {
+      string fabric_location = 1 [json_name = "fabric_location"];
+
+      repeated string fail_over_directions = 2 [json_name = "fail_over_directions"];
+
+      repeated string fail_over_types = 3 [json_name = "fail_over_types"];
+
+      string manual_action_instruction = 4 [json_name = "manual_action_instruction"];
+
+      string name = 5;
+
+      string runbook_id = 6 [json_name = "runbook_id"];
+
+      string script_path = 7 [json_name = "script_path"];
+
+      string type = 8;
+    }
+
+    message PreAction {
+      string fabric_location = 1 [json_name = "fabric_location"];
+
+      repeated string fail_over_directions = 2 [json_name = "fail_over_directions"];
+
+      repeated string fail_over_types = 3 [json_name = "fail_over_types"];
+
+      string manual_action_instruction = 4 [json_name = "manual_action_instruction"];
+
+      string name = 5;
+
+      string runbook_id = 6 [json_name = "runbook_id"];
+
+      string script_path = 7 [json_name = "script_path"];
+
+      string type = 8;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSiteRecoveryServicesVaultHypervSite version is 0
+message AzurermSiteRecoveryServicesVaultHypervSite {
+  string id = 1;
+
+  string name = 2;
+
+  string recovery_vault_id = 3 [json_name = "recovery_vault_id"];
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermSiteRecoveryVmwareReplicatedVm version is 0
+message AzurermSiteRecoveryVmwareReplicatedVm {
+  string appliance_name = 1 [json_name = "appliance_name"];
+
+  string default_log_storage_account_id = 2 [json_name = "default_log_storage_account_id"];
+
+  string default_recovery_disk_type = 3 [json_name = "default_recovery_disk_type"];
+
+  string default_target_disk_encryption_set_id = 4 [
+    json_name = "default_target_disk_encryption_set_id"
+  ];
+
+  string id = 5;
+
+  string license_type = 6 [json_name = "license_type"];
+
+  string multi_vm_group_name = 7 [json_name = "multi_vm_group_name"];
+
+  string name = 8;
+
+  string physical_server_credential_name = 9 [json_name = "physical_server_credential_name"];
+
+  string recovery_replication_policy_id = 10 [json_name = "recovery_replication_policy_id"];
+
+  string recovery_vault_id = 11 [json_name = "recovery_vault_id"];
+
+  string source_vm_name = 12 [json_name = "source_vm_name"];
+
+  string target_availability_set_id = 13 [json_name = "target_availability_set_id"];
+
+  string target_boot_diagnostics_storage_account_id = 14 [
+    json_name = "target_boot_diagnostics_storage_account_id"
+  ];
+
+  string target_network_id = 15 [json_name = "target_network_id"];
+
+  string target_proximity_placement_group_id = 16 [json_name = "target_proximity_placement_group_id"];
+
+  string target_resource_group_id = 17 [json_name = "target_resource_group_id"];
+
+  string target_vm_name = 18 [json_name = "target_vm_name"];
+
+  string target_vm_size = 19 [json_name = "target_vm_size"];
+
+  string target_zone = 20 [json_name = "target_zone"];
+
+  string test_network_id = 21 [json_name = "test_network_id"];
+
+  repeated ManagedDisk managed_disk = 22 [json_name = "managed_disk"];
+
+  repeated NetworkInterface network_interface = 23 [json_name = "network_interface"];
+
+  repeated Timeouts timeouts = 24;
+
+  google.protobuf.Value for_each = 25 [json_name = "for_each"];
+
+  repeated string depends_on = 26 [json_name = "depends_on"];
+
+  int32 count = 27;
+
+  string provider = 28;
+
+  terraform.v1.Lifecycle lifecycle = 29;
+
+  message ManagedDisk {
+    string disk_id = 1 [json_name = "disk_id"];
+
+    string log_storage_account_id = 2 [json_name = "log_storage_account_id"];
+
+    string target_disk_encryption_set_id = 3 [json_name = "target_disk_encryption_set_id"];
+
+    string target_disk_type = 4 [json_name = "target_disk_type"];
+  }
+
+  message NetworkInterface {
+    bool is_primary = 1 [json_name = "is_primary"];
+
+    string source_mac_address = 2 [json_name = "source_mac_address"];
+
+    string target_static_ip = 3 [json_name = "target_static_ip"];
+
+    string target_subnet_name = 4 [json_name = "target_subnet_name"];
+
+    string test_subnet_name = 5 [json_name = "test_subnet_name"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSiteRecoveryVmwareReplicationPolicy version is 0
+message AzurermSiteRecoveryVmwareReplicationPolicy {
+  int64 application_consistent_snapshot_frequency_in_minutes = 1 [
+    json_name = "application_consistent_snapshot_frequency_in_minutes"
+  ];
+
+  string id = 2;
+
+  string name = 3;
+
+  int64 recovery_point_retention_in_minutes = 4 [json_name = "recovery_point_retention_in_minutes"];
+
+  string recovery_vault_id = 5 [json_name = "recovery_vault_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermSiteRecoveryVmwareReplicationPolicyAssociation version is 0
+message AzurermSiteRecoveryVmwareReplicationPolicyAssociation {
+  string id = 1;
+
+  string name = 2;
+
+  string policy_id = 3 [json_name = "policy_id"];
+
+  string recovery_vault_id = 4 [json_name = "recovery_vault_id"];
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}

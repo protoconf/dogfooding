@@ -1,0 +1,217 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermDigitalTwinsEndpointEventgrid version is 0
+message AzurermDigitalTwinsEndpointEventgrid {
+  string dead_letter_storage_secret = 1 [json_name = "dead_letter_storage_secret"];
+
+  string digital_twins_id = 2 [json_name = "digital_twins_id"];
+
+  string eventgrid_topic_endpoint = 3 [json_name = "eventgrid_topic_endpoint"];
+
+  string eventgrid_topic_primary_access_key = 4 [json_name = "eventgrid_topic_primary_access_key"];
+
+  string eventgrid_topic_secondary_access_key = 5 [json_name = "eventgrid_topic_secondary_access_key"];
+
+  string id = 6;
+
+  string name = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDigitalTwinsEndpointEventhub version is 0
+message AzurermDigitalTwinsEndpointEventhub {
+  string dead_letter_storage_secret = 1 [json_name = "dead_letter_storage_secret"];
+
+  string digital_twins_id = 2 [json_name = "digital_twins_id"];
+
+  string eventhub_primary_connection_string = 3 [json_name = "eventhub_primary_connection_string"];
+
+  string eventhub_secondary_connection_string = 4 [json_name = "eventhub_secondary_connection_string"];
+
+  string id = 5;
+
+  string name = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDigitalTwinsEndpointServicebus version is 0
+message AzurermDigitalTwinsEndpointServicebus {
+  string dead_letter_storage_secret = 1 [json_name = "dead_letter_storage_secret"];
+
+  string digital_twins_id = 2 [json_name = "digital_twins_id"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string servicebus_primary_connection_string = 5 [json_name = "servicebus_primary_connection_string"];
+
+  string servicebus_secondary_connection_string = 6 [
+    json_name = "servicebus_secondary_connection_string"
+  ];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDigitalTwinsInstance version is 0
+message AzurermDigitalTwinsInstance {
+  string host_name = 1 [json_name = "host_name"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 6;
+
+  Identity identity = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDigitalTwinsTimeSeriesDatabaseConnection version is 0
+message AzurermDigitalTwinsTimeSeriesDatabaseConnection {
+  string digital_twins_id = 1 [json_name = "digital_twins_id"];
+
+  string eventhub_consumer_group_name = 2 [json_name = "eventhub_consumer_group_name"];
+
+  string eventhub_name = 3 [json_name = "eventhub_name"];
+
+  string eventhub_namespace_endpoint_uri = 4 [json_name = "eventhub_namespace_endpoint_uri"];
+
+  string eventhub_namespace_id = 5 [json_name = "eventhub_namespace_id"];
+
+  string id = 6;
+
+  string kusto_cluster_id = 7 [json_name = "kusto_cluster_id"];
+
+  string kusto_cluster_uri = 8 [json_name = "kusto_cluster_uri"];
+
+  string kusto_database_name = 9 [json_name = "kusto_database_name"];
+
+  string kusto_table_name = 10 [json_name = "kusto_table_name"];
+
+  string name = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}

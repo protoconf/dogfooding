@@ -1,0 +1,474 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermDnsARecord version is 1
+message AzurermDnsARecord {
+  string fqdn = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  repeated string records = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 6;
+
+  string target_resource_id = 7 [json_name = "target_resource_id"];
+
+  int64 ttl = 8;
+
+  string zone_name = 9 [json_name = "zone_name"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDnsAaaaRecord version is 1
+message AzurermDnsAaaaRecord {
+  string fqdn = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  repeated string records = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 6;
+
+  string target_resource_id = 7 [json_name = "target_resource_id"];
+
+  int64 ttl = 8;
+
+  string zone_name = 9 [json_name = "zone_name"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDnsCaaRecord version is 1
+message AzurermDnsCaaRecord {
+  string fqdn = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 5;
+
+  int64 ttl = 6;
+
+  string zone_name = 7 [json_name = "zone_name"];
+
+  repeated Record record = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Record {
+    int64 flags = 1;
+
+    string tag = 2;
+
+    string value = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDnsCnameRecord version is 1
+message AzurermDnsCnameRecord {
+  string fqdn = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  string record = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 6;
+
+  string target_resource_id = 7 [json_name = "target_resource_id"];
+
+  int64 ttl = 8;
+
+  string zone_name = 9 [json_name = "zone_name"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDnsMxRecord version is 1
+message AzurermDnsMxRecord {
+  string fqdn = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 5;
+
+  int64 ttl = 6;
+
+  string zone_name = 7 [json_name = "zone_name"];
+
+  repeated Record record = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Record {
+    string exchange = 1;
+
+    string preference = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDnsNsRecord version is 1
+message AzurermDnsNsRecord {
+  string fqdn = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  repeated string records = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 6;
+
+  int64 ttl = 7;
+
+  string zone_name = 8 [json_name = "zone_name"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDnsPtrRecord version is 1
+message AzurermDnsPtrRecord {
+  string fqdn = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  repeated string records = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 6;
+
+  int64 ttl = 7;
+
+  string zone_name = 8 [json_name = "zone_name"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDnsSrvRecord version is 1
+message AzurermDnsSrvRecord {
+  string fqdn = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 5;
+
+  int64 ttl = 6;
+
+  string zone_name = 7 [json_name = "zone_name"];
+
+  repeated Record record = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Record {
+    int64 port = 1;
+
+    int64 priority = 2;
+
+    string target = 3;
+
+    int64 weight = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDnsTxtRecord version is 1
+message AzurermDnsTxtRecord {
+  string fqdn = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 5;
+
+  int64 ttl = 6;
+
+  string zone_name = 7 [json_name = "zone_name"];
+
+  repeated Record record = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Record {
+    string value = 1;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDnsZone version is 2
+message AzurermDnsZone {
+  string id = 1;
+
+  int64 max_number_of_record_sets = 2 [json_name = "max_number_of_record_sets"];
+
+  string name = 3;
+
+  repeated string name_servers = 4 [json_name = "name_servers"];
+
+  int64 number_of_record_sets = 5 [json_name = "number_of_record_sets"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 7;
+
+  SoaRecord soa_record = 8 [json_name = "soa_record"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message SoaRecord {
+    string email = 1;
+
+    int64 expire_time = 2 [json_name = "expire_time"];
+
+    string fqdn = 3;
+
+    string host_name = 4 [json_name = "host_name"];
+
+    int64 minimum_ttl = 5 [json_name = "minimum_ttl"];
+
+    int64 refresh_time = 6 [json_name = "refresh_time"];
+
+    int64 retry_time = 7 [json_name = "retry_time"];
+
+    int64 serial_number = 8 [json_name = "serial_number"];
+
+    map<string, string> tags = 9;
+
+    int64 ttl = 10;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

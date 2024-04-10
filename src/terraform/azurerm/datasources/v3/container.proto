@@ -1,0 +1,783 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermContainerApp version is 0
+message AzurermContainerApp {
+  string container_app_environment_id = 1 [json_name = "container_app_environment_id"];
+
+  // The ID of the Custom Domain Verification for this Container App.
+  string custom_domain_verification_id = 2 [json_name = "custom_domain_verification_id"];
+
+  repeated Dapr dapr = 3;
+
+  string id = 4;
+
+  repeated Identity identity = 5;
+
+  repeated Ingress ingress = 6;
+
+  // The fully qualified domain name of the latest Container App.
+  string latest_revision_fqdn = 7 [json_name = "latest_revision_fqdn"];
+
+  // The name of the latest Container Revision.
+  string latest_revision_name = 8 [json_name = "latest_revision_name"];
+
+  string location = 9;
+
+  string name = 10;
+
+  repeated string outbound_ip_addresses = 11 [json_name = "outbound_ip_addresses"];
+
+  repeated Registry registry = 12;
+
+  string resource_group_name = 13 [json_name = "resource_group_name"];
+
+  string revision_mode = 14 [json_name = "revision_mode"];
+
+  repeated Secret secret = 15;
+
+  map<string, string> tags = 16;
+
+  repeated Template template = 17;
+
+  string workload_profile_name = 18 [json_name = "workload_profile_name"];
+
+  repeated Timeouts timeouts = 19;
+
+  google.protobuf.Value for_each = 20 [json_name = "for_each"];
+
+  repeated string depends_on = 21 [json_name = "depends_on"];
+
+  int32 count = 22;
+
+  string provider = 23;
+
+  terraform.v1.Lifecycle lifecycle = 24;
+
+  message Dapr {
+    // app_id: string
+    string app_id = 1 [json_name = "app_id"];
+
+    // app_port: number
+    int64 app_port = 2 [json_name = "app_port"];
+
+    // app_protocol: string
+    string app_protocol = 3 [json_name = "app_protocol"];
+  }
+
+  message Identity {
+    // identity_ids: list of string
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    // principal_id: string
+    string principal_id = 2 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 4;
+  }
+
+  message Ingress {
+    // allow_insecure_connections: bool
+    bool allow_insecure_connections = 1 [json_name = "allow_insecure_connections"];
+
+    // custom_domain: list of object
+    repeated CustomDomain custom_domain = 2 [json_name = "custom_domain"];
+
+    // exposed_port: number
+    int64 exposed_port = 3 [json_name = "exposed_port"];
+
+    // external_enabled: bool
+    bool external_enabled = 4 [json_name = "external_enabled"];
+
+    // fqdn: string
+    string fqdn = 5;
+
+    // ip_security_restriction: list of object
+    repeated IpSecurityRestriction ip_security_restriction = 6 [json_name = "ip_security_restriction"];
+
+    // target_port: number
+    int64 target_port = 7 [json_name = "target_port"];
+
+    // traffic_weight: list of object
+    repeated TrafficWeight traffic_weight = 8 [json_name = "traffic_weight"];
+
+    // transport: string
+    string transport = 9;
+
+    message CustomDomain {
+      // certificate_binding_type: string
+      string certificate_binding_type = 1 [json_name = "certificate_binding_type"];
+
+      // certificate_id: string
+      string certificate_id = 2 [json_name = "certificate_id"];
+
+      // name: string
+      string name = 3;
+    }
+
+    message IpSecurityRestriction {
+      // action: string
+      string action = 1;
+
+      // description: string
+      string description = 2;
+
+      // ip_address_range: string
+      string ip_address_range = 3 [json_name = "ip_address_range"];
+
+      // name: string
+      string name = 4;
+    }
+
+    message TrafficWeight {
+      // label: string
+      string label = 1;
+
+      // latest_revision: bool
+      bool latest_revision = 2 [json_name = "latest_revision"];
+
+      // percentage: number
+      int64 percentage = 3;
+
+      // revision_suffix: string
+      string revision_suffix = 4 [json_name = "revision_suffix"];
+    }
+  }
+
+  message Registry {
+    // identity: string
+    string identity = 1;
+
+    // password_secret_name: string
+    string password_secret_name = 2 [json_name = "password_secret_name"];
+
+    // server: string
+    string server = 3;
+
+    // username: string
+    string username = 4;
+  }
+
+  message Secret {
+    // name: string
+    string name = 1;
+
+    // value: string
+    string value = 2;
+  }
+
+  message Template {
+    // azure_queue_scale_rule: list of object
+    repeated AzureQueueScaleRule azure_queue_scale_rule = 1 [json_name = "azure_queue_scale_rule"];
+
+    // container: list of object
+    repeated Container container = 2;
+
+    // custom_scale_rule: list of object
+    repeated CustomScaleRule custom_scale_rule = 3 [json_name = "custom_scale_rule"];
+
+    // http_scale_rule: list of object
+    repeated HttpScaleRule http_scale_rule = 4 [json_name = "http_scale_rule"];
+
+    // init_container: list of object
+    repeated InitContainer init_container = 5 [json_name = "init_container"];
+
+    // max_replicas: number
+    int64 max_replicas = 6 [json_name = "max_replicas"];
+
+    // min_replicas: number
+    int64 min_replicas = 7 [json_name = "min_replicas"];
+
+    // revision_suffix: string
+    string revision_suffix = 8 [json_name = "revision_suffix"];
+
+    // tcp_scale_rule: list of object
+    repeated TcpScaleRule tcp_scale_rule = 9 [json_name = "tcp_scale_rule"];
+
+    // volume: list of object
+    repeated Volume volume = 10;
+
+    message AzureQueueScaleRule {
+      // authentication: list of object
+      repeated Authentication authentication = 1;
+
+      // name: string
+      string name = 2;
+
+      // queue_length: number
+      int64 queue_length = 3 [json_name = "queue_length"];
+
+      // queue_name: string
+      string queue_name = 4 [json_name = "queue_name"];
+
+      message Authentication {
+        // secret_name: string
+        string secret_name = 1 [json_name = "secret_name"];
+
+        // trigger_parameter: string
+        string trigger_parameter = 2 [json_name = "trigger_parameter"];
+      }
+    }
+
+    message Container {
+      // args: list of string
+      repeated string args = 1;
+
+      // command: list of string
+      repeated string command = 2;
+
+      // cpu: number
+      int64 cpu = 3;
+
+      // env: list of object
+      repeated Env env = 4;
+
+      // ephemeral_storage: string
+      string ephemeral_storage = 5 [json_name = "ephemeral_storage"];
+
+      // image: string
+      string image = 6;
+
+      // liveness_probe: list of object
+      repeated LivenessProbe liveness_probe = 7 [json_name = "liveness_probe"];
+
+      // memory: string
+      string memory = 8;
+
+      // name: string
+      string name = 9;
+
+      // readiness_probe: list of object
+      repeated ReadinessProbe readiness_probe = 10 [json_name = "readiness_probe"];
+
+      // startup_probe: list of object
+      repeated StartupProbe startup_probe = 11 [json_name = "startup_probe"];
+
+      // volume_mounts: list of object
+      repeated VolumeMounts volume_mounts = 12 [json_name = "volume_mounts"];
+
+      message Env {
+        // name: string
+        string name = 1;
+
+        // secret_name: string
+        string secret_name = 2 [json_name = "secret_name"];
+
+        // value: string
+        string value = 3;
+      }
+
+      message LivenessProbe {
+        // failure_count_threshold: number
+        int64 failure_count_threshold = 1 [json_name = "failure_count_threshold"];
+
+        // header: list of object
+        repeated Header header = 2;
+
+        // host: string
+        string host = 3;
+
+        // initial_delay: number
+        int64 initial_delay = 4 [json_name = "initial_delay"];
+
+        // interval_seconds: number
+        int64 interval_seconds = 5 [json_name = "interval_seconds"];
+
+        // path: string
+        string path = 6;
+
+        // port: number
+        int64 port = 7;
+
+        // termination_grace_period_seconds: number
+        int64 termination_grace_period_seconds = 8 [json_name = "termination_grace_period_seconds"];
+
+        // timeout: number
+        int64 timeout = 9;
+
+        // transport: string
+        string transport = 10;
+
+        message Header {
+          // name: string
+          string name = 1;
+
+          // value: string
+          string value = 2;
+        }
+      }
+
+      message ReadinessProbe {
+        // failure_count_threshold: number
+        int64 failure_count_threshold = 1 [json_name = "failure_count_threshold"];
+
+        // header: list of object
+        repeated Header header = 2;
+
+        // host: string
+        string host = 3;
+
+        // interval_seconds: number
+        int64 interval_seconds = 4 [json_name = "interval_seconds"];
+
+        // path: string
+        string path = 5;
+
+        // port: number
+        int64 port = 6;
+
+        // success_count_threshold: number
+        int64 success_count_threshold = 7 [json_name = "success_count_threshold"];
+
+        // timeout: number
+        int64 timeout = 8;
+
+        // transport: string
+        string transport = 9;
+
+        message Header {
+          // name: string
+          string name = 1;
+
+          // value: string
+          string value = 2;
+        }
+      }
+
+      message StartupProbe {
+        // failure_count_threshold: number
+        int64 failure_count_threshold = 1 [json_name = "failure_count_threshold"];
+
+        // header: list of object
+        repeated Header header = 2;
+
+        // host: string
+        string host = 3;
+
+        // interval_seconds: number
+        int64 interval_seconds = 4 [json_name = "interval_seconds"];
+
+        // path: string
+        string path = 5;
+
+        // port: number
+        int64 port = 6;
+
+        // termination_grace_period_seconds: number
+        int64 termination_grace_period_seconds = 7 [json_name = "termination_grace_period_seconds"];
+
+        // timeout: number
+        int64 timeout = 8;
+
+        // transport: string
+        string transport = 9;
+
+        message Header {
+          // name: string
+          string name = 1;
+
+          // value: string
+          string value = 2;
+        }
+      }
+
+      message VolumeMounts {
+        // name: string
+        string name = 1;
+
+        // path: string
+        string path = 2;
+      }
+    }
+
+    message CustomScaleRule {
+      // authentication: list of object
+      repeated Authentication authentication = 1;
+
+      // custom_rule_type: string
+      string custom_rule_type = 2 [json_name = "custom_rule_type"];
+
+      // metadata: map of string
+      map<string, string> metadata = 3;
+
+      // name: string
+      string name = 4;
+
+      message Authentication {
+        // secret_name: string
+        string secret_name = 1 [json_name = "secret_name"];
+
+        // trigger_parameter: string
+        string trigger_parameter = 2 [json_name = "trigger_parameter"];
+      }
+    }
+
+    message HttpScaleRule {
+      // authentication: list of object
+      repeated Authentication authentication = 1;
+
+      // concurrent_requests: string
+      string concurrent_requests = 2 [json_name = "concurrent_requests"];
+
+      // name: string
+      string name = 3;
+
+      message Authentication {
+        // secret_name: string
+        string secret_name = 1 [json_name = "secret_name"];
+
+        // trigger_parameter: string
+        string trigger_parameter = 2 [json_name = "trigger_parameter"];
+      }
+    }
+
+    message InitContainer {
+      // args: list of string
+      repeated string args = 1;
+
+      // command: list of string
+      repeated string command = 2;
+
+      // cpu: number
+      int64 cpu = 3;
+
+      // env: list of object
+      repeated Env env = 4;
+
+      // ephemeral_storage: string
+      string ephemeral_storage = 5 [json_name = "ephemeral_storage"];
+
+      // image: string
+      string image = 6;
+
+      // memory: string
+      string memory = 7;
+
+      // name: string
+      string name = 8;
+
+      // volume_mounts: list of object
+      repeated VolumeMounts volume_mounts = 9 [json_name = "volume_mounts"];
+
+      message Env {
+        // name: string
+        string name = 1;
+
+        // secret_name: string
+        string secret_name = 2 [json_name = "secret_name"];
+
+        // value: string
+        string value = 3;
+      }
+
+      message VolumeMounts {
+        // name: string
+        string name = 1;
+
+        // path: string
+        string path = 2;
+      }
+    }
+
+    message TcpScaleRule {
+      // authentication: list of object
+      repeated Authentication authentication = 1;
+
+      // concurrent_requests: string
+      string concurrent_requests = 2 [json_name = "concurrent_requests"];
+
+      // name: string
+      string name = 3;
+
+      message Authentication {
+        // secret_name: string
+        string secret_name = 1 [json_name = "secret_name"];
+
+        // trigger_parameter: string
+        string trigger_parameter = 2 [json_name = "trigger_parameter"];
+      }
+    }
+
+    message Volume {
+      // name: string
+      string name = 1;
+
+      // storage_name: string
+      string storage_name = 2 [json_name = "storage_name"];
+
+      // storage_type: string
+      string storage_type = 3 [json_name = "storage_type"];
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermContainerAppEnvironment version is 0
+message AzurermContainerAppEnvironment {
+  // The default publicly resolvable name of this Container App Environment
+  string default_domain = 1 [json_name = "default_domain"];
+
+  // The network addressing in which the Container Apps in this Container App
+  // Environment will reside in CIDR notation.
+  string docker_bridge_cidr = 2 [json_name = "docker_bridge_cidr"];
+
+  string id = 3;
+
+  // The existing Subnet in use by the Container Apps Control Plane.
+  string infrastructure_subnet_id = 4 [json_name = "infrastructure_subnet_id"];
+
+  // Does the Container Environment operate in Internal Load Balancing Mode?
+  bool internal_load_balancer_enabled = 5 [json_name = "internal_load_balancer_enabled"];
+
+  string location = 6;
+
+  // The name of the Log Analytics Workspace this Container Apps Managed Environment
+  // is linked to.
+  string log_analytics_workspace_name = 7 [json_name = "log_analytics_workspace_name"];
+
+  // The name of the Container Apps Managed Environment.
+  string name = 8;
+
+  // The IP range, in CIDR notation, that is reserved for environment infrastructure
+  // IP addresses.
+  string platform_reserved_cidr = 9 [json_name = "platform_reserved_cidr"];
+
+  // The IP address from the IP range defined by `platform_reserved_cidr` that is
+  // reserved for the internal DNS server.
+  string platform_reserved_dns_ip_address = 10 [json_name = "platform_reserved_dns_ip_address"];
+
+  string resource_group_name = 11 [json_name = "resource_group_name"];
+
+  // The Static IP Address of the Environment.
+  string static_ip_address = 12 [json_name = "static_ip_address"];
+
+  map<string, string> tags = 13;
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermContainerAppEnvironmentCertificate version is 0
+message AzurermContainerAppEnvironmentCertificate {
+  // The Container App Managed Environment ID to configure this Certificate on.
+  string container_app_environment_id = 1 [json_name = "container_app_environment_id"];
+
+  // The expiration date for the Certificate.
+  string expiration_date = 2 [json_name = "expiration_date"];
+
+  string id = 3;
+
+  // The date of issue for the Certificate.
+  string issue_date = 4 [json_name = "issue_date"];
+
+  // The Certificate Issuer.
+  string issuer = 5;
+
+  // The name of the Container Apps Certificate.
+  string name = 6;
+
+  // The Subject Name for the Certificate.
+  string subject_name = 7 [json_name = "subject_name"];
+
+  map<string, string> tags = 8;
+
+  // The Thumbprint of the Certificate.
+  string thumbprint = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermContainerGroup version is 0
+message AzurermContainerGroup {
+  string fqdn = 1;
+
+  string id = 2;
+
+  repeated Identity identity = 3;
+
+  string ip_address = 4 [json_name = "ip_address"];
+
+  string location = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  repeated string subnet_ids = 8 [json_name = "subnet_ids"];
+
+  map<string, string> tags = 9;
+
+  repeated string zones = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Identity {
+    // identity_ids: list of string
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    // principal_id: string
+    string principal_id = 2 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 4;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermContainerRegistry version is 2
+message AzurermContainerRegistry {
+  bool admin_enabled = 1 [json_name = "admin_enabled"];
+
+  string admin_password = 2 [json_name = "admin_password"];
+
+  string admin_username = 3 [json_name = "admin_username"];
+
+  bool data_endpoint_enabled = 4 [json_name = "data_endpoint_enabled"];
+
+  string id = 5;
+
+  string location = 6;
+
+  string login_server = 7 [json_name = "login_server"];
+
+  string name = 8;
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  string sku = 10;
+
+  map<string, string> tags = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermContainerRegistryScopeMap version is 0
+message AzurermContainerRegistryScopeMap {
+  repeated string actions = 1;
+
+  string container_registry_name = 2 [json_name = "container_registry_name"];
+
+  string description = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermContainerRegistryToken version is 0
+message AzurermContainerRegistryToken {
+  string container_registry_name = 1 [json_name = "container_registry_name"];
+
+  bool enabled = 2;
+
+  string id = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string scope_map_id = 6 [json_name = "scope_map_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string read = 1;
+  }
+}

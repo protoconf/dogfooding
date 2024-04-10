@@ -1,0 +1,194 @@
+syntax = "proto3";
+
+// Provider: helm 2
+package terraform.helm.datasources.v2;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// HelmTemplate version is 0
+message HelmTemplate {
+  // Kubernetes api versions used for Capabilities.APIVersions
+  repeated string api_versions = 1 [json_name = "api_versions"];
+
+  // If set, installation process purges chart on fail. The wait flag will be set
+  // automatically if atomic is used
+  bool atomic = 2;
+
+  // Chart name to be installed. A path may be used.
+  string chart = 3;
+
+  // List of rendered CRDs from the chart.
+  repeated string crds = 4;
+
+  // Create the namespace if it does not exist
+  bool create_namespace = 5 [json_name = "create_namespace"];
+
+  // Run helm dependency update before installing the chart
+  bool dependency_update = 6 [json_name = "dependency_update"];
+
+  // Add a custom description
+  string description = 7;
+
+  // Use chart development versions, too. Equivalent to version '>0.0.0-0'. If
+  // `version` is set, this is ignored
+  bool devel = 8;
+
+  // If set, the installation process will not validate rendered templates against the
+  // Kubernetes OpenAPI Schema
+  bool disable_openapi_validation = 9 [json_name = "disable_openapi_validation"];
+
+  // Prevent hooks from running.
+  bool disable_webhooks = 10 [json_name = "disable_webhooks"];
+
+  string id = 11;
+
+  // Include CRDs in the templated output
+  bool include_crds = 12 [json_name = "include_crds"];
+
+  // Set .Release.IsUpgrade instead of .Release.IsInstall
+  bool is_upgrade = 13 [json_name = "is_upgrade"];
+
+  // Location of public keys used for verification. Used only if `verify` is true
+  string keyring = 14;
+
+  // Kubernetes version used for Capabilities.KubeVersion
+  string kube_version = 15 [json_name = "kube_version"];
+
+  // Concatenated rendered chart templates. This corresponds to the output of the
+  // `helm template` command.
+  string manifest = 16;
+
+  // Map of rendered chart templates indexed by the template name.
+  map<string, string> manifests = 17;
+
+  // Release name.
+  string name = 18;
+
+  // Namespace to install the release into.
+  string namespace = 19;
+
+  // Rendered notes if the chart contains a `NOTES.txt`.
+  string notes = 20;
+
+  // Pass credentials to all domains
+  bool pass_credentials = 21 [json_name = "pass_credentials"];
+
+  // If set, render subchart notes along with the parent
+  bool render_subchart_notes = 22 [json_name = "render_subchart_notes"];
+
+  // Re-use the given name, even if that name is already used. This is unsafe in
+  // production
+  bool replace = 23;
+
+  // Repository where to locate the requested chart. If is a URL the chart is
+  // installed without installing the repository.
+  string repository = 24;
+
+  // The Repositories CA File
+  string repository_ca_file = 25 [json_name = "repository_ca_file"];
+
+  // The repositories cert file
+  string repository_cert_file = 26 [json_name = "repository_cert_file"];
+
+  // The repositories cert key file
+  string repository_key_file = 27 [json_name = "repository_key_file"];
+
+  // Password for HTTP basic authentication
+  string repository_password = 28 [json_name = "repository_password"];
+
+  // Username for HTTP basic authentication
+  string repository_username = 29 [json_name = "repository_username"];
+
+  // When upgrading, reset the values to the ones built into the chart
+  bool reset_values = 30 [json_name = "reset_values"];
+
+  // When upgrading, reuse the last release's values and merge in any overrides. If
+  // 'reset_values' is specified, this is ignored
+  bool reuse_values = 31 [json_name = "reuse_values"];
+
+  // Only show manifests rendered from the given templates
+  repeated string show_only = 32 [json_name = "show_only"];
+
+  // If set, no CRDs will be installed. By default, CRDs are installed if not already
+  // present
+  bool skip_crds = 33 [json_name = "skip_crds"];
+
+  // If set, tests will not be rendered. By default, tests are rendered
+  bool skip_tests = 34 [json_name = "skip_tests"];
+
+  // Time in seconds to wait for any individual kubernetes operation.
+  int64 timeout = 35;
+
+  // Validate your manifests against the Kubernetes cluster you are currently pointing
+  // at. This is the same validation performed on an install
+  bool validate = 36;
+
+  // List of values in raw yaml format to pass to helm.
+  repeated string values = 37;
+
+  // Verify the package before installing it.
+  bool verify = 38;
+
+  // Specify the exact chart version to install. If this is not specified, the latest
+  // version is installed.
+  string version = 39;
+
+  // Will wait until all resources are in a ready state before marking the release as
+  // successful.
+  bool wait = 40;
+
+  Postrender postrender = 41;
+
+  repeated Set set = 42;
+
+  repeated SetList set_list = 43 [json_name = "set_list"];
+
+  repeated SetSensitive set_sensitive = 44 [json_name = "set_sensitive"];
+
+  repeated SetString set_string = 45 [json_name = "set_string"];
+
+  google.protobuf.Value for_each = 46 [json_name = "for_each"];
+
+  repeated string depends_on = 47 [json_name = "depends_on"];
+
+  int32 count = 48;
+
+  string provider = 49;
+
+  terraform.v1.Lifecycle lifecycle = 50;
+
+  message Postrender {
+    // The command binary path.
+    string binary_path = 1 [json_name = "binary_path"];
+  }
+
+  message Set {
+    string name = 1;
+
+    string type = 2;
+
+    string value = 3;
+  }
+
+  message SetList {
+    string name = 1;
+
+    repeated string value = 2;
+  }
+
+  message SetSensitive {
+    string name = 1;
+
+    string type = 2;
+
+    string value = 3;
+  }
+
+  message SetString {
+    string name = 1;
+
+    string value = 2;
+  }
+}

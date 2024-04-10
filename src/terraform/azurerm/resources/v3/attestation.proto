@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermAttestationProvider version is 0
+message AzurermAttestationProvider {
+  string attestation_uri = 1 [json_name = "attestation_uri"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string open_enclave_policy_base64 = 5 [json_name = "open_enclave_policy_base64"];
+
+  string policy_signing_certificate_data = 6 [json_name = "policy_signing_certificate_data"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string sev_snp_policy_base64 = 8 [json_name = "sev_snp_policy_base64"];
+
+  string sgx_enclave_policy_base64 = 9 [json_name = "sgx_enclave_policy_base64"];
+
+  map<string, string> tags = 10;
+
+  string tpm_policy_base64 = 11 [json_name = "tpm_policy_base64"];
+
+  string trust_model = 12 [json_name = "trust_model"];
+
+  repeated Policy policy = 13;
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message Policy {
+    string data = 1;
+
+    string environment_type = 2 [json_name = "environment_type"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

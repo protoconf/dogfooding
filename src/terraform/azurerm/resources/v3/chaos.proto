@@ -1,0 +1,149 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermChaosStudioCapability version is 0
+message AzurermChaosStudioCapability {
+  string capability_type = 1 [json_name = "capability_type"];
+
+  string chaos_studio_target_id = 2 [json_name = "chaos_studio_target_id"];
+
+  string id = 3;
+
+  string urn = 4;
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermChaosStudioExperiment version is 0
+message AzurermChaosStudioExperiment {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  Identity identity = 5;
+
+  repeated Selectors selectors = 6;
+
+  repeated Steps steps = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Selectors {
+    repeated string chaos_studio_target_ids = 1 [json_name = "chaos_studio_target_ids"];
+
+    string name = 2;
+  }
+
+  message Steps {
+    string name = 1;
+
+    repeated Branch branch = 2;
+
+    message Branch {
+      string name = 1;
+
+      repeated Actions actions = 2;
+
+      message Actions {
+        string action_type = 1 [json_name = "action_type"];
+
+        string duration = 2;
+
+        map<string, string> parameters = 3;
+
+        string selector_name = 4 [json_name = "selector_name"];
+
+        string urn = 5;
+      }
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermChaosStudioTarget version is 0
+message AzurermChaosStudioTarget {
+  string id = 1;
+
+  string location = 2;
+
+  string target_resource_id = 3 [json_name = "target_resource_id"];
+
+  string target_type = 4 [json_name = "target_type"];
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}

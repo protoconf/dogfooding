@@ -1,0 +1,236 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermSentinelAlertRule version is 0
+message AzurermSentinelAlertRule {
+  string id = 1;
+
+  string log_analytics_workspace_id = 2 [json_name = "log_analytics_workspace_id"];
+
+  string name = 3;
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermSentinelAlertRuleAnomaly version is 0
+message AzurermSentinelAlertRuleAnomaly {
+  int64 anomaly_settings_version = 1 [json_name = "anomaly_settings_version"];
+
+  string anomaly_version = 2 [json_name = "anomaly_version"];
+
+  string description = 3;
+
+  string display_name = 4 [json_name = "display_name"];
+
+  bool enabled = 5;
+
+  string frequency = 6;
+
+  string id = 7;
+
+  string log_analytics_workspace_id = 8 [json_name = "log_analytics_workspace_id"];
+
+  string mode = 9;
+
+  repeated MultiSelectObservation multi_select_observation = 10 [json_name = "multi_select_observation"];
+
+  string name = 11;
+
+  repeated PrioritizedExcludeObservation prioritized_exclude_observation = 12 [json_name = "prioritized_exclude_observation"];
+
+  repeated RequiredDataConnector required_data_connector = 13 [json_name = "required_data_connector"];
+
+  string settings_definition_id = 14 [json_name = "settings_definition_id"];
+
+  repeated SingleSelectObservation single_select_observation = 15 [json_name = "single_select_observation"];
+
+  repeated string tactics = 16;
+
+  repeated string techniques = 17;
+
+  repeated ThresholdObservation threshold_observation = 18 [json_name = "threshold_observation"];
+
+  repeated Timeouts timeouts = 19;
+
+  google.protobuf.Value for_each = 20 [json_name = "for_each"];
+
+  repeated string depends_on = 21 [json_name = "depends_on"];
+
+  int32 count = 22;
+
+  string provider = 23;
+
+  terraform.v1.Lifecycle lifecycle = 24;
+
+  message MultiSelectObservation {
+    // description: string
+    string description = 1;
+
+    // name: string
+    string name = 2;
+
+    // supported_values: list of string
+    repeated string supported_values = 3 [json_name = "supported_values"];
+
+    // values: list of string
+    repeated string values = 4;
+  }
+
+  message PrioritizedExcludeObservation {
+    // description: string
+    string description = 1;
+
+    // exclude: string
+    string exclude = 2;
+
+    // name: string
+    string name = 3;
+
+    // prioritize: string
+    string prioritize = 4;
+  }
+
+  message RequiredDataConnector {
+    // connector_id: string
+    string connector_id = 1 [json_name = "connector_id"];
+
+    // data_types: list of string
+    repeated string data_types = 2 [json_name = "data_types"];
+  }
+
+  message SingleSelectObservation {
+    // description: string
+    string description = 1;
+
+    // name: string
+    string name = 2;
+
+    // supported_values: list of string
+    repeated string supported_values = 3 [json_name = "supported_values"];
+
+    // value: string
+    string value = 4;
+  }
+
+  message ThresholdObservation {
+    // description: string
+    string description = 1;
+
+    // max: string
+    string max = 2;
+
+    // min: string
+    string min = 3;
+
+    // name: string
+    string name = 4;
+
+    // value: string
+    string value = 5;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermSentinelAlertRuleTemplate version is 0
+message AzurermSentinelAlertRuleTemplate {
+  string display_name = 1 [json_name = "display_name"];
+
+  string id = 2;
+
+  string log_analytics_workspace_id = 3 [json_name = "log_analytics_workspace_id"];
+
+  string name = 4;
+
+  repeated NrtTemplate nrt_template = 5 [json_name = "nrt_template"];
+
+  repeated ScheduledTemplate scheduled_template = 6 [json_name = "scheduled_template"];
+
+  repeated SecurityIncidentTemplate security_incident_template = 7 [json_name = "security_incident_template"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message NrtTemplate {
+    // description: string
+    string description = 1;
+
+    // query: string
+    string query = 2;
+
+    // severity: string
+    string severity = 3;
+
+    // tactics: list of string
+    repeated string tactics = 4;
+  }
+
+  message ScheduledTemplate {
+    // description: string
+    string description = 1;
+
+    // query: string
+    string query = 2;
+
+    // query_frequency: string
+    string query_frequency = 3 [json_name = "query_frequency"];
+
+    // query_period: string
+    string query_period = 4 [json_name = "query_period"];
+
+    // severity: string
+    string severity = 5;
+
+    // tactics: list of string
+    repeated string tactics = 6;
+
+    // trigger_operator: string
+    string trigger_operator = 7 [json_name = "trigger_operator"];
+
+    // trigger_threshold: number
+    int64 trigger_threshold = 8 [json_name = "trigger_threshold"];
+  }
+
+  message SecurityIncidentTemplate {
+    // description: string
+    string description = 1;
+
+    // product_filter: string
+    string product_filter = 2 [json_name = "product_filter"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

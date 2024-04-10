@@ -1,0 +1,856 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermVirtualDesktopApplicationGroup version is 1
+message AzurermVirtualDesktopApplicationGroup {
+  string description = 1;
+
+  string friendly_name = 2 [json_name = "friendly_name"];
+
+  string host_pool_id = 3 [json_name = "host_pool_id"];
+
+  string id = 4;
+
+  string location = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 8;
+
+  string type = 9;
+
+  string workspace_id = 10 [json_name = "workspace_id"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermVirtualDesktopHostPool version is 1
+message AzurermVirtualDesktopHostPool {
+  string custom_rdp_properties = 1 [json_name = "custom_rdp_properties"];
+
+  string description = 2;
+
+  string friendly_name = 3 [json_name = "friendly_name"];
+
+  string id = 4;
+
+  string load_balancer_type = 5 [json_name = "load_balancer_type"];
+
+  string location = 6;
+
+  int64 maximum_sessions_allowed = 7 [json_name = "maximum_sessions_allowed"];
+
+  string name = 8;
+
+  string personal_desktop_assignment_type = 9 [json_name = "personal_desktop_assignment_type"];
+
+  string preferred_app_group_type = 10 [json_name = "preferred_app_group_type"];
+
+  string resource_group_name = 11 [json_name = "resource_group_name"];
+
+  repeated ScheduledAgentUpdates scheduled_agent_updates = 12 [json_name = "scheduled_agent_updates"];
+
+  bool start_vm_on_connect = 13 [json_name = "start_vm_on_connect"];
+
+  map<string, string> tags = 14;
+
+  string type = 15;
+
+  bool validate_environment = 16 [json_name = "validate_environment"];
+
+  repeated Timeouts timeouts = 17;
+
+  google.protobuf.Value for_each = 18 [json_name = "for_each"];
+
+  repeated string depends_on = 19 [json_name = "depends_on"];
+
+  int32 count = 20;
+
+  string provider = 21;
+
+  terraform.v1.Lifecycle lifecycle = 22;
+
+  message ScheduledAgentUpdates {
+    // enabled: bool
+    bool enabled = 1;
+
+    // schedule: list of object
+    repeated Schedule schedule = 2;
+
+    // timezone: string
+    string timezone = 3;
+
+    // use_session_host_timezone: bool
+    bool use_session_host_timezone = 4 [json_name = "use_session_host_timezone"];
+
+    message Schedule {
+      // day_of_week: string
+      string day_of_week = 1 [json_name = "day_of_week"];
+
+      // hour_of_day: number
+      int64 hour_of_day = 2 [json_name = "hour_of_day"];
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermVirtualDesktopWorkspace version is 1
+message AzurermVirtualDesktopWorkspace {
+  string description = 1;
+
+  string friendly_name = 2 [json_name = "friendly_name"];
+
+  string id = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  bool public_network_access_enabled = 6 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermVirtualHub version is 0
+message AzurermVirtualHub {
+  string address_prefix = 1 [json_name = "address_prefix"];
+
+  string default_route_table_id = 2 [json_name = "default_route_table_id"];
+
+  string id = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 7;
+
+  int64 virtual_router_asn = 8 [json_name = "virtual_router_asn"];
+
+  repeated string virtual_router_ips = 9 [json_name = "virtual_router_ips"];
+
+  string virtual_wan_id = 10 [json_name = "virtual_wan_id"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermVirtualHubConnection version is 0
+message AzurermVirtualHubConnection {
+  string id = 1;
+
+  bool internet_security_enabled = 2 [json_name = "internet_security_enabled"];
+
+  string name = 3;
+
+  string remote_virtual_network_id = 4 [json_name = "remote_virtual_network_id"];
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  repeated Routing routing = 6;
+
+  string virtual_hub_id = 7 [json_name = "virtual_hub_id"];
+
+  string virtual_hub_name = 8 [json_name = "virtual_hub_name"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Routing {
+    // associated_route_table_id: string
+    string associated_route_table_id = 1 [json_name = "associated_route_table_id"];
+
+    // inbound_route_map_id: string
+    string inbound_route_map_id = 2 [json_name = "inbound_route_map_id"];
+
+    // outbound_route_map_id: string
+    string outbound_route_map_id = 3 [json_name = "outbound_route_map_id"];
+
+    // propagated_route_table: list of object
+    repeated PropagatedRouteTable propagated_route_table = 4 [json_name = "propagated_route_table"];
+
+    // static_vnet_local_route_override_criteria: string
+    string static_vnet_local_route_override_criteria = 5 [
+      json_name = "static_vnet_local_route_override_criteria"
+    ];
+
+    // static_vnet_route: list of object
+    repeated StaticVnetRoute static_vnet_route = 6 [json_name = "static_vnet_route"];
+
+    message PropagatedRouteTable {
+      // labels: list of string
+      repeated string labels = 1;
+
+      // route_table_ids: list of string
+      repeated string route_table_ids = 2 [json_name = "route_table_ids"];
+    }
+
+    message StaticVnetRoute {
+      // address_prefixes: list of string
+      repeated string address_prefixes = 1 [json_name = "address_prefixes"];
+
+      // name: string
+      string name = 2;
+
+      // next_hop_ip_address: string
+      string next_hop_ip_address = 3 [json_name = "next_hop_ip_address"];
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermVirtualHubRouteTable version is 0
+message AzurermVirtualHubRouteTable {
+  string id = 1;
+
+  repeated string labels = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  repeated Route route = 5;
+
+  string virtual_hub_id = 6 [json_name = "virtual_hub_id"];
+
+  string virtual_hub_name = 7 [json_name = "virtual_hub_name"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Route {
+    // destinations: list of string
+    repeated string destinations = 1;
+
+    // destinations_type: string
+    string destinations_type = 2 [json_name = "destinations_type"];
+
+    // name: string
+    string name = 3;
+
+    // next_hop: string
+    string next_hop = 4 [json_name = "next_hop"];
+
+    // next_hop_type: string
+    string next_hop_type = 5 [json_name = "next_hop_type"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermVirtualMachine version is 0
+message AzurermVirtualMachine {
+  string id = 1;
+
+  repeated Identity identity = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string power_state = 5 [json_name = "power_state"];
+
+  string private_ip_address = 6 [json_name = "private_ip_address"];
+
+  repeated string private_ip_addresses = 7 [json_name = "private_ip_addresses"];
+
+  string public_ip_address = 8 [json_name = "public_ip_address"];
+
+  repeated string public_ip_addresses = 9 [json_name = "public_ip_addresses"];
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Identity {
+    // identity_ids: list of string
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    // principal_id: string
+    string principal_id = 2 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 4;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermVirtualMachineScaleSet version is 1
+message AzurermVirtualMachineScaleSet {
+  string id = 1;
+
+  repeated Identity identity = 2;
+
+  repeated Instances instances = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  repeated NetworkInterface network_interface = 6 [json_name = "network_interface"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Identity {
+    // identity_ids: list of string
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    // principal_id: string
+    string principal_id = 2 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 4;
+  }
+
+  message Instances {
+    // computer_name: string
+    string computer_name = 1 [json_name = "computer_name"];
+
+    // instance_id: string
+    string instance_id = 2 [json_name = "instance_id"];
+
+    // latest_model_applied: bool
+    bool latest_model_applied = 3 [json_name = "latest_model_applied"];
+
+    // name: string
+    string name = 4;
+
+    // power_state: string
+    string power_state = 5 [json_name = "power_state"];
+
+    // private_ip_address: string
+    string private_ip_address = 6 [json_name = "private_ip_address"];
+
+    // private_ip_addresses: list of string
+    repeated string private_ip_addresses = 7 [json_name = "private_ip_addresses"];
+
+    // public_ip_address: string
+    string public_ip_address = 8 [json_name = "public_ip_address"];
+
+    // public_ip_addresses: list of string
+    repeated string public_ip_addresses = 9 [json_name = "public_ip_addresses"];
+
+    // virtual_machine_id: string
+    string virtual_machine_id = 10 [json_name = "virtual_machine_id"];
+
+    // zone: string
+    string zone = 11;
+  }
+
+  message NetworkInterface {
+    // dns_servers: list of string
+    repeated string dns_servers = 1 [json_name = "dns_servers"];
+
+    // enable_accelerated_networking: bool
+    bool enable_accelerated_networking = 2 [json_name = "enable_accelerated_networking"];
+
+    // enable_ip_forwarding: bool
+    bool enable_ip_forwarding = 3 [json_name = "enable_ip_forwarding"];
+
+    // ip_configuration: list of object
+    repeated IpConfiguration ip_configuration = 4 [json_name = "ip_configuration"];
+
+    // name: string
+    string name = 5;
+
+    // network_security_group_id: string
+    string network_security_group_id = 6 [json_name = "network_security_group_id"];
+
+    // primary: bool
+    bool primary = 7;
+
+    message IpConfiguration {
+      // application_gateway_backend_address_pool_ids: list of string
+      repeated string application_gateway_backend_address_pool_ids = 1 [
+        json_name = "application_gateway_backend_address_pool_ids"
+      ];
+
+      // application_security_group_ids: list of string
+      repeated string application_security_group_ids = 2 [json_name = "application_security_group_ids"];
+
+      // load_balancer_backend_address_pool_ids: list of string
+      repeated string load_balancer_backend_address_pool_ids = 3 [
+        json_name = "load_balancer_backend_address_pool_ids"
+      ];
+
+      // load_balancer_inbound_nat_rules_ids: list of string
+      repeated string load_balancer_inbound_nat_rules_ids = 4 [json_name = "load_balancer_inbound_nat_rules_ids"];
+
+      // name: string
+      string name = 5;
+
+      // primary: bool
+      bool primary = 6;
+
+      // public_ip_address: list of object
+      repeated PublicIpAddress public_ip_address = 7 [json_name = "public_ip_address"];
+
+      // subnet_id: string
+      string subnet_id = 8 [json_name = "subnet_id"];
+
+      // version: string
+      string version = 9;
+
+      message PublicIpAddress {
+        // domain_name_label: string
+        string domain_name_label = 1 [json_name = "domain_name_label"];
+
+        // idle_timeout_in_minutes: number
+        int64 idle_timeout_in_minutes = 2 [json_name = "idle_timeout_in_minutes"];
+
+        // ip_tag: list of object
+        repeated IpTag ip_tag = 3 [json_name = "ip_tag"];
+
+        // name: string
+        string name = 4;
+
+        // public_ip_prefix_id: string
+        string public_ip_prefix_id = 5 [json_name = "public_ip_prefix_id"];
+
+        // version: string
+        string version = 6;
+
+        message IpTag {
+          // tag: string
+          string tag = 1;
+
+          // type: string
+          string type = 2;
+        }
+      }
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermVirtualNetwork version is 0
+message AzurermVirtualNetwork {
+  repeated string address_space = 1 [json_name = "address_space"];
+
+  repeated string dns_servers = 2 [json_name = "dns_servers"];
+
+  string guid = 3;
+
+  string id = 4;
+
+  string location = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  repeated string subnets = 8;
+
+  map<string, string> tags = 9;
+
+  map<string, string> vnet_peerings = 10 [json_name = "vnet_peerings"];
+
+  repeated string vnet_peerings_addresses = 11 [json_name = "vnet_peerings_addresses"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermVirtualNetworkGateway version is 0
+message AzurermVirtualNetworkGateway {
+  bool active_active = 1 [json_name = "active_active"];
+
+  repeated BgpSettings bgp_settings = 2 [json_name = "bgp_settings"];
+
+  repeated CustomRoute custom_route = 3 [json_name = "custom_route"];
+
+  string default_local_network_gateway_id = 4 [json_name = "default_local_network_gateway_id"];
+
+  bool enable_bgp = 5 [json_name = "enable_bgp"];
+
+  string generation = 6;
+
+  string id = 7;
+
+  repeated IpConfiguration ip_configuration = 8 [json_name = "ip_configuration"];
+
+  string location = 9;
+
+  string name = 10;
+
+  bool private_ip_address_enabled = 11 [json_name = "private_ip_address_enabled"];
+
+  string resource_group_name = 12 [json_name = "resource_group_name"];
+
+  string sku = 13;
+
+  map<string, string> tags = 14;
+
+  string type = 15;
+
+  repeated VpnClientConfiguration vpn_client_configuration = 16 [json_name = "vpn_client_configuration"];
+
+  string vpn_type = 17 [json_name = "vpn_type"];
+
+  repeated Timeouts timeouts = 18;
+
+  google.protobuf.Value for_each = 19 [json_name = "for_each"];
+
+  repeated string depends_on = 20 [json_name = "depends_on"];
+
+  int32 count = 21;
+
+  string provider = 22;
+
+  terraform.v1.Lifecycle lifecycle = 23;
+
+  message BgpSettings {
+    // asn: number
+    int64 asn = 1;
+
+    // peer_weight: number
+    int64 peer_weight = 2 [json_name = "peer_weight"];
+
+    // peering_address: string
+    string peering_address = 3 [json_name = "peering_address"];
+  }
+
+  message CustomRoute {
+    // address_prefixes: set of string
+    repeated string address_prefixes = 1 [json_name = "address_prefixes"];
+  }
+
+  message IpConfiguration {
+    // id: string
+    string id = 1;
+
+    // name: string
+    string name = 2;
+
+    // private_ip_address: string
+    string private_ip_address = 3 [json_name = "private_ip_address"];
+
+    // private_ip_address_allocation: string
+    string private_ip_address_allocation = 4 [json_name = "private_ip_address_allocation"];
+
+    // public_ip_address_id: string
+    string public_ip_address_id = 5 [json_name = "public_ip_address_id"];
+
+    // subnet_id: string
+    string subnet_id = 6 [json_name = "subnet_id"];
+  }
+
+  message VpnClientConfiguration {
+    // aad_audience: string
+    string aad_audience = 1 [json_name = "aad_audience"];
+
+    // aad_issuer: string
+    string aad_issuer = 2 [json_name = "aad_issuer"];
+
+    // aad_tenant: string
+    string aad_tenant = 3 [json_name = "aad_tenant"];
+
+    // address_space: list of string
+    repeated string address_space = 4 [json_name = "address_space"];
+
+    // radius_server_address: string
+    string radius_server_address = 5 [json_name = "radius_server_address"];
+
+    // radius_server_secret: string
+    string radius_server_secret = 6 [json_name = "radius_server_secret"];
+
+    // revoked_certificate: list of object
+    repeated RevokedCertificate revoked_certificate = 7 [json_name = "revoked_certificate"];
+
+    // root_certificate: list of object
+    repeated RootCertificate root_certificate = 8 [json_name = "root_certificate"];
+
+    // vpn_client_protocols: set of string
+    repeated string vpn_client_protocols = 9 [json_name = "vpn_client_protocols"];
+
+    message RevokedCertificate {
+      // name: string
+      string name = 1;
+
+      // thumbprint: string
+      string thumbprint = 2;
+    }
+
+    message RootCertificate {
+      // name: string
+      string name = 1;
+
+      // public_cert_data: string
+      string public_cert_data = 2 [json_name = "public_cert_data"];
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermVirtualNetworkGatewayConnection version is 0
+message AzurermVirtualNetworkGatewayConnection {
+  string authorization_key = 1 [json_name = "authorization_key"];
+
+  string connection_protocol = 2 [json_name = "connection_protocol"];
+
+  int64 dpd_timeout_seconds = 3 [json_name = "dpd_timeout_seconds"];
+
+  int64 egress_bytes_transferred = 4 [json_name = "egress_bytes_transferred"];
+
+  bool enable_bgp = 5 [json_name = "enable_bgp"];
+
+  string express_route_circuit_id = 6 [json_name = "express_route_circuit_id"];
+
+  bool express_route_gateway_bypass = 7 [json_name = "express_route_gateway_bypass"];
+
+  string id = 8;
+
+  int64 ingress_bytes_transferred = 9 [json_name = "ingress_bytes_transferred"];
+
+  repeated IpsecPolicy ipsec_policy = 10 [json_name = "ipsec_policy"];
+
+  bool local_azure_ip_address_enabled = 11 [json_name = "local_azure_ip_address_enabled"];
+
+  string local_network_gateway_id = 12 [json_name = "local_network_gateway_id"];
+
+  string location = 13;
+
+  string name = 14;
+
+  string peer_virtual_network_gateway_id = 15 [json_name = "peer_virtual_network_gateway_id"];
+
+  string resource_group_name = 16 [json_name = "resource_group_name"];
+
+  string resource_guid = 17 [json_name = "resource_guid"];
+
+  int64 routing_weight = 18 [json_name = "routing_weight"];
+
+  string shared_key = 19 [json_name = "shared_key"];
+
+  map<string, string> tags = 20;
+
+  repeated TrafficSelectorPolicy traffic_selector_policy = 21 [json_name = "traffic_selector_policy"];
+
+  string type = 22;
+
+  bool use_policy_based_traffic_selectors = 23 [json_name = "use_policy_based_traffic_selectors"];
+
+  string virtual_network_gateway_id = 24 [json_name = "virtual_network_gateway_id"];
+
+  repeated Timeouts timeouts = 25;
+
+  google.protobuf.Value for_each = 26 [json_name = "for_each"];
+
+  repeated string depends_on = 27 [json_name = "depends_on"];
+
+  int32 count = 28;
+
+  string provider = 29;
+
+  terraform.v1.Lifecycle lifecycle = 30;
+
+  message IpsecPolicy {
+    // dh_group: string
+    string dh_group = 1 [json_name = "dh_group"];
+
+    // ike_encryption: string
+    string ike_encryption = 2 [json_name = "ike_encryption"];
+
+    // ike_integrity: string
+    string ike_integrity = 3 [json_name = "ike_integrity"];
+
+    // ipsec_encryption: string
+    string ipsec_encryption = 4 [json_name = "ipsec_encryption"];
+
+    // ipsec_integrity: string
+    string ipsec_integrity = 5 [json_name = "ipsec_integrity"];
+
+    // pfs_group: string
+    string pfs_group = 6 [json_name = "pfs_group"];
+
+    // sa_datasize: number
+    int64 sa_datasize = 7 [json_name = "sa_datasize"];
+
+    // sa_lifetime: number
+    int64 sa_lifetime = 8 [json_name = "sa_lifetime"];
+  }
+
+  message TrafficSelectorPolicy {
+    // local_address_cidrs: list of string
+    repeated string local_address_cidrs = 1 [json_name = "local_address_cidrs"];
+
+    // remote_address_cidrs: list of string
+    repeated string remote_address_cidrs = 2 [json_name = "remote_address_cidrs"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermVirtualWan version is 0
+message AzurermVirtualWan {
+  bool allow_branch_to_branch_traffic = 1 [json_name = "allow_branch_to_branch_traffic"];
+
+  bool disable_vpn_encryption = 2 [json_name = "disable_vpn_encryption"];
+
+  string id = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  string office365_local_breakout_category = 6 [json_name = "office365_local_breakout_category"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string sku = 8;
+
+  map<string, string> tags = 9;
+
+  repeated string virtual_hub_ids = 10 [json_name = "virtual_hub_ids"];
+
+  repeated string vpn_site_ids = 11 [json_name = "vpn_site_ids"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string read = 1;
+  }
+}

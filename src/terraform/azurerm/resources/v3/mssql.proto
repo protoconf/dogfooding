@@ -1,0 +1,1543 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermMssqlDatabase version is 1
+message AzurermMssqlDatabase {
+  int64 auto_pause_delay_in_minutes = 1 [json_name = "auto_pause_delay_in_minutes"];
+
+  string collation = 2;
+
+  string create_mode = 3 [json_name = "create_mode"];
+
+  string creation_source_database_id = 4 [json_name = "creation_source_database_id"];
+
+  string elastic_pool_id = 5 [json_name = "elastic_pool_id"];
+
+  string enclave_type = 6 [json_name = "enclave_type"];
+
+  bool geo_backup_enabled = 7 [json_name = "geo_backup_enabled"];
+
+  string id = 8;
+
+  bool ledger_enabled = 9 [json_name = "ledger_enabled"];
+
+  string license_type = 10 [json_name = "license_type"];
+
+  string maintenance_configuration_name = 11 [json_name = "maintenance_configuration_name"];
+
+  int64 max_size_gb = 12 [json_name = "max_size_gb"];
+
+  int64 min_capacity = 13 [json_name = "min_capacity"];
+
+  string name = 14;
+
+  int64 read_replica_count = 15 [json_name = "read_replica_count"];
+
+  bool read_scale = 16 [json_name = "read_scale"];
+
+  string recover_database_id = 17 [json_name = "recover_database_id"];
+
+  string recovery_point_id = 18 [json_name = "recovery_point_id"];
+
+  string restore_dropped_database_id = 19 [json_name = "restore_dropped_database_id"];
+
+  string restore_long_term_retention_backup_id = 20 [
+    json_name = "restore_long_term_retention_backup_id"
+  ];
+
+  string restore_point_in_time = 21 [json_name = "restore_point_in_time"];
+
+  string sample_name = 22 [json_name = "sample_name"];
+
+  string server_id = 23 [json_name = "server_id"];
+
+  string sku_name = 24 [json_name = "sku_name"];
+
+  string storage_account_type = 25 [json_name = "storage_account_type"];
+
+  map<string, string> tags = 26;
+
+  bool transparent_data_encryption_enabled = 27 [json_name = "transparent_data_encryption_enabled"];
+
+  bool transparent_data_encryption_key_automatic_rotation_enabled = 28 [
+    json_name = "transparent_data_encryption_key_automatic_rotation_enabled"
+  ];
+
+  string transparent_data_encryption_key_vault_key_id = 29 [
+    json_name = "transparent_data_encryption_key_vault_key_id"
+  ];
+
+  bool zone_redundant = 30 [json_name = "zone_redundant"];
+
+  Identity identity = 31;
+
+  Import import = 32;
+
+  LongTermRetentionPolicy long_term_retention_policy = 33 [json_name = "long_term_retention_policy"];
+
+  ShortTermRetentionPolicy short_term_retention_policy = 34 [json_name = "short_term_retention_policy"];
+
+  ThreatDetectionPolicy threat_detection_policy = 35 [json_name = "threat_detection_policy"];
+
+  repeated Timeouts timeouts = 36;
+
+  google.protobuf.Value for_each = 37 [json_name = "for_each"];
+
+  repeated string depends_on = 38 [json_name = "depends_on"];
+
+  int32 count = 39;
+
+  string provider = 40;
+
+  terraform.v1.Lifecycle lifecycle = 41;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string type = 2;
+  }
+
+  message Import {
+    string administrator_login = 1 [json_name = "administrator_login"];
+
+    string administrator_login_password = 2 [json_name = "administrator_login_password"];
+
+    string authentication_type = 3 [json_name = "authentication_type"];
+
+    string storage_account_id = 4 [json_name = "storage_account_id"];
+
+    string storage_key = 5 [json_name = "storage_key"];
+
+    string storage_key_type = 6 [json_name = "storage_key_type"];
+
+    string storage_uri = 7 [json_name = "storage_uri"];
+  }
+
+  message LongTermRetentionPolicy {
+    bool immutable_backups_enabled = 1 [json_name = "immutable_backups_enabled"];
+
+    string monthly_retention = 2 [json_name = "monthly_retention"];
+
+    int64 week_of_year = 3 [json_name = "week_of_year"];
+
+    string weekly_retention = 4 [json_name = "weekly_retention"];
+
+    string yearly_retention = 5 [json_name = "yearly_retention"];
+  }
+
+  message ShortTermRetentionPolicy {
+    int64 backup_interval_in_hours = 1 [json_name = "backup_interval_in_hours"];
+
+    int64 retention_days = 2 [json_name = "retention_days"];
+  }
+
+  message ThreatDetectionPolicy {
+    repeated string disabled_alerts = 1 [json_name = "disabled_alerts"];
+
+    string email_account_admins = 2 [json_name = "email_account_admins"];
+
+    repeated string email_addresses = 3 [json_name = "email_addresses"];
+
+    int64 retention_days = 4 [json_name = "retention_days"];
+
+    string state = 5;
+
+    string storage_account_access_key = 6 [json_name = "storage_account_access_key"];
+
+    string storage_endpoint = 7 [json_name = "storage_endpoint"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlDatabaseExtendedAuditingPolicy version is 0
+message AzurermMssqlDatabaseExtendedAuditingPolicy {
+  string database_id = 1 [json_name = "database_id"];
+
+  bool enabled = 2;
+
+  string id = 3;
+
+  bool log_monitoring_enabled = 4 [json_name = "log_monitoring_enabled"];
+
+  int64 retention_in_days = 5 [json_name = "retention_in_days"];
+
+  string storage_account_access_key = 6 [json_name = "storage_account_access_key"];
+
+  bool storage_account_access_key_is_secondary = 7 [
+    json_name = "storage_account_access_key_is_secondary"
+  ];
+
+  string storage_endpoint = 8 [json_name = "storage_endpoint"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlDatabaseVulnerabilityAssessmentRuleBaseline version is 0
+message AzurermMssqlDatabaseVulnerabilityAssessmentRuleBaseline {
+  string baseline_name = 1 [json_name = "baseline_name"];
+
+  string database_name = 2 [json_name = "database_name"];
+
+  string id = 3;
+
+  string rule_id = 4 [json_name = "rule_id"];
+
+  string server_vulnerability_assessment_id = 5 [json_name = "server_vulnerability_assessment_id"];
+
+  repeated BaselineResult baseline_result = 6 [json_name = "baseline_result"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message BaselineResult {
+    repeated string result = 1;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlElasticpool version is 0
+message AzurermMssqlElasticpool {
+  string enclave_type = 1 [json_name = "enclave_type"];
+
+  string id = 2;
+
+  string license_type = 3 [json_name = "license_type"];
+
+  string location = 4;
+
+  string maintenance_configuration_name = 5 [json_name = "maintenance_configuration_name"];
+
+  int64 max_size_bytes = 6 [json_name = "max_size_bytes"];
+
+  int64 max_size_gb = 7 [json_name = "max_size_gb"];
+
+  string name = 8;
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  string server_name = 10 [json_name = "server_name"];
+
+  map<string, string> tags = 11;
+
+  bool zone_redundant = 12 [json_name = "zone_redundant"];
+
+  PerDatabaseSettings per_database_settings = 13 [json_name = "per_database_settings"];
+
+  Sku sku = 14;
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message PerDatabaseSettings {
+    int64 max_capacity = 1 [json_name = "max_capacity"];
+
+    int64 min_capacity = 2 [json_name = "min_capacity"];
+  }
+
+  message Sku {
+    int64 capacity = 1;
+
+    string family = 2;
+
+    string name = 3;
+
+    string tier = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlFailoverGroup version is 0
+message AzurermMssqlFailoverGroup {
+  repeated string databases = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  bool readonly_endpoint_failover_policy_enabled = 4 [
+    json_name = "readonly_endpoint_failover_policy_enabled"
+  ];
+
+  string server_id = 5 [json_name = "server_id"];
+
+  map<string, string> tags = 6;
+
+  repeated PartnerServer partner_server = 7 [json_name = "partner_server"];
+
+  ReadWriteEndpointFailoverPolicy read_write_endpoint_failover_policy = 8 [json_name = "read_write_endpoint_failover_policy"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message PartnerServer {
+    string id = 1;
+
+    string location = 2;
+
+    string role = 3;
+  }
+
+  message ReadWriteEndpointFailoverPolicy {
+    int64 grace_minutes = 1 [json_name = "grace_minutes"];
+
+    string mode = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlFirewallRule version is 0
+message AzurermMssqlFirewallRule {
+  string end_ip_address = 1 [json_name = "end_ip_address"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string server_id = 4 [json_name = "server_id"];
+
+  string start_ip_address = 5 [json_name = "start_ip_address"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlJobAgent version is 0
+message AzurermMssqlJobAgent {
+  string database_id = 1 [json_name = "database_id"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  map<string, string> tags = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlJobCredential version is 0
+message AzurermMssqlJobCredential {
+  string id = 1;
+
+  string job_agent_id = 2 [json_name = "job_agent_id"];
+
+  string name = 3;
+
+  string password = 4;
+
+  string username = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlManagedDatabase version is 0
+message AzurermMssqlManagedDatabase {
+  string id = 1;
+
+  string managed_instance_id = 2 [json_name = "managed_instance_id"];
+
+  string name = 3;
+
+  int64 short_term_retention_days = 4 [json_name = "short_term_retention_days"];
+
+  LongTermRetentionPolicy long_term_retention_policy = 5 [json_name = "long_term_retention_policy"];
+
+  PointInTimeRestore point_in_time_restore = 6 [json_name = "point_in_time_restore"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message LongTermRetentionPolicy {
+    bool immutable_backups_enabled = 1 [json_name = "immutable_backups_enabled"];
+
+    string monthly_retention = 2 [json_name = "monthly_retention"];
+
+    int64 week_of_year = 3 [json_name = "week_of_year"];
+
+    string weekly_retention = 4 [json_name = "weekly_retention"];
+
+    string yearly_retention = 5 [json_name = "yearly_retention"];
+  }
+
+  message PointInTimeRestore {
+    string restore_point_in_time = 1 [json_name = "restore_point_in_time"];
+
+    string source_database_id = 2 [json_name = "source_database_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlManagedInstance version is 0
+message AzurermMssqlManagedInstance {
+  string administrator_login = 1 [json_name = "administrator_login"];
+
+  string administrator_login_password = 2 [json_name = "administrator_login_password"];
+
+  string collation = 3;
+
+  string dns_zone = 4 [json_name = "dns_zone"];
+
+  string dns_zone_partner_id = 5 [json_name = "dns_zone_partner_id"];
+
+  string fqdn = 6;
+
+  string id = 7;
+
+  string license_type = 8 [json_name = "license_type"];
+
+  string location = 9;
+
+  string maintenance_configuration_name = 10 [json_name = "maintenance_configuration_name"];
+
+  string minimum_tls_version = 11 [json_name = "minimum_tls_version"];
+
+  string name = 12;
+
+  string proxy_override = 13 [json_name = "proxy_override"];
+
+  bool public_data_endpoint_enabled = 14 [json_name = "public_data_endpoint_enabled"];
+
+  string resource_group_name = 15 [json_name = "resource_group_name"];
+
+  string sku_name = 16 [json_name = "sku_name"];
+
+  string storage_account_type = 17 [json_name = "storage_account_type"];
+
+  int64 storage_size_in_gb = 18 [json_name = "storage_size_in_gb"];
+
+  string subnet_id = 19 [json_name = "subnet_id"];
+
+  map<string, string> tags = 20;
+
+  string timezone_id = 21 [json_name = "timezone_id"];
+
+  int64 vcores = 22;
+
+  bool zone_redundant_enabled = 23 [json_name = "zone_redundant_enabled"];
+
+  Identity identity = 24;
+
+  repeated Timeouts timeouts = 25;
+
+  google.protobuf.Value for_each = 26 [json_name = "for_each"];
+
+  repeated string depends_on = 27 [json_name = "depends_on"];
+
+  int32 count = 28;
+
+  string provider = 29;
+
+  terraform.v1.Lifecycle lifecycle = 30;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlManagedInstanceActiveDirectoryAdministrator version is 0
+message AzurermMssqlManagedInstanceActiveDirectoryAdministrator {
+  bool azuread_authentication_only = 1 [json_name = "azuread_authentication_only"];
+
+  string id = 2;
+
+  string login_username = 3 [json_name = "login_username"];
+
+  string managed_instance_id = 4 [json_name = "managed_instance_id"];
+
+  string object_id = 5 [json_name = "object_id"];
+
+  string tenant_id = 6 [json_name = "tenant_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlManagedInstanceFailoverGroup version is 0
+message AzurermMssqlManagedInstanceFailoverGroup {
+  string id = 1;
+
+  string location = 2;
+
+  string managed_instance_id = 3 [json_name = "managed_instance_id"];
+
+  string name = 4;
+
+  string partner_managed_instance_id = 5 [json_name = "partner_managed_instance_id"];
+
+  repeated PartnerRegion partner_region = 6 [json_name = "partner_region"];
+
+  bool readonly_endpoint_failover_policy_enabled = 7 [
+    json_name = "readonly_endpoint_failover_policy_enabled"
+  ];
+
+  string role = 8;
+
+  ReadWriteEndpointFailoverPolicy read_write_endpoint_failover_policy = 9 [json_name = "read_write_endpoint_failover_policy"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message PartnerRegion {
+    // location: string
+    string location = 1;
+
+    // role: string
+    string role = 2;
+  }
+
+  message ReadWriteEndpointFailoverPolicy {
+    int64 grace_minutes = 1 [json_name = "grace_minutes"];
+
+    string mode = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlManagedInstanceSecurityAlertPolicy version is 0
+message AzurermMssqlManagedInstanceSecurityAlertPolicy {
+  repeated string disabled_alerts = 1 [json_name = "disabled_alerts"];
+
+  bool email_account_admins_enabled = 2 [json_name = "email_account_admins_enabled"];
+
+  repeated string email_addresses = 3 [json_name = "email_addresses"];
+
+  bool enabled = 4;
+
+  string id = 5;
+
+  string managed_instance_name = 6 [json_name = "managed_instance_name"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  int64 retention_days = 8 [json_name = "retention_days"];
+
+  string storage_account_access_key = 9 [json_name = "storage_account_access_key"];
+
+  string storage_endpoint = 10 [json_name = "storage_endpoint"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlManagedInstanceTransparentDataEncryption version is 0
+message AzurermMssqlManagedInstanceTransparentDataEncryption {
+  bool auto_rotation_enabled = 1 [json_name = "auto_rotation_enabled"];
+
+  string id = 2;
+
+  string key_vault_key_id = 3 [json_name = "key_vault_key_id"];
+
+  string managed_instance_id = 4 [json_name = "managed_instance_id"];
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlManagedInstanceVulnerabilityAssessment version is 0
+message AzurermMssqlManagedInstanceVulnerabilityAssessment {
+  string id = 1;
+
+  string managed_instance_id = 2 [json_name = "managed_instance_id"];
+
+  string storage_account_access_key = 3 [json_name = "storage_account_access_key"];
+
+  string storage_container_path = 4 [json_name = "storage_container_path"];
+
+  string storage_container_sas_key = 5 [json_name = "storage_container_sas_key"];
+
+  RecurringScans recurring_scans = 6 [json_name = "recurring_scans"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message RecurringScans {
+    bool email_subscription_admins = 1 [json_name = "email_subscription_admins"];
+
+    repeated string emails = 2;
+
+    bool enabled = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlOutboundFirewallRule version is 0
+message AzurermMssqlOutboundFirewallRule {
+  string id = 1;
+
+  string name = 2;
+
+  string server_id = 3 [json_name = "server_id"];
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermMssqlServer version is 0
+message AzurermMssqlServer {
+  string administrator_login = 1 [json_name = "administrator_login"];
+
+  string administrator_login_password = 2 [json_name = "administrator_login_password"];
+
+  string connection_policy = 3 [json_name = "connection_policy"];
+
+  string fully_qualified_domain_name = 4 [json_name = "fully_qualified_domain_name"];
+
+  string id = 5;
+
+  string location = 6;
+
+  string minimum_tls_version = 7 [json_name = "minimum_tls_version"];
+
+  string name = 8;
+
+  bool outbound_network_restriction_enabled = 9 [json_name = "outbound_network_restriction_enabled"];
+
+  string primary_user_assigned_identity_id = 10 [json_name = "primary_user_assigned_identity_id"];
+
+  bool public_network_access_enabled = 11 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 12 [json_name = "resource_group_name"];
+
+  repeated string restorable_dropped_database_ids = 13 [json_name = "restorable_dropped_database_ids"];
+
+  map<string, string> tags = 14;
+
+  string transparent_data_encryption_key_vault_key_id = 15 [
+    json_name = "transparent_data_encryption_key_vault_key_id"
+  ];
+
+  string version = 16;
+
+  AzureadAdministrator azuread_administrator = 17 [json_name = "azuread_administrator"];
+
+  Identity identity = 18;
+
+  repeated Timeouts timeouts = 19;
+
+  google.protobuf.Value for_each = 20 [json_name = "for_each"];
+
+  repeated string depends_on = 21 [json_name = "depends_on"];
+
+  int32 count = 22;
+
+  string provider = 23;
+
+  terraform.v1.Lifecycle lifecycle = 24;
+
+  message AzureadAdministrator {
+    bool azuread_authentication_only = 1 [json_name = "azuread_authentication_only"];
+
+    string login_username = 2 [json_name = "login_username"];
+
+    string object_id = 3 [json_name = "object_id"];
+
+    string tenant_id = 4 [json_name = "tenant_id"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlServerDnsAlias version is 0
+message AzurermMssqlServerDnsAlias {
+  string dns_record = 1 [json_name = "dns_record"];
+
+  string id = 2;
+
+  string mssql_server_id = 3 [json_name = "mssql_server_id"];
+
+  string name = 4;
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermMssqlServerExtendedAuditingPolicy version is 0
+message AzurermMssqlServerExtendedAuditingPolicy {
+  bool enabled = 1;
+
+  string id = 2;
+
+  bool log_monitoring_enabled = 3 [json_name = "log_monitoring_enabled"];
+
+  int64 retention_in_days = 4 [json_name = "retention_in_days"];
+
+  string server_id = 5 [json_name = "server_id"];
+
+  string storage_account_access_key = 6 [json_name = "storage_account_access_key"];
+
+  bool storage_account_access_key_is_secondary = 7 [
+    json_name = "storage_account_access_key_is_secondary"
+  ];
+
+  string storage_account_subscription_id = 8 [json_name = "storage_account_subscription_id"];
+
+  string storage_endpoint = 9 [json_name = "storage_endpoint"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlServerMicrosoftSupportAuditingPolicy version is 0
+message AzurermMssqlServerMicrosoftSupportAuditingPolicy {
+  string blob_storage_endpoint = 1 [json_name = "blob_storage_endpoint"];
+
+  bool enabled = 2;
+
+  string id = 3;
+
+  bool log_monitoring_enabled = 4 [json_name = "log_monitoring_enabled"];
+
+  string server_id = 5 [json_name = "server_id"];
+
+  string storage_account_access_key = 6 [json_name = "storage_account_access_key"];
+
+  string storage_account_subscription_id = 7 [json_name = "storage_account_subscription_id"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlServerSecurityAlertPolicy version is 0
+message AzurermMssqlServerSecurityAlertPolicy {
+  repeated string disabled_alerts = 1 [json_name = "disabled_alerts"];
+
+  bool email_account_admins = 2 [json_name = "email_account_admins"];
+
+  repeated string email_addresses = 3 [json_name = "email_addresses"];
+
+  string id = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  int64 retention_days = 6 [json_name = "retention_days"];
+
+  string server_name = 7 [json_name = "server_name"];
+
+  string state = 8;
+
+  string storage_account_access_key = 9 [json_name = "storage_account_access_key"];
+
+  string storage_endpoint = 10 [json_name = "storage_endpoint"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlServerTransparentDataEncryption version is 1
+message AzurermMssqlServerTransparentDataEncryption {
+  bool auto_rotation_enabled = 1 [json_name = "auto_rotation_enabled"];
+
+  string id = 2;
+
+  string key_vault_key_id = 3 [json_name = "key_vault_key_id"];
+
+  string server_id = 4 [json_name = "server_id"];
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlServerVulnerabilityAssessment version is 0
+message AzurermMssqlServerVulnerabilityAssessment {
+  string id = 1;
+
+  string server_security_alert_policy_id = 2 [json_name = "server_security_alert_policy_id"];
+
+  string storage_account_access_key = 3 [json_name = "storage_account_access_key"];
+
+  string storage_container_path = 4 [json_name = "storage_container_path"];
+
+  string storage_container_sas_key = 5 [json_name = "storage_container_sas_key"];
+
+  RecurringScans recurring_scans = 6 [json_name = "recurring_scans"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message RecurringScans {
+    bool email_subscription_admins = 1 [json_name = "email_subscription_admins"];
+
+    repeated string emails = 2;
+
+    bool enabled = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMssqlVirtualMachine version is 0
+message AzurermMssqlVirtualMachine {
+  string id = 1;
+
+  bool r_services_enabled = 2 [json_name = "r_services_enabled"];
+
+  int64 sql_connectivity_port = 3 [json_name = "sql_connectivity_port"];
+
+  string sql_connectivity_type = 4 [json_name = "sql_connectivity_type"];
+
+  string sql_connectivity_update_password = 5 [json_name = "sql_connectivity_update_password"];
+
+  string sql_connectivity_update_username = 6 [json_name = "sql_connectivity_update_username"];
+
+  string sql_license_type = 7 [json_name = "sql_license_type"];
+
+  string sql_virtual_machine_group_id = 8 [json_name = "sql_virtual_machine_group_id"];
+
+  map<string, string> tags = 9;
+
+  string virtual_machine_id = 10 [json_name = "virtual_machine_id"];
+
+  Assessment assessment = 11;
+
+  AutoBackup auto_backup = 12 [json_name = "auto_backup"];
+
+  AutoPatching auto_patching = 13 [json_name = "auto_patching"];
+
+  KeyVaultCredential key_vault_credential = 14 [json_name = "key_vault_credential"];
+
+  SqlInstance sql_instance = 15 [json_name = "sql_instance"];
+
+  StorageConfiguration storage_configuration = 16 [json_name = "storage_configuration"];
+
+  repeated Timeouts timeouts = 17;
+
+  WsfcDomainCredential wsfc_domain_credential = 18 [json_name = "wsfc_domain_credential"];
+
+  google.protobuf.Value for_each = 19 [json_name = "for_each"];
+
+  repeated string depends_on = 20 [json_name = "depends_on"];
+
+  int32 count = 21;
+
+  string provider = 22;
+
+  terraform.v1.Lifecycle lifecycle = 23;
+
+  message Assessment {
+    bool enabled = 1;
+
+    bool run_immediately = 2 [json_name = "run_immediately"];
+
+    Schedule schedule = 3;
+
+    message Schedule {
+      string day_of_week = 1 [json_name = "day_of_week"];
+
+      int64 monthly_occurrence = 2 [json_name = "monthly_occurrence"];
+
+      string start_time = 3 [json_name = "start_time"];
+
+      int64 weekly_interval = 4 [json_name = "weekly_interval"];
+    }
+  }
+
+  message AutoBackup {
+    bool encryption_enabled = 1 [json_name = "encryption_enabled"];
+
+    string encryption_password = 2 [json_name = "encryption_password"];
+
+    int64 retention_period_in_days = 3 [json_name = "retention_period_in_days"];
+
+    string storage_account_access_key = 4 [json_name = "storage_account_access_key"];
+
+    string storage_blob_endpoint = 5 [json_name = "storage_blob_endpoint"];
+
+    bool system_databases_backup_enabled = 6 [json_name = "system_databases_backup_enabled"];
+
+    ManualSchedule manual_schedule = 7 [json_name = "manual_schedule"];
+
+    message ManualSchedule {
+      repeated string days_of_week = 1 [json_name = "days_of_week"];
+
+      string full_backup_frequency = 2 [json_name = "full_backup_frequency"];
+
+      int64 full_backup_start_hour = 3 [json_name = "full_backup_start_hour"];
+
+      int64 full_backup_window_in_hours = 4 [json_name = "full_backup_window_in_hours"];
+
+      int64 log_backup_frequency_in_minutes = 5 [json_name = "log_backup_frequency_in_minutes"];
+    }
+  }
+
+  message AutoPatching {
+    string day_of_week = 1 [json_name = "day_of_week"];
+
+    int64 maintenance_window_duration_in_minutes = 2 [
+      json_name = "maintenance_window_duration_in_minutes"
+    ];
+
+    int64 maintenance_window_starting_hour = 3 [json_name = "maintenance_window_starting_hour"];
+  }
+
+  message KeyVaultCredential {
+    string key_vault_url = 1 [json_name = "key_vault_url"];
+
+    string name = 2;
+
+    string service_principal_name = 3 [json_name = "service_principal_name"];
+
+    string service_principal_secret = 4 [json_name = "service_principal_secret"];
+  }
+
+  message SqlInstance {
+    bool adhoc_workloads_optimization_enabled = 1 [json_name = "adhoc_workloads_optimization_enabled"];
+
+    string collation = 2;
+
+    bool instant_file_initialization_enabled = 3 [json_name = "instant_file_initialization_enabled"];
+
+    bool lock_pages_in_memory_enabled = 4 [json_name = "lock_pages_in_memory_enabled"];
+
+    int64 max_dop = 5 [json_name = "max_dop"];
+
+    int64 max_server_memory_mb = 6 [json_name = "max_server_memory_mb"];
+
+    int64 min_server_memory_mb = 7 [json_name = "min_server_memory_mb"];
+  }
+
+  message StorageConfiguration {
+    string disk_type = 1 [json_name = "disk_type"];
+
+    string storage_workload_type = 2 [json_name = "storage_workload_type"];
+
+    bool system_db_on_data_disk_enabled = 3 [json_name = "system_db_on_data_disk_enabled"];
+
+    DataSettings data_settings = 4 [json_name = "data_settings"];
+
+    LogSettings log_settings = 5 [json_name = "log_settings"];
+
+    TempDbSettings temp_db_settings = 6 [json_name = "temp_db_settings"];
+
+    message DataSettings {
+      string default_file_path = 1 [json_name = "default_file_path"];
+
+      repeated int64 luns = 2;
+    }
+
+    message LogSettings {
+      string default_file_path = 1 [json_name = "default_file_path"];
+
+      repeated int64 luns = 2;
+    }
+
+    message TempDbSettings {
+      int64 data_file_count = 1 [json_name = "data_file_count"];
+
+      int64 data_file_growth_in_mb = 2 [json_name = "data_file_growth_in_mb"];
+
+      int64 data_file_size_mb = 3 [json_name = "data_file_size_mb"];
+
+      string default_file_path = 4 [json_name = "default_file_path"];
+
+      int64 log_file_growth_mb = 5 [json_name = "log_file_growth_mb"];
+
+      int64 log_file_size_mb = 6 [json_name = "log_file_size_mb"];
+
+      repeated int64 luns = 7;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message WsfcDomainCredential {
+    string cluster_bootstrap_account_password = 1 [json_name = "cluster_bootstrap_account_password"];
+
+    string cluster_operator_account_password = 2 [json_name = "cluster_operator_account_password"];
+
+    string sql_service_account_password = 3 [json_name = "sql_service_account_password"];
+  }
+}
+
+// AzurermMssqlVirtualMachineAvailabilityGroupListener version is 0
+message AzurermMssqlVirtualMachineAvailabilityGroupListener {
+  string availability_group_name = 1 [json_name = "availability_group_name"];
+
+  string id = 2;
+
+  string name = 3;
+
+  int64 port = 4;
+
+  string sql_virtual_machine_group_id = 5 [json_name = "sql_virtual_machine_group_id"];
+
+  LoadBalancerConfiguration load_balancer_configuration = 6 [json_name = "load_balancer_configuration"];
+
+  repeated MultiSubnetIpConfiguration multi_subnet_ip_configuration = 7 [json_name = "multi_subnet_ip_configuration"];
+
+  repeated Replica replica = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message LoadBalancerConfiguration {
+    string load_balancer_id = 1 [json_name = "load_balancer_id"];
+
+    string private_ip_address = 2 [json_name = "private_ip_address"];
+
+    int64 probe_port = 3 [json_name = "probe_port"];
+
+    repeated string sql_virtual_machine_ids = 4 [json_name = "sql_virtual_machine_ids"];
+
+    string subnet_id = 5 [json_name = "subnet_id"];
+  }
+
+  message MultiSubnetIpConfiguration {
+    string private_ip_address = 1 [json_name = "private_ip_address"];
+
+    string sql_virtual_machine_id = 2 [json_name = "sql_virtual_machine_id"];
+
+    string subnet_id = 3 [json_name = "subnet_id"];
+  }
+
+  message Replica {
+    string commit = 1;
+
+    string failover_mode = 2 [json_name = "failover_mode"];
+
+    string readable_secondary = 3 [json_name = "readable_secondary"];
+
+    string role = 4;
+
+    string sql_virtual_machine_id = 5 [json_name = "sql_virtual_machine_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermMssqlVirtualMachineGroup version is 0
+message AzurermMssqlVirtualMachineGroup {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  string sql_image_offer = 5 [json_name = "sql_image_offer"];
+
+  string sql_image_sku = 6 [json_name = "sql_image_sku"];
+
+  map<string, string> tags = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  WsfcDomainProfile wsfc_domain_profile = 9 [json_name = "wsfc_domain_profile"];
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message WsfcDomainProfile {
+    string cluster_bootstrap_account_name = 1 [json_name = "cluster_bootstrap_account_name"];
+
+    string cluster_operator_account_name = 2 [json_name = "cluster_operator_account_name"];
+
+    string cluster_subnet_type = 3 [json_name = "cluster_subnet_type"];
+
+    string fqdn = 4;
+
+    string organizational_unit_path = 5 [json_name = "organizational_unit_path"];
+
+    string sql_service_account_name = 6 [json_name = "sql_service_account_name"];
+
+    string storage_account_primary_key = 7 [json_name = "storage_account_primary_key"];
+
+    string storage_account_url = 8 [json_name = "storage_account_url"];
+  }
+}
+
+// AzurermMssqlVirtualNetworkRule version is 0
+message AzurermMssqlVirtualNetworkRule {
+  string id = 1;
+
+  bool ignore_missing_vnet_service_endpoint = 2 [json_name = "ignore_missing_vnet_service_endpoint"];
+
+  string name = 3;
+
+  string server_id = 4 [json_name = "server_id"];
+
+  string subnet_id = 5 [json_name = "subnet_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

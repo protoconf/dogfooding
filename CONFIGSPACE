@@ -1,0 +1,5 @@
+kubernetes = remote_repo(
+    url="git@github.com:protoconf/protoconf-kubernetes",
+    commit="f01a1ab",
+    exclude_file_regexps=["terraform"],
+)

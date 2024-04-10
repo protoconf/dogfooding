@@ -1,0 +1,478 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermExpressRouteCircuit version is 0
+message AzurermExpressRouteCircuit {
+  bool allow_classic_operations = 1 [json_name = "allow_classic_operations"];
+
+  string authorization_key = 2 [json_name = "authorization_key"];
+
+  int64 bandwidth_in_gbps = 3 [json_name = "bandwidth_in_gbps"];
+
+  int64 bandwidth_in_mbps = 4 [json_name = "bandwidth_in_mbps"];
+
+  string express_route_port_id = 5 [json_name = "express_route_port_id"];
+
+  string id = 6;
+
+  string location = 7;
+
+  string name = 8;
+
+  string peering_location = 9 [json_name = "peering_location"];
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  string service_key = 11 [json_name = "service_key"];
+
+  string service_provider_name = 12 [json_name = "service_provider_name"];
+
+  string service_provider_provisioning_state = 13 [json_name = "service_provider_provisioning_state"];
+
+  map<string, string> tags = 14;
+
+  Sku sku = 15;
+
+  repeated Timeouts timeouts = 16;
+
+  google.protobuf.Value for_each = 17 [json_name = "for_each"];
+
+  repeated string depends_on = 18 [json_name = "depends_on"];
+
+  int32 count = 19;
+
+  string provider = 20;
+
+  terraform.v1.Lifecycle lifecycle = 21;
+
+  message Sku {
+    string family = 1;
+
+    string tier = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermExpressRouteCircuitAuthorization version is 0
+message AzurermExpressRouteCircuitAuthorization {
+  string authorization_key = 1 [json_name = "authorization_key"];
+
+  string authorization_use_status = 2 [json_name = "authorization_use_status"];
+
+  string express_route_circuit_name = 3 [json_name = "express_route_circuit_name"];
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermExpressRouteCircuitConnection version is 0
+message AzurermExpressRouteCircuitConnection {
+  string address_prefix_ipv4 = 1 [json_name = "address_prefix_ipv4"];
+
+  string address_prefix_ipv6 = 2 [json_name = "address_prefix_ipv6"];
+
+  string authorization_key = 3 [json_name = "authorization_key"];
+
+  string id = 4;
+
+  string name = 5;
+
+  string peer_peering_id = 6 [json_name = "peer_peering_id"];
+
+  string peering_id = 7 [json_name = "peering_id"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermExpressRouteCircuitPeering version is 0
+message AzurermExpressRouteCircuitPeering {
+  int64 azure_asn = 1 [json_name = "azure_asn"];
+
+  string express_route_circuit_name = 2 [json_name = "express_route_circuit_name"];
+
+  string gateway_manager_etag = 3 [json_name = "gateway_manager_etag"];
+
+  string id = 4;
+
+  bool ipv4_enabled = 5 [json_name = "ipv4_enabled"];
+
+  int64 peer_asn = 6 [json_name = "peer_asn"];
+
+  string peering_type = 7 [json_name = "peering_type"];
+
+  string primary_azure_port = 8 [json_name = "primary_azure_port"];
+
+  string primary_peer_address_prefix = 9 [json_name = "primary_peer_address_prefix"];
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  string route_filter_id = 11 [json_name = "route_filter_id"];
+
+  string secondary_azure_port = 12 [json_name = "secondary_azure_port"];
+
+  string secondary_peer_address_prefix = 13 [json_name = "secondary_peer_address_prefix"];
+
+  string shared_key = 14 [json_name = "shared_key"];
+
+  int64 vlan_id = 15 [json_name = "vlan_id"];
+
+  Ipv6 ipv6 = 16;
+
+  MicrosoftPeeringConfig microsoft_peering_config = 17 [json_name = "microsoft_peering_config"];
+
+  repeated Timeouts timeouts = 18;
+
+  google.protobuf.Value for_each = 19 [json_name = "for_each"];
+
+  repeated string depends_on = 20 [json_name = "depends_on"];
+
+  int32 count = 21;
+
+  string provider = 22;
+
+  terraform.v1.Lifecycle lifecycle = 23;
+
+  message Ipv6 {
+    bool enabled = 1;
+
+    string primary_peer_address_prefix = 2 [json_name = "primary_peer_address_prefix"];
+
+    string route_filter_id = 3 [json_name = "route_filter_id"];
+
+    string secondary_peer_address_prefix = 4 [json_name = "secondary_peer_address_prefix"];
+
+    MicrosoftPeering microsoft_peering = 5 [json_name = "microsoft_peering"];
+
+    message MicrosoftPeering {
+      repeated string advertised_communities = 1 [json_name = "advertised_communities"];
+
+      repeated string advertised_public_prefixes = 2 [json_name = "advertised_public_prefixes"];
+
+      int64 customer_asn = 3 [json_name = "customer_asn"];
+
+      string routing_registry_name = 4 [json_name = "routing_registry_name"];
+    }
+  }
+
+  message MicrosoftPeeringConfig {
+    repeated string advertised_communities = 1 [json_name = "advertised_communities"];
+
+    repeated string advertised_public_prefixes = 2 [json_name = "advertised_public_prefixes"];
+
+    int64 customer_asn = 3 [json_name = "customer_asn"];
+
+    string routing_registry_name = 4 [json_name = "routing_registry_name"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermExpressRouteConnection version is 0
+message AzurermExpressRouteConnection {
+  string authorization_key = 1 [json_name = "authorization_key"];
+
+  bool enable_internet_security = 2 [json_name = "enable_internet_security"];
+
+  string express_route_circuit_peering_id = 3 [json_name = "express_route_circuit_peering_id"];
+
+  bool express_route_gateway_bypass_enabled = 4 [json_name = "express_route_gateway_bypass_enabled"];
+
+  string express_route_gateway_id = 5 [json_name = "express_route_gateway_id"];
+
+  string id = 6;
+
+  string name = 7;
+
+  int64 routing_weight = 8 [json_name = "routing_weight"];
+
+  Routing routing = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Routing {
+    string associated_route_table_id = 1 [json_name = "associated_route_table_id"];
+
+    string inbound_route_map_id = 2 [json_name = "inbound_route_map_id"];
+
+    string outbound_route_map_id = 3 [json_name = "outbound_route_map_id"];
+
+    PropagatedRouteTable propagated_route_table = 4 [json_name = "propagated_route_table"];
+
+    message PropagatedRouteTable {
+      repeated string labels = 1;
+
+      repeated string route_table_ids = 2 [json_name = "route_table_ids"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermExpressRouteGateway version is 0
+message AzurermExpressRouteGateway {
+  bool allow_non_virtual_wan_traffic = 1 [json_name = "allow_non_virtual_wan_traffic"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  int64 scale_units = 6 [json_name = "scale_units"];
+
+  map<string, string> tags = 7;
+
+  string virtual_hub_id = 8 [json_name = "virtual_hub_id"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermExpressRoutePort version is 0
+message AzurermExpressRoutePort {
+  int64 bandwidth_in_gbps = 1 [json_name = "bandwidth_in_gbps"];
+
+  string billing_type = 2 [json_name = "billing_type"];
+
+  string encapsulation = 3;
+
+  string ethertype = 4;
+
+  string guid = 5;
+
+  string id = 6;
+
+  string location = 7;
+
+  string mtu = 8;
+
+  string name = 9;
+
+  string peering_location = 10 [json_name = "peering_location"];
+
+  string resource_group_name = 11 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 12;
+
+  Identity identity = 13;
+
+  Link1 link1 = 14;
+
+  Link2 link2 = 15;
+
+  repeated Timeouts timeouts = 16;
+
+  google.protobuf.Value for_each = 17 [json_name = "for_each"];
+
+  repeated string depends_on = 18 [json_name = "depends_on"];
+
+  int32 count = 19;
+
+  string provider = 20;
+
+  terraform.v1.Lifecycle lifecycle = 21;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string type = 2;
+  }
+
+  message Link1 {
+    bool admin_enabled = 1 [json_name = "admin_enabled"];
+
+    string connector_type = 2 [json_name = "connector_type"];
+
+    string id = 3;
+
+    string interface_name = 4 [json_name = "interface_name"];
+
+    string macsec_cak_keyvault_secret_id = 5 [json_name = "macsec_cak_keyvault_secret_id"];
+
+    string macsec_cipher = 6 [json_name = "macsec_cipher"];
+
+    string macsec_ckn_keyvault_secret_id = 7 [json_name = "macsec_ckn_keyvault_secret_id"];
+
+    bool macsec_sci_enabled = 8 [json_name = "macsec_sci_enabled"];
+
+    string patch_panel_id = 9 [json_name = "patch_panel_id"];
+
+    string rack_id = 10 [json_name = "rack_id"];
+
+    string router_name = 11 [json_name = "router_name"];
+  }
+
+  message Link2 {
+    bool admin_enabled = 1 [json_name = "admin_enabled"];
+
+    string connector_type = 2 [json_name = "connector_type"];
+
+    string id = 3;
+
+    string interface_name = 4 [json_name = "interface_name"];
+
+    string macsec_cak_keyvault_secret_id = 5 [json_name = "macsec_cak_keyvault_secret_id"];
+
+    string macsec_cipher = 6 [json_name = "macsec_cipher"];
+
+    string macsec_ckn_keyvault_secret_id = 7 [json_name = "macsec_ckn_keyvault_secret_id"];
+
+    bool macsec_sci_enabled = 8 [json_name = "macsec_sci_enabled"];
+
+    string patch_panel_id = 9 [json_name = "patch_panel_id"];
+
+    string rack_id = 10 [json_name = "rack_id"];
+
+    string router_name = 11 [json_name = "router_name"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermExpressRoutePortAuthorization version is 0
+message AzurermExpressRoutePortAuthorization {
+  string authorization_key = 1 [json_name = "authorization_key"];
+
+  string authorization_use_status = 2 [json_name = "authorization_use_status"];
+
+  string express_route_port_name = 3 [json_name = "express_route_port_name"];
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}

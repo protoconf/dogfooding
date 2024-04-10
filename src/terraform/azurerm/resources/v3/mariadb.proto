@@ -1,0 +1,213 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermMariadbConfiguration version is 0
+message AzurermMariadbConfiguration {
+  string id = 1;
+
+  string name = 2;
+
+  string resource_group_name = 3 [json_name = "resource_group_name"];
+
+  string server_name = 4 [json_name = "server_name"];
+
+  string value = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermMariadbDatabase version is 0
+message AzurermMariadbDatabase {
+  string charset = 1;
+
+  string collation = 2;
+
+  string id = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string server_name = 6 [json_name = "server_name"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermMariadbFirewallRule version is 0
+message AzurermMariadbFirewallRule {
+  string end_ip_address = 1 [json_name = "end_ip_address"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  string server_name = 5 [json_name = "server_name"];
+
+  string start_ip_address = 6 [json_name = "start_ip_address"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMariadbServer version is 0
+message AzurermMariadbServer {
+  string administrator_login = 1 [json_name = "administrator_login"];
+
+  string administrator_login_password = 2 [json_name = "administrator_login_password"];
+
+  bool auto_grow_enabled = 3 [json_name = "auto_grow_enabled"];
+
+  int64 backup_retention_days = 4 [json_name = "backup_retention_days"];
+
+  string create_mode = 5 [json_name = "create_mode"];
+
+  string creation_source_server_id = 6 [json_name = "creation_source_server_id"];
+
+  string fqdn = 7;
+
+  bool geo_redundant_backup_enabled = 8 [json_name = "geo_redundant_backup_enabled"];
+
+  string id = 9;
+
+  string location = 10;
+
+  string name = 11;
+
+  bool public_network_access_enabled = 12 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 13 [json_name = "resource_group_name"];
+
+  string restore_point_in_time = 14 [json_name = "restore_point_in_time"];
+
+  string sku_name = 15 [json_name = "sku_name"];
+
+  bool ssl_enforcement_enabled = 16 [json_name = "ssl_enforcement_enabled"];
+
+  string ssl_minimal_tls_version_enforced = 17 [json_name = "ssl_minimal_tls_version_enforced"];
+
+  int64 storage_mb = 18 [json_name = "storage_mb"];
+
+  map<string, string> tags = 19;
+
+  string version = 20;
+
+  repeated Timeouts timeouts = 21;
+
+  google.protobuf.Value for_each = 22 [json_name = "for_each"];
+
+  repeated string depends_on = 23 [json_name = "depends_on"];
+
+  int32 count = 24;
+
+  string provider = 25;
+
+  terraform.v1.Lifecycle lifecycle = 26;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermMariadbVirtualNetworkRule version is 0
+message AzurermMariadbVirtualNetworkRule {
+  string id = 1;
+
+  string name = 2;
+
+  string resource_group_name = 3 [json_name = "resource_group_name"];
+
+  string server_name = 4 [json_name = "server_name"];
+
+  string subnet_id = 5 [json_name = "subnet_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

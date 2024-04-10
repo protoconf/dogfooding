@@ -1,0 +1,882 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermEventgridDomain version is 0
+message AzurermEventgridDomain {
+  bool auto_create_topic_with_first_subscription = 1 [
+    json_name = "auto_create_topic_with_first_subscription"
+  ];
+
+  bool auto_delete_topic_with_last_subscription = 2 [
+    json_name = "auto_delete_topic_with_last_subscription"
+  ];
+
+  string endpoint = 3;
+
+  string id = 4;
+
+  repeated InboundIpRule inbound_ip_rule = 5 [json_name = "inbound_ip_rule"];
+
+  string input_schema = 6 [json_name = "input_schema"];
+
+  bool local_auth_enabled = 7 [json_name = "local_auth_enabled"];
+
+  string location = 8;
+
+  string name = 9;
+
+  string primary_access_key = 10 [json_name = "primary_access_key"];
+
+  bool public_network_access_enabled = 11 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 12 [json_name = "resource_group_name"];
+
+  string secondary_access_key = 13 [json_name = "secondary_access_key"];
+
+  map<string, string> tags = 14;
+
+  Identity identity = 15;
+
+  InputMappingDefaultValues input_mapping_default_values = 16 [json_name = "input_mapping_default_values"];
+
+  InputMappingFields input_mapping_fields = 17 [json_name = "input_mapping_fields"];
+
+  repeated Timeouts timeouts = 18;
+
+  google.protobuf.Value for_each = 19 [json_name = "for_each"];
+
+  repeated string depends_on = 20 [json_name = "depends_on"];
+
+  int32 count = 21;
+
+  string provider = 22;
+
+  terraform.v1.Lifecycle lifecycle = 23;
+
+  message InboundIpRule {
+    // action: string
+    string action = 1;
+
+    // ip_mask: string
+    string ip_mask = 2 [json_name = "ip_mask"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message InputMappingDefaultValues {
+    string data_version = 1 [json_name = "data_version"];
+
+    string event_type = 2 [json_name = "event_type"];
+
+    string subject = 3;
+  }
+
+  message InputMappingFields {
+    string data_version = 1 [json_name = "data_version"];
+
+    string event_time = 2 [json_name = "event_time"];
+
+    string event_type = 3 [json_name = "event_type"];
+
+    string id = 4;
+
+    string subject = 5;
+
+    string topic = 6;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermEventgridDomainTopic version is 0
+message AzurermEventgridDomainTopic {
+  string domain_name = 1 [json_name = "domain_name"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermEventgridEventSubscription version is 0
+message AzurermEventgridEventSubscription {
+  bool advanced_filtering_on_arrays_enabled = 1 [json_name = "advanced_filtering_on_arrays_enabled"];
+
+  string event_delivery_schema = 2 [json_name = "event_delivery_schema"];
+
+  string eventhub_endpoint_id = 3 [json_name = "eventhub_endpoint_id"];
+
+  string expiration_time_utc = 4 [json_name = "expiration_time_utc"];
+
+  string hybrid_connection_endpoint_id = 5 [json_name = "hybrid_connection_endpoint_id"];
+
+  string id = 6;
+
+  repeated string included_event_types = 7 [json_name = "included_event_types"];
+
+  repeated string labels = 8;
+
+  string name = 9;
+
+  string scope = 10;
+
+  string service_bus_queue_endpoint_id = 11 [json_name = "service_bus_queue_endpoint_id"];
+
+  string service_bus_topic_endpoint_id = 12 [json_name = "service_bus_topic_endpoint_id"];
+
+  AdvancedFilter advanced_filter = 13 [json_name = "advanced_filter"];
+
+  AzureFunctionEndpoint azure_function_endpoint = 14 [json_name = "azure_function_endpoint"];
+
+  DeadLetterIdentity dead_letter_identity = 15 [json_name = "dead_letter_identity"];
+
+  DeliveryIdentity delivery_identity = 16 [json_name = "delivery_identity"];
+
+  repeated DeliveryProperty delivery_property = 17 [json_name = "delivery_property"];
+
+  RetryPolicy retry_policy = 18 [json_name = "retry_policy"];
+
+  StorageBlobDeadLetterDestination storage_blob_dead_letter_destination = 19 [json_name = "storage_blob_dead_letter_destination"];
+
+  StorageQueueEndpoint storage_queue_endpoint = 20 [json_name = "storage_queue_endpoint"];
+
+  SubjectFilter subject_filter = 21 [json_name = "subject_filter"];
+
+  repeated Timeouts timeouts = 22;
+
+  WebhookEndpoint webhook_endpoint = 23 [json_name = "webhook_endpoint"];
+
+  google.protobuf.Value for_each = 24 [json_name = "for_each"];
+
+  repeated string depends_on = 25 [json_name = "depends_on"];
+
+  int32 count = 26;
+
+  string provider = 27;
+
+  terraform.v1.Lifecycle lifecycle = 28;
+
+  message AdvancedFilter {
+    repeated BoolEquals bool_equals = 1 [json_name = "bool_equals"];
+
+    repeated IsNotNull is_not_null = 2 [json_name = "is_not_null"];
+
+    repeated IsNullOrUndefined is_null_or_undefined = 3 [json_name = "is_null_or_undefined"];
+
+    repeated NumberGreaterThan number_greater_than = 4 [json_name = "number_greater_than"];
+
+    repeated NumberGreaterThanOrEquals number_greater_than_or_equals = 5 [json_name = "number_greater_than_or_equals"];
+
+    repeated NumberIn number_in = 6 [json_name = "number_in"];
+
+    repeated NumberInRange number_in_range = 7 [json_name = "number_in_range"];
+
+    repeated NumberLessThan number_less_than = 8 [json_name = "number_less_than"];
+
+    repeated NumberLessThanOrEquals number_less_than_or_equals = 9 [json_name = "number_less_than_or_equals"];
+
+    repeated NumberNotIn number_not_in = 10 [json_name = "number_not_in"];
+
+    repeated NumberNotInRange number_not_in_range = 11 [json_name = "number_not_in_range"];
+
+    repeated StringBeginsWith string_begins_with = 12 [json_name = "string_begins_with"];
+
+    repeated StringContains string_contains = 13 [json_name = "string_contains"];
+
+    repeated StringEndsWith string_ends_with = 14 [json_name = "string_ends_with"];
+
+    repeated StringIn string_in = 15 [json_name = "string_in"];
+
+    repeated StringNotBeginsWith string_not_begins_with = 16 [json_name = "string_not_begins_with"];
+
+    repeated StringNotContains string_not_contains = 17 [json_name = "string_not_contains"];
+
+    repeated StringNotEndsWith string_not_ends_with = 18 [json_name = "string_not_ends_with"];
+
+    repeated StringNotIn string_not_in = 19 [json_name = "string_not_in"];
+
+    message BoolEquals {
+      string key = 1;
+
+      bool value = 2;
+    }
+
+    message IsNotNull {
+      string key = 1;
+    }
+
+    message IsNullOrUndefined {
+      string key = 1;
+    }
+
+    message NumberGreaterThan {
+      string key = 1;
+
+      int64 value = 2;
+    }
+
+    message NumberGreaterThanOrEquals {
+      string key = 1;
+
+      int64 value = 2;
+    }
+
+    message NumberIn {
+      string key = 1;
+
+      repeated int64 values = 2;
+    }
+
+    message NumberInRange {
+      string key = 1;
+
+      repeated int64 values = 2;
+    }
+
+    message NumberLessThan {
+      string key = 1;
+
+      int64 value = 2;
+    }
+
+    message NumberLessThanOrEquals {
+      string key = 1;
+
+      int64 value = 2;
+    }
+
+    message NumberNotIn {
+      string key = 1;
+
+      repeated int64 values = 2;
+    }
+
+    message NumberNotInRange {
+      string key = 1;
+
+      repeated int64 values = 2;
+    }
+
+    message StringBeginsWith {
+      string key = 1;
+
+      repeated string values = 2;
+    }
+
+    message StringContains {
+      string key = 1;
+
+      repeated string values = 2;
+    }
+
+    message StringEndsWith {
+      string key = 1;
+
+      repeated string values = 2;
+    }
+
+    message StringIn {
+      string key = 1;
+
+      repeated string values = 2;
+    }
+
+    message StringNotBeginsWith {
+      string key = 1;
+
+      repeated string values = 2;
+    }
+
+    message StringNotContains {
+      string key = 1;
+
+      repeated string values = 2;
+    }
+
+    message StringNotEndsWith {
+      string key = 1;
+
+      repeated string values = 2;
+    }
+
+    message StringNotIn {
+      string key = 1;
+
+      repeated string values = 2;
+    }
+  }
+
+  message AzureFunctionEndpoint {
+    string function_id = 1 [json_name = "function_id"];
+
+    int64 max_events_per_batch = 2 [json_name = "max_events_per_batch"];
+
+    int64 preferred_batch_size_in_kilobytes = 3 [json_name = "preferred_batch_size_in_kilobytes"];
+  }
+
+  message DeadLetterIdentity {
+    string type = 1;
+
+    string user_assigned_identity = 2 [json_name = "user_assigned_identity"];
+  }
+
+  message DeliveryIdentity {
+    string type = 1;
+
+    string user_assigned_identity = 2 [json_name = "user_assigned_identity"];
+  }
+
+  message DeliveryProperty {
+    string header_name = 1 [json_name = "header_name"];
+
+    bool secret = 2;
+
+    string source_field = 3 [json_name = "source_field"];
+
+    string type = 4;
+
+    string value = 5;
+  }
+
+  message RetryPolicy {
+    int64 event_time_to_live = 1 [json_name = "event_time_to_live"];
+
+    int64 max_delivery_attempts = 2 [json_name = "max_delivery_attempts"];
+  }
+
+  message StorageBlobDeadLetterDestination {
+    string storage_account_id = 1 [json_name = "storage_account_id"];
+
+    string storage_blob_container_name = 2 [json_name = "storage_blob_container_name"];
+  }
+
+  message StorageQueueEndpoint {
+    int64 queue_message_time_to_live_in_seconds = 1 [
+      json_name = "queue_message_time_to_live_in_seconds"
+    ];
+
+    string queue_name = 2 [json_name = "queue_name"];
+
+    string storage_account_id = 3 [json_name = "storage_account_id"];
+  }
+
+  message SubjectFilter {
+    bool case_sensitive = 1 [json_name = "case_sensitive"];
+
+    string subject_begins_with = 2 [json_name = "subject_begins_with"];
+
+    string subject_ends_with = 3 [json_name = "subject_ends_with"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message WebhookEndpoint {
+    string active_directory_app_id_or_uri = 1 [json_name = "active_directory_app_id_or_uri"];
+
+    string active_directory_tenant_id = 2 [json_name = "active_directory_tenant_id"];
+
+    string base_url = 3 [json_name = "base_url"];
+
+    int64 max_events_per_batch = 4 [json_name = "max_events_per_batch"];
+
+    int64 preferred_batch_size_in_kilobytes = 5 [json_name = "preferred_batch_size_in_kilobytes"];
+
+    string url = 6;
+  }
+}
+
+// AzurermEventgridSystemTopic version is 0
+message AzurermEventgridSystemTopic {
+  string id = 1;
+
+  string location = 2;
+
+  string metric_arm_resource_id = 3 [json_name = "metric_arm_resource_id"];
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string source_arm_resource_id = 6 [json_name = "source_arm_resource_id"];
+
+  map<string, string> tags = 7;
+
+  string topic_type = 8 [json_name = "topic_type"];
+
+  Identity identity = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermEventgridSystemTopicEventSubscription version is 0
+message AzurermEventgridSystemTopicEventSubscription {
+  bool advanced_filtering_on_arrays_enabled = 1 [json_name = "advanced_filtering_on_arrays_enabled"];
+
+  string event_delivery_schema = 2 [json_name = "event_delivery_schema"];
+
+  string eventhub_endpoint_id = 3 [json_name = "eventhub_endpoint_id"];
+
+  string expiration_time_utc = 4 [json_name = "expiration_time_utc"];
+
+  string hybrid_connection_endpoint_id = 5 [json_name = "hybrid_connection_endpoint_id"];
+
+  string id = 6;
+
+  repeated string included_event_types = 7 [json_name = "included_event_types"];
+
+  repeated string labels = 8;
+
+  string name = 9;
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  string service_bus_queue_endpoint_id = 11 [json_name = "service_bus_queue_endpoint_id"];
+
+  string service_bus_topic_endpoint_id = 12 [json_name = "service_bus_topic_endpoint_id"];
+
+  string system_topic = 13 [json_name = "system_topic"];
+
+  AdvancedFilter advanced_filter = 14 [json_name = "advanced_filter"];
+
+  AzureFunctionEndpoint azure_function_endpoint = 15 [json_name = "azure_function_endpoint"];
+
+  DeadLetterIdentity dead_letter_identity = 16 [json_name = "dead_letter_identity"];
+
+  DeliveryIdentity delivery_identity = 17 [json_name = "delivery_identity"];
+
+  repeated DeliveryProperty delivery_property = 18 [json_name = "delivery_property"];
+
+  RetryPolicy retry_policy = 19 [json_name = "retry_policy"];
+
+  StorageBlobDeadLetterDestination storage_blob_dead_letter_destination = 20 [json_name = "storage_blob_dead_letter_destination"];
+
+  StorageQueueEndpoint storage_queue_endpoint = 21 [json_name = "storage_queue_endpoint"];
+
+  SubjectFilter subject_filter = 22 [json_name = "subject_filter"];
+
+  repeated Timeouts timeouts = 23;
+
+  WebhookEndpoint webhook_endpoint = 24 [json_name = "webhook_endpoint"];
+
+  google.protobuf.Value for_each = 25 [json_name = "for_each"];
+
+  repeated string depends_on = 26 [json_name = "depends_on"];
+
+  int32 count = 27;
+
+  string provider = 28;
+
+  terraform.v1.Lifecycle lifecycle = 29;
+
+  message AdvancedFilter {
+    repeated BoolEquals bool_equals = 1 [json_name = "bool_equals"];
+
+    repeated IsNotNull is_not_null = 2 [json_name = "is_not_null"];
+
+    repeated IsNullOrUndefined is_null_or_undefined = 3 [json_name = "is_null_or_undefined"];
+
+    repeated NumberGreaterThan number_greater_than = 4 [json_name = "number_greater_than"];
+
+    repeated NumberGreaterThanOrEquals number_greater_than_or_equals = 5 [json_name = "number_greater_than_or_equals"];
+
+    repeated NumberIn number_in = 6 [json_name = "number_in"];
+
+    repeated NumberInRange number_in_range = 7 [json_name = "number_in_range"];
+
+    repeated NumberLessThan number_less_than = 8 [json_name = "number_less_than"];
+
+    repeated NumberLessThanOrEquals number_less_than_or_equals = 9 [json_name = "number_less_than_or_equals"];
+
+    repeated NumberNotIn number_not_in = 10 [json_name = "number_not_in"];
+
+    repeated NumberNotInRange number_not_in_range = 11 [json_name = "number_not_in_range"];
+
+    repeated StringBeginsWith string_begins_with = 12 [json_name = "string_begins_with"];
+
+    repeated StringContains string_contains = 13 [json_name = "string_contains"];
+
+    repeated StringEndsWith string_ends_with = 14 [json_name = "string_ends_with"];
+
+    repeated StringIn string_in = 15 [json_name = "string_in"];
+
+    repeated StringNotBeginsWith string_not_begins_with = 16 [json_name = "string_not_begins_with"];
+
+    repeated StringNotContains string_not_contains = 17 [json_name = "string_not_contains"];
+
+    repeated StringNotEndsWith string_not_ends_with = 18 [json_name = "string_not_ends_with"];
+
+    repeated StringNotIn string_not_in = 19 [json_name = "string_not_in"];
+
+    message BoolEquals {
+      string key = 1;
+
+      bool value = 2;
+    }
+
+    message IsNotNull {
+      string key = 1;
+    }
+
+    message IsNullOrUndefined {
+      string key = 1;
+    }
+
+    message NumberGreaterThan {
+      string key = 1;
+
+      int64 value = 2;
+    }
+
+    message NumberGreaterThanOrEquals {
+      string key = 1;
+
+      int64 value = 2;
+    }
+
+    message NumberIn {
+      string key = 1;
+
+      repeated int64 values = 2;
+    }
+
+    message NumberInRange {
+      string key = 1;
+
+      repeated int64 values = 2;
+    }
+
+    message NumberLessThan {
+      string key = 1;
+
+      int64 value = 2;
+    }
+
+    message NumberLessThanOrEquals {
+      string key = 1;
+
+      int64 value = 2;
+    }
+
+    message NumberNotIn {
+      string key = 1;
+
+      repeated int64 values = 2;
+    }
+
+    message NumberNotInRange {
+      string key = 1;
+
+      repeated int64 values = 2;
+    }
+
+    message StringBeginsWith {
+      string key = 1;
+
+      repeated string values = 2;
+    }
+
+    message StringContains {
+      string key = 1;
+
+      repeated string values = 2;
+    }
+
+    message StringEndsWith {
+      string key = 1;
+
+      repeated string values = 2;
+    }
+
+    message StringIn {
+      string key = 1;
+
+      repeated string values = 2;
+    }
+
+    message StringNotBeginsWith {
+      string key = 1;
+
+      repeated string values = 2;
+    }
+
+    message StringNotContains {
+      string key = 1;
+
+      repeated string values = 2;
+    }
+
+    message StringNotEndsWith {
+      string key = 1;
+
+      repeated string values = 2;
+    }
+
+    message StringNotIn {
+      string key = 1;
+
+      repeated string values = 2;
+    }
+  }
+
+  message AzureFunctionEndpoint {
+    string function_id = 1 [json_name = "function_id"];
+
+    int64 max_events_per_batch = 2 [json_name = "max_events_per_batch"];
+
+    int64 preferred_batch_size_in_kilobytes = 3 [json_name = "preferred_batch_size_in_kilobytes"];
+  }
+
+  message DeadLetterIdentity {
+    string type = 1;
+
+    string user_assigned_identity = 2 [json_name = "user_assigned_identity"];
+  }
+
+  message DeliveryIdentity {
+    string type = 1;
+
+    string user_assigned_identity = 2 [json_name = "user_assigned_identity"];
+  }
+
+  message DeliveryProperty {
+    string header_name = 1 [json_name = "header_name"];
+
+    bool secret = 2;
+
+    string source_field = 3 [json_name = "source_field"];
+
+    string type = 4;
+
+    string value = 5;
+  }
+
+  message RetryPolicy {
+    int64 event_time_to_live = 1 [json_name = "event_time_to_live"];
+
+    int64 max_delivery_attempts = 2 [json_name = "max_delivery_attempts"];
+  }
+
+  message StorageBlobDeadLetterDestination {
+    string storage_account_id = 1 [json_name = "storage_account_id"];
+
+    string storage_blob_container_name = 2 [json_name = "storage_blob_container_name"];
+  }
+
+  message StorageQueueEndpoint {
+    int64 queue_message_time_to_live_in_seconds = 1 [
+      json_name = "queue_message_time_to_live_in_seconds"
+    ];
+
+    string queue_name = 2 [json_name = "queue_name"];
+
+    string storage_account_id = 3 [json_name = "storage_account_id"];
+  }
+
+  message SubjectFilter {
+    bool case_sensitive = 1 [json_name = "case_sensitive"];
+
+    string subject_begins_with = 2 [json_name = "subject_begins_with"];
+
+    string subject_ends_with = 3 [json_name = "subject_ends_with"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message WebhookEndpoint {
+    string active_directory_app_id_or_uri = 1 [json_name = "active_directory_app_id_or_uri"];
+
+    string active_directory_tenant_id = 2 [json_name = "active_directory_tenant_id"];
+
+    string base_url = 3 [json_name = "base_url"];
+
+    int64 max_events_per_batch = 4 [json_name = "max_events_per_batch"];
+
+    int64 preferred_batch_size_in_kilobytes = 5 [json_name = "preferred_batch_size_in_kilobytes"];
+
+    string url = 6;
+  }
+}
+
+// AzurermEventgridTopic version is 0
+message AzurermEventgridTopic {
+  string endpoint = 1;
+
+  string id = 2;
+
+  repeated InboundIpRule inbound_ip_rule = 3 [json_name = "inbound_ip_rule"];
+
+  string input_schema = 4 [json_name = "input_schema"];
+
+  bool local_auth_enabled = 5 [json_name = "local_auth_enabled"];
+
+  string location = 6;
+
+  string name = 7;
+
+  string primary_access_key = 8 [json_name = "primary_access_key"];
+
+  bool public_network_access_enabled = 9 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  string secondary_access_key = 11 [json_name = "secondary_access_key"];
+
+  map<string, string> tags = 12;
+
+  Identity identity = 13;
+
+  InputMappingDefaultValues input_mapping_default_values = 14 [json_name = "input_mapping_default_values"];
+
+  InputMappingFields input_mapping_fields = 15 [json_name = "input_mapping_fields"];
+
+  repeated Timeouts timeouts = 16;
+
+  google.protobuf.Value for_each = 17 [json_name = "for_each"];
+
+  repeated string depends_on = 18 [json_name = "depends_on"];
+
+  int32 count = 19;
+
+  string provider = 20;
+
+  terraform.v1.Lifecycle lifecycle = 21;
+
+  message InboundIpRule {
+    // action: string
+    string action = 1;
+
+    // ip_mask: string
+    string ip_mask = 2 [json_name = "ip_mask"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message InputMappingDefaultValues {
+    string data_version = 1 [json_name = "data_version"];
+
+    string event_type = 2 [json_name = "event_type"];
+
+    string subject = 3;
+  }
+
+  message InputMappingFields {
+    string data_version = 1 [json_name = "data_version"];
+
+    string event_time = 2 [json_name = "event_time"];
+
+    string event_type = 3 [json_name = "event_type"];
+
+    string id = 4;
+
+    string subject = 5;
+
+    string topic = 6;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

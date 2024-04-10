@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermSnapshot version is 1
+message AzurermSnapshot {
+  string create_option = 1 [json_name = "create_option"];
+
+  int64 disk_size_gb = 2 [json_name = "disk_size_gb"];
+
+  string id = 3;
+
+  bool incremental_enabled = 4 [json_name = "incremental_enabled"];
+
+  string location = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string source_resource_id = 8 [json_name = "source_resource_id"];
+
+  string source_uri = 9 [json_name = "source_uri"];
+
+  string storage_account_id = 10 [json_name = "storage_account_id"];
+
+  map<string, string> tags = 11;
+
+  bool trusted_launch_enabled = 12 [json_name = "trusted_launch_enabled"];
+
+  EncryptionSettings encryption_settings = 13 [json_name = "encryption_settings"];
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message EncryptionSettings {
+    bool enabled = 1;
+
+    DiskEncryptionKey disk_encryption_key = 2 [json_name = "disk_encryption_key"];
+
+    KeyEncryptionKey key_encryption_key = 3 [json_name = "key_encryption_key"];
+
+    message DiskEncryptionKey {
+      string secret_url = 1 [json_name = "secret_url"];
+
+      string source_vault_id = 2 [json_name = "source_vault_id"];
+    }
+
+    message KeyEncryptionKey {
+      string key_url = 1 [json_name = "key_url"];
+
+      string source_vault_id = 2 [json_name = "source_vault_id"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

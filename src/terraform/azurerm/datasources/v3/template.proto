@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermTemplateSpecVersion version is 0
+message AzurermTemplateSpecVersion {
+  string id = 1;
+
+  string name = 2;
+
+  string resource_group_name = 3 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 4;
+
+  string template_body = 5 [json_name = "template_body"];
+
+  string version = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string read = 1;
+  }
+}

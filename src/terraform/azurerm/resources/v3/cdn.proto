@@ -1,0 +1,1438 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermCdnEndpoint version is 1
+message AzurermCdnEndpoint {
+  repeated string content_types_to_compress = 1 [json_name = "content_types_to_compress"];
+
+  string fqdn = 2;
+
+  string id = 3;
+
+  bool is_compression_enabled = 4 [json_name = "is_compression_enabled"];
+
+  bool is_http_allowed = 5 [json_name = "is_http_allowed"];
+
+  bool is_https_allowed = 6 [json_name = "is_https_allowed"];
+
+  string location = 7;
+
+  string name = 8;
+
+  string optimization_type = 9 [json_name = "optimization_type"];
+
+  string origin_host_header = 10 [json_name = "origin_host_header"];
+
+  string origin_path = 11 [json_name = "origin_path"];
+
+  string probe_path = 12 [json_name = "probe_path"];
+
+  string profile_name = 13 [json_name = "profile_name"];
+
+  string querystring_caching_behaviour = 14 [json_name = "querystring_caching_behaviour"];
+
+  string resource_group_name = 15 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 16;
+
+  repeated DeliveryRule delivery_rule = 17 [json_name = "delivery_rule"];
+
+  repeated GeoFilter geo_filter = 18 [json_name = "geo_filter"];
+
+  GlobalDeliveryRule global_delivery_rule = 19 [json_name = "global_delivery_rule"];
+
+  repeated Origin origin = 20;
+
+  repeated Timeouts timeouts = 21;
+
+  google.protobuf.Value for_each = 22 [json_name = "for_each"];
+
+  repeated string depends_on = 23 [json_name = "depends_on"];
+
+  int32 count = 24;
+
+  string provider = 25;
+
+  terraform.v1.Lifecycle lifecycle = 26;
+
+  message DeliveryRule {
+    string name = 1;
+
+    int64 order = 2;
+
+    CacheExpirationAction cache_expiration_action = 3 [json_name = "cache_expiration_action"];
+
+    CacheKeyQueryStringAction cache_key_query_string_action = 4 [json_name = "cache_key_query_string_action"];
+
+    repeated CookiesCondition cookies_condition = 5 [json_name = "cookies_condition"];
+
+    DeviceCondition device_condition = 6 [json_name = "device_condition"];
+
+    repeated HttpVersionCondition http_version_condition = 7 [json_name = "http_version_condition"];
+
+    repeated ModifyRequestHeaderAction modify_request_header_action = 8 [json_name = "modify_request_header_action"];
+
+    repeated ModifyResponseHeaderAction modify_response_header_action = 9 [json_name = "modify_response_header_action"];
+
+    repeated PostArgCondition post_arg_condition = 10 [json_name = "post_arg_condition"];
+
+    repeated QueryStringCondition query_string_condition = 11 [json_name = "query_string_condition"];
+
+    repeated RemoteAddressCondition remote_address_condition = 12 [json_name = "remote_address_condition"];
+
+    repeated RequestBodyCondition request_body_condition = 13 [json_name = "request_body_condition"];
+
+    repeated RequestHeaderCondition request_header_condition = 14 [json_name = "request_header_condition"];
+
+    RequestMethodCondition request_method_condition = 15 [json_name = "request_method_condition"];
+
+    RequestSchemeCondition request_scheme_condition = 16 [json_name = "request_scheme_condition"];
+
+    repeated RequestUriCondition request_uri_condition = 17 [json_name = "request_uri_condition"];
+
+    repeated UrlFileExtensionCondition url_file_extension_condition = 18 [json_name = "url_file_extension_condition"];
+
+    repeated UrlFileNameCondition url_file_name_condition = 19 [json_name = "url_file_name_condition"];
+
+    repeated UrlPathCondition url_path_condition = 20 [json_name = "url_path_condition"];
+
+    UrlRedirectAction url_redirect_action = 21 [json_name = "url_redirect_action"];
+
+    UrlRewriteAction url_rewrite_action = 22 [json_name = "url_rewrite_action"];
+
+    message CacheExpirationAction {
+      string behavior = 1;
+
+      string duration = 2;
+    }
+
+    message CacheKeyQueryStringAction {
+      string behavior = 1;
+
+      string parameters = 2;
+    }
+
+    message CookiesCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      string selector = 4;
+
+      repeated string transforms = 5;
+    }
+
+    message DeviceCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+    }
+
+    message HttpVersionCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+    }
+
+    message ModifyRequestHeaderAction {
+      string action = 1;
+
+      string name = 2;
+
+      string value = 3;
+    }
+
+    message ModifyResponseHeaderAction {
+      string action = 1;
+
+      string name = 2;
+
+      string value = 3;
+    }
+
+    message PostArgCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      string selector = 4;
+
+      repeated string transforms = 5;
+    }
+
+    message QueryStringCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      repeated string transforms = 4;
+    }
+
+    message RemoteAddressCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+    }
+
+    message RequestBodyCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      repeated string transforms = 4;
+    }
+
+    message RequestHeaderCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      string selector = 4;
+
+      repeated string transforms = 5;
+    }
+
+    message RequestMethodCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+    }
+
+    message RequestSchemeCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+    }
+
+    message RequestUriCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      repeated string transforms = 4;
+    }
+
+    message UrlFileExtensionCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      repeated string transforms = 4;
+    }
+
+    message UrlFileNameCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      repeated string transforms = 4;
+    }
+
+    message UrlPathCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      repeated string transforms = 4;
+    }
+
+    message UrlRedirectAction {
+      string fragment = 1;
+
+      string hostname = 2;
+
+      string path = 3;
+
+      string protocol = 4;
+
+      string query_string = 5 [json_name = "query_string"];
+
+      string redirect_type = 6 [json_name = "redirect_type"];
+    }
+
+    message UrlRewriteAction {
+      string destination = 1;
+
+      bool preserve_unmatched_path = 2 [json_name = "preserve_unmatched_path"];
+
+      string source_pattern = 3 [json_name = "source_pattern"];
+    }
+  }
+
+  message GeoFilter {
+    string action = 1;
+
+    repeated string country_codes = 2 [json_name = "country_codes"];
+
+    string relative_path = 3 [json_name = "relative_path"];
+  }
+
+  message GlobalDeliveryRule {
+    CacheExpirationAction cache_expiration_action = 1 [json_name = "cache_expiration_action"];
+
+    CacheKeyQueryStringAction cache_key_query_string_action = 2 [json_name = "cache_key_query_string_action"];
+
+    repeated ModifyRequestHeaderAction modify_request_header_action = 3 [json_name = "modify_request_header_action"];
+
+    repeated ModifyResponseHeaderAction modify_response_header_action = 4 [json_name = "modify_response_header_action"];
+
+    UrlRedirectAction url_redirect_action = 5 [json_name = "url_redirect_action"];
+
+    UrlRewriteAction url_rewrite_action = 6 [json_name = "url_rewrite_action"];
+
+    message CacheExpirationAction {
+      string behavior = 1;
+
+      string duration = 2;
+    }
+
+    message CacheKeyQueryStringAction {
+      string behavior = 1;
+
+      string parameters = 2;
+    }
+
+    message ModifyRequestHeaderAction {
+      string action = 1;
+
+      string name = 2;
+
+      string value = 3;
+    }
+
+    message ModifyResponseHeaderAction {
+      string action = 1;
+
+      string name = 2;
+
+      string value = 3;
+    }
+
+    message UrlRedirectAction {
+      string fragment = 1;
+
+      string hostname = 2;
+
+      string path = 3;
+
+      string protocol = 4;
+
+      string query_string = 5 [json_name = "query_string"];
+
+      string redirect_type = 6 [json_name = "redirect_type"];
+    }
+
+    message UrlRewriteAction {
+      string destination = 1;
+
+      bool preserve_unmatched_path = 2 [json_name = "preserve_unmatched_path"];
+
+      string source_pattern = 3 [json_name = "source_pattern"];
+    }
+  }
+
+  message Origin {
+    string host_name = 1 [json_name = "host_name"];
+
+    int64 http_port = 2 [json_name = "http_port"];
+
+    int64 https_port = 3 [json_name = "https_port"];
+
+    string name = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermCdnEndpointCustomDomain version is 0
+message AzurermCdnEndpointCustomDomain {
+  string cdn_endpoint_id = 1 [json_name = "cdn_endpoint_id"];
+
+  string host_name = 2 [json_name = "host_name"];
+
+  string id = 3;
+
+  string name = 4;
+
+  CdnManagedHttps cdn_managed_https = 5 [json_name = "cdn_managed_https"];
+
+  repeated Timeouts timeouts = 6;
+
+  UserManagedHttps user_managed_https = 7 [json_name = "user_managed_https"];
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message CdnManagedHttps {
+    string certificate_type = 1 [json_name = "certificate_type"];
+
+    string protocol_type = 2 [json_name = "protocol_type"];
+
+    string tls_version = 3 [json_name = "tls_version"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message UserManagedHttps {
+    string key_vault_certificate_id = 1 [json_name = "key_vault_certificate_id"];
+
+    string key_vault_secret_id = 2 [json_name = "key_vault_secret_id"];
+
+    string tls_version = 3 [json_name = "tls_version"];
+  }
+}
+
+// AzurermCdnFrontdoorCustomDomain version is 0
+message AzurermCdnFrontdoorCustomDomain {
+  string cdn_frontdoor_profile_id = 1 [json_name = "cdn_frontdoor_profile_id"];
+
+  string dns_zone_id = 2 [json_name = "dns_zone_id"];
+
+  string expiration_date = 3 [json_name = "expiration_date"];
+
+  string host_name = 4 [json_name = "host_name"];
+
+  string id = 5;
+
+  string name = 6;
+
+  string validation_token = 7 [json_name = "validation_token"];
+
+  repeated Timeouts timeouts = 8;
+
+  Tls tls = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message Tls {
+    string cdn_frontdoor_secret_id = 1 [json_name = "cdn_frontdoor_secret_id"];
+
+    string certificate_type = 2 [json_name = "certificate_type"];
+
+    string minimum_tls_version = 3 [json_name = "minimum_tls_version"];
+  }
+}
+
+// AzurermCdnFrontdoorCustomDomainAssociation version is 0
+message AzurermCdnFrontdoorCustomDomainAssociation {
+  string cdn_frontdoor_custom_domain_id = 1 [json_name = "cdn_frontdoor_custom_domain_id"];
+
+  repeated string cdn_frontdoor_route_ids = 2 [json_name = "cdn_frontdoor_route_ids"];
+
+  string id = 3;
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermCdnFrontdoorEndpoint version is 0
+message AzurermCdnFrontdoorEndpoint {
+  string cdn_frontdoor_profile_id = 1 [json_name = "cdn_frontdoor_profile_id"];
+
+  bool enabled = 2;
+
+  string host_name = 3 [json_name = "host_name"];
+
+  string id = 4;
+
+  string name = 5;
+
+  map<string, string> tags = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermCdnFrontdoorFirewallPolicy version is 0
+message AzurermCdnFrontdoorFirewallPolicy {
+  string custom_block_response_body = 1 [json_name = "custom_block_response_body"];
+
+  int64 custom_block_response_status_code = 2 [json_name = "custom_block_response_status_code"];
+
+  bool enabled = 3;
+
+  repeated string frontend_endpoint_ids = 4 [json_name = "frontend_endpoint_ids"];
+
+  string id = 5;
+
+  string mode = 6;
+
+  string name = 7;
+
+  string redirect_url = 8 [json_name = "redirect_url"];
+
+  bool request_body_check_enabled = 9 [json_name = "request_body_check_enabled"];
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  string sku_name = 11 [json_name = "sku_name"];
+
+  map<string, string> tags = 12;
+
+  repeated CustomRule custom_rule = 13 [json_name = "custom_rule"];
+
+  repeated ManagedRule managed_rule = 14 [json_name = "managed_rule"];
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message CustomRule {
+    string action = 1;
+
+    bool enabled = 2;
+
+    string name = 3;
+
+    int64 priority = 4;
+
+    int64 rate_limit_duration_in_minutes = 5 [json_name = "rate_limit_duration_in_minutes"];
+
+    int64 rate_limit_threshold = 6 [json_name = "rate_limit_threshold"];
+
+    string type = 7;
+
+    repeated MatchCondition match_condition = 8 [json_name = "match_condition"];
+
+    message MatchCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      string match_variable = 2 [json_name = "match_variable"];
+
+      bool negation_condition = 3 [json_name = "negation_condition"];
+
+      string operator = 4;
+
+      string selector = 5;
+
+      repeated string transforms = 6;
+    }
+  }
+
+  message ManagedRule {
+    string action = 1;
+
+    string type = 2;
+
+    string version = 3;
+
+    repeated Exclusion exclusion = 4;
+
+    repeated Override override = 5;
+
+    message Exclusion {
+      string match_variable = 1 [json_name = "match_variable"];
+
+      string operator = 2;
+
+      string selector = 3;
+    }
+
+    message Override {
+      string rule_group_name = 1 [json_name = "rule_group_name"];
+
+      repeated Exclusion exclusion = 2;
+
+      repeated Rule rule = 3;
+
+      message Exclusion {
+        string match_variable = 1 [json_name = "match_variable"];
+
+        string operator = 2;
+
+        string selector = 3;
+      }
+
+      message Rule {
+        string action = 1;
+
+        bool enabled = 2;
+
+        string rule_id = 3 [json_name = "rule_id"];
+
+        repeated Exclusion exclusion = 4;
+
+        message Exclusion {
+          string match_variable = 1 [json_name = "match_variable"];
+
+          string operator = 2;
+
+          string selector = 3;
+        }
+      }
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermCdnFrontdoorOrigin version is 0
+message AzurermCdnFrontdoorOrigin {
+  string cdn_frontdoor_origin_group_id = 1 [json_name = "cdn_frontdoor_origin_group_id"];
+
+  bool certificate_name_check_enabled = 2 [json_name = "certificate_name_check_enabled"];
+
+  bool enabled = 3;
+
+  bool health_probes_enabled = 4 [json_name = "health_probes_enabled"];
+
+  string host_name = 5 [json_name = "host_name"];
+
+  int64 http_port = 6 [json_name = "http_port"];
+
+  int64 https_port = 7 [json_name = "https_port"];
+
+  string id = 8;
+
+  string name = 9;
+
+  string origin_host_header = 10 [json_name = "origin_host_header"];
+
+  int64 priority = 11;
+
+  int64 weight = 12;
+
+  PrivateLink private_link = 13 [json_name = "private_link"];
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message PrivateLink {
+    string location = 1;
+
+    string private_link_target_id = 2 [json_name = "private_link_target_id"];
+
+    string request_message = 3 [json_name = "request_message"];
+
+    string target_type = 4 [json_name = "target_type"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermCdnFrontdoorOriginGroup version is 0
+message AzurermCdnFrontdoorOriginGroup {
+  string cdn_frontdoor_profile_id = 1 [json_name = "cdn_frontdoor_profile_id"];
+
+  string id = 2;
+
+  string name = 3;
+
+  int64 restore_traffic_time_to_healed_or_new_endpoint_in_minutes = 4 [
+    json_name = "restore_traffic_time_to_healed_or_new_endpoint_in_minutes"
+  ];
+
+  bool session_affinity_enabled = 5 [json_name = "session_affinity_enabled"];
+
+  HealthProbe health_probe = 6 [json_name = "health_probe"];
+
+  LoadBalancing load_balancing = 7 [json_name = "load_balancing"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message HealthProbe {
+    int64 interval_in_seconds = 1 [json_name = "interval_in_seconds"];
+
+    string path = 2;
+
+    string protocol = 3;
+
+    string request_type = 4 [json_name = "request_type"];
+  }
+
+  message LoadBalancing {
+    int64 additional_latency_in_milliseconds = 1 [json_name = "additional_latency_in_milliseconds"];
+
+    int64 sample_size = 2 [json_name = "sample_size"];
+
+    int64 successful_samples_required = 3 [json_name = "successful_samples_required"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermCdnFrontdoorProfile version is 0
+message AzurermCdnFrontdoorProfile {
+  string id = 1;
+
+  string name = 2;
+
+  string resource_group_name = 3 [json_name = "resource_group_name"];
+
+  string resource_guid = 4 [json_name = "resource_guid"];
+
+  int64 response_timeout_seconds = 5 [json_name = "response_timeout_seconds"];
+
+  string sku_name = 6 [json_name = "sku_name"];
+
+  map<string, string> tags = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermCdnFrontdoorRoute version is 0
+message AzurermCdnFrontdoorRoute {
+  repeated string cdn_frontdoor_custom_domain_ids = 1 [json_name = "cdn_frontdoor_custom_domain_ids"];
+
+  string cdn_frontdoor_endpoint_id = 2 [json_name = "cdn_frontdoor_endpoint_id"];
+
+  string cdn_frontdoor_origin_group_id = 3 [json_name = "cdn_frontdoor_origin_group_id"];
+
+  repeated string cdn_frontdoor_origin_ids = 4 [json_name = "cdn_frontdoor_origin_ids"];
+
+  string cdn_frontdoor_origin_path = 5 [json_name = "cdn_frontdoor_origin_path"];
+
+  repeated string cdn_frontdoor_rule_set_ids = 6 [json_name = "cdn_frontdoor_rule_set_ids"];
+
+  bool enabled = 7;
+
+  string forwarding_protocol = 8 [json_name = "forwarding_protocol"];
+
+  bool https_redirect_enabled = 9 [json_name = "https_redirect_enabled"];
+
+  string id = 10;
+
+  bool link_to_default_domain = 11 [json_name = "link_to_default_domain"];
+
+  string name = 12;
+
+  repeated string patterns_to_match = 13 [json_name = "patterns_to_match"];
+
+  repeated string supported_protocols = 14 [json_name = "supported_protocols"];
+
+  Cache cache = 15;
+
+  repeated Timeouts timeouts = 16;
+
+  google.protobuf.Value for_each = 17 [json_name = "for_each"];
+
+  repeated string depends_on = 18 [json_name = "depends_on"];
+
+  int32 count = 19;
+
+  string provider = 20;
+
+  terraform.v1.Lifecycle lifecycle = 21;
+
+  message Cache {
+    bool compression_enabled = 1 [json_name = "compression_enabled"];
+
+    repeated string content_types_to_compress = 2 [json_name = "content_types_to_compress"];
+
+    string query_string_caching_behavior = 3 [json_name = "query_string_caching_behavior"];
+
+    repeated string query_strings = 4 [json_name = "query_strings"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermCdnFrontdoorRouteDisableLinkToDefaultDomain version is 0
+message AzurermCdnFrontdoorRouteDisableLinkToDefaultDomain {
+  repeated string cdn_frontdoor_custom_domain_ids = 1 [json_name = "cdn_frontdoor_custom_domain_ids"];
+
+  string cdn_frontdoor_route_id = 2 [json_name = "cdn_frontdoor_route_id"];
+
+  string id = 3;
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermCdnFrontdoorRule version is 0
+message AzurermCdnFrontdoorRule {
+  string behavior_on_match = 1 [json_name = "behavior_on_match"];
+
+  string cdn_frontdoor_rule_set_id = 2 [json_name = "cdn_frontdoor_rule_set_id"];
+
+  string cdn_frontdoor_rule_set_name = 3 [json_name = "cdn_frontdoor_rule_set_name"];
+
+  string id = 4;
+
+  string name = 5;
+
+  int64 order = 6;
+
+  Actions actions = 7;
+
+  Conditions conditions = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Actions {
+    repeated RequestHeaderAction request_header_action = 1 [json_name = "request_header_action"];
+
+    repeated ResponseHeaderAction response_header_action = 2 [json_name = "response_header_action"];
+
+    RouteConfigurationOverrideAction route_configuration_override_action = 3 [json_name = "route_configuration_override_action"];
+
+    UrlRedirectAction url_redirect_action = 4 [json_name = "url_redirect_action"];
+
+    UrlRewriteAction url_rewrite_action = 5 [json_name = "url_rewrite_action"];
+
+    message RequestHeaderAction {
+      string header_action = 1 [json_name = "header_action"];
+
+      string header_name = 2 [json_name = "header_name"];
+
+      string value = 3;
+    }
+
+    message ResponseHeaderAction {
+      string header_action = 1 [json_name = "header_action"];
+
+      string header_name = 2 [json_name = "header_name"];
+
+      string value = 3;
+    }
+
+    message RouteConfigurationOverrideAction {
+      string cache_behavior = 1 [json_name = "cache_behavior"];
+
+      string cache_duration = 2 [json_name = "cache_duration"];
+
+      string cdn_frontdoor_origin_group_id = 3 [json_name = "cdn_frontdoor_origin_group_id"];
+
+      bool compression_enabled = 4 [json_name = "compression_enabled"];
+
+      string forwarding_protocol = 5 [json_name = "forwarding_protocol"];
+
+      string query_string_caching_behavior = 6 [json_name = "query_string_caching_behavior"];
+
+      repeated string query_string_parameters = 7 [json_name = "query_string_parameters"];
+    }
+
+    message UrlRedirectAction {
+      string destination_fragment = 1 [json_name = "destination_fragment"];
+
+      string destination_hostname = 2 [json_name = "destination_hostname"];
+
+      string destination_path = 3 [json_name = "destination_path"];
+
+      string query_string = 4 [json_name = "query_string"];
+
+      string redirect_protocol = 5 [json_name = "redirect_protocol"];
+
+      string redirect_type = 6 [json_name = "redirect_type"];
+    }
+
+    message UrlRewriteAction {
+      string destination = 1;
+
+      bool preserve_unmatched_path = 2 [json_name = "preserve_unmatched_path"];
+
+      string source_pattern = 3 [json_name = "source_pattern"];
+    }
+  }
+
+  message Conditions {
+    repeated ClientPortCondition client_port_condition = 1 [json_name = "client_port_condition"];
+
+    repeated CookiesCondition cookies_condition = 2 [json_name = "cookies_condition"];
+
+    repeated HostNameCondition host_name_condition = 3 [json_name = "host_name_condition"];
+
+    repeated HttpVersionCondition http_version_condition = 4 [json_name = "http_version_condition"];
+
+    repeated IsDeviceCondition is_device_condition = 5 [json_name = "is_device_condition"];
+
+    repeated PostArgsCondition post_args_condition = 6 [json_name = "post_args_condition"];
+
+    repeated QueryStringCondition query_string_condition = 7 [json_name = "query_string_condition"];
+
+    repeated RemoteAddressCondition remote_address_condition = 8 [json_name = "remote_address_condition"];
+
+    repeated RequestBodyCondition request_body_condition = 9 [json_name = "request_body_condition"];
+
+    repeated RequestHeaderCondition request_header_condition = 10 [json_name = "request_header_condition"];
+
+    repeated RequestMethodCondition request_method_condition = 11 [json_name = "request_method_condition"];
+
+    repeated RequestSchemeCondition request_scheme_condition = 12 [json_name = "request_scheme_condition"];
+
+    repeated RequestUriCondition request_uri_condition = 13 [json_name = "request_uri_condition"];
+
+    repeated ServerPortCondition server_port_condition = 14 [json_name = "server_port_condition"];
+
+    repeated SocketAddressCondition socket_address_condition = 15 [json_name = "socket_address_condition"];
+
+    repeated SslProtocolCondition ssl_protocol_condition = 16 [json_name = "ssl_protocol_condition"];
+
+    repeated UrlFileExtensionCondition url_file_extension_condition = 17 [json_name = "url_file_extension_condition"];
+
+    repeated UrlFilenameCondition url_filename_condition = 18 [json_name = "url_filename_condition"];
+
+    repeated UrlPathCondition url_path_condition = 19 [json_name = "url_path_condition"];
+
+    message ClientPortCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+    }
+
+    message CookiesCondition {
+      string cookie_name = 1 [json_name = "cookie_name"];
+
+      repeated string match_values = 2 [json_name = "match_values"];
+
+      bool negate_condition = 3 [json_name = "negate_condition"];
+
+      string operator = 4;
+
+      repeated string transforms = 5;
+    }
+
+    message HostNameCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      repeated string transforms = 4;
+    }
+
+    message HttpVersionCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+    }
+
+    message IsDeviceCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+    }
+
+    message PostArgsCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      string post_args_name = 4 [json_name = "post_args_name"];
+
+      repeated string transforms = 5;
+    }
+
+    message QueryStringCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      repeated string transforms = 4;
+    }
+
+    message RemoteAddressCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+    }
+
+    message RequestBodyCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      repeated string transforms = 4;
+    }
+
+    message RequestHeaderCondition {
+      string header_name = 1 [json_name = "header_name"];
+
+      repeated string match_values = 2 [json_name = "match_values"];
+
+      bool negate_condition = 3 [json_name = "negate_condition"];
+
+      string operator = 4;
+
+      repeated string transforms = 5;
+    }
+
+    message RequestMethodCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+    }
+
+    message RequestSchemeCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+    }
+
+    message RequestUriCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      repeated string transforms = 4;
+    }
+
+    message ServerPortCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+    }
+
+    message SocketAddressCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+    }
+
+    message SslProtocolCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+    }
+
+    message UrlFileExtensionCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      repeated string transforms = 4;
+    }
+
+    message UrlFilenameCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      repeated string transforms = 4;
+    }
+
+    message UrlPathCondition {
+      repeated string match_values = 1 [json_name = "match_values"];
+
+      bool negate_condition = 2 [json_name = "negate_condition"];
+
+      string operator = 3;
+
+      repeated string transforms = 4;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermCdnFrontdoorRuleSet version is 0
+message AzurermCdnFrontdoorRuleSet {
+  string cdn_frontdoor_profile_id = 1 [json_name = "cdn_frontdoor_profile_id"];
+
+  string id = 2;
+
+  string name = 3;
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermCdnFrontdoorSecret version is 0
+message AzurermCdnFrontdoorSecret {
+  string cdn_frontdoor_profile_id = 1 [json_name = "cdn_frontdoor_profile_id"];
+
+  string cdn_frontdoor_profile_name = 2 [json_name = "cdn_frontdoor_profile_name"];
+
+  string id = 3;
+
+  string name = 4;
+
+  Secret secret = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Secret {
+    repeated CustomerCertificate customer_certificate = 1 [json_name = "customer_certificate"];
+
+    message CustomerCertificate {
+      string key_vault_certificate_id = 1 [json_name = "key_vault_certificate_id"];
+
+      repeated string subject_alternative_names = 2 [json_name = "subject_alternative_names"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermCdnFrontdoorSecurityPolicy version is 0
+message AzurermCdnFrontdoorSecurityPolicy {
+  string cdn_frontdoor_profile_id = 1 [json_name = "cdn_frontdoor_profile_id"];
+
+  string id = 2;
+
+  string name = 3;
+
+  SecurityPolicies security_policies = 4 [json_name = "security_policies"];
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message SecurityPolicies {
+    Firewall firewall = 1;
+
+    message Firewall {
+      string cdn_frontdoor_firewall_policy_id = 1 [json_name = "cdn_frontdoor_firewall_policy_id"];
+
+      Association association = 2;
+
+      message Association {
+        repeated string patterns_to_match = 1 [json_name = "patterns_to_match"];
+
+        repeated Domain domain = 2;
+
+        message Domain {
+          bool active = 1;
+
+          string cdn_frontdoor_domain_id = 2 [json_name = "cdn_frontdoor_domain_id"];
+        }
+      }
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermCdnProfile version is 1
+message AzurermCdnProfile {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  string sku = 5;
+
+  map<string, string> tags = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

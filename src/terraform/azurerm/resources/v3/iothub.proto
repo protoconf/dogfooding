@@ -1,0 +1,1029 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermIothub version is 1
+message AzurermIothub {
+  repeated Endpoint endpoint = 1;
+
+  repeated Enrichment enrichment = 2;
+
+  string event_hub_events_endpoint = 3 [json_name = "event_hub_events_endpoint"];
+
+  string event_hub_events_namespace = 4 [json_name = "event_hub_events_namespace"];
+
+  string event_hub_events_path = 5 [json_name = "event_hub_events_path"];
+
+  string event_hub_operations_endpoint = 6 [json_name = "event_hub_operations_endpoint"];
+
+  string event_hub_operations_path = 7 [json_name = "event_hub_operations_path"];
+
+  int64 event_hub_partition_count = 8 [json_name = "event_hub_partition_count"];
+
+  int64 event_hub_retention_in_days = 9 [json_name = "event_hub_retention_in_days"];
+
+  string hostname = 10;
+
+  string id = 11;
+
+  bool local_authentication_enabled = 12 [json_name = "local_authentication_enabled"];
+
+  string location = 13;
+
+  string min_tls_version = 14 [json_name = "min_tls_version"];
+
+  string name = 15;
+
+  bool public_network_access_enabled = 16 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 17 [json_name = "resource_group_name"];
+
+  repeated Route route = 18;
+
+  repeated SharedAccessPolicy shared_access_policy = 19 [json_name = "shared_access_policy"];
+
+  map<string, string> tags = 20;
+
+  string type = 21;
+
+  CloudToDevice cloud_to_device = 22 [json_name = "cloud_to_device"];
+
+  FallbackRoute fallback_route = 23 [json_name = "fallback_route"];
+
+  FileUpload file_upload = 24 [json_name = "file_upload"];
+
+  Identity identity = 25;
+
+  repeated NetworkRuleSet network_rule_set = 26 [json_name = "network_rule_set"];
+
+  Sku sku = 27;
+
+  repeated Timeouts timeouts = 28;
+
+  google.protobuf.Value for_each = 29 [json_name = "for_each"];
+
+  repeated string depends_on = 30 [json_name = "depends_on"];
+
+  int32 count = 31;
+
+  string provider = 32;
+
+  terraform.v1.Lifecycle lifecycle = 33;
+
+  message Endpoint {
+    // authentication_type: string
+    string authentication_type = 1 [json_name = "authentication_type"];
+
+    // batch_frequency_in_seconds: number
+    int64 batch_frequency_in_seconds = 2 [json_name = "batch_frequency_in_seconds"];
+
+    // connection_string: string
+    string connection_string = 3 [json_name = "connection_string"];
+
+    // container_name: string
+    string container_name = 4 [json_name = "container_name"];
+
+    // encoding: string
+    string encoding = 5;
+
+    // endpoint_uri: string
+    string endpoint_uri = 6 [json_name = "endpoint_uri"];
+
+    // entity_path: string
+    string entity_path = 7 [json_name = "entity_path"];
+
+    // file_name_format: string
+    string file_name_format = 8 [json_name = "file_name_format"];
+
+    // identity_id: string
+    string identity_id = 9 [json_name = "identity_id"];
+
+    // max_chunk_size_in_bytes: number
+    int64 max_chunk_size_in_bytes = 10 [json_name = "max_chunk_size_in_bytes"];
+
+    // name: string
+    string name = 11;
+
+    // resource_group_name: string
+    string resource_group_name = 12 [json_name = "resource_group_name"];
+
+    // type: string
+    string type = 13;
+  }
+
+  message Enrichment {
+    // endpoint_names: list of string
+    repeated string endpoint_names = 1 [json_name = "endpoint_names"];
+
+    // key: string
+    string key = 2;
+
+    // value: string
+    string value = 3;
+  }
+
+  message Route {
+    // condition: string
+    string condition = 1;
+
+    // enabled: bool
+    bool enabled = 2;
+
+    // endpoint_names: list of string
+    repeated string endpoint_names = 3 [json_name = "endpoint_names"];
+
+    // name: string
+    string name = 4;
+
+    // source: string
+    string source = 5;
+  }
+
+  message SharedAccessPolicy {
+    // key_name: string
+    string key_name = 1 [json_name = "key_name"];
+
+    // permissions: string
+    string permissions = 2;
+
+    // primary_key: string
+    string primary_key = 3 [json_name = "primary_key"];
+
+    // secondary_key: string
+    string secondary_key = 4 [json_name = "secondary_key"];
+  }
+
+  message CloudToDevice {
+    string default_ttl = 1 [json_name = "default_ttl"];
+
+    int64 max_delivery_count = 2 [json_name = "max_delivery_count"];
+
+    repeated Feedback feedback = 3;
+
+    message Feedback {
+      string lock_duration = 1 [json_name = "lock_duration"];
+
+      int64 max_delivery_count = 2 [json_name = "max_delivery_count"];
+
+      string time_to_live = 3 [json_name = "time_to_live"];
+    }
+  }
+
+  message FallbackRoute {
+    string condition = 1;
+
+    bool enabled = 2;
+
+    repeated string endpoint_names = 3 [json_name = "endpoint_names"];
+
+    string source = 4;
+  }
+
+  message FileUpload {
+    string authentication_type = 1 [json_name = "authentication_type"];
+
+    string connection_string = 2 [json_name = "connection_string"];
+
+    string container_name = 3 [json_name = "container_name"];
+
+    string default_ttl = 4 [json_name = "default_ttl"];
+
+    string identity_id = 5 [json_name = "identity_id"];
+
+    string lock_duration = 6 [json_name = "lock_duration"];
+
+    int64 max_delivery_count = 7 [json_name = "max_delivery_count"];
+
+    bool notifications = 8;
+
+    string sas_ttl = 9 [json_name = "sas_ttl"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message NetworkRuleSet {
+    bool apply_to_builtin_eventhub_endpoint = 1 [json_name = "apply_to_builtin_eventhub_endpoint"];
+
+    string default_action = 2 [json_name = "default_action"];
+
+    repeated IpRule ip_rule = 3 [json_name = "ip_rule"];
+
+    message IpRule {
+      string action = 1;
+
+      string ip_mask = 2 [json_name = "ip_mask"];
+
+      string name = 3;
+    }
+  }
+
+  message Sku {
+    int64 capacity = 1;
+
+    string name = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIothubCertificate version is 1
+message AzurermIothubCertificate {
+  string certificate_content = 1 [json_name = "certificate_content"];
+
+  string id = 2;
+
+  string iothub_name = 3 [json_name = "iothub_name"];
+
+  bool is_verified = 4 [json_name = "is_verified"];
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIothubConsumerGroup version is 1
+message AzurermIothubConsumerGroup {
+  string eventhub_endpoint_name = 1 [json_name = "eventhub_endpoint_name"];
+
+  string id = 2;
+
+  string iothub_name = 3 [json_name = "iothub_name"];
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermIothubDeviceUpdateAccount version is 0
+message AzurermIothubDeviceUpdateAccount {
+  string host_name = 1 [json_name = "host_name"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  bool public_network_access_enabled = 5 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string sku = 7;
+
+  map<string, string> tags = 8;
+
+  Identity identity = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIothubDeviceUpdateInstance version is 0
+message AzurermIothubDeviceUpdateInstance {
+  string device_update_account_id = 1 [json_name = "device_update_account_id"];
+
+  bool diagnostic_enabled = 2 [json_name = "diagnostic_enabled"];
+
+  string id = 3;
+
+  string iothub_id = 4 [json_name = "iothub_id"];
+
+  string name = 5;
+
+  map<string, string> tags = 6;
+
+  DiagnosticStorageAccount diagnostic_storage_account = 7 [json_name = "diagnostic_storage_account"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message DiagnosticStorageAccount {
+    string connection_string = 1 [json_name = "connection_string"];
+
+    string id = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIothubDps version is 0
+message AzurermIothubDps {
+  string allocation_policy = 1 [json_name = "allocation_policy"];
+
+  bool data_residency_enabled = 2 [json_name = "data_residency_enabled"];
+
+  string device_provisioning_host_name = 3 [json_name = "device_provisioning_host_name"];
+
+  string id = 4;
+
+  string id_scope = 5 [json_name = "id_scope"];
+
+  string location = 6;
+
+  string name = 7;
+
+  bool public_network_access_enabled = 8 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  string service_operations_host_name = 10 [json_name = "service_operations_host_name"];
+
+  map<string, string> tags = 11;
+
+  repeated IpFilterRule ip_filter_rule = 12 [json_name = "ip_filter_rule"];
+
+  repeated LinkedHub linked_hub = 13 [json_name = "linked_hub"];
+
+  Sku sku = 14;
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message IpFilterRule {
+    string action = 1;
+
+    string ip_mask = 2 [json_name = "ip_mask"];
+
+    string name = 3;
+
+    string target = 4;
+  }
+
+  message LinkedHub {
+    int64 allocation_weight = 1 [json_name = "allocation_weight"];
+
+    bool apply_allocation_policy = 2 [json_name = "apply_allocation_policy"];
+
+    string connection_string = 3 [json_name = "connection_string"];
+
+    string hostname = 4;
+
+    string location = 5;
+  }
+
+  message Sku {
+    int64 capacity = 1;
+
+    string name = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIothubDpsCertificate version is 0
+message AzurermIothubDpsCertificate {
+  string certificate_content = 1 [json_name = "certificate_content"];
+
+  string id = 2;
+
+  string iot_dps_name = 3 [json_name = "iot_dps_name"];
+
+  bool is_verified = 4 [json_name = "is_verified"];
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIothubDpsSharedAccessPolicy version is 0
+message AzurermIothubDpsSharedAccessPolicy {
+  bool enrollment_read = 1 [json_name = "enrollment_read"];
+
+  bool enrollment_write = 2 [json_name = "enrollment_write"];
+
+  string id = 3;
+
+  string iothub_dps_name = 4 [json_name = "iothub_dps_name"];
+
+  string name = 5;
+
+  string primary_connection_string = 6 [json_name = "primary_connection_string"];
+
+  string primary_key = 7 [json_name = "primary_key"];
+
+  bool registration_read = 8 [json_name = "registration_read"];
+
+  bool registration_write = 9 [json_name = "registration_write"];
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  string secondary_connection_string = 11 [json_name = "secondary_connection_string"];
+
+  string secondary_key = 12 [json_name = "secondary_key"];
+
+  bool service_config = 13 [json_name = "service_config"];
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIothubEndpointCosmosdbAccount version is 0
+message AzurermIothubEndpointCosmosdbAccount {
+  string authentication_type = 1 [json_name = "authentication_type"];
+
+  string container_name = 2 [json_name = "container_name"];
+
+  string database_name = 3 [json_name = "database_name"];
+
+  string endpoint_uri = 4 [json_name = "endpoint_uri"];
+
+  string id = 5;
+
+  string identity_id = 6 [json_name = "identity_id"];
+
+  string iothub_id = 7 [json_name = "iothub_id"];
+
+  string name = 8;
+
+  string partition_key_name = 9 [json_name = "partition_key_name"];
+
+  string partition_key_template = 10 [json_name = "partition_key_template"];
+
+  string primary_key = 11 [json_name = "primary_key"];
+
+  string resource_group_name = 12 [json_name = "resource_group_name"];
+
+  string secondary_key = 13 [json_name = "secondary_key"];
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIothubEndpointEventhub version is 1
+message AzurermIothubEndpointEventhub {
+  string authentication_type = 1 [json_name = "authentication_type"];
+
+  string connection_string = 2 [json_name = "connection_string"];
+
+  string endpoint_uri = 3 [json_name = "endpoint_uri"];
+
+  string entity_path = 4 [json_name = "entity_path"];
+
+  string id = 5;
+
+  string identity_id = 6 [json_name = "identity_id"];
+
+  string iothub_id = 7 [json_name = "iothub_id"];
+
+  string name = 8;
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIothubEndpointServicebusQueue version is 1
+message AzurermIothubEndpointServicebusQueue {
+  string authentication_type = 1 [json_name = "authentication_type"];
+
+  string connection_string = 2 [json_name = "connection_string"];
+
+  string endpoint_uri = 3 [json_name = "endpoint_uri"];
+
+  string entity_path = 4 [json_name = "entity_path"];
+
+  string id = 5;
+
+  string identity_id = 6 [json_name = "identity_id"];
+
+  string iothub_id = 7 [json_name = "iothub_id"];
+
+  string name = 8;
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIothubEndpointServicebusTopic version is 1
+message AzurermIothubEndpointServicebusTopic {
+  string authentication_type = 1 [json_name = "authentication_type"];
+
+  string connection_string = 2 [json_name = "connection_string"];
+
+  string endpoint_uri = 3 [json_name = "endpoint_uri"];
+
+  string entity_path = 4 [json_name = "entity_path"];
+
+  string id = 5;
+
+  string identity_id = 6 [json_name = "identity_id"];
+
+  string iothub_id = 7 [json_name = "iothub_id"];
+
+  string name = 8;
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIothubEndpointStorageContainer version is 1
+message AzurermIothubEndpointStorageContainer {
+  string authentication_type = 1 [json_name = "authentication_type"];
+
+  int64 batch_frequency_in_seconds = 2 [json_name = "batch_frequency_in_seconds"];
+
+  string connection_string = 3 [json_name = "connection_string"];
+
+  string container_name = 4 [json_name = "container_name"];
+
+  string encoding = 5;
+
+  string endpoint_uri = 6 [json_name = "endpoint_uri"];
+
+  string file_name_format = 7 [json_name = "file_name_format"];
+
+  string id = 8;
+
+  string identity_id = 9 [json_name = "identity_id"];
+
+  string iothub_id = 10 [json_name = "iothub_id"];
+
+  int64 max_chunk_size_in_bytes = 11 [json_name = "max_chunk_size_in_bytes"];
+
+  string name = 12;
+
+  string resource_group_name = 13 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIothubEnrichment version is 1
+message AzurermIothubEnrichment {
+  repeated string endpoint_names = 1 [json_name = "endpoint_names"];
+
+  string id = 2;
+
+  string iothub_name = 3 [json_name = "iothub_name"];
+
+  string key = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string value = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIothubFallbackRoute version is 1
+message AzurermIothubFallbackRoute {
+  string condition = 1;
+
+  bool enabled = 2;
+
+  repeated string endpoint_names = 3 [json_name = "endpoint_names"];
+
+  string id = 4;
+
+  string iothub_name = 5 [json_name = "iothub_name"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string source = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIothubFileUpload version is 0
+message AzurermIothubFileUpload {
+  string authentication_type = 1 [json_name = "authentication_type"];
+
+  string connection_string = 2 [json_name = "connection_string"];
+
+  string container_name = 3 [json_name = "container_name"];
+
+  string default_ttl = 4 [json_name = "default_ttl"];
+
+  string id = 5;
+
+  string identity_id = 6 [json_name = "identity_id"];
+
+  string iothub_id = 7 [json_name = "iothub_id"];
+
+  string lock_duration = 8 [json_name = "lock_duration"];
+
+  int64 max_delivery_count = 9 [json_name = "max_delivery_count"];
+
+  bool notifications_enabled = 10 [json_name = "notifications_enabled"];
+
+  string sas_ttl = 11 [json_name = "sas_ttl"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIothubRoute version is 1
+message AzurermIothubRoute {
+  string condition = 1;
+
+  bool enabled = 2;
+
+  repeated string endpoint_names = 3 [json_name = "endpoint_names"];
+
+  string id = 4;
+
+  string iothub_name = 5 [json_name = "iothub_name"];
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string source = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIothubSharedAccessPolicy version is 1
+message AzurermIothubSharedAccessPolicy {
+  bool device_connect = 1 [json_name = "device_connect"];
+
+  string id = 2;
+
+  string iothub_name = 3 [json_name = "iothub_name"];
+
+  string name = 4;
+
+  string primary_connection_string = 5 [json_name = "primary_connection_string"];
+
+  string primary_key = 6 [json_name = "primary_key"];
+
+  bool registry_read = 7 [json_name = "registry_read"];
+
+  bool registry_write = 8 [json_name = "registry_write"];
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  string secondary_connection_string = 10 [json_name = "secondary_connection_string"];
+
+  string secondary_key = 11 [json_name = "secondary_key"];
+
+  bool service_connect = 12 [json_name = "service_connect"];
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

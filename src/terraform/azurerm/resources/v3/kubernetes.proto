@@ -1,0 +1,1475 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermKubernetesCluster version is 2
+message AzurermKubernetesCluster {
+  repeated string api_server_authorized_ip_ranges = 1 [json_name = "api_server_authorized_ip_ranges"];
+
+  string automatic_channel_upgrade = 2 [json_name = "automatic_channel_upgrade"];
+
+  bool azure_policy_enabled = 3 [json_name = "azure_policy_enabled"];
+
+  string current_kubernetes_version = 4 [json_name = "current_kubernetes_version"];
+
+  repeated string custom_ca_trust_certificates_base64 = 5 [json_name = "custom_ca_trust_certificates_base64"];
+
+  string disk_encryption_set_id = 6 [json_name = "disk_encryption_set_id"];
+
+  string dns_prefix = 7 [json_name = "dns_prefix"];
+
+  string dns_prefix_private_cluster = 8 [json_name = "dns_prefix_private_cluster"];
+
+  string edge_zone = 9 [json_name = "edge_zone"];
+
+  bool enable_pod_security_policy = 10 [json_name = "enable_pod_security_policy"];
+
+  string fqdn = 11;
+
+  bool http_application_routing_enabled = 12 [json_name = "http_application_routing_enabled"];
+
+  string http_application_routing_zone_name = 13 [json_name = "http_application_routing_zone_name"];
+
+  string id = 14;
+
+  bool image_cleaner_enabled = 15 [json_name = "image_cleaner_enabled"];
+
+  int64 image_cleaner_interval_hours = 16 [json_name = "image_cleaner_interval_hours"];
+
+  repeated KubeAdminConfig kube_admin_config = 17 [json_name = "kube_admin_config"];
+
+  string kube_admin_config_raw = 18 [json_name = "kube_admin_config_raw"];
+
+  repeated KubeConfig kube_config = 19 [json_name = "kube_config"];
+
+  string kube_config_raw = 20 [json_name = "kube_config_raw"];
+
+  string kubernetes_version = 21 [json_name = "kubernetes_version"];
+
+  bool local_account_disabled = 22 [json_name = "local_account_disabled"];
+
+  string location = 23;
+
+  string name = 24;
+
+  string node_os_channel_upgrade = 25 [json_name = "node_os_channel_upgrade"];
+
+  string node_resource_group = 26 [json_name = "node_resource_group"];
+
+  string node_resource_group_id = 27 [json_name = "node_resource_group_id"];
+
+  bool oidc_issuer_enabled = 28 [json_name = "oidc_issuer_enabled"];
+
+  string oidc_issuer_url = 29 [json_name = "oidc_issuer_url"];
+
+  bool open_service_mesh_enabled = 30 [json_name = "open_service_mesh_enabled"];
+
+  string portal_fqdn = 31 [json_name = "portal_fqdn"];
+
+  bool private_cluster_enabled = 32 [json_name = "private_cluster_enabled"];
+
+  bool private_cluster_public_fqdn_enabled = 33 [json_name = "private_cluster_public_fqdn_enabled"];
+
+  string private_dns_zone_id = 34 [json_name = "private_dns_zone_id"];
+
+  string private_fqdn = 35 [json_name = "private_fqdn"];
+
+  bool public_network_access_enabled = 36 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 37 [json_name = "resource_group_name"];
+
+  bool role_based_access_control_enabled = 38 [json_name = "role_based_access_control_enabled"];
+
+  bool run_command_enabled = 39 [json_name = "run_command_enabled"];
+
+  string sku_tier = 40 [json_name = "sku_tier"];
+
+  string support_plan = 41 [json_name = "support_plan"];
+
+  map<string, string> tags = 42;
+
+  bool workload_identity_enabled = 43 [json_name = "workload_identity_enabled"];
+
+  AciConnectorLinux aci_connector_linux = 44 [json_name = "aci_connector_linux"];
+
+  ApiServerAccessProfile api_server_access_profile = 45 [json_name = "api_server_access_profile"];
+
+  AutoScalerProfile auto_scaler_profile = 46 [json_name = "auto_scaler_profile"];
+
+  AzureActiveDirectoryRoleBasedAccessControl azure_active_directory_role_based_access_control = 47 [
+    json_name = "azure_active_directory_role_based_access_control"
+  ];
+
+  ConfidentialComputing confidential_computing = 48 [json_name = "confidential_computing"];
+
+  DefaultNodePool default_node_pool = 49 [json_name = "default_node_pool"];
+
+  HttpProxyConfig http_proxy_config = 50 [json_name = "http_proxy_config"];
+
+  Identity identity = 51;
+
+  IngressApplicationGateway ingress_application_gateway = 52 [json_name = "ingress_application_gateway"];
+
+  KeyManagementService key_management_service = 53 [json_name = "key_management_service"];
+
+  KeyVaultSecretsProvider key_vault_secrets_provider = 54 [json_name = "key_vault_secrets_provider"];
+
+  KubeletIdentity kubelet_identity = 55 [json_name = "kubelet_identity"];
+
+  LinuxProfile linux_profile = 56 [json_name = "linux_profile"];
+
+  MaintenanceWindow maintenance_window = 57 [json_name = "maintenance_window"];
+
+  MaintenanceWindowAutoUpgrade maintenance_window_auto_upgrade = 58 [json_name = "maintenance_window_auto_upgrade"];
+
+  MaintenanceWindowNodeOs maintenance_window_node_os = 59 [json_name = "maintenance_window_node_os"];
+
+  MicrosoftDefender microsoft_defender = 60 [json_name = "microsoft_defender"];
+
+  MonitorMetrics monitor_metrics = 61 [json_name = "monitor_metrics"];
+
+  NetworkProfile network_profile = 62 [json_name = "network_profile"];
+
+  OmsAgent oms_agent = 63 [json_name = "oms_agent"];
+
+  ServiceMeshProfile service_mesh_profile = 64 [json_name = "service_mesh_profile"];
+
+  ServicePrincipal service_principal = 65 [json_name = "service_principal"];
+
+  StorageProfile storage_profile = 66 [json_name = "storage_profile"];
+
+  repeated Timeouts timeouts = 67;
+
+  WebAppRouting web_app_routing = 68 [json_name = "web_app_routing"];
+
+  WindowsProfile windows_profile = 69 [json_name = "windows_profile"];
+
+  WorkloadAutoscalerProfile workload_autoscaler_profile = 70 [json_name = "workload_autoscaler_profile"];
+
+  google.protobuf.Value for_each = 71 [json_name = "for_each"];
+
+  repeated string depends_on = 72 [json_name = "depends_on"];
+
+  int32 count = 73;
+
+  string provider = 74;
+
+  terraform.v1.Lifecycle lifecycle = 75;
+
+  message KubeAdminConfig {
+    // client_certificate: string
+    string client_certificate = 1 [json_name = "client_certificate"];
+
+    // client_key: string
+    string client_key = 2 [json_name = "client_key"];
+
+    // cluster_ca_certificate: string
+    string cluster_ca_certificate = 3 [json_name = "cluster_ca_certificate"];
+
+    // host: string
+    string host = 4;
+
+    // password: string
+    string password = 5;
+
+    // username: string
+    string username = 6;
+  }
+
+  message KubeConfig {
+    // client_certificate: string
+    string client_certificate = 1 [json_name = "client_certificate"];
+
+    // client_key: string
+    string client_key = 2 [json_name = "client_key"];
+
+    // cluster_ca_certificate: string
+    string cluster_ca_certificate = 3 [json_name = "cluster_ca_certificate"];
+
+    // host: string
+    string host = 4;
+
+    // password: string
+    string password = 5;
+
+    // username: string
+    string username = 6;
+  }
+
+  message AciConnectorLinux {
+    repeated ConnectorIdentity connector_identity = 1 [json_name = "connector_identity"];
+
+    string subnet_name = 2 [json_name = "subnet_name"];
+
+    message ConnectorIdentity {
+      // client_id: string
+      string client_id = 1 [json_name = "client_id"];
+
+      // object_id: string
+      string object_id = 2 [json_name = "object_id"];
+
+      // user_assigned_identity_id: string
+      string user_assigned_identity_id = 3 [json_name = "user_assigned_identity_id"];
+    }
+  }
+
+  message ApiServerAccessProfile {
+    repeated string authorized_ip_ranges = 1 [json_name = "authorized_ip_ranges"];
+
+    string subnet_id = 2 [json_name = "subnet_id"];
+
+    bool vnet_integration_enabled = 3 [json_name = "vnet_integration_enabled"];
+  }
+
+  message AutoScalerProfile {
+    bool balance_similar_node_groups = 1 [json_name = "balance_similar_node_groups"];
+
+    string empty_bulk_delete_max = 2 [json_name = "empty_bulk_delete_max"];
+
+    string expander = 3;
+
+    string max_graceful_termination_sec = 4 [json_name = "max_graceful_termination_sec"];
+
+    string max_node_provisioning_time = 5 [json_name = "max_node_provisioning_time"];
+
+    int64 max_unready_nodes = 6 [json_name = "max_unready_nodes"];
+
+    int64 max_unready_percentage = 7 [json_name = "max_unready_percentage"];
+
+    string new_pod_scale_up_delay = 8 [json_name = "new_pod_scale_up_delay"];
+
+    string scale_down_delay_after_add = 9 [json_name = "scale_down_delay_after_add"];
+
+    string scale_down_delay_after_delete = 10 [json_name = "scale_down_delay_after_delete"];
+
+    string scale_down_delay_after_failure = 11 [json_name = "scale_down_delay_after_failure"];
+
+    string scale_down_unneeded = 12 [json_name = "scale_down_unneeded"];
+
+    string scale_down_unready = 13 [json_name = "scale_down_unready"];
+
+    string scale_down_utilization_threshold = 14 [json_name = "scale_down_utilization_threshold"];
+
+    string scan_interval = 15 [json_name = "scan_interval"];
+
+    bool skip_nodes_with_local_storage = 16 [json_name = "skip_nodes_with_local_storage"];
+
+    bool skip_nodes_with_system_pods = 17 [json_name = "skip_nodes_with_system_pods"];
+  }
+
+  message AzureActiveDirectoryRoleBasedAccessControl {
+    repeated string admin_group_object_ids = 1 [json_name = "admin_group_object_ids"];
+
+    bool azure_rbac_enabled = 2 [json_name = "azure_rbac_enabled"];
+
+    string client_app_id = 3 [json_name = "client_app_id"];
+
+    bool managed = 4;
+
+    string server_app_id = 5 [json_name = "server_app_id"];
+
+    string server_app_secret = 6 [json_name = "server_app_secret"];
+
+    string tenant_id = 7 [json_name = "tenant_id"];
+  }
+
+  message ConfidentialComputing {
+    bool sgx_quote_helper_enabled = 1 [json_name = "sgx_quote_helper_enabled"];
+  }
+
+  message DefaultNodePool {
+    string capacity_reservation_group_id = 1 [json_name = "capacity_reservation_group_id"];
+
+    bool custom_ca_trust_enabled = 2 [json_name = "custom_ca_trust_enabled"];
+
+    bool enable_auto_scaling = 3 [json_name = "enable_auto_scaling"];
+
+    bool enable_host_encryption = 4 [json_name = "enable_host_encryption"];
+
+    bool enable_node_public_ip = 5 [json_name = "enable_node_public_ip"];
+
+    bool fips_enabled = 6 [json_name = "fips_enabled"];
+
+    string gpu_instance = 7 [json_name = "gpu_instance"];
+
+    string host_group_id = 8 [json_name = "host_group_id"];
+
+    string kubelet_disk_type = 9 [json_name = "kubelet_disk_type"];
+
+    int64 max_count = 10 [json_name = "max_count"];
+
+    int64 max_pods = 11 [json_name = "max_pods"];
+
+    string message_of_the_day = 12 [json_name = "message_of_the_day"];
+
+    int64 min_count = 13 [json_name = "min_count"];
+
+    string name = 14;
+
+    int64 node_count = 15 [json_name = "node_count"];
+
+    map<string, string> node_labels = 16 [json_name = "node_labels"];
+
+    string node_public_ip_prefix_id = 17 [json_name = "node_public_ip_prefix_id"];
+
+    repeated string node_taints = 18 [json_name = "node_taints"];
+
+    bool only_critical_addons_enabled = 19 [json_name = "only_critical_addons_enabled"];
+
+    string orchestrator_version = 20 [json_name = "orchestrator_version"];
+
+    int64 os_disk_size_gb = 21 [json_name = "os_disk_size_gb"];
+
+    string os_disk_type = 22 [json_name = "os_disk_type"];
+
+    string os_sku = 23 [json_name = "os_sku"];
+
+    string pod_subnet_id = 24 [json_name = "pod_subnet_id"];
+
+    string proximity_placement_group_id = 25 [json_name = "proximity_placement_group_id"];
+
+    string scale_down_mode = 26 [json_name = "scale_down_mode"];
+
+    string snapshot_id = 27 [json_name = "snapshot_id"];
+
+    map<string, string> tags = 28;
+
+    string temporary_name_for_rotation = 29 [json_name = "temporary_name_for_rotation"];
+
+    string type = 30;
+
+    bool ultra_ssd_enabled = 31 [json_name = "ultra_ssd_enabled"];
+
+    string vm_size = 32 [json_name = "vm_size"];
+
+    string vnet_subnet_id = 33 [json_name = "vnet_subnet_id"];
+
+    string workload_runtime = 34 [json_name = "workload_runtime"];
+
+    repeated string zones = 35;
+
+    KubeletConfig kubelet_config = 36 [json_name = "kubelet_config"];
+
+    LinuxOsConfig linux_os_config = 37 [json_name = "linux_os_config"];
+
+    NodeNetworkProfile node_network_profile = 38 [json_name = "node_network_profile"];
+
+    UpgradeSettings upgrade_settings = 39 [json_name = "upgrade_settings"];
+
+    message KubeletConfig {
+      repeated string allowed_unsafe_sysctls = 1 [json_name = "allowed_unsafe_sysctls"];
+
+      int64 container_log_max_line = 2 [json_name = "container_log_max_line"];
+
+      int64 container_log_max_size_mb = 3 [json_name = "container_log_max_size_mb"];
+
+      bool cpu_cfs_quota_enabled = 4 [json_name = "cpu_cfs_quota_enabled"];
+
+      string cpu_cfs_quota_period = 5 [json_name = "cpu_cfs_quota_period"];
+
+      string cpu_manager_policy = 6 [json_name = "cpu_manager_policy"];
+
+      int64 image_gc_high_threshold = 7 [json_name = "image_gc_high_threshold"];
+
+      int64 image_gc_low_threshold = 8 [json_name = "image_gc_low_threshold"];
+
+      int64 pod_max_pid = 9 [json_name = "pod_max_pid"];
+
+      string topology_manager_policy = 10 [json_name = "topology_manager_policy"];
+    }
+
+    message LinuxOsConfig {
+      int64 swap_file_size_mb = 1 [json_name = "swap_file_size_mb"];
+
+      string transparent_huge_page_defrag = 2 [json_name = "transparent_huge_page_defrag"];
+
+      string transparent_huge_page_enabled = 3 [json_name = "transparent_huge_page_enabled"];
+
+      SysctlConfig sysctl_config = 4 [json_name = "sysctl_config"];
+
+      message SysctlConfig {
+        int64 fs_aio_max_nr = 1 [json_name = "fs_aio_max_nr"];
+
+        int64 fs_file_max = 2 [json_name = "fs_file_max"];
+
+        int64 fs_inotify_max_user_watches = 3 [json_name = "fs_inotify_max_user_watches"];
+
+        int64 fs_nr_open = 4 [json_name = "fs_nr_open"];
+
+        int64 kernel_threads_max = 5 [json_name = "kernel_threads_max"];
+
+        int64 net_core_netdev_max_backlog = 6 [json_name = "net_core_netdev_max_backlog"];
+
+        int64 net_core_optmem_max = 7 [json_name = "net_core_optmem_max"];
+
+        int64 net_core_rmem_default = 8 [json_name = "net_core_rmem_default"];
+
+        int64 net_core_rmem_max = 9 [json_name = "net_core_rmem_max"];
+
+        int64 net_core_somaxconn = 10 [json_name = "net_core_somaxconn"];
+
+        int64 net_core_wmem_default = 11 [json_name = "net_core_wmem_default"];
+
+        int64 net_core_wmem_max = 12 [json_name = "net_core_wmem_max"];
+
+        int64 net_ipv4_ip_local_port_range_max = 13 [json_name = "net_ipv4_ip_local_port_range_max"];
+
+        int64 net_ipv4_ip_local_port_range_min = 14 [json_name = "net_ipv4_ip_local_port_range_min"];
+
+        int64 net_ipv4_neigh_default_gc_thresh1 = 15 [json_name = "net_ipv4_neigh_default_gc_thresh1"];
+
+        int64 net_ipv4_neigh_default_gc_thresh2 = 16 [json_name = "net_ipv4_neigh_default_gc_thresh2"];
+
+        int64 net_ipv4_neigh_default_gc_thresh3 = 17 [json_name = "net_ipv4_neigh_default_gc_thresh3"];
+
+        int64 net_ipv4_tcp_fin_timeout = 18 [json_name = "net_ipv4_tcp_fin_timeout"];
+
+        int64 net_ipv4_tcp_keepalive_intvl = 19 [json_name = "net_ipv4_tcp_keepalive_intvl"];
+
+        int64 net_ipv4_tcp_keepalive_probes = 20 [json_name = "net_ipv4_tcp_keepalive_probes"];
+
+        int64 net_ipv4_tcp_keepalive_time = 21 [json_name = "net_ipv4_tcp_keepalive_time"];
+
+        int64 net_ipv4_tcp_max_syn_backlog = 22 [json_name = "net_ipv4_tcp_max_syn_backlog"];
+
+        int64 net_ipv4_tcp_max_tw_buckets = 23 [json_name = "net_ipv4_tcp_max_tw_buckets"];
+
+        bool net_ipv4_tcp_tw_reuse = 24 [json_name = "net_ipv4_tcp_tw_reuse"];
+
+        int64 net_netfilter_nf_conntrack_buckets = 25 [json_name = "net_netfilter_nf_conntrack_buckets"];
+
+        int64 net_netfilter_nf_conntrack_max = 26 [json_name = "net_netfilter_nf_conntrack_max"];
+
+        int64 vm_max_map_count = 27 [json_name = "vm_max_map_count"];
+
+        int64 vm_swappiness = 28 [json_name = "vm_swappiness"];
+
+        int64 vm_vfs_cache_pressure = 29 [json_name = "vm_vfs_cache_pressure"];
+      }
+    }
+
+    message NodeNetworkProfile {
+      repeated string application_security_group_ids = 1 [json_name = "application_security_group_ids"];
+
+      map<string, string> node_public_ip_tags = 2 [json_name = "node_public_ip_tags"];
+
+      repeated AllowedHostPorts allowed_host_ports = 3 [json_name = "allowed_host_ports"];
+
+      message AllowedHostPorts {
+        int64 port_end = 1 [json_name = "port_end"];
+
+        int64 port_start = 2 [json_name = "port_start"];
+
+        string protocol = 3;
+      }
+    }
+
+    message UpgradeSettings {
+      string max_surge = 1 [json_name = "max_surge"];
+    }
+  }
+
+  message HttpProxyConfig {
+    string http_proxy = 1 [json_name = "http_proxy"];
+
+    string https_proxy = 2 [json_name = "https_proxy"];
+
+    repeated string no_proxy = 3 [json_name = "no_proxy"];
+
+    string trusted_ca = 4 [json_name = "trusted_ca"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message IngressApplicationGateway {
+    string effective_gateway_id = 1 [json_name = "effective_gateway_id"];
+
+    string gateway_id = 2 [json_name = "gateway_id"];
+
+    string gateway_name = 3 [json_name = "gateway_name"];
+
+    repeated IngressApplicationGatewayIdentity ingress_application_gateway_identity = 4 [json_name = "ingress_application_gateway_identity"];
+
+    string subnet_cidr = 5 [json_name = "subnet_cidr"];
+
+    string subnet_id = 6 [json_name = "subnet_id"];
+
+    message IngressApplicationGatewayIdentity {
+      // client_id: string
+      string client_id = 1 [json_name = "client_id"];
+
+      // object_id: string
+      string object_id = 2 [json_name = "object_id"];
+
+      // user_assigned_identity_id: string
+      string user_assigned_identity_id = 3 [json_name = "user_assigned_identity_id"];
+    }
+  }
+
+  message KeyManagementService {
+    string key_vault_key_id = 1 [json_name = "key_vault_key_id"];
+
+    string key_vault_network_access = 2 [json_name = "key_vault_network_access"];
+  }
+
+  message KeyVaultSecretsProvider {
+    repeated SecretIdentity secret_identity = 1 [json_name = "secret_identity"];
+
+    bool secret_rotation_enabled = 2 [json_name = "secret_rotation_enabled"];
+
+    string secret_rotation_interval = 3 [json_name = "secret_rotation_interval"];
+
+    message SecretIdentity {
+      // client_id: string
+      string client_id = 1 [json_name = "client_id"];
+
+      // object_id: string
+      string object_id = 2 [json_name = "object_id"];
+
+      // user_assigned_identity_id: string
+      string user_assigned_identity_id = 3 [json_name = "user_assigned_identity_id"];
+    }
+  }
+
+  message KubeletIdentity {
+    string client_id = 1 [json_name = "client_id"];
+
+    string object_id = 2 [json_name = "object_id"];
+
+    string user_assigned_identity_id = 3 [json_name = "user_assigned_identity_id"];
+  }
+
+  message LinuxProfile {
+    string admin_username = 1 [json_name = "admin_username"];
+
+    SshKey ssh_key = 2 [json_name = "ssh_key"];
+
+    message SshKey {
+      string key_data = 1 [json_name = "key_data"];
+    }
+  }
+
+  message MaintenanceWindow {
+    repeated Allowed allowed = 1;
+
+    repeated NotAllowed not_allowed = 2 [json_name = "not_allowed"];
+
+    message Allowed {
+      string day = 1;
+
+      repeated int64 hours = 2;
+    }
+
+    message NotAllowed {
+      string end = 1;
+
+      string start = 2;
+    }
+  }
+
+  message MaintenanceWindowAutoUpgrade {
+    int64 day_of_month = 1 [json_name = "day_of_month"];
+
+    string day_of_week = 2 [json_name = "day_of_week"];
+
+    int64 duration = 3;
+
+    string frequency = 4;
+
+    int64 interval = 5;
+
+    string start_date = 6 [json_name = "start_date"];
+
+    string start_time = 7 [json_name = "start_time"];
+
+    string utc_offset = 8 [json_name = "utc_offset"];
+
+    string week_index = 9 [json_name = "week_index"];
+
+    repeated NotAllowed not_allowed = 10 [json_name = "not_allowed"];
+
+    message NotAllowed {
+      string end = 1;
+
+      string start = 2;
+    }
+  }
+
+  message MaintenanceWindowNodeOs {
+    int64 day_of_month = 1 [json_name = "day_of_month"];
+
+    string day_of_week = 2 [json_name = "day_of_week"];
+
+    int64 duration = 3;
+
+    string frequency = 4;
+
+    int64 interval = 5;
+
+    string start_date = 6 [json_name = "start_date"];
+
+    string start_time = 7 [json_name = "start_time"];
+
+    string utc_offset = 8 [json_name = "utc_offset"];
+
+    string week_index = 9 [json_name = "week_index"];
+
+    repeated NotAllowed not_allowed = 10 [json_name = "not_allowed"];
+
+    message NotAllowed {
+      string end = 1;
+
+      string start = 2;
+    }
+  }
+
+  message MicrosoftDefender {
+    string log_analytics_workspace_id = 1 [json_name = "log_analytics_workspace_id"];
+  }
+
+  message MonitorMetrics {
+    string annotations_allowed = 1 [json_name = "annotations_allowed"];
+
+    string labels_allowed = 2 [json_name = "labels_allowed"];
+  }
+
+  message NetworkProfile {
+    string dns_service_ip = 1 [json_name = "dns_service_ip"];
+
+    string docker_bridge_cidr = 2 [json_name = "docker_bridge_cidr"];
+
+    string ebpf_data_plane = 3 [json_name = "ebpf_data_plane"];
+
+    repeated string ip_versions = 4 [json_name = "ip_versions"];
+
+    string load_balancer_sku = 5 [json_name = "load_balancer_sku"];
+
+    string network_mode = 6 [json_name = "network_mode"];
+
+    string network_plugin = 7 [json_name = "network_plugin"];
+
+    string network_plugin_mode = 8 [json_name = "network_plugin_mode"];
+
+    string network_policy = 9 [json_name = "network_policy"];
+
+    string outbound_type = 10 [json_name = "outbound_type"];
+
+    string pod_cidr = 11 [json_name = "pod_cidr"];
+
+    repeated string pod_cidrs = 12 [json_name = "pod_cidrs"];
+
+    string service_cidr = 13 [json_name = "service_cidr"];
+
+    repeated string service_cidrs = 14 [json_name = "service_cidrs"];
+
+    LoadBalancerProfile load_balancer_profile = 15 [json_name = "load_balancer_profile"];
+
+    NatGatewayProfile nat_gateway_profile = 16 [json_name = "nat_gateway_profile"];
+
+    message LoadBalancerProfile {
+      repeated string effective_outbound_ips = 1 [json_name = "effective_outbound_ips"];
+
+      int64 idle_timeout_in_minutes = 2 [json_name = "idle_timeout_in_minutes"];
+
+      int64 managed_outbound_ip_count = 3 [json_name = "managed_outbound_ip_count"];
+
+      int64 managed_outbound_ipv6_count = 4 [json_name = "managed_outbound_ipv6_count"];
+
+      repeated string outbound_ip_address_ids = 5 [json_name = "outbound_ip_address_ids"];
+
+      repeated string outbound_ip_prefix_ids = 6 [json_name = "outbound_ip_prefix_ids"];
+
+      int64 outbound_ports_allocated = 7 [json_name = "outbound_ports_allocated"];
+    }
+
+    message NatGatewayProfile {
+      repeated string effective_outbound_ips = 1 [json_name = "effective_outbound_ips"];
+
+      int64 idle_timeout_in_minutes = 2 [json_name = "idle_timeout_in_minutes"];
+
+      int64 managed_outbound_ip_count = 3 [json_name = "managed_outbound_ip_count"];
+    }
+  }
+
+  message OmsAgent {
+    string log_analytics_workspace_id = 1 [json_name = "log_analytics_workspace_id"];
+
+    bool msi_auth_for_monitoring_enabled = 2 [json_name = "msi_auth_for_monitoring_enabled"];
+
+    repeated OmsAgentIdentity oms_agent_identity = 3 [json_name = "oms_agent_identity"];
+
+    message OmsAgentIdentity {
+      // client_id: string
+      string client_id = 1 [json_name = "client_id"];
+
+      // object_id: string
+      string object_id = 2 [json_name = "object_id"];
+
+      // user_assigned_identity_id: string
+      string user_assigned_identity_id = 3 [json_name = "user_assigned_identity_id"];
+    }
+  }
+
+  message ServiceMeshProfile {
+    bool external_ingress_gateway_enabled = 1 [json_name = "external_ingress_gateway_enabled"];
+
+    bool internal_ingress_gateway_enabled = 2 [json_name = "internal_ingress_gateway_enabled"];
+
+    string mode = 3;
+  }
+
+  message ServicePrincipal {
+    string client_id = 1 [json_name = "client_id"];
+
+    string client_secret = 2 [json_name = "client_secret"];
+  }
+
+  message StorageProfile {
+    bool blob_driver_enabled = 1 [json_name = "blob_driver_enabled"];
+
+    bool disk_driver_enabled = 2 [json_name = "disk_driver_enabled"];
+
+    string disk_driver_version = 3 [json_name = "disk_driver_version"];
+
+    bool file_driver_enabled = 4 [json_name = "file_driver_enabled"];
+
+    bool snapshot_controller_enabled = 5 [json_name = "snapshot_controller_enabled"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message WebAppRouting {
+    string dns_zone_id = 1 [json_name = "dns_zone_id"];
+
+    repeated WebAppRoutingIdentity web_app_routing_identity = 2 [json_name = "web_app_routing_identity"];
+
+    message WebAppRoutingIdentity {
+      // client_id: string
+      string client_id = 1 [json_name = "client_id"];
+
+      // object_id: string
+      string object_id = 2 [json_name = "object_id"];
+
+      // user_assigned_identity_id: string
+      string user_assigned_identity_id = 3 [json_name = "user_assigned_identity_id"];
+    }
+  }
+
+  message WindowsProfile {
+    string admin_password = 1 [json_name = "admin_password"];
+
+    string admin_username = 2 [json_name = "admin_username"];
+
+    string license = 3;
+
+    Gmsa gmsa = 4;
+
+    message Gmsa {
+      string dns_server = 1 [json_name = "dns_server"];
+
+      string root_domain = 2 [json_name = "root_domain"];
+    }
+  }
+
+  message WorkloadAutoscalerProfile {
+    bool keda_enabled = 1 [json_name = "keda_enabled"];
+
+    string vertical_pod_autoscaler_controlled_values = 2 [
+      json_name = "vertical_pod_autoscaler_controlled_values"
+    ];
+
+    bool vertical_pod_autoscaler_enabled = 3 [json_name = "vertical_pod_autoscaler_enabled"];
+
+    string vertical_pod_autoscaler_update_mode = 4 [json_name = "vertical_pod_autoscaler_update_mode"];
+  }
+}
+
+// AzurermKubernetesClusterExtension version is 0
+message AzurermKubernetesClusterExtension {
+  repeated AksAssignedIdentity aks_assigned_identity = 1 [json_name = "aks_assigned_identity"];
+
+  string cluster_id = 2 [json_name = "cluster_id"];
+
+  map<string, string> configuration_protected_settings = 3 [json_name = "configuration_protected_settings"];
+
+  map<string, string> configuration_settings = 4 [json_name = "configuration_settings"];
+
+  string current_version = 5 [json_name = "current_version"];
+
+  string extension_type = 6 [json_name = "extension_type"];
+
+  string id = 7;
+
+  string name = 8;
+
+  string release_namespace = 9 [json_name = "release_namespace"];
+
+  string release_train = 10 [json_name = "release_train"];
+
+  string target_namespace = 11 [json_name = "target_namespace"];
+
+  string version = 12;
+
+  Plan plan = 13;
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message AksAssignedIdentity {
+    // principal_id: string
+    string principal_id = 1 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 2 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 3;
+  }
+
+  message Plan {
+    string name = 1;
+
+    string product = 2;
+
+    string promotion_code = 3 [json_name = "promotion_code"];
+
+    string publisher = 4;
+
+    string version = 5;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermKubernetesClusterNodePool version is 1
+message AzurermKubernetesClusterNodePool {
+  string capacity_reservation_group_id = 1 [json_name = "capacity_reservation_group_id"];
+
+  bool custom_ca_trust_enabled = 2 [json_name = "custom_ca_trust_enabled"];
+
+  bool enable_auto_scaling = 3 [json_name = "enable_auto_scaling"];
+
+  bool enable_host_encryption = 4 [json_name = "enable_host_encryption"];
+
+  bool enable_node_public_ip = 5 [json_name = "enable_node_public_ip"];
+
+  string eviction_policy = 6 [json_name = "eviction_policy"];
+
+  bool fips_enabled = 7 [json_name = "fips_enabled"];
+
+  string gpu_instance = 8 [json_name = "gpu_instance"];
+
+  string host_group_id = 9 [json_name = "host_group_id"];
+
+  string id = 10;
+
+  string kubelet_disk_type = 11 [json_name = "kubelet_disk_type"];
+
+  string kubernetes_cluster_id = 12 [json_name = "kubernetes_cluster_id"];
+
+  int64 max_count = 13 [json_name = "max_count"];
+
+  int64 max_pods = 14 [json_name = "max_pods"];
+
+  string message_of_the_day = 15 [json_name = "message_of_the_day"];
+
+  int64 min_count = 16 [json_name = "min_count"];
+
+  string mode = 17;
+
+  string name = 18;
+
+  int64 node_count = 19 [json_name = "node_count"];
+
+  map<string, string> node_labels = 20 [json_name = "node_labels"];
+
+  string node_public_ip_prefix_id = 21 [json_name = "node_public_ip_prefix_id"];
+
+  repeated string node_taints = 22 [json_name = "node_taints"];
+
+  string orchestrator_version = 23 [json_name = "orchestrator_version"];
+
+  int64 os_disk_size_gb = 24 [json_name = "os_disk_size_gb"];
+
+  string os_disk_type = 25 [json_name = "os_disk_type"];
+
+  string os_sku = 26 [json_name = "os_sku"];
+
+  string os_type = 27 [json_name = "os_type"];
+
+  string pod_subnet_id = 28 [json_name = "pod_subnet_id"];
+
+  string priority = 29;
+
+  string proximity_placement_group_id = 30 [json_name = "proximity_placement_group_id"];
+
+  string scale_down_mode = 31 [json_name = "scale_down_mode"];
+
+  string snapshot_id = 32 [json_name = "snapshot_id"];
+
+  int64 spot_max_price = 33 [json_name = "spot_max_price"];
+
+  map<string, string> tags = 34;
+
+  bool ultra_ssd_enabled = 35 [json_name = "ultra_ssd_enabled"];
+
+  string vm_size = 36 [json_name = "vm_size"];
+
+  string vnet_subnet_id = 37 [json_name = "vnet_subnet_id"];
+
+  string workload_runtime = 38 [json_name = "workload_runtime"];
+
+  repeated string zones = 39;
+
+  KubeletConfig kubelet_config = 40 [json_name = "kubelet_config"];
+
+  LinuxOsConfig linux_os_config = 41 [json_name = "linux_os_config"];
+
+  NodeNetworkProfile node_network_profile = 42 [json_name = "node_network_profile"];
+
+  repeated Timeouts timeouts = 43;
+
+  UpgradeSettings upgrade_settings = 44 [json_name = "upgrade_settings"];
+
+  WindowsProfile windows_profile = 45 [json_name = "windows_profile"];
+
+  google.protobuf.Value for_each = 46 [json_name = "for_each"];
+
+  repeated string depends_on = 47 [json_name = "depends_on"];
+
+  int32 count = 48;
+
+  string provider = 49;
+
+  terraform.v1.Lifecycle lifecycle = 50;
+
+  message KubeletConfig {
+    repeated string allowed_unsafe_sysctls = 1 [json_name = "allowed_unsafe_sysctls"];
+
+    int64 container_log_max_line = 2 [json_name = "container_log_max_line"];
+
+    int64 container_log_max_size_mb = 3 [json_name = "container_log_max_size_mb"];
+
+    bool cpu_cfs_quota_enabled = 4 [json_name = "cpu_cfs_quota_enabled"];
+
+    string cpu_cfs_quota_period = 5 [json_name = "cpu_cfs_quota_period"];
+
+    string cpu_manager_policy = 6 [json_name = "cpu_manager_policy"];
+
+    int64 image_gc_high_threshold = 7 [json_name = "image_gc_high_threshold"];
+
+    int64 image_gc_low_threshold = 8 [json_name = "image_gc_low_threshold"];
+
+    int64 pod_max_pid = 9 [json_name = "pod_max_pid"];
+
+    string topology_manager_policy = 10 [json_name = "topology_manager_policy"];
+  }
+
+  message LinuxOsConfig {
+    int64 swap_file_size_mb = 1 [json_name = "swap_file_size_mb"];
+
+    string transparent_huge_page_defrag = 2 [json_name = "transparent_huge_page_defrag"];
+
+    string transparent_huge_page_enabled = 3 [json_name = "transparent_huge_page_enabled"];
+
+    SysctlConfig sysctl_config = 4 [json_name = "sysctl_config"];
+
+    message SysctlConfig {
+      int64 fs_aio_max_nr = 1 [json_name = "fs_aio_max_nr"];
+
+      int64 fs_file_max = 2 [json_name = "fs_file_max"];
+
+      int64 fs_inotify_max_user_watches = 3 [json_name = "fs_inotify_max_user_watches"];
+
+      int64 fs_nr_open = 4 [json_name = "fs_nr_open"];
+
+      int64 kernel_threads_max = 5 [json_name = "kernel_threads_max"];
+
+      int64 net_core_netdev_max_backlog = 6 [json_name = "net_core_netdev_max_backlog"];
+
+      int64 net_core_optmem_max = 7 [json_name = "net_core_optmem_max"];
+
+      int64 net_core_rmem_default = 8 [json_name = "net_core_rmem_default"];
+
+      int64 net_core_rmem_max = 9 [json_name = "net_core_rmem_max"];
+
+      int64 net_core_somaxconn = 10 [json_name = "net_core_somaxconn"];
+
+      int64 net_core_wmem_default = 11 [json_name = "net_core_wmem_default"];
+
+      int64 net_core_wmem_max = 12 [json_name = "net_core_wmem_max"];
+
+      int64 net_ipv4_ip_local_port_range_max = 13 [json_name = "net_ipv4_ip_local_port_range_max"];
+
+      int64 net_ipv4_ip_local_port_range_min = 14 [json_name = "net_ipv4_ip_local_port_range_min"];
+
+      int64 net_ipv4_neigh_default_gc_thresh1 = 15 [json_name = "net_ipv4_neigh_default_gc_thresh1"];
+
+      int64 net_ipv4_neigh_default_gc_thresh2 = 16 [json_name = "net_ipv4_neigh_default_gc_thresh2"];
+
+      int64 net_ipv4_neigh_default_gc_thresh3 = 17 [json_name = "net_ipv4_neigh_default_gc_thresh3"];
+
+      int64 net_ipv4_tcp_fin_timeout = 18 [json_name = "net_ipv4_tcp_fin_timeout"];
+
+      int64 net_ipv4_tcp_keepalive_intvl = 19 [json_name = "net_ipv4_tcp_keepalive_intvl"];
+
+      int64 net_ipv4_tcp_keepalive_probes = 20 [json_name = "net_ipv4_tcp_keepalive_probes"];
+
+      int64 net_ipv4_tcp_keepalive_time = 21 [json_name = "net_ipv4_tcp_keepalive_time"];
+
+      int64 net_ipv4_tcp_max_syn_backlog = 22 [json_name = "net_ipv4_tcp_max_syn_backlog"];
+
+      int64 net_ipv4_tcp_max_tw_buckets = 23 [json_name = "net_ipv4_tcp_max_tw_buckets"];
+
+      bool net_ipv4_tcp_tw_reuse = 24 [json_name = "net_ipv4_tcp_tw_reuse"];
+
+      int64 net_netfilter_nf_conntrack_buckets = 25 [json_name = "net_netfilter_nf_conntrack_buckets"];
+
+      int64 net_netfilter_nf_conntrack_max = 26 [json_name = "net_netfilter_nf_conntrack_max"];
+
+      int64 vm_max_map_count = 27 [json_name = "vm_max_map_count"];
+
+      int64 vm_swappiness = 28 [json_name = "vm_swappiness"];
+
+      int64 vm_vfs_cache_pressure = 29 [json_name = "vm_vfs_cache_pressure"];
+    }
+  }
+
+  message NodeNetworkProfile {
+    repeated string application_security_group_ids = 1 [json_name = "application_security_group_ids"];
+
+    map<string, string> node_public_ip_tags = 2 [json_name = "node_public_ip_tags"];
+
+    repeated AllowedHostPorts allowed_host_ports = 3 [json_name = "allowed_host_ports"];
+
+    message AllowedHostPorts {
+      int64 port_end = 1 [json_name = "port_end"];
+
+      int64 port_start = 2 [json_name = "port_start"];
+
+      string protocol = 3;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message UpgradeSettings {
+    string max_surge = 1 [json_name = "max_surge"];
+  }
+
+  message WindowsProfile {
+    bool outbound_nat_enabled = 1 [json_name = "outbound_nat_enabled"];
+  }
+}
+
+// AzurermKubernetesClusterTrustedAccessRoleBinding version is 0
+message AzurermKubernetesClusterTrustedAccessRoleBinding {
+  string id = 1;
+
+  string kubernetes_cluster_id = 2 [json_name = "kubernetes_cluster_id"];
+
+  string name = 3;
+
+  repeated string roles = 4;
+
+  string source_resource_id = 5 [json_name = "source_resource_id"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermKubernetesFleetManager version is 0
+message AzurermKubernetesFleetManager {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 5;
+
+  HubProfile hub_profile = 6 [json_name = "hub_profile"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message HubProfile {
+    string dns_prefix = 1 [json_name = "dns_prefix"];
+
+    string fqdn = 2;
+
+    string kubernetes_version = 3 [json_name = "kubernetes_version"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermKubernetesFleetMember version is 0
+message AzurermKubernetesFleetMember {
+  string group = 1;
+
+  string id = 2;
+
+  string kubernetes_cluster_id = 3 [json_name = "kubernetes_cluster_id"];
+
+  string kubernetes_fleet_id = 4 [json_name = "kubernetes_fleet_id"];
+
+  string name = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermKubernetesFleetUpdateRun version is 0
+message AzurermKubernetesFleetUpdateRun {
+  string fleet_update_strategy_id = 1 [json_name = "fleet_update_strategy_id"];
+
+  string id = 2;
+
+  string kubernetes_fleet_manager_id = 3 [json_name = "kubernetes_fleet_manager_id"];
+
+  string name = 4;
+
+  ManagedClusterUpdate managed_cluster_update = 5 [json_name = "managed_cluster_update"];
+
+  repeated Stage stage = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message ManagedClusterUpdate {
+    NodeImageSelection node_image_selection = 1 [json_name = "node_image_selection"];
+
+    Upgrade upgrade = 2;
+
+    message NodeImageSelection {
+      string type = 1;
+    }
+
+    message Upgrade {
+      string kubernetes_version = 1 [json_name = "kubernetes_version"];
+
+      string type = 2;
+    }
+  }
+
+  message Stage {
+    int64 after_stage_wait_in_seconds = 1 [json_name = "after_stage_wait_in_seconds"];
+
+    string name = 2;
+
+    repeated Group group = 3;
+
+    message Group {
+      string name = 1;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermKubernetesFleetUpdateStrategy version is 0
+message AzurermKubernetesFleetUpdateStrategy {
+  string id = 1;
+
+  string kubernetes_fleet_manager_id = 2 [json_name = "kubernetes_fleet_manager_id"];
+
+  string name = 3;
+
+  repeated Stage stage = 4;
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Stage {
+    int64 after_stage_wait_in_seconds = 1 [json_name = "after_stage_wait_in_seconds"];
+
+    string name = 2;
+
+    repeated Group group = 3;
+
+    message Group {
+      string name = 1;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermKubernetesFluxConfiguration version is 0
+message AzurermKubernetesFluxConfiguration {
+  string cluster_id = 1 [json_name = "cluster_id"];
+
+  bool continuous_reconciliation_enabled = 2 [json_name = "continuous_reconciliation_enabled"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string namespace = 5;
+
+  string scope = 6;
+
+  BlobStorage blob_storage = 7 [json_name = "blob_storage"];
+
+  Bucket bucket = 8;
+
+  GitRepository git_repository = 9 [json_name = "git_repository"];
+
+  repeated Kustomizations kustomizations = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message BlobStorage {
+    string account_key = 1 [json_name = "account_key"];
+
+    string container_id = 2 [json_name = "container_id"];
+
+    string local_auth_reference = 3 [json_name = "local_auth_reference"];
+
+    string sas_token = 4 [json_name = "sas_token"];
+
+    int64 sync_interval_in_seconds = 5 [json_name = "sync_interval_in_seconds"];
+
+    int64 timeout_in_seconds = 6 [json_name = "timeout_in_seconds"];
+
+    ManagedIdentity managed_identity = 7 [json_name = "managed_identity"];
+
+    ServicePrincipal service_principal = 8 [json_name = "service_principal"];
+
+    message ManagedIdentity {
+      string client_id = 1 [json_name = "client_id"];
+    }
+
+    message ServicePrincipal {
+      string client_certificate_base64 = 1 [json_name = "client_certificate_base64"];
+
+      string client_certificate_password = 2 [json_name = "client_certificate_password"];
+
+      bool client_certificate_send_chain = 3 [json_name = "client_certificate_send_chain"];
+
+      string client_id = 4 [json_name = "client_id"];
+
+      string client_secret = 5 [json_name = "client_secret"];
+
+      string tenant_id = 6 [json_name = "tenant_id"];
+    }
+  }
+
+  message Bucket {
+    string access_key = 1 [json_name = "access_key"];
+
+    string bucket_name = 2 [json_name = "bucket_name"];
+
+    string local_auth_reference = 3 [json_name = "local_auth_reference"];
+
+    string secret_key_base64 = 4 [json_name = "secret_key_base64"];
+
+    int64 sync_interval_in_seconds = 5 [json_name = "sync_interval_in_seconds"];
+
+    int64 timeout_in_seconds = 6 [json_name = "timeout_in_seconds"];
+
+    bool tls_enabled = 7 [json_name = "tls_enabled"];
+
+    string url = 8;
+  }
+
+  message GitRepository {
+    string https_ca_cert_base64 = 1 [json_name = "https_ca_cert_base64"];
+
+    string https_key_base64 = 2 [json_name = "https_key_base64"];
+
+    string https_user = 3 [json_name = "https_user"];
+
+    string local_auth_reference = 4 [json_name = "local_auth_reference"];
+
+    string reference_type = 5 [json_name = "reference_type"];
+
+    string reference_value = 6 [json_name = "reference_value"];
+
+    string ssh_known_hosts_base64 = 7 [json_name = "ssh_known_hosts_base64"];
+
+    string ssh_private_key_base64 = 8 [json_name = "ssh_private_key_base64"];
+
+    int64 sync_interval_in_seconds = 9 [json_name = "sync_interval_in_seconds"];
+
+    int64 timeout_in_seconds = 10 [json_name = "timeout_in_seconds"];
+
+    string url = 11;
+  }
+
+  message Kustomizations {
+    repeated string depends_on = 1 [json_name = "depends_on"];
+
+    bool garbage_collection_enabled = 2 [json_name = "garbage_collection_enabled"];
+
+    string name = 3;
+
+    string path = 4;
+
+    bool recreating_enabled = 5 [json_name = "recreating_enabled"];
+
+    int64 retry_interval_in_seconds = 6 [json_name = "retry_interval_in_seconds"];
+
+    int64 sync_interval_in_seconds = 7 [json_name = "sync_interval_in_seconds"];
+
+    int64 timeout_in_seconds = 8 [json_name = "timeout_in_seconds"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

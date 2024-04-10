@@ -1,0 +1,384 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermHealthcareDicomService version is 1
+message AzurermHealthcareDicomService {
+  repeated Authentication authentication = 1;
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  repeated PrivateEndpoint private_endpoint = 5 [json_name = "private_endpoint"];
+
+  bool public_network_access_enabled = 6 [json_name = "public_network_access_enabled"];
+
+  string service_url = 7 [json_name = "service_url"];
+
+  map<string, string> tags = 8;
+
+  string workspace_id = 9 [json_name = "workspace_id"];
+
+  Identity identity = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Authentication {
+    // audience: list of string
+    repeated string audience = 1;
+
+    // authority: string
+    string authority = 2;
+  }
+
+  message PrivateEndpoint {
+    // id: string
+    string id = 1;
+
+    // name: string
+    string name = 2;
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermHealthcareFhirService version is 1
+message AzurermHealthcareFhirService {
+  repeated string access_policy_object_ids = 1 [json_name = "access_policy_object_ids"];
+
+  string configuration_export_storage_account_name = 2 [
+    json_name = "configuration_export_storage_account_name"
+  ];
+
+  repeated string container_registry_login_server_url = 3 [json_name = "container_registry_login_server_url"];
+
+  string id = 4;
+
+  string kind = 5;
+
+  string location = 6;
+
+  string name = 7;
+
+  bool public_network_access_enabled = 8 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 10;
+
+  string workspace_id = 11 [json_name = "workspace_id"];
+
+  Authentication authentication = 12;
+
+  Cors cors = 13;
+
+  Identity identity = 14;
+
+  repeated OciArtifact oci_artifact = 15 [json_name = "oci_artifact"];
+
+  repeated Timeouts timeouts = 16;
+
+  google.protobuf.Value for_each = 17 [json_name = "for_each"];
+
+  repeated string depends_on = 18 [json_name = "depends_on"];
+
+  int32 count = 19;
+
+  string provider = 20;
+
+  terraform.v1.Lifecycle lifecycle = 21;
+
+  message Authentication {
+    string audience = 1;
+
+    string authority = 2;
+
+    bool smart_proxy_enabled = 3 [json_name = "smart_proxy_enabled"];
+  }
+
+  message Cors {
+    repeated string allowed_headers = 1 [json_name = "allowed_headers"];
+
+    repeated string allowed_methods = 2 [json_name = "allowed_methods"];
+
+    repeated string allowed_origins = 3 [json_name = "allowed_origins"];
+
+    bool credentials_allowed = 4 [json_name = "credentials_allowed"];
+
+    int64 max_age_in_seconds = 5 [json_name = "max_age_in_seconds"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message OciArtifact {
+    string digest = 1;
+
+    string image_name = 2 [json_name = "image_name"];
+
+    string login_server = 3 [json_name = "login_server"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermHealthcareMedtechService version is 1
+message AzurermHealthcareMedtechService {
+  string device_mapping_json = 1 [json_name = "device_mapping_json"];
+
+  string eventhub_consumer_group_name = 2 [json_name = "eventhub_consumer_group_name"];
+
+  string eventhub_name = 3 [json_name = "eventhub_name"];
+
+  string eventhub_namespace_name = 4 [json_name = "eventhub_namespace_name"];
+
+  string id = 5;
+
+  string location = 6;
+
+  string name = 7;
+
+  map<string, string> tags = 8;
+
+  string workspace_id = 9 [json_name = "workspace_id"];
+
+  Identity identity = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermHealthcareMedtechServiceFhirDestination version is 1
+message AzurermHealthcareMedtechServiceFhirDestination {
+  string destination_fhir_mapping_json = 1 [json_name = "destination_fhir_mapping_json"];
+
+  string destination_fhir_service_id = 2 [json_name = "destination_fhir_service_id"];
+
+  string destination_identity_resolution_type = 3 [json_name = "destination_identity_resolution_type"];
+
+  string id = 4;
+
+  string location = 5;
+
+  string medtech_service_id = 6 [json_name = "medtech_service_id"];
+
+  string name = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermHealthcareService version is 0
+message AzurermHealthcareService {
+  repeated string access_policy_object_ids = 1 [json_name = "access_policy_object_ids"];
+
+  string cosmosdb_key_vault_key_versionless_id = 2 [
+    json_name = "cosmosdb_key_vault_key_versionless_id"
+  ];
+
+  int64 cosmosdb_throughput = 3 [json_name = "cosmosdb_throughput"];
+
+  string id = 4;
+
+  string kind = 5;
+
+  string location = 6;
+
+  string name = 7;
+
+  bool public_network_access_enabled = 8 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 10;
+
+  AuthenticationConfiguration authentication_configuration = 11 [json_name = "authentication_configuration"];
+
+  CorsConfiguration cors_configuration = 12 [json_name = "cors_configuration"];
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message AuthenticationConfiguration {
+    string audience = 1;
+
+    string authority = 2;
+
+    bool smart_proxy_enabled = 3 [json_name = "smart_proxy_enabled"];
+  }
+
+  message CorsConfiguration {
+    bool allow_credentials = 1 [json_name = "allow_credentials"];
+
+    repeated string allowed_headers = 2 [json_name = "allowed_headers"];
+
+    repeated string allowed_methods = 3 [json_name = "allowed_methods"];
+
+    repeated string allowed_origins = 4 [json_name = "allowed_origins"];
+
+    int64 max_age_in_seconds = 5 [json_name = "max_age_in_seconds"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermHealthcareWorkspace version is 0
+message AzurermHealthcareWorkspace {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  repeated PrivateEndpointConnection private_endpoint_connection = 4 [json_name = "private_endpoint_connection"];
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message PrivateEndpointConnection {
+    // id: string
+    string id = 1;
+
+    // name: string
+    string name = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermVpnGateway version is 0
+message AzurermVpnGateway {
+  repeated BgpSettings bgp_settings = 1 [json_name = "bgp_settings"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  int64 scale_unit = 6 [json_name = "scale_unit"];
+
+  map<string, string> tags = 7;
+
+  string virtual_hub_id = 8 [json_name = "virtual_hub_id"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message BgpSettings {
+    // asn: number
+    int64 asn = 1;
+
+    // bgp_peering_address: string
+    string bgp_peering_address = 2 [json_name = "bgp_peering_address"];
+
+    // instance_0_bgp_peering_address: list of object
+    repeated Instance0BgpPeeringAddress instance_0_bgp_peering_address = 3 [json_name = "instance_0_bgp_peering_address"];
+
+    // instance_1_bgp_peering_address: list of object
+    repeated Instance1BgpPeeringAddress instance_1_bgp_peering_address = 4 [json_name = "instance_1_bgp_peering_address"];
+
+    // peer_weight: number
+    int64 peer_weight = 5 [json_name = "peer_weight"];
+
+    message Instance0BgpPeeringAddress {
+      // custom_ips: list of string
+      repeated string custom_ips = 1 [json_name = "custom_ips"];
+
+      // default_ips: list of string
+      repeated string default_ips = 2 [json_name = "default_ips"];
+
+      // ip_configuration_id: string
+      string ip_configuration_id = 3 [json_name = "ip_configuration_id"];
+
+      // tunnel_ips: list of string
+      repeated string tunnel_ips = 4 [json_name = "tunnel_ips"];
+    }
+
+    message Instance1BgpPeeringAddress {
+      // custom_ips: list of string
+      repeated string custom_ips = 1 [json_name = "custom_ips"];
+
+      // default_ips: list of string
+      repeated string default_ips = 2 [json_name = "default_ips"];
+
+      // ip_configuration_id: string
+      string ip_configuration_id = 3 [json_name = "ip_configuration_id"];
+
+      // tunnel_ips: list of string
+      repeated string tunnel_ips = 4 [json_name = "tunnel_ips"];
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

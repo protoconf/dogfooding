@@ -1,0 +1,240 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermDiskAccess version is 0
+message AzurermDiskAccess {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDiskEncryptionSet version is 0
+message AzurermDiskEncryptionSet {
+  bool auto_key_rotation_enabled = 1 [json_name = "auto_key_rotation_enabled"];
+
+  string encryption_type = 2 [json_name = "encryption_type"];
+
+  string federated_client_id = 3 [json_name = "federated_client_id"];
+
+  string id = 4;
+
+  string key_vault_key_id = 5 [json_name = "key_vault_key_id"];
+
+  string key_vault_key_url = 6 [json_name = "key_vault_key_url"];
+
+  string location = 7;
+
+  string name = 8;
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 10;
+
+  Identity identity = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDiskPool version is 0
+message AzurermDiskPool {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  string sku_name = 5 [json_name = "sku_name"];
+
+  string subnet_id = 6 [json_name = "subnet_id"];
+
+  map<string, string> tags = 7;
+
+  repeated string zones = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDiskPoolIscsiTarget version is 0
+message AzurermDiskPoolIscsiTarget {
+  string acl_mode = 1 [json_name = "acl_mode"];
+
+  string disks_pool_id = 2 [json_name = "disks_pool_id"];
+
+  repeated string endpoints = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  int64 port = 6;
+
+  string target_iqn = 7 [json_name = "target_iqn"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermDiskPoolIscsiTargetLun version is 0
+message AzurermDiskPoolIscsiTargetLun {
+  string disk_pool_managed_disk_attachment_id = 1 [json_name = "disk_pool_managed_disk_attachment_id"];
+
+  string id = 2;
+
+  string iscsi_target_id = 3 [json_name = "iscsi_target_id"];
+
+  int64 lun = 4;
+
+  string name = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermDiskPoolManagedDiskAttachment version is 0
+message AzurermDiskPoolManagedDiskAttachment {
+  string disk_pool_id = 1 [json_name = "disk_pool_id"];
+
+  string id = 2;
+
+  string managed_disk_id = 3 [json_name = "managed_disk_id"];
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}

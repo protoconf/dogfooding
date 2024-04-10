@@ -1,0 +1,241 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermHybridComputeMachine version is 0
+message AzurermHybridComputeMachine {
+  string ad_fqdn = 1 [json_name = "ad_fqdn"];
+
+  repeated AgentConfiguration agent_configuration = 2 [json_name = "agent_configuration"];
+
+  string agent_version = 3 [json_name = "agent_version"];
+
+  string client_public_key = 4 [json_name = "client_public_key"];
+
+  repeated CloudMetadata cloud_metadata = 5 [json_name = "cloud_metadata"];
+
+  map<string, string> detected_properties = 6 [json_name = "detected_properties"];
+
+  string display_name = 7 [json_name = "display_name"];
+
+  string dns_fqdn = 8 [json_name = "dns_fqdn"];
+
+  string domain_name = 9 [json_name = "domain_name"];
+
+  repeated ErrorDetails error_details = 10 [json_name = "error_details"];
+
+  string id = 11;
+
+  repeated Identity identity = 12;
+
+  string last_status_change = 13 [json_name = "last_status_change"];
+
+  string location = 14;
+
+  repeated LocationData location_data = 15 [json_name = "location_data"];
+
+  string machine_fqdn = 16 [json_name = "machine_fqdn"];
+
+  bool mssql_discovered = 17 [json_name = "mssql_discovered"];
+
+  string name = 18;
+
+  string os_name = 19 [json_name = "os_name"];
+
+  repeated OsProfile os_profile = 20 [json_name = "os_profile"];
+
+  string os_sku = 21 [json_name = "os_sku"];
+
+  string os_type = 22 [json_name = "os_type"];
+
+  string os_version = 23 [json_name = "os_version"];
+
+  string parent_cluster_resource_id = 24 [json_name = "parent_cluster_resource_id"];
+
+  string private_link_scope_resource_id = 25 [json_name = "private_link_scope_resource_id"];
+
+  string resource_group_name = 26 [json_name = "resource_group_name"];
+
+  repeated ServiceStatus service_status = 27 [json_name = "service_status"];
+
+  string status = 28;
+
+  map<string, string> tags = 29;
+
+  string vm_id = 30 [json_name = "vm_id"];
+
+  string vm_uuid = 31 [json_name = "vm_uuid"];
+
+  repeated Timeouts timeouts = 32;
+
+  google.protobuf.Value for_each = 33 [json_name = "for_each"];
+
+  repeated string depends_on = 34 [json_name = "depends_on"];
+
+  int32 count = 35;
+
+  string provider = 36;
+
+  terraform.v1.Lifecycle lifecycle = 37;
+
+  message AgentConfiguration {
+    // extensions_allow_list: list of object
+    repeated ExtensionsAllowList extensions_allow_list = 1 [json_name = "extensions_allow_list"];
+
+    // extensions_block_list: list of object
+    repeated ExtensionsBlockList extensions_block_list = 2 [json_name = "extensions_block_list"];
+
+    // extensions_enabled: bool
+    bool extensions_enabled = 3 [json_name = "extensions_enabled"];
+
+    // guest_configuration_enabled: bool
+    bool guest_configuration_enabled = 4 [json_name = "guest_configuration_enabled"];
+
+    // incoming_connections_ports: list of string
+    repeated string incoming_connections_ports = 5 [json_name = "incoming_connections_ports"];
+
+    // proxy_bypass: list of string
+    repeated string proxy_bypass = 6 [json_name = "proxy_bypass"];
+
+    // proxy_url: string
+    string proxy_url = 7 [json_name = "proxy_url"];
+
+    message ExtensionsAllowList {
+      // publisher: string
+      string publisher = 1;
+
+      // type: string
+      string type = 2;
+    }
+
+    message ExtensionsBlockList {
+      // publisher: string
+      string publisher = 1;
+
+      // type: string
+      string type = 2;
+    }
+  }
+
+  message CloudMetadata {
+    // provider: string
+    string provider = 1;
+  }
+
+  message ErrorDetails {
+    // additional_info: list of object
+    repeated AdditionalInfo additional_info = 1 [json_name = "additional_info"];
+
+    // code: string
+    string code = 2;
+
+    // message: string
+    string message = 3;
+
+    // target: string
+    string target = 4;
+
+    message AdditionalInfo {
+      // info: string
+      string info = 1;
+
+      // type: string
+      string type = 2;
+    }
+  }
+
+  message Identity {
+    // principal_id: string
+    string principal_id = 1 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 2 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 3;
+  }
+
+  message LocationData {
+    // city: string
+    string city = 1;
+
+    // country_or_region: string
+    string country_or_region = 2 [json_name = "country_or_region"];
+
+    // district: string
+    string district = 3;
+
+    // name: string
+    string name = 4;
+  }
+
+  message OsProfile {
+    // computer_name: string
+    string computer_name = 1 [json_name = "computer_name"];
+
+    // linux_configuration: list of object
+    repeated LinuxConfiguration linux_configuration = 2 [json_name = "linux_configuration"];
+
+    // windows_configuration: list of object
+    repeated WindowsConfiguration windows_configuration = 3 [json_name = "windows_configuration"];
+
+    message LinuxConfiguration {
+      // patch_settings: list of object
+      repeated PatchSettings patch_settings = 1 [json_name = "patch_settings"];
+
+      message PatchSettings {
+        // assessment_mode: string
+        string assessment_mode = 1 [json_name = "assessment_mode"];
+
+        // patch_mode: string
+        string patch_mode = 2 [json_name = "patch_mode"];
+      }
+    }
+
+    message WindowsConfiguration {
+      // patch_settings: list of object
+      repeated PatchSettings patch_settings = 1 [json_name = "patch_settings"];
+
+      message PatchSettings {
+        // assessment_mode: string
+        string assessment_mode = 1 [json_name = "assessment_mode"];
+
+        // patch_mode: string
+        string patch_mode = 2 [json_name = "patch_mode"];
+      }
+    }
+  }
+
+  message ServiceStatus {
+    // extension_service: list of object
+    repeated ExtensionService extension_service = 1 [json_name = "extension_service"];
+
+    // guest_configuration_service: list of object
+    repeated GuestConfigurationService guest_configuration_service = 2 [json_name = "guest_configuration_service"];
+
+    message ExtensionService {
+      // startup_type: string
+      string startup_type = 1 [json_name = "startup_type"];
+
+      // status: string
+      string status = 2;
+    }
+
+    message GuestConfigurationService {
+      // startup_type: string
+      string startup_type = 1 [json_name = "startup_type"];
+
+      // status: string
+      string status = 2;
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

@@ -1,0 +1,449 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermLb version is 0
+message AzurermLb {
+  string edge_zone = 1 [json_name = "edge_zone"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string private_ip_address = 5 [json_name = "private_ip_address"];
+
+  repeated string private_ip_addresses = 6 [json_name = "private_ip_addresses"];
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string sku = 8;
+
+  string sku_tier = 9 [json_name = "sku_tier"];
+
+  map<string, string> tags = 10;
+
+  repeated FrontendIpConfiguration frontend_ip_configuration = 11 [json_name = "frontend_ip_configuration"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message FrontendIpConfiguration {
+    string gateway_load_balancer_frontend_ip_configuration_id = 1 [
+      json_name = "gateway_load_balancer_frontend_ip_configuration_id"
+    ];
+
+    string id = 2;
+
+    repeated string inbound_nat_rules = 3 [json_name = "inbound_nat_rules"];
+
+    repeated string load_balancer_rules = 4 [json_name = "load_balancer_rules"];
+
+    string name = 5;
+
+    repeated string outbound_rules = 6 [json_name = "outbound_rules"];
+
+    string private_ip_address = 7 [json_name = "private_ip_address"];
+
+    string private_ip_address_allocation = 8 [json_name = "private_ip_address_allocation"];
+
+    string private_ip_address_version = 9 [json_name = "private_ip_address_version"];
+
+    string public_ip_address_id = 10 [json_name = "public_ip_address_id"];
+
+    string public_ip_prefix_id = 11 [json_name = "public_ip_prefix_id"];
+
+    string subnet_id = 12 [json_name = "subnet_id"];
+
+    repeated string zones = 13;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLbBackendAddressPool version is 0
+message AzurermLbBackendAddressPool {
+  repeated string backend_ip_configurations = 1 [json_name = "backend_ip_configurations"];
+
+  string id = 2;
+
+  repeated string inbound_nat_rules = 3 [json_name = "inbound_nat_rules"];
+
+  repeated string load_balancing_rules = 4 [json_name = "load_balancing_rules"];
+
+  string loadbalancer_id = 5 [json_name = "loadbalancer_id"];
+
+  string name = 6;
+
+  repeated string outbound_rules = 7 [json_name = "outbound_rules"];
+
+  string virtual_network_id = 8 [json_name = "virtual_network_id"];
+
+  repeated Timeouts timeouts = 9;
+
+  repeated TunnelInterface tunnel_interface = 10 [json_name = "tunnel_interface"];
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message TunnelInterface {
+    int64 identifier = 1;
+
+    int64 port = 2;
+
+    string protocol = 3;
+
+    string type = 4;
+  }
+}
+
+// AzurermLbBackendAddressPoolAddress version is 0
+message AzurermLbBackendAddressPoolAddress {
+  // For global load balancer, user needs to specify the
+  // `backend_address_ip_configuration_id` of the added regional load balancers
+  string backend_address_ip_configuration_id = 1 [json_name = "backend_address_ip_configuration_id"];
+
+  string backend_address_pool_id = 2 [json_name = "backend_address_pool_id"];
+
+  string id = 3;
+
+  repeated InboundNatRulePortMapping inbound_nat_rule_port_mapping = 4 [json_name = "inbound_nat_rule_port_mapping"];
+
+  string ip_address = 5 [json_name = "ip_address"];
+
+  string name = 6;
+
+  // For regional load balancer, user needs to specify `virtual_network_id` and
+  // `ip_address`
+  string virtual_network_id = 7 [json_name = "virtual_network_id"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message InboundNatRulePortMapping {
+    // backend_port: number
+    int64 backend_port = 1 [json_name = "backend_port"];
+
+    // frontend_port: number
+    int64 frontend_port = 2 [json_name = "frontend_port"];
+
+    // inbound_nat_rule_name: string
+    string inbound_nat_rule_name = 3 [json_name = "inbound_nat_rule_name"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLbNatPool version is 0
+message AzurermLbNatPool {
+  int64 backend_port = 1 [json_name = "backend_port"];
+
+  bool floating_ip_enabled = 2 [json_name = "floating_ip_enabled"];
+
+  string frontend_ip_configuration_id = 3 [json_name = "frontend_ip_configuration_id"];
+
+  string frontend_ip_configuration_name = 4 [json_name = "frontend_ip_configuration_name"];
+
+  int64 frontend_port_end = 5 [json_name = "frontend_port_end"];
+
+  int64 frontend_port_start = 6 [json_name = "frontend_port_start"];
+
+  string id = 7;
+
+  int64 idle_timeout_in_minutes = 8 [json_name = "idle_timeout_in_minutes"];
+
+  string loadbalancer_id = 9 [json_name = "loadbalancer_id"];
+
+  string name = 10;
+
+  string protocol = 11;
+
+  string resource_group_name = 12 [json_name = "resource_group_name"];
+
+  bool tcp_reset_enabled = 13 [json_name = "tcp_reset_enabled"];
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLbNatRule version is 0
+message AzurermLbNatRule {
+  string backend_address_pool_id = 1 [json_name = "backend_address_pool_id"];
+
+  string backend_ip_configuration_id = 2 [json_name = "backend_ip_configuration_id"];
+
+  int64 backend_port = 3 [json_name = "backend_port"];
+
+  bool enable_floating_ip = 4 [json_name = "enable_floating_ip"];
+
+  bool enable_tcp_reset = 5 [json_name = "enable_tcp_reset"];
+
+  string frontend_ip_configuration_id = 6 [json_name = "frontend_ip_configuration_id"];
+
+  string frontend_ip_configuration_name = 7 [json_name = "frontend_ip_configuration_name"];
+
+  int64 frontend_port = 8 [json_name = "frontend_port"];
+
+  int64 frontend_port_end = 9 [json_name = "frontend_port_end"];
+
+  int64 frontend_port_start = 10 [json_name = "frontend_port_start"];
+
+  string id = 11;
+
+  int64 idle_timeout_in_minutes = 12 [json_name = "idle_timeout_in_minutes"];
+
+  string loadbalancer_id = 13 [json_name = "loadbalancer_id"];
+
+  string name = 14;
+
+  string protocol = 15;
+
+  string resource_group_name = 16 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 17;
+
+  google.protobuf.Value for_each = 18 [json_name = "for_each"];
+
+  repeated string depends_on = 19 [json_name = "depends_on"];
+
+  int32 count = 20;
+
+  string provider = 21;
+
+  terraform.v1.Lifecycle lifecycle = 22;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLbOutboundRule version is 0
+message AzurermLbOutboundRule {
+  int64 allocated_outbound_ports = 1 [json_name = "allocated_outbound_ports"];
+
+  string backend_address_pool_id = 2 [json_name = "backend_address_pool_id"];
+
+  bool enable_tcp_reset = 3 [json_name = "enable_tcp_reset"];
+
+  string id = 4;
+
+  int64 idle_timeout_in_minutes = 5 [json_name = "idle_timeout_in_minutes"];
+
+  string loadbalancer_id = 6 [json_name = "loadbalancer_id"];
+
+  string name = 7;
+
+  string protocol = 8;
+
+  repeated FrontendIpConfiguration frontend_ip_configuration = 9 [json_name = "frontend_ip_configuration"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message FrontendIpConfiguration {
+    string id = 1;
+
+    string name = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLbProbe version is 0
+message AzurermLbProbe {
+  string id = 1;
+
+  int64 interval_in_seconds = 2 [json_name = "interval_in_seconds"];
+
+  repeated string load_balancer_rules = 3 [json_name = "load_balancer_rules"];
+
+  string loadbalancer_id = 4 [json_name = "loadbalancer_id"];
+
+  string name = 5;
+
+  int64 number_of_probes = 6 [json_name = "number_of_probes"];
+
+  int64 port = 7;
+
+  int64 probe_threshold = 8 [json_name = "probe_threshold"];
+
+  string protocol = 9;
+
+  string request_path = 10 [json_name = "request_path"];
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermLbRule version is 0
+message AzurermLbRule {
+  repeated string backend_address_pool_ids = 1 [json_name = "backend_address_pool_ids"];
+
+  int64 backend_port = 2 [json_name = "backend_port"];
+
+  bool disable_outbound_snat = 3 [json_name = "disable_outbound_snat"];
+
+  bool enable_floating_ip = 4 [json_name = "enable_floating_ip"];
+
+  bool enable_tcp_reset = 5 [json_name = "enable_tcp_reset"];
+
+  string frontend_ip_configuration_id = 6 [json_name = "frontend_ip_configuration_id"];
+
+  string frontend_ip_configuration_name = 7 [json_name = "frontend_ip_configuration_name"];
+
+  int64 frontend_port = 8 [json_name = "frontend_port"];
+
+  string id = 9;
+
+  int64 idle_timeout_in_minutes = 10 [json_name = "idle_timeout_in_minutes"];
+
+  string load_distribution = 11 [json_name = "load_distribution"];
+
+  string loadbalancer_id = 12 [json_name = "loadbalancer_id"];
+
+  string name = 13;
+
+  string probe_id = 14 [json_name = "probe_id"];
+
+  string protocol = 15;
+
+  repeated Timeouts timeouts = 16;
+
+  google.protobuf.Value for_each = 17 [json_name = "for_each"];
+
+  repeated string depends_on = 18 [json_name = "depends_on"];
+
+  int32 count = 19;
+
+  string provider = 20;
+
+  terraform.v1.Lifecycle lifecycle = 21;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

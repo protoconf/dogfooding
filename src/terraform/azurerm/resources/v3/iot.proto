@@ -1,0 +1,432 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermIotSecurityDeviceGroup version is 0
+message AzurermIotSecurityDeviceGroup {
+  string id = 1;
+
+  string iothub_id = 2 [json_name = "iothub_id"];
+
+  string name = 3;
+
+  AllowRule allow_rule = 4 [json_name = "allow_rule"];
+
+  repeated RangeRule range_rule = 5 [json_name = "range_rule"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message AllowRule {
+    repeated string connection_from_ips_not_allowed = 1 [json_name = "connection_from_ips_not_allowed"];
+
+    repeated string connection_to_ips_not_allowed = 2 [json_name = "connection_to_ips_not_allowed"];
+
+    repeated string local_users_not_allowed = 3 [json_name = "local_users_not_allowed"];
+
+    repeated string processes_not_allowed = 4 [json_name = "processes_not_allowed"];
+  }
+
+  message RangeRule {
+    string duration = 1;
+
+    int64 max = 2;
+
+    int64 min = 3;
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIotSecuritySolution version is 1
+message AzurermIotSecuritySolution {
+  repeated string disabled_data_sources = 1 [json_name = "disabled_data_sources"];
+
+  string display_name = 2 [json_name = "display_name"];
+
+  bool enabled = 3;
+
+  repeated string events_to_export = 4 [json_name = "events_to_export"];
+
+  string id = 5;
+
+  repeated string iothub_ids = 6 [json_name = "iothub_ids"];
+
+  string location = 7;
+
+  string log_analytics_workspace_id = 8 [json_name = "log_analytics_workspace_id"];
+
+  bool log_unmasked_ips_enabled = 9 [json_name = "log_unmasked_ips_enabled"];
+
+  string name = 10;
+
+  string query_for_resources = 11 [json_name = "query_for_resources"];
+
+  repeated string query_subscription_ids = 12 [json_name = "query_subscription_ids"];
+
+  string resource_group_name = 13 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 14;
+
+  repeated AdditionalWorkspace additional_workspace = 15 [json_name = "additional_workspace"];
+
+  RecommendationsEnabled recommendations_enabled = 16 [json_name = "recommendations_enabled"];
+
+  repeated Timeouts timeouts = 17;
+
+  google.protobuf.Value for_each = 18 [json_name = "for_each"];
+
+  repeated string depends_on = 19 [json_name = "depends_on"];
+
+  int32 count = 20;
+
+  string provider = 21;
+
+  terraform.v1.Lifecycle lifecycle = 22;
+
+  message AdditionalWorkspace {
+    repeated string data_types = 1 [json_name = "data_types"];
+
+    string workspace_id = 2 [json_name = "workspace_id"];
+  }
+
+  message RecommendationsEnabled {
+    bool acr_authentication = 1 [json_name = "acr_authentication"];
+
+    bool agent_send_unutilized_msg = 2 [json_name = "agent_send_unutilized_msg"];
+
+    bool baseline = 3;
+
+    bool edge_hub_mem_optimize = 4 [json_name = "edge_hub_mem_optimize"];
+
+    bool edge_logging_option = 5 [json_name = "edge_logging_option"];
+
+    bool inconsistent_module_settings = 6 [json_name = "inconsistent_module_settings"];
+
+    bool install_agent = 7 [json_name = "install_agent"];
+
+    bool ip_filter_deny_all = 8 [json_name = "ip_filter_deny_all"];
+
+    bool ip_filter_permissive_rule = 9 [json_name = "ip_filter_permissive_rule"];
+
+    bool open_ports = 10 [json_name = "open_ports"];
+
+    bool permissive_firewall_policy = 11 [json_name = "permissive_firewall_policy"];
+
+    bool permissive_input_firewall_rules = 12 [json_name = "permissive_input_firewall_rules"];
+
+    bool permissive_output_firewall_rules = 13 [json_name = "permissive_output_firewall_rules"];
+
+    bool privileged_docker_options = 14 [json_name = "privileged_docker_options"];
+
+    bool shared_credentials = 15 [json_name = "shared_credentials"];
+
+    bool vulnerable_tls_cipher_suite = 16 [json_name = "vulnerable_tls_cipher_suite"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIotTimeSeriesInsightsAccessPolicy version is 1
+message AzurermIotTimeSeriesInsightsAccessPolicy {
+  string description = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  string principal_object_id = 4 [json_name = "principal_object_id"];
+
+  repeated string roles = 5;
+
+  string time_series_insights_environment_id = 6 [json_name = "time_series_insights_environment_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIotTimeSeriesInsightsEventSourceEventhub version is 0
+message AzurermIotTimeSeriesInsightsEventSourceEventhub {
+  string consumer_group_name = 1 [json_name = "consumer_group_name"];
+
+  string environment_id = 2 [json_name = "environment_id"];
+
+  string event_source_resource_id = 3 [json_name = "event_source_resource_id"];
+
+  string eventhub_name = 4 [json_name = "eventhub_name"];
+
+  string id = 5;
+
+  string location = 6;
+
+  string name = 7;
+
+  string namespace_name = 8 [json_name = "namespace_name"];
+
+  string shared_access_key = 9 [json_name = "shared_access_key"];
+
+  string shared_access_key_name = 10 [json_name = "shared_access_key_name"];
+
+  map<string, string> tags = 11;
+
+  string timestamp_property_name = 12 [json_name = "timestamp_property_name"];
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIotTimeSeriesInsightsEventSourceIothub version is 0
+message AzurermIotTimeSeriesInsightsEventSourceIothub {
+  string consumer_group_name = 1 [json_name = "consumer_group_name"];
+
+  string environment_id = 2 [json_name = "environment_id"];
+
+  string event_source_resource_id = 3 [json_name = "event_source_resource_id"];
+
+  string id = 4;
+
+  string iothub_name = 5 [json_name = "iothub_name"];
+
+  string location = 6;
+
+  string name = 7;
+
+  string shared_access_key = 8 [json_name = "shared_access_key"];
+
+  string shared_access_key_name = 9 [json_name = "shared_access_key_name"];
+
+  map<string, string> tags = 10;
+
+  string timestamp_property_name = 11 [json_name = "timestamp_property_name"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIotTimeSeriesInsightsGen2Environment version is 0
+message AzurermIotTimeSeriesInsightsGen2Environment {
+  string data_access_fqdn = 1 [json_name = "data_access_fqdn"];
+
+  string id = 2;
+
+  repeated string id_properties = 3 [json_name = "id_properties"];
+
+  string location = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string sku_name = 7 [json_name = "sku_name"];
+
+  map<string, string> tags = 8;
+
+  string warm_store_data_retention_time = 9 [json_name = "warm_store_data_retention_time"];
+
+  Storage storage = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Storage {
+    string key = 1;
+
+    string name = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIotTimeSeriesInsightsReferenceDataSet version is 0
+message AzurermIotTimeSeriesInsightsReferenceDataSet {
+  string data_string_comparison_behavior = 1 [json_name = "data_string_comparison_behavior"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  map<string, string> tags = 5;
+
+  string time_series_insights_environment_id = 6 [json_name = "time_series_insights_environment_id"];
+
+  repeated KeyProperty key_property = 7 [json_name = "key_property"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message KeyProperty {
+    string name = 1;
+
+    string type = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermIotTimeSeriesInsightsStandardEnvironment version is 0
+message AzurermIotTimeSeriesInsightsStandardEnvironment {
+  string data_retention_time = 1 [json_name = "data_retention_time"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string partition_key = 5 [json_name = "partition_key"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string sku_name = 7 [json_name = "sku_name"];
+
+  string storage_limit_exceeded_behavior = 8 [json_name = "storage_limit_exceeded_behavior"];
+
+  map<string, string> tags = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

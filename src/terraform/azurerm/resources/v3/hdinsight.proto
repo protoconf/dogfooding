@@ -1,0 +1,1543 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermHdinsightHadoopCluster version is 0
+message AzurermHdinsightHadoopCluster {
+  string cluster_version = 1 [json_name = "cluster_version"];
+
+  string https_endpoint = 2 [json_name = "https_endpoint"];
+
+  string id = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string ssh_endpoint = 7 [json_name = "ssh_endpoint"];
+
+  map<string, string> tags = 8;
+
+  string tier = 9;
+
+  string tls_min_version = 10 [json_name = "tls_min_version"];
+
+  ComponentVersion component_version = 11 [json_name = "component_version"];
+
+  ComputeIsolation compute_isolation = 12 [json_name = "compute_isolation"];
+
+  repeated DiskEncryption disk_encryption = 13 [json_name = "disk_encryption"];
+
+  Extension extension = 14;
+
+  Gateway gateway = 15;
+
+  Metastores metastores = 16;
+
+  Monitor monitor = 17;
+
+  Network network = 18;
+
+  Roles roles = 19;
+
+  SecurityProfile security_profile = 20 [json_name = "security_profile"];
+
+  repeated StorageAccount storage_account = 21 [json_name = "storage_account"];
+
+  StorageAccountGen2 storage_account_gen2 = 22 [json_name = "storage_account_gen2"];
+
+  repeated Timeouts timeouts = 23;
+
+  google.protobuf.Value for_each = 24 [json_name = "for_each"];
+
+  repeated string depends_on = 25 [json_name = "depends_on"];
+
+  int32 count = 26;
+
+  string provider = 27;
+
+  terraform.v1.Lifecycle lifecycle = 28;
+
+  message ComponentVersion {
+    string hadoop = 1;
+  }
+
+  message ComputeIsolation {
+    bool compute_isolation_enabled = 1 [json_name = "compute_isolation_enabled"];
+
+    string host_sku = 2 [json_name = "host_sku"];
+  }
+
+  message DiskEncryption {
+    string encryption_algorithm = 1 [json_name = "encryption_algorithm"];
+
+    bool encryption_at_host_enabled = 2 [json_name = "encryption_at_host_enabled"];
+
+    string key_vault_key_id = 3 [json_name = "key_vault_key_id"];
+
+    string key_vault_managed_identity_id = 4 [json_name = "key_vault_managed_identity_id"];
+  }
+
+  message Extension {
+    string log_analytics_workspace_id = 1 [json_name = "log_analytics_workspace_id"];
+
+    string primary_key = 2 [json_name = "primary_key"];
+  }
+
+  message Gateway {
+    string password = 1;
+
+    string username = 2;
+  }
+
+  message Metastores {
+    Ambari ambari = 1;
+
+    Hive hive = 2;
+
+    Oozie oozie = 3;
+
+    message Ambari {
+      string database_name = 1 [json_name = "database_name"];
+
+      string password = 2;
+
+      string server = 3;
+
+      string username = 4;
+    }
+
+    message Hive {
+      string database_name = 1 [json_name = "database_name"];
+
+      string password = 2;
+
+      string server = 3;
+
+      string username = 4;
+    }
+
+    message Oozie {
+      string database_name = 1 [json_name = "database_name"];
+
+      string password = 2;
+
+      string server = 3;
+
+      string username = 4;
+    }
+  }
+
+  message Monitor {
+    string log_analytics_workspace_id = 1 [json_name = "log_analytics_workspace_id"];
+
+    string primary_key = 2 [json_name = "primary_key"];
+  }
+
+  message Network {
+    string connection_direction = 1 [json_name = "connection_direction"];
+
+    bool private_link_enabled = 2 [json_name = "private_link_enabled"];
+  }
+
+  message Roles {
+    EdgeNode edge_node = 1 [json_name = "edge_node"];
+
+    HeadNode head_node = 2 [json_name = "head_node"];
+
+    WorkerNode worker_node = 3 [json_name = "worker_node"];
+
+    ZookeeperNode zookeeper_node = 4 [json_name = "zookeeper_node"];
+
+    message EdgeNode {
+      int64 target_instance_count = 1 [json_name = "target_instance_count"];
+
+      string vm_size = 2 [json_name = "vm_size"];
+
+      repeated HttpsEndpoints https_endpoints = 3 [json_name = "https_endpoints"];
+
+      repeated InstallScriptAction install_script_action = 4 [json_name = "install_script_action"];
+
+      repeated UninstallScriptActions uninstall_script_actions = 5 [json_name = "uninstall_script_actions"];
+
+      message HttpsEndpoints {
+        repeated string access_modes = 1 [json_name = "access_modes"];
+
+        int64 destination_port = 2 [json_name = "destination_port"];
+
+        bool disable_gateway_auth = 3 [json_name = "disable_gateway_auth"];
+
+        string private_ip_address = 4 [json_name = "private_ip_address"];
+
+        string sub_domain_suffix = 5 [json_name = "sub_domain_suffix"];
+      }
+
+      message InstallScriptAction {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+
+      message UninstallScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+
+    message HeadNode {
+      string password = 1;
+
+      repeated string ssh_keys = 2 [json_name = "ssh_keys"];
+
+      string subnet_id = 3 [json_name = "subnet_id"];
+
+      string username = 4;
+
+      string virtual_network_id = 5 [json_name = "virtual_network_id"];
+
+      string vm_size = 6 [json_name = "vm_size"];
+
+      repeated ScriptActions script_actions = 7 [json_name = "script_actions"];
+
+      message ScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+
+    message WorkerNode {
+      string password = 1;
+
+      repeated string ssh_keys = 2 [json_name = "ssh_keys"];
+
+      string subnet_id = 3 [json_name = "subnet_id"];
+
+      int64 target_instance_count = 4 [json_name = "target_instance_count"];
+
+      string username = 5;
+
+      string virtual_network_id = 6 [json_name = "virtual_network_id"];
+
+      string vm_size = 7 [json_name = "vm_size"];
+
+      Autoscale autoscale = 8;
+
+      repeated ScriptActions script_actions = 9 [json_name = "script_actions"];
+
+      message Autoscale {
+        Capacity capacity = 1;
+
+        Recurrence recurrence = 2;
+
+        message Capacity {
+          int64 max_instance_count = 1 [json_name = "max_instance_count"];
+
+          int64 min_instance_count = 2 [json_name = "min_instance_count"];
+        }
+
+        message Recurrence {
+          string timezone = 1;
+
+          repeated Schedule schedule = 2;
+
+          message Schedule {
+            repeated string days = 1;
+
+            int64 target_instance_count = 2 [json_name = "target_instance_count"];
+
+            string time = 3;
+          }
+        }
+      }
+
+      message ScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+
+    message ZookeeperNode {
+      string password = 1;
+
+      repeated string ssh_keys = 2 [json_name = "ssh_keys"];
+
+      string subnet_id = 3 [json_name = "subnet_id"];
+
+      string username = 4;
+
+      string virtual_network_id = 5 [json_name = "virtual_network_id"];
+
+      string vm_size = 6 [json_name = "vm_size"];
+
+      repeated ScriptActions script_actions = 7 [json_name = "script_actions"];
+
+      message ScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+  }
+
+  message SecurityProfile {
+    string aadds_resource_id = 1 [json_name = "aadds_resource_id"];
+
+    repeated string cluster_users_group_dns = 2 [json_name = "cluster_users_group_dns"];
+
+    string domain_name = 3 [json_name = "domain_name"];
+
+    string domain_user_password = 4 [json_name = "domain_user_password"];
+
+    string domain_username = 5 [json_name = "domain_username"];
+
+    repeated string ldaps_urls = 6 [json_name = "ldaps_urls"];
+
+    string msi_resource_id = 7 [json_name = "msi_resource_id"];
+  }
+
+  message StorageAccount {
+    bool is_default = 1 [json_name = "is_default"];
+
+    string storage_account_key = 2 [json_name = "storage_account_key"];
+
+    string storage_container_id = 3 [json_name = "storage_container_id"];
+
+    string storage_resource_id = 4 [json_name = "storage_resource_id"];
+  }
+
+  message StorageAccountGen2 {
+    string filesystem_id = 1 [json_name = "filesystem_id"];
+
+    bool is_default = 2 [json_name = "is_default"];
+
+    string managed_identity_resource_id = 3 [json_name = "managed_identity_resource_id"];
+
+    string storage_resource_id = 4 [json_name = "storage_resource_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermHdinsightHbaseCluster version is 0
+message AzurermHdinsightHbaseCluster {
+  string cluster_version = 1 [json_name = "cluster_version"];
+
+  string https_endpoint = 2 [json_name = "https_endpoint"];
+
+  string id = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string ssh_endpoint = 7 [json_name = "ssh_endpoint"];
+
+  map<string, string> tags = 8;
+
+  string tier = 9;
+
+  string tls_min_version = 10 [json_name = "tls_min_version"];
+
+  ComponentVersion component_version = 11 [json_name = "component_version"];
+
+  ComputeIsolation compute_isolation = 12 [json_name = "compute_isolation"];
+
+  repeated DiskEncryption disk_encryption = 13 [json_name = "disk_encryption"];
+
+  Extension extension = 14;
+
+  Gateway gateway = 15;
+
+  Metastores metastores = 16;
+
+  Monitor monitor = 17;
+
+  Network network = 18;
+
+  Roles roles = 19;
+
+  SecurityProfile security_profile = 20 [json_name = "security_profile"];
+
+  repeated StorageAccount storage_account = 21 [json_name = "storage_account"];
+
+  StorageAccountGen2 storage_account_gen2 = 22 [json_name = "storage_account_gen2"];
+
+  repeated Timeouts timeouts = 23;
+
+  google.protobuf.Value for_each = 24 [json_name = "for_each"];
+
+  repeated string depends_on = 25 [json_name = "depends_on"];
+
+  int32 count = 26;
+
+  string provider = 27;
+
+  terraform.v1.Lifecycle lifecycle = 28;
+
+  message ComponentVersion {
+    string hbase = 1;
+  }
+
+  message ComputeIsolation {
+    bool compute_isolation_enabled = 1 [json_name = "compute_isolation_enabled"];
+
+    string host_sku = 2 [json_name = "host_sku"];
+  }
+
+  message DiskEncryption {
+    string encryption_algorithm = 1 [json_name = "encryption_algorithm"];
+
+    bool encryption_at_host_enabled = 2 [json_name = "encryption_at_host_enabled"];
+
+    string key_vault_key_id = 3 [json_name = "key_vault_key_id"];
+
+    string key_vault_managed_identity_id = 4 [json_name = "key_vault_managed_identity_id"];
+  }
+
+  message Extension {
+    string log_analytics_workspace_id = 1 [json_name = "log_analytics_workspace_id"];
+
+    string primary_key = 2 [json_name = "primary_key"];
+  }
+
+  message Gateway {
+    string password = 1;
+
+    string username = 2;
+  }
+
+  message Metastores {
+    Ambari ambari = 1;
+
+    Hive hive = 2;
+
+    Oozie oozie = 3;
+
+    message Ambari {
+      string database_name = 1 [json_name = "database_name"];
+
+      string password = 2;
+
+      string server = 3;
+
+      string username = 4;
+    }
+
+    message Hive {
+      string database_name = 1 [json_name = "database_name"];
+
+      string password = 2;
+
+      string server = 3;
+
+      string username = 4;
+    }
+
+    message Oozie {
+      string database_name = 1 [json_name = "database_name"];
+
+      string password = 2;
+
+      string server = 3;
+
+      string username = 4;
+    }
+  }
+
+  message Monitor {
+    string log_analytics_workspace_id = 1 [json_name = "log_analytics_workspace_id"];
+
+    string primary_key = 2 [json_name = "primary_key"];
+  }
+
+  message Network {
+    string connection_direction = 1 [json_name = "connection_direction"];
+
+    bool private_link_enabled = 2 [json_name = "private_link_enabled"];
+  }
+
+  message Roles {
+    HeadNode head_node = 1 [json_name = "head_node"];
+
+    WorkerNode worker_node = 2 [json_name = "worker_node"];
+
+    ZookeeperNode zookeeper_node = 3 [json_name = "zookeeper_node"];
+
+    message HeadNode {
+      string password = 1;
+
+      repeated string ssh_keys = 2 [json_name = "ssh_keys"];
+
+      string subnet_id = 3 [json_name = "subnet_id"];
+
+      string username = 4;
+
+      string virtual_network_id = 5 [json_name = "virtual_network_id"];
+
+      string vm_size = 6 [json_name = "vm_size"];
+
+      repeated ScriptActions script_actions = 7 [json_name = "script_actions"];
+
+      message ScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+
+    message WorkerNode {
+      string password = 1;
+
+      repeated string ssh_keys = 2 [json_name = "ssh_keys"];
+
+      string subnet_id = 3 [json_name = "subnet_id"];
+
+      int64 target_instance_count = 4 [json_name = "target_instance_count"];
+
+      string username = 5;
+
+      string virtual_network_id = 6 [json_name = "virtual_network_id"];
+
+      string vm_size = 7 [json_name = "vm_size"];
+
+      Autoscale autoscale = 8;
+
+      repeated ScriptActions script_actions = 9 [json_name = "script_actions"];
+
+      message Autoscale {
+        Recurrence recurrence = 1;
+
+        message Recurrence {
+          string timezone = 1;
+
+          repeated Schedule schedule = 2;
+
+          message Schedule {
+            repeated string days = 1;
+
+            int64 target_instance_count = 2 [json_name = "target_instance_count"];
+
+            string time = 3;
+          }
+        }
+      }
+
+      message ScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+
+    message ZookeeperNode {
+      string password = 1;
+
+      repeated string ssh_keys = 2 [json_name = "ssh_keys"];
+
+      string subnet_id = 3 [json_name = "subnet_id"];
+
+      string username = 4;
+
+      string virtual_network_id = 5 [json_name = "virtual_network_id"];
+
+      string vm_size = 6 [json_name = "vm_size"];
+
+      repeated ScriptActions script_actions = 7 [json_name = "script_actions"];
+
+      message ScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+  }
+
+  message SecurityProfile {
+    string aadds_resource_id = 1 [json_name = "aadds_resource_id"];
+
+    repeated string cluster_users_group_dns = 2 [json_name = "cluster_users_group_dns"];
+
+    string domain_name = 3 [json_name = "domain_name"];
+
+    string domain_user_password = 4 [json_name = "domain_user_password"];
+
+    string domain_username = 5 [json_name = "domain_username"];
+
+    repeated string ldaps_urls = 6 [json_name = "ldaps_urls"];
+
+    string msi_resource_id = 7 [json_name = "msi_resource_id"];
+  }
+
+  message StorageAccount {
+    bool is_default = 1 [json_name = "is_default"];
+
+    string storage_account_key = 2 [json_name = "storage_account_key"];
+
+    string storage_container_id = 3 [json_name = "storage_container_id"];
+
+    string storage_resource_id = 4 [json_name = "storage_resource_id"];
+  }
+
+  message StorageAccountGen2 {
+    string filesystem_id = 1 [json_name = "filesystem_id"];
+
+    bool is_default = 2 [json_name = "is_default"];
+
+    string managed_identity_resource_id = 3 [json_name = "managed_identity_resource_id"];
+
+    string storage_resource_id = 4 [json_name = "storage_resource_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermHdinsightInteractiveQueryCluster version is 0
+message AzurermHdinsightInteractiveQueryCluster {
+  string cluster_version = 1 [json_name = "cluster_version"];
+
+  bool encryption_in_transit_enabled = 2 [json_name = "encryption_in_transit_enabled"];
+
+  string https_endpoint = 3 [json_name = "https_endpoint"];
+
+  string id = 4;
+
+  string location = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string ssh_endpoint = 8 [json_name = "ssh_endpoint"];
+
+  map<string, string> tags = 9;
+
+  string tier = 10;
+
+  string tls_min_version = 11 [json_name = "tls_min_version"];
+
+  ComponentVersion component_version = 12 [json_name = "component_version"];
+
+  ComputeIsolation compute_isolation = 13 [json_name = "compute_isolation"];
+
+  repeated DiskEncryption disk_encryption = 14 [json_name = "disk_encryption"];
+
+  Extension extension = 15;
+
+  Gateway gateway = 16;
+
+  Metastores metastores = 17;
+
+  Monitor monitor = 18;
+
+  Network network = 19;
+
+  Roles roles = 20;
+
+  SecurityProfile security_profile = 21 [json_name = "security_profile"];
+
+  repeated StorageAccount storage_account = 22 [json_name = "storage_account"];
+
+  StorageAccountGen2 storage_account_gen2 = 23 [json_name = "storage_account_gen2"];
+
+  repeated Timeouts timeouts = 24;
+
+  google.protobuf.Value for_each = 25 [json_name = "for_each"];
+
+  repeated string depends_on = 26 [json_name = "depends_on"];
+
+  int32 count = 27;
+
+  string provider = 28;
+
+  terraform.v1.Lifecycle lifecycle = 29;
+
+  message ComponentVersion {
+    string interactive_hive = 1 [json_name = "interactive_hive"];
+  }
+
+  message ComputeIsolation {
+    bool compute_isolation_enabled = 1 [json_name = "compute_isolation_enabled"];
+
+    string host_sku = 2 [json_name = "host_sku"];
+  }
+
+  message DiskEncryption {
+    string encryption_algorithm = 1 [json_name = "encryption_algorithm"];
+
+    bool encryption_at_host_enabled = 2 [json_name = "encryption_at_host_enabled"];
+
+    string key_vault_key_id = 3 [json_name = "key_vault_key_id"];
+
+    string key_vault_managed_identity_id = 4 [json_name = "key_vault_managed_identity_id"];
+  }
+
+  message Extension {
+    string log_analytics_workspace_id = 1 [json_name = "log_analytics_workspace_id"];
+
+    string primary_key = 2 [json_name = "primary_key"];
+  }
+
+  message Gateway {
+    string password = 1;
+
+    string username = 2;
+  }
+
+  message Metastores {
+    Ambari ambari = 1;
+
+    Hive hive = 2;
+
+    Oozie oozie = 3;
+
+    message Ambari {
+      string database_name = 1 [json_name = "database_name"];
+
+      string password = 2;
+
+      string server = 3;
+
+      string username = 4;
+    }
+
+    message Hive {
+      string database_name = 1 [json_name = "database_name"];
+
+      string password = 2;
+
+      string server = 3;
+
+      string username = 4;
+    }
+
+    message Oozie {
+      string database_name = 1 [json_name = "database_name"];
+
+      string password = 2;
+
+      string server = 3;
+
+      string username = 4;
+    }
+  }
+
+  message Monitor {
+    string log_analytics_workspace_id = 1 [json_name = "log_analytics_workspace_id"];
+
+    string primary_key = 2 [json_name = "primary_key"];
+  }
+
+  message Network {
+    string connection_direction = 1 [json_name = "connection_direction"];
+
+    bool private_link_enabled = 2 [json_name = "private_link_enabled"];
+  }
+
+  message Roles {
+    HeadNode head_node = 1 [json_name = "head_node"];
+
+    WorkerNode worker_node = 2 [json_name = "worker_node"];
+
+    ZookeeperNode zookeeper_node = 3 [json_name = "zookeeper_node"];
+
+    message HeadNode {
+      string password = 1;
+
+      repeated string ssh_keys = 2 [json_name = "ssh_keys"];
+
+      string subnet_id = 3 [json_name = "subnet_id"];
+
+      string username = 4;
+
+      string virtual_network_id = 5 [json_name = "virtual_network_id"];
+
+      string vm_size = 6 [json_name = "vm_size"];
+
+      repeated ScriptActions script_actions = 7 [json_name = "script_actions"];
+
+      message ScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+
+    message WorkerNode {
+      string password = 1;
+
+      repeated string ssh_keys = 2 [json_name = "ssh_keys"];
+
+      string subnet_id = 3 [json_name = "subnet_id"];
+
+      int64 target_instance_count = 4 [json_name = "target_instance_count"];
+
+      string username = 5;
+
+      string virtual_network_id = 6 [json_name = "virtual_network_id"];
+
+      string vm_size = 7 [json_name = "vm_size"];
+
+      Autoscale autoscale = 8;
+
+      repeated ScriptActions script_actions = 9 [json_name = "script_actions"];
+
+      message Autoscale {
+        Capacity capacity = 1;
+
+        Recurrence recurrence = 2;
+
+        message Capacity {
+          int64 max_instance_count = 1 [json_name = "max_instance_count"];
+
+          int64 min_instance_count = 2 [json_name = "min_instance_count"];
+        }
+
+        message Recurrence {
+          string timezone = 1;
+
+          repeated Schedule schedule = 2;
+
+          message Schedule {
+            repeated string days = 1;
+
+            int64 target_instance_count = 2 [json_name = "target_instance_count"];
+
+            string time = 3;
+          }
+        }
+      }
+
+      message ScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+
+    message ZookeeperNode {
+      string password = 1;
+
+      repeated string ssh_keys = 2 [json_name = "ssh_keys"];
+
+      string subnet_id = 3 [json_name = "subnet_id"];
+
+      string username = 4;
+
+      string virtual_network_id = 5 [json_name = "virtual_network_id"];
+
+      string vm_size = 6 [json_name = "vm_size"];
+
+      repeated ScriptActions script_actions = 7 [json_name = "script_actions"];
+
+      message ScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+  }
+
+  message SecurityProfile {
+    string aadds_resource_id = 1 [json_name = "aadds_resource_id"];
+
+    repeated string cluster_users_group_dns = 2 [json_name = "cluster_users_group_dns"];
+
+    string domain_name = 3 [json_name = "domain_name"];
+
+    string domain_user_password = 4 [json_name = "domain_user_password"];
+
+    string domain_username = 5 [json_name = "domain_username"];
+
+    repeated string ldaps_urls = 6 [json_name = "ldaps_urls"];
+
+    string msi_resource_id = 7 [json_name = "msi_resource_id"];
+  }
+
+  message StorageAccount {
+    bool is_default = 1 [json_name = "is_default"];
+
+    string storage_account_key = 2 [json_name = "storage_account_key"];
+
+    string storage_container_id = 3 [json_name = "storage_container_id"];
+
+    string storage_resource_id = 4 [json_name = "storage_resource_id"];
+  }
+
+  message StorageAccountGen2 {
+    string filesystem_id = 1 [json_name = "filesystem_id"];
+
+    bool is_default = 2 [json_name = "is_default"];
+
+    string managed_identity_resource_id = 3 [json_name = "managed_identity_resource_id"];
+
+    string storage_resource_id = 4 [json_name = "storage_resource_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermHdinsightKafkaCluster version is 0
+message AzurermHdinsightKafkaCluster {
+  string cluster_version = 1 [json_name = "cluster_version"];
+
+  bool encryption_in_transit_enabled = 2 [json_name = "encryption_in_transit_enabled"];
+
+  string https_endpoint = 3 [json_name = "https_endpoint"];
+
+  string id = 4;
+
+  string kafka_rest_proxy_endpoint = 5 [json_name = "kafka_rest_proxy_endpoint"];
+
+  string location = 6;
+
+  string name = 7;
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  string ssh_endpoint = 9 [json_name = "ssh_endpoint"];
+
+  map<string, string> tags = 10;
+
+  string tier = 11;
+
+  string tls_min_version = 12 [json_name = "tls_min_version"];
+
+  ComponentVersion component_version = 13 [json_name = "component_version"];
+
+  ComputeIsolation compute_isolation = 14 [json_name = "compute_isolation"];
+
+  repeated DiskEncryption disk_encryption = 15 [json_name = "disk_encryption"];
+
+  Extension extension = 16;
+
+  Gateway gateway = 17;
+
+  Metastores metastores = 18;
+
+  Monitor monitor = 19;
+
+  Network network = 20;
+
+  RestProxy rest_proxy = 21 [json_name = "rest_proxy"];
+
+  Roles roles = 22;
+
+  SecurityProfile security_profile = 23 [json_name = "security_profile"];
+
+  repeated StorageAccount storage_account = 24 [json_name = "storage_account"];
+
+  StorageAccountGen2 storage_account_gen2 = 25 [json_name = "storage_account_gen2"];
+
+  repeated Timeouts timeouts = 26;
+
+  google.protobuf.Value for_each = 27 [json_name = "for_each"];
+
+  repeated string depends_on = 28 [json_name = "depends_on"];
+
+  int32 count = 29;
+
+  string provider = 30;
+
+  terraform.v1.Lifecycle lifecycle = 31;
+
+  message ComponentVersion {
+    string kafka = 1;
+  }
+
+  message ComputeIsolation {
+    bool compute_isolation_enabled = 1 [json_name = "compute_isolation_enabled"];
+
+    string host_sku = 2 [json_name = "host_sku"];
+  }
+
+  message DiskEncryption {
+    string encryption_algorithm = 1 [json_name = "encryption_algorithm"];
+
+    bool encryption_at_host_enabled = 2 [json_name = "encryption_at_host_enabled"];
+
+    string key_vault_key_id = 3 [json_name = "key_vault_key_id"];
+
+    string key_vault_managed_identity_id = 4 [json_name = "key_vault_managed_identity_id"];
+  }
+
+  message Extension {
+    string log_analytics_workspace_id = 1 [json_name = "log_analytics_workspace_id"];
+
+    string primary_key = 2 [json_name = "primary_key"];
+  }
+
+  message Gateway {
+    string password = 1;
+
+    string username = 2;
+  }
+
+  message Metastores {
+    Ambari ambari = 1;
+
+    Hive hive = 2;
+
+    Oozie oozie = 3;
+
+    message Ambari {
+      string database_name = 1 [json_name = "database_name"];
+
+      string password = 2;
+
+      string server = 3;
+
+      string username = 4;
+    }
+
+    message Hive {
+      string database_name = 1 [json_name = "database_name"];
+
+      string password = 2;
+
+      string server = 3;
+
+      string username = 4;
+    }
+
+    message Oozie {
+      string database_name = 1 [json_name = "database_name"];
+
+      string password = 2;
+
+      string server = 3;
+
+      string username = 4;
+    }
+  }
+
+  message Monitor {
+    string log_analytics_workspace_id = 1 [json_name = "log_analytics_workspace_id"];
+
+    string primary_key = 2 [json_name = "primary_key"];
+  }
+
+  message Network {
+    string connection_direction = 1 [json_name = "connection_direction"];
+
+    bool private_link_enabled = 2 [json_name = "private_link_enabled"];
+  }
+
+  message RestProxy {
+    string security_group_id = 1 [json_name = "security_group_id"];
+
+    string security_group_name = 2 [json_name = "security_group_name"];
+  }
+
+  message Roles {
+    HeadNode head_node = 1 [json_name = "head_node"];
+
+    KafkaManagementNode kafka_management_node = 2 [json_name = "kafka_management_node"];
+
+    WorkerNode worker_node = 3 [json_name = "worker_node"];
+
+    ZookeeperNode zookeeper_node = 4 [json_name = "zookeeper_node"];
+
+    message HeadNode {
+      string password = 1;
+
+      repeated string ssh_keys = 2 [json_name = "ssh_keys"];
+
+      string subnet_id = 3 [json_name = "subnet_id"];
+
+      string username = 4;
+
+      string virtual_network_id = 5 [json_name = "virtual_network_id"];
+
+      string vm_size = 6 [json_name = "vm_size"];
+
+      repeated ScriptActions script_actions = 7 [json_name = "script_actions"];
+
+      message ScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+
+    message KafkaManagementNode {
+      string password = 1;
+
+      repeated string ssh_keys = 2 [json_name = "ssh_keys"];
+
+      string subnet_id = 3 [json_name = "subnet_id"];
+
+      string username = 4;
+
+      string virtual_network_id = 5 [json_name = "virtual_network_id"];
+
+      string vm_size = 6 [json_name = "vm_size"];
+
+      repeated ScriptActions script_actions = 7 [json_name = "script_actions"];
+
+      message ScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+
+    message WorkerNode {
+      int64 number_of_disks_per_node = 1 [json_name = "number_of_disks_per_node"];
+
+      string password = 2;
+
+      repeated string ssh_keys = 3 [json_name = "ssh_keys"];
+
+      string subnet_id = 4 [json_name = "subnet_id"];
+
+      int64 target_instance_count = 5 [json_name = "target_instance_count"];
+
+      string username = 6;
+
+      string virtual_network_id = 7 [json_name = "virtual_network_id"];
+
+      string vm_size = 8 [json_name = "vm_size"];
+
+      repeated ScriptActions script_actions = 9 [json_name = "script_actions"];
+
+      message ScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+
+    message ZookeeperNode {
+      string password = 1;
+
+      repeated string ssh_keys = 2 [json_name = "ssh_keys"];
+
+      string subnet_id = 3 [json_name = "subnet_id"];
+
+      string username = 4;
+
+      string virtual_network_id = 5 [json_name = "virtual_network_id"];
+
+      string vm_size = 6 [json_name = "vm_size"];
+
+      repeated ScriptActions script_actions = 7 [json_name = "script_actions"];
+
+      message ScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+  }
+
+  message SecurityProfile {
+    string aadds_resource_id = 1 [json_name = "aadds_resource_id"];
+
+    repeated string cluster_users_group_dns = 2 [json_name = "cluster_users_group_dns"];
+
+    string domain_name = 3 [json_name = "domain_name"];
+
+    string domain_user_password = 4 [json_name = "domain_user_password"];
+
+    string domain_username = 5 [json_name = "domain_username"];
+
+    repeated string ldaps_urls = 6 [json_name = "ldaps_urls"];
+
+    string msi_resource_id = 7 [json_name = "msi_resource_id"];
+  }
+
+  message StorageAccount {
+    bool is_default = 1 [json_name = "is_default"];
+
+    string storage_account_key = 2 [json_name = "storage_account_key"];
+
+    string storage_container_id = 3 [json_name = "storage_container_id"];
+
+    string storage_resource_id = 4 [json_name = "storage_resource_id"];
+  }
+
+  message StorageAccountGen2 {
+    string filesystem_id = 1 [json_name = "filesystem_id"];
+
+    bool is_default = 2 [json_name = "is_default"];
+
+    string managed_identity_resource_id = 3 [json_name = "managed_identity_resource_id"];
+
+    string storage_resource_id = 4 [json_name = "storage_resource_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermHdinsightSparkCluster version is 0
+message AzurermHdinsightSparkCluster {
+  string cluster_version = 1 [json_name = "cluster_version"];
+
+  bool encryption_in_transit_enabled = 2 [json_name = "encryption_in_transit_enabled"];
+
+  string https_endpoint = 3 [json_name = "https_endpoint"];
+
+  string id = 4;
+
+  string location = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string ssh_endpoint = 8 [json_name = "ssh_endpoint"];
+
+  map<string, string> tags = 9;
+
+  string tier = 10;
+
+  string tls_min_version = 11 [json_name = "tls_min_version"];
+
+  ComponentVersion component_version = 12 [json_name = "component_version"];
+
+  ComputeIsolation compute_isolation = 13 [json_name = "compute_isolation"];
+
+  repeated DiskEncryption disk_encryption = 14 [json_name = "disk_encryption"];
+
+  Extension extension = 15;
+
+  Gateway gateway = 16;
+
+  Metastores metastores = 17;
+
+  Monitor monitor = 18;
+
+  Network network = 19;
+
+  Roles roles = 20;
+
+  SecurityProfile security_profile = 21 [json_name = "security_profile"];
+
+  repeated StorageAccount storage_account = 22 [json_name = "storage_account"];
+
+  StorageAccountGen2 storage_account_gen2 = 23 [json_name = "storage_account_gen2"];
+
+  repeated Timeouts timeouts = 24;
+
+  google.protobuf.Value for_each = 25 [json_name = "for_each"];
+
+  repeated string depends_on = 26 [json_name = "depends_on"];
+
+  int32 count = 27;
+
+  string provider = 28;
+
+  terraform.v1.Lifecycle lifecycle = 29;
+
+  message ComponentVersion {
+    string spark = 1;
+  }
+
+  message ComputeIsolation {
+    bool compute_isolation_enabled = 1 [json_name = "compute_isolation_enabled"];
+
+    string host_sku = 2 [json_name = "host_sku"];
+  }
+
+  message DiskEncryption {
+    string encryption_algorithm = 1 [json_name = "encryption_algorithm"];
+
+    bool encryption_at_host_enabled = 2 [json_name = "encryption_at_host_enabled"];
+
+    string key_vault_key_id = 3 [json_name = "key_vault_key_id"];
+
+    string key_vault_managed_identity_id = 4 [json_name = "key_vault_managed_identity_id"];
+  }
+
+  message Extension {
+    string log_analytics_workspace_id = 1 [json_name = "log_analytics_workspace_id"];
+
+    string primary_key = 2 [json_name = "primary_key"];
+  }
+
+  message Gateway {
+    string password = 1;
+
+    string username = 2;
+  }
+
+  message Metastores {
+    Ambari ambari = 1;
+
+    Hive hive = 2;
+
+    Oozie oozie = 3;
+
+    message Ambari {
+      string database_name = 1 [json_name = "database_name"];
+
+      string password = 2;
+
+      string server = 3;
+
+      string username = 4;
+    }
+
+    message Hive {
+      string database_name = 1 [json_name = "database_name"];
+
+      string password = 2;
+
+      string server = 3;
+
+      string username = 4;
+    }
+
+    message Oozie {
+      string database_name = 1 [json_name = "database_name"];
+
+      string password = 2;
+
+      string server = 3;
+
+      string username = 4;
+    }
+  }
+
+  message Monitor {
+    string log_analytics_workspace_id = 1 [json_name = "log_analytics_workspace_id"];
+
+    string primary_key = 2 [json_name = "primary_key"];
+  }
+
+  message Network {
+    string connection_direction = 1 [json_name = "connection_direction"];
+
+    bool private_link_enabled = 2 [json_name = "private_link_enabled"];
+  }
+
+  message Roles {
+    HeadNode head_node = 1 [json_name = "head_node"];
+
+    WorkerNode worker_node = 2 [json_name = "worker_node"];
+
+    ZookeeperNode zookeeper_node = 3 [json_name = "zookeeper_node"];
+
+    message HeadNode {
+      string password = 1;
+
+      repeated string ssh_keys = 2 [json_name = "ssh_keys"];
+
+      string subnet_id = 3 [json_name = "subnet_id"];
+
+      string username = 4;
+
+      string virtual_network_id = 5 [json_name = "virtual_network_id"];
+
+      string vm_size = 6 [json_name = "vm_size"];
+
+      repeated ScriptActions script_actions = 7 [json_name = "script_actions"];
+
+      message ScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+
+    message WorkerNode {
+      string password = 1;
+
+      repeated string ssh_keys = 2 [json_name = "ssh_keys"];
+
+      string subnet_id = 3 [json_name = "subnet_id"];
+
+      int64 target_instance_count = 4 [json_name = "target_instance_count"];
+
+      string username = 5;
+
+      string virtual_network_id = 6 [json_name = "virtual_network_id"];
+
+      string vm_size = 7 [json_name = "vm_size"];
+
+      Autoscale autoscale = 8;
+
+      repeated ScriptActions script_actions = 9 [json_name = "script_actions"];
+
+      message Autoscale {
+        Capacity capacity = 1;
+
+        Recurrence recurrence = 2;
+
+        message Capacity {
+          int64 max_instance_count = 1 [json_name = "max_instance_count"];
+
+          int64 min_instance_count = 2 [json_name = "min_instance_count"];
+        }
+
+        message Recurrence {
+          string timezone = 1;
+
+          repeated Schedule schedule = 2;
+
+          message Schedule {
+            repeated string days = 1;
+
+            int64 target_instance_count = 2 [json_name = "target_instance_count"];
+
+            string time = 3;
+          }
+        }
+      }
+
+      message ScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+
+    message ZookeeperNode {
+      string password = 1;
+
+      repeated string ssh_keys = 2 [json_name = "ssh_keys"];
+
+      string subnet_id = 3 [json_name = "subnet_id"];
+
+      string username = 4;
+
+      string virtual_network_id = 5 [json_name = "virtual_network_id"];
+
+      string vm_size = 6 [json_name = "vm_size"];
+
+      repeated ScriptActions script_actions = 7 [json_name = "script_actions"];
+
+      message ScriptActions {
+        string name = 1;
+
+        string parameters = 2;
+
+        string uri = 3;
+      }
+    }
+  }
+
+  message SecurityProfile {
+    string aadds_resource_id = 1 [json_name = "aadds_resource_id"];
+
+    repeated string cluster_users_group_dns = 2 [json_name = "cluster_users_group_dns"];
+
+    string domain_name = 3 [json_name = "domain_name"];
+
+    string domain_user_password = 4 [json_name = "domain_user_password"];
+
+    string domain_username = 5 [json_name = "domain_username"];
+
+    repeated string ldaps_urls = 6 [json_name = "ldaps_urls"];
+
+    string msi_resource_id = 7 [json_name = "msi_resource_id"];
+  }
+
+  message StorageAccount {
+    bool is_default = 1 [json_name = "is_default"];
+
+    string storage_account_key = 2 [json_name = "storage_account_key"];
+
+    string storage_container_id = 3 [json_name = "storage_container_id"];
+
+    string storage_resource_id = 4 [json_name = "storage_resource_id"];
+  }
+
+  message StorageAccountGen2 {
+    string filesystem_id = 1 [json_name = "filesystem_id"];
+
+    bool is_default = 2 [json_name = "is_default"];
+
+    string managed_identity_resource_id = 3 [json_name = "managed_identity_resource_id"];
+
+    string storage_resource_id = 4 [json_name = "storage_resource_id"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

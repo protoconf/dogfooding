@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermBillingEnrollmentAccountScope version is 0
+message AzurermBillingEnrollmentAccountScope {
+  string billing_account_name = 1 [json_name = "billing_account_name"];
+
+  string enrollment_account_name = 2 [json_name = "enrollment_account_name"];
+
+  string id = 3;
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermBillingMcaAccountScope version is 0
+message AzurermBillingMcaAccountScope {
+  string billing_account_name = 1 [json_name = "billing_account_name"];
+
+  string billing_profile_name = 2 [json_name = "billing_profile_name"];
+
+  string id = 3;
+
+  string invoice_section_name = 4 [json_name = "invoice_section_name"];
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermBillingMpaAccountScope version is 0
+message AzurermBillingMpaAccountScope {
+  string billing_account_name = 1 [json_name = "billing_account_name"];
+
+  string customer_name = 2 [json_name = "customer_name"];
+
+  string id = 3;
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string read = 1;
+  }
+}

@@ -1,0 +1,102 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermRouteFilter version is 0
+message AzurermRouteFilter {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  repeated Rule rule = 5;
+
+  map<string, string> tags = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Rule {
+    // access: string
+    string access = 1;
+
+    // communities: list of string
+    repeated string communities = 2;
+
+    // name: string
+    string name = 3;
+
+    // rule_type: string
+    string rule_type = 4 [json_name = "rule_type"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermRouteTable version is 0
+message AzurermRouteTable {
+  bool bgp_route_propagation_enabled = 1 [json_name = "bgp_route_propagation_enabled"];
+
+  string id = 2;
+
+  string location = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  repeated Route route = 6;
+
+  repeated string subnets = 7;
+
+  map<string, string> tags = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Route {
+    // address_prefix: string
+    string address_prefix = 1 [json_name = "address_prefix"];
+
+    // name: string
+    string name = 2;
+
+    // next_hop_in_ip_address: string
+    string next_hop_in_ip_address = 3 [json_name = "next_hop_in_ip_address"];
+
+    // next_hop_type: string
+    string next_hop_type = 4 [json_name = "next_hop_type"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

@@ -1,0 +1,759 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermKeyVault version is 2
+message AzurermKeyVault {
+  repeated AccessPolicy access_policy = 1 [json_name = "access_policy"];
+
+  bool enable_rbac_authorization = 2 [json_name = "enable_rbac_authorization"];
+
+  bool enabled_for_deployment = 3 [json_name = "enabled_for_deployment"];
+
+  bool enabled_for_disk_encryption = 4 [json_name = "enabled_for_disk_encryption"];
+
+  bool enabled_for_template_deployment = 5 [json_name = "enabled_for_template_deployment"];
+
+  string id = 6;
+
+  string location = 7;
+
+  string name = 8;
+
+  bool public_network_access_enabled = 9 [json_name = "public_network_access_enabled"];
+
+  bool purge_protection_enabled = 10 [json_name = "purge_protection_enabled"];
+
+  string resource_group_name = 11 [json_name = "resource_group_name"];
+
+  string sku_name = 12 [json_name = "sku_name"];
+
+  int64 soft_delete_retention_days = 13 [json_name = "soft_delete_retention_days"];
+
+  map<string, string> tags = 14;
+
+  string tenant_id = 15 [json_name = "tenant_id"];
+
+  string vault_uri = 16 [json_name = "vault_uri"];
+
+  repeated Contact contact = 17;
+
+  NetworkAcls network_acls = 18 [json_name = "network_acls"];
+
+  repeated Timeouts timeouts = 19;
+
+  google.protobuf.Value for_each = 20 [json_name = "for_each"];
+
+  repeated string depends_on = 21 [json_name = "depends_on"];
+
+  int32 count = 22;
+
+  string provider = 23;
+
+  terraform.v1.Lifecycle lifecycle = 24;
+
+  message AccessPolicy {
+    // application_id: string
+    string application_id = 1 [json_name = "application_id"];
+
+    // certificate_permissions: list of string
+    repeated string certificate_permissions = 2 [json_name = "certificate_permissions"];
+
+    // key_permissions: list of string
+    repeated string key_permissions = 3 [json_name = "key_permissions"];
+
+    // object_id: string
+    string object_id = 4 [json_name = "object_id"];
+
+    // secret_permissions: list of string
+    repeated string secret_permissions = 5 [json_name = "secret_permissions"];
+
+    // storage_permissions: list of string
+    repeated string storage_permissions = 6 [json_name = "storage_permissions"];
+
+    // tenant_id: string
+    string tenant_id = 7 [json_name = "tenant_id"];
+  }
+
+  message Contact {
+    string email = 1;
+
+    string name = 2;
+
+    string phone = 3;
+  }
+
+  message NetworkAcls {
+    string bypass = 1;
+
+    string default_action = 2 [json_name = "default_action"];
+
+    repeated string ip_rules = 3 [json_name = "ip_rules"];
+
+    repeated string virtual_network_subnet_ids = 4 [json_name = "virtual_network_subnet_ids"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermKeyVaultAccessPolicy version is 0
+message AzurermKeyVaultAccessPolicy {
+  string application_id = 1 [json_name = "application_id"];
+
+  repeated string certificate_permissions = 2 [json_name = "certificate_permissions"];
+
+  string id = 3;
+
+  repeated string key_permissions = 4 [json_name = "key_permissions"];
+
+  string key_vault_id = 5 [json_name = "key_vault_id"];
+
+  string object_id = 6 [json_name = "object_id"];
+
+  repeated string secret_permissions = 7 [json_name = "secret_permissions"];
+
+  repeated string storage_permissions = 8 [json_name = "storage_permissions"];
+
+  string tenant_id = 9 [json_name = "tenant_id"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermKeyVaultCertificate version is 0
+message AzurermKeyVaultCertificate {
+  repeated CertificateAttribute certificate_attribute = 1 [json_name = "certificate_attribute"];
+
+  string certificate_data = 2 [json_name = "certificate_data"];
+
+  string certificate_data_base64 = 3 [json_name = "certificate_data_base64"];
+
+  string id = 4;
+
+  string key_vault_id = 5 [json_name = "key_vault_id"];
+
+  string name = 6;
+
+  string resource_manager_id = 7 [json_name = "resource_manager_id"];
+
+  string resource_manager_versionless_id = 8 [json_name = "resource_manager_versionless_id"];
+
+  string secret_id = 9 [json_name = "secret_id"];
+
+  map<string, string> tags = 10;
+
+  string thumbprint = 11;
+
+  string version = 12;
+
+  string versionless_id = 13 [json_name = "versionless_id"];
+
+  string versionless_secret_id = 14 [json_name = "versionless_secret_id"];
+
+  Certificate certificate = 15;
+
+  CertificatePolicy certificate_policy = 16 [json_name = "certificate_policy"];
+
+  repeated Timeouts timeouts = 17;
+
+  google.protobuf.Value for_each = 18 [json_name = "for_each"];
+
+  repeated string depends_on = 19 [json_name = "depends_on"];
+
+  int32 count = 20;
+
+  string provider = 21;
+
+  terraform.v1.Lifecycle lifecycle = 22;
+
+  message CertificateAttribute {
+    // created: string
+    string created = 1;
+
+    // enabled: bool
+    bool enabled = 2;
+
+    // expires: string
+    string expires = 3;
+
+    // not_before: string
+    string not_before = 4 [json_name = "not_before"];
+
+    // recovery_level: string
+    string recovery_level = 5 [json_name = "recovery_level"];
+
+    // updated: string
+    string updated = 6;
+  }
+
+  message Certificate {
+    string contents = 1;
+
+    string password = 2;
+  }
+
+  message CertificatePolicy {
+    IssuerParameters issuer_parameters = 1 [json_name = "issuer_parameters"];
+
+    KeyProperties key_properties = 2 [json_name = "key_properties"];
+
+    repeated LifetimeAction lifetime_action = 3 [json_name = "lifetime_action"];
+
+    SecretProperties secret_properties = 4 [json_name = "secret_properties"];
+
+    X509CertificateProperties x509_certificate_properties = 5 [json_name = "x509_certificate_properties"];
+
+    message IssuerParameters {
+      string name = 1;
+    }
+
+    message KeyProperties {
+      string curve = 1;
+
+      bool exportable = 2;
+
+      int64 key_size = 3 [json_name = "key_size"];
+
+      string key_type = 4 [json_name = "key_type"];
+
+      bool reuse_key = 5 [json_name = "reuse_key"];
+    }
+
+    message LifetimeAction {
+      Action action = 1;
+
+      Trigger trigger = 2;
+
+      message Action {
+        string action_type = 1 [json_name = "action_type"];
+      }
+
+      message Trigger {
+        int64 days_before_expiry = 1 [json_name = "days_before_expiry"];
+
+        int64 lifetime_percentage = 2 [json_name = "lifetime_percentage"];
+      }
+    }
+
+    message SecretProperties {
+      string content_type = 1 [json_name = "content_type"];
+    }
+
+    message X509CertificateProperties {
+      repeated string extended_key_usage = 1 [json_name = "extended_key_usage"];
+
+      repeated string key_usage = 2 [json_name = "key_usage"];
+
+      string subject = 3;
+
+      int64 validity_in_months = 4 [json_name = "validity_in_months"];
+
+      SubjectAlternativeNames subject_alternative_names = 5 [json_name = "subject_alternative_names"];
+
+      message SubjectAlternativeNames {
+        repeated string dns_names = 1 [json_name = "dns_names"];
+
+        repeated string emails = 2;
+
+        repeated string upns = 3;
+      }
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermKeyVaultCertificateContacts version is 0
+message AzurermKeyVaultCertificateContacts {
+  string id = 1;
+
+  string key_vault_id = 2 [json_name = "key_vault_id"];
+
+  repeated Contact contact = 3;
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Contact {
+    string email = 1;
+
+    string name = 2;
+
+    string phone = 3;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermKeyVaultCertificateIssuer version is 0
+message AzurermKeyVaultCertificateIssuer {
+  string account_id = 1 [json_name = "account_id"];
+
+  string id = 2;
+
+  string key_vault_id = 3 [json_name = "key_vault_id"];
+
+  string name = 4;
+
+  string org_id = 5 [json_name = "org_id"];
+
+  string password = 6;
+
+  string provider_name = 7 [json_name = "provider_name"];
+
+  repeated Admin admin = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Admin {
+    string email_address = 1 [json_name = "email_address"];
+
+    string first_name = 2 [json_name = "first_name"];
+
+    string last_name = 3 [json_name = "last_name"];
+
+    string phone = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermKeyVaultKey version is 0
+message AzurermKeyVaultKey {
+  string curve = 1;
+
+  string e = 2;
+
+  string expiration_date = 3 [json_name = "expiration_date"];
+
+  string id = 4;
+
+  repeated string key_opts = 5 [json_name = "key_opts"];
+
+  int64 key_size = 6 [json_name = "key_size"];
+
+  string key_type = 7 [json_name = "key_type"];
+
+  string key_vault_id = 8 [json_name = "key_vault_id"];
+
+  string n = 9;
+
+  string name = 10;
+
+  string not_before_date = 11 [json_name = "not_before_date"];
+
+  string public_key_openssh = 12 [json_name = "public_key_openssh"];
+
+  string public_key_pem = 13 [json_name = "public_key_pem"];
+
+  string resource_id = 14 [json_name = "resource_id"];
+
+  string resource_versionless_id = 15 [json_name = "resource_versionless_id"];
+
+  map<string, string> tags = 16;
+
+  string version = 17;
+
+  string versionless_id = 18 [json_name = "versionless_id"];
+
+  string x = 19;
+
+  string y = 20;
+
+  RotationPolicy rotation_policy = 21 [json_name = "rotation_policy"];
+
+  repeated Timeouts timeouts = 22;
+
+  google.protobuf.Value for_each = 23 [json_name = "for_each"];
+
+  repeated string depends_on = 24 [json_name = "depends_on"];
+
+  int32 count = 25;
+
+  string provider = 26;
+
+  terraform.v1.Lifecycle lifecycle = 27;
+
+  message RotationPolicy {
+    string expire_after = 1 [json_name = "expire_after"];
+
+    string notify_before_expiry = 2 [json_name = "notify_before_expiry"];
+
+    Automatic automatic = 3;
+
+    message Automatic {
+      string time_after_creation = 1 [json_name = "time_after_creation"];
+
+      string time_before_expiry = 2 [json_name = "time_before_expiry"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermKeyVaultManagedHardwareSecurityModule version is 0
+message AzurermKeyVaultManagedHardwareSecurityModule {
+  repeated string admin_object_ids = 1 [json_name = "admin_object_ids"];
+
+  string hsm_uri = 2 [json_name = "hsm_uri"];
+
+  string id = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  bool public_network_access_enabled = 6 [json_name = "public_network_access_enabled"];
+
+  bool purge_protection_enabled = 7 [json_name = "purge_protection_enabled"];
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  string security_domain_encrypted_data = 9 [json_name = "security_domain_encrypted_data"];
+
+  repeated string security_domain_key_vault_certificate_ids = 10 [
+    json_name = "security_domain_key_vault_certificate_ids"
+  ];
+
+  int64 security_domain_quorum = 11 [json_name = "security_domain_quorum"];
+
+  string sku_name = 12 [json_name = "sku_name"];
+
+  int64 soft_delete_retention_days = 13 [json_name = "soft_delete_retention_days"];
+
+  map<string, string> tags = 14;
+
+  string tenant_id = 15 [json_name = "tenant_id"];
+
+  NetworkAcls network_acls = 16 [json_name = "network_acls"];
+
+  repeated Timeouts timeouts = 17;
+
+  google.protobuf.Value for_each = 18 [json_name = "for_each"];
+
+  repeated string depends_on = 19 [json_name = "depends_on"];
+
+  int32 count = 20;
+
+  string provider = 21;
+
+  terraform.v1.Lifecycle lifecycle = 22;
+
+  message NetworkAcls {
+    string bypass = 1;
+
+    string default_action = 2 [json_name = "default_action"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermKeyVaultManagedHardwareSecurityModuleRoleAssignment version is 0
+message AzurermKeyVaultManagedHardwareSecurityModuleRoleAssignment {
+  string id = 1;
+
+  string name = 2;
+
+  string principal_id = 3 [json_name = "principal_id"];
+
+  string resource_id = 4 [json_name = "resource_id"];
+
+  string role_definition_id = 5 [json_name = "role_definition_id"];
+
+  string scope = 6;
+
+  string vault_base_url = 7 [json_name = "vault_base_url"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermKeyVaultManagedHardwareSecurityModuleRoleDefinition version is 0
+message AzurermKeyVaultManagedHardwareSecurityModuleRoleDefinition {
+  string description = 1;
+
+  string id = 2;
+
+  string name = 3;
+
+  string resource_manager_id = 4 [json_name = "resource_manager_id"];
+
+  string role_name = 5 [json_name = "role_name"];
+
+  string role_type = 6 [json_name = "role_type"];
+
+  string vault_base_url = 7 [json_name = "vault_base_url"];
+
+  repeated Permission permission = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Permission {
+    repeated string actions = 1;
+
+    repeated string data_actions = 2 [json_name = "data_actions"];
+
+    repeated string not_actions = 3 [json_name = "not_actions"];
+
+    repeated string not_data_actions = 4 [json_name = "not_data_actions"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermKeyVaultManagedStorageAccount version is 0
+message AzurermKeyVaultManagedStorageAccount {
+  string id = 1;
+
+  string key_vault_id = 2 [json_name = "key_vault_id"];
+
+  string name = 3;
+
+  bool regenerate_key_automatically = 4 [json_name = "regenerate_key_automatically"];
+
+  string regeneration_period = 5 [json_name = "regeneration_period"];
+
+  string storage_account_id = 6 [json_name = "storage_account_id"];
+
+  string storage_account_key = 7 [json_name = "storage_account_key"];
+
+  map<string, string> tags = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermKeyVaultManagedStorageAccountSasTokenDefinition version is 0
+message AzurermKeyVaultManagedStorageAccountSasTokenDefinition {
+  string id = 1;
+
+  string managed_storage_account_id = 2 [json_name = "managed_storage_account_id"];
+
+  string name = 3;
+
+  string sas_template_uri = 4 [json_name = "sas_template_uri"];
+
+  string sas_type = 5 [json_name = "sas_type"];
+
+  string secret_id = 6 [json_name = "secret_id"];
+
+  map<string, string> tags = 7;
+
+  string validity_period = 8 [json_name = "validity_period"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermKeyVaultSecret version is 0
+message AzurermKeyVaultSecret {
+  string content_type = 1 [json_name = "content_type"];
+
+  string expiration_date = 2 [json_name = "expiration_date"];
+
+  string id = 3;
+
+  string key_vault_id = 4 [json_name = "key_vault_id"];
+
+  string name = 5;
+
+  string not_before_date = 6 [json_name = "not_before_date"];
+
+  string resource_id = 7 [json_name = "resource_id"];
+
+  string resource_versionless_id = 8 [json_name = "resource_versionless_id"];
+
+  map<string, string> tags = 9;
+
+  string value = 10;
+
+  string version = 11;
+
+  string versionless_id = 12 [json_name = "versionless_id"];
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

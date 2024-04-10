@@ -1,0 +1,892 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermMonitorActionGroup version is 1
+message AzurermMonitorActionGroup {
+  repeated ArmRoleReceiver arm_role_receiver = 1 [json_name = "arm_role_receiver"];
+
+  repeated AutomationRunbookReceiver automation_runbook_receiver = 2 [json_name = "automation_runbook_receiver"];
+
+  repeated AzureAppPushReceiver azure_app_push_receiver = 3 [json_name = "azure_app_push_receiver"];
+
+  repeated AzureFunctionReceiver azure_function_receiver = 4 [json_name = "azure_function_receiver"];
+
+  repeated EmailReceiver email_receiver = 5 [json_name = "email_receiver"];
+
+  bool enabled = 6;
+
+  repeated EventHubReceiver event_hub_receiver = 7 [json_name = "event_hub_receiver"];
+
+  string id = 8;
+
+  repeated ItsmReceiver itsm_receiver = 9 [json_name = "itsm_receiver"];
+
+  repeated LogicAppReceiver logic_app_receiver = 10 [json_name = "logic_app_receiver"];
+
+  string name = 11;
+
+  string resource_group_name = 12 [json_name = "resource_group_name"];
+
+  string short_name = 13 [json_name = "short_name"];
+
+  repeated SmsReceiver sms_receiver = 14 [json_name = "sms_receiver"];
+
+  repeated VoiceReceiver voice_receiver = 15 [json_name = "voice_receiver"];
+
+  repeated WebhookReceiver webhook_receiver = 16 [json_name = "webhook_receiver"];
+
+  repeated Timeouts timeouts = 17;
+
+  google.protobuf.Value for_each = 18 [json_name = "for_each"];
+
+  repeated string depends_on = 19 [json_name = "depends_on"];
+
+  int32 count = 20;
+
+  string provider = 21;
+
+  terraform.v1.Lifecycle lifecycle = 22;
+
+  message ArmRoleReceiver {
+    // name: string
+    string name = 1;
+
+    // role_id: string
+    string role_id = 2 [json_name = "role_id"];
+
+    // use_common_alert_schema: bool
+    bool use_common_alert_schema = 3 [json_name = "use_common_alert_schema"];
+  }
+
+  message AutomationRunbookReceiver {
+    // automation_account_id: string
+    string automation_account_id = 1 [json_name = "automation_account_id"];
+
+    // is_global_runbook: bool
+    bool is_global_runbook = 2 [json_name = "is_global_runbook"];
+
+    // name: string
+    string name = 3;
+
+    // runbook_name: string
+    string runbook_name = 4 [json_name = "runbook_name"];
+
+    // service_uri: string
+    string service_uri = 5 [json_name = "service_uri"];
+
+    // use_common_alert_schema: bool
+    bool use_common_alert_schema = 6 [json_name = "use_common_alert_schema"];
+
+    // webhook_resource_id: string
+    string webhook_resource_id = 7 [json_name = "webhook_resource_id"];
+  }
+
+  message AzureAppPushReceiver {
+    // email_address: string
+    string email_address = 1 [json_name = "email_address"];
+
+    // name: string
+    string name = 2;
+  }
+
+  message AzureFunctionReceiver {
+    // function_app_resource_id: string
+    string function_app_resource_id = 1 [json_name = "function_app_resource_id"];
+
+    // function_name: string
+    string function_name = 2 [json_name = "function_name"];
+
+    // http_trigger_url: string
+    string http_trigger_url = 3 [json_name = "http_trigger_url"];
+
+    // name: string
+    string name = 4;
+
+    // use_common_alert_schema: bool
+    bool use_common_alert_schema = 5 [json_name = "use_common_alert_schema"];
+  }
+
+  message EmailReceiver {
+    // email_address: string
+    string email_address = 1 [json_name = "email_address"];
+
+    // name: string
+    string name = 2;
+
+    // use_common_alert_schema: bool
+    bool use_common_alert_schema = 3 [json_name = "use_common_alert_schema"];
+  }
+
+  message EventHubReceiver {
+    // event_hub_id: string
+    string event_hub_id = 1 [json_name = "event_hub_id"];
+
+    // event_hub_name: string
+    string event_hub_name = 2 [json_name = "event_hub_name"];
+
+    // event_hub_namespace: string
+    string event_hub_namespace = 3 [json_name = "event_hub_namespace"];
+
+    // name: string
+    string name = 4;
+
+    // subscription_id: string
+    string subscription_id = 5 [json_name = "subscription_id"];
+
+    // tenant_id: string
+    string tenant_id = 6 [json_name = "tenant_id"];
+
+    // use_common_alert_schema: bool
+    bool use_common_alert_schema = 7 [json_name = "use_common_alert_schema"];
+  }
+
+  message ItsmReceiver {
+    // connection_id: string
+    string connection_id = 1 [json_name = "connection_id"];
+
+    // name: string
+    string name = 2;
+
+    // region: string
+    string region = 3;
+
+    // ticket_configuration: string
+    string ticket_configuration = 4 [json_name = "ticket_configuration"];
+
+    // workspace_id: string
+    string workspace_id = 5 [json_name = "workspace_id"];
+  }
+
+  message LogicAppReceiver {
+    // callback_url: string
+    string callback_url = 1 [json_name = "callback_url"];
+
+    // name: string
+    string name = 2;
+
+    // resource_id: string
+    string resource_id = 3 [json_name = "resource_id"];
+
+    // use_common_alert_schema: bool
+    bool use_common_alert_schema = 4 [json_name = "use_common_alert_schema"];
+  }
+
+  message SmsReceiver {
+    // country_code: string
+    string country_code = 1 [json_name = "country_code"];
+
+    // name: string
+    string name = 2;
+
+    // phone_number: string
+    string phone_number = 3 [json_name = "phone_number"];
+  }
+
+  message VoiceReceiver {
+    // country_code: string
+    string country_code = 1 [json_name = "country_code"];
+
+    // name: string
+    string name = 2;
+
+    // phone_number: string
+    string phone_number = 3 [json_name = "phone_number"];
+  }
+
+  message WebhookReceiver {
+    // aad_auth: list of object
+    repeated AadAuth aad_auth = 1 [json_name = "aad_auth"];
+
+    // name: string
+    string name = 2;
+
+    // service_uri: string
+    string service_uri = 3 [json_name = "service_uri"];
+
+    // use_common_alert_schema: bool
+    bool use_common_alert_schema = 4 [json_name = "use_common_alert_schema"];
+
+    message AadAuth {
+      // identifier_uri: string
+      string identifier_uri = 1 [json_name = "identifier_uri"];
+
+      // object_id: string
+      string object_id = 2 [json_name = "object_id"];
+
+      // tenant_id: string
+      string tenant_id = 3 [json_name = "tenant_id"];
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMonitorDataCollectionEndpoint version is 0
+message AzurermMonitorDataCollectionEndpoint {
+  string configuration_access_endpoint = 1 [json_name = "configuration_access_endpoint"];
+
+  string description = 2;
+
+  string id = 3;
+
+  string kind = 4;
+
+  string location = 5;
+
+  string logs_ingestion_endpoint = 6 [json_name = "logs_ingestion_endpoint"];
+
+  string name = 7;
+
+  bool public_network_access_enabled = 8 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMonitorDataCollectionRule version is 0
+message AzurermMonitorDataCollectionRule {
+  string data_collection_endpoint_id = 1 [json_name = "data_collection_endpoint_id"];
+
+  repeated DataFlow data_flow = 2 [json_name = "data_flow"];
+
+  repeated DataSources data_sources = 3 [json_name = "data_sources"];
+
+  string description = 4;
+
+  repeated Destinations destinations = 5;
+
+  string id = 6;
+
+  repeated Identity identity = 7;
+
+  string immutable_id = 8 [json_name = "immutable_id"];
+
+  string kind = 9;
+
+  string location = 10;
+
+  string name = 11;
+
+  string resource_group_name = 12 [json_name = "resource_group_name"];
+
+  repeated StreamDeclaration stream_declaration = 13 [json_name = "stream_declaration"];
+
+  map<string, string> tags = 14;
+
+  repeated Timeouts timeouts = 15;
+
+  google.protobuf.Value for_each = 16 [json_name = "for_each"];
+
+  repeated string depends_on = 17 [json_name = "depends_on"];
+
+  int32 count = 18;
+
+  string provider = 19;
+
+  terraform.v1.Lifecycle lifecycle = 20;
+
+  message DataFlow {
+    // built_in_transform: string
+    string built_in_transform = 1 [json_name = "built_in_transform"];
+
+    // destinations: list of string
+    repeated string destinations = 2;
+
+    // output_stream: string
+    string output_stream = 3 [json_name = "output_stream"];
+
+    // streams: list of string
+    repeated string streams = 4;
+
+    // transform_kql: string
+    string transform_kql = 5 [json_name = "transform_kql"];
+  }
+
+  message DataSources {
+    // data_import: list of object
+    repeated DataImport data_import = 1 [json_name = "data_import"];
+
+    // extension: list of object
+    repeated Extension extension = 2;
+
+    // iis_log: list of object
+    repeated IisLog iis_log = 3 [json_name = "iis_log"];
+
+    // log_file: list of object
+    repeated LogFile log_file = 4 [json_name = "log_file"];
+
+    // performance_counter: list of object
+    repeated PerformanceCounter performance_counter = 5 [json_name = "performance_counter"];
+
+    // platform_telemetry: list of object
+    repeated PlatformTelemetry platform_telemetry = 6 [json_name = "platform_telemetry"];
+
+    // prometheus_forwarder: list of object
+    repeated PrometheusForwarder prometheus_forwarder = 7 [json_name = "prometheus_forwarder"];
+
+    // syslog: list of object
+    repeated Syslog syslog = 8;
+
+    // windows_event_log: list of object
+    repeated WindowsEventLog windows_event_log = 9 [json_name = "windows_event_log"];
+
+    // windows_firewall_log: list of object
+    repeated WindowsFirewallLog windows_firewall_log = 10 [json_name = "windows_firewall_log"];
+
+    message DataImport {
+      // event_hub_data_source: list of object
+      repeated EventHubDataSource event_hub_data_source = 1 [json_name = "event_hub_data_source"];
+
+      message EventHubDataSource {
+        // consumer_group: string
+        string consumer_group = 1 [json_name = "consumer_group"];
+
+        // name: string
+        string name = 2;
+
+        // stream: string
+        string stream = 3;
+      }
+    }
+
+    message Extension {
+      // extension_json: string
+      string extension_json = 1 [json_name = "extension_json"];
+
+      // extension_name: string
+      string extension_name = 2 [json_name = "extension_name"];
+
+      // input_data_sources: list of string
+      repeated string input_data_sources = 3 [json_name = "input_data_sources"];
+
+      // name: string
+      string name = 4;
+
+      // streams: list of string
+      repeated string streams = 5;
+    }
+
+    message IisLog {
+      // log_directories: list of string
+      repeated string log_directories = 1 [json_name = "log_directories"];
+
+      // name: string
+      string name = 2;
+
+      // streams: list of string
+      repeated string streams = 3;
+    }
+
+    message LogFile {
+      // file_patterns: list of string
+      repeated string file_patterns = 1 [json_name = "file_patterns"];
+
+      // format: string
+      string format = 2;
+
+      // name: string
+      string name = 3;
+
+      // settings: list of object
+      repeated Settings settings = 4;
+
+      // streams: list of string
+      repeated string streams = 5;
+
+      message Settings {
+        // text: list of object
+        repeated Text text = 1;
+
+        message Text {
+          // record_start_timestamp_format: string
+          string record_start_timestamp_format = 1 [json_name = "record_start_timestamp_format"];
+        }
+      }
+    }
+
+    message PerformanceCounter {
+      // counter_specifiers: list of string
+      repeated string counter_specifiers = 1 [json_name = "counter_specifiers"];
+
+      // name: string
+      string name = 2;
+
+      // sampling_frequency_in_seconds: number
+      int64 sampling_frequency_in_seconds = 3 [json_name = "sampling_frequency_in_seconds"];
+
+      // streams: list of string
+      repeated string streams = 4;
+    }
+
+    message PlatformTelemetry {
+      // name: string
+      string name = 1;
+
+      // streams: list of string
+      repeated string streams = 2;
+    }
+
+    message PrometheusForwarder {
+      // label_include_filter: list of object
+      repeated LabelIncludeFilter label_include_filter = 1 [json_name = "label_include_filter"];
+
+      // name: string
+      string name = 2;
+
+      // streams: list of string
+      repeated string streams = 3;
+
+      message LabelIncludeFilter {
+        // label: string
+        string label = 1;
+
+        // value: string
+        string value = 2;
+      }
+    }
+
+    message Syslog {
+      // facility_names: list of string
+      repeated string facility_names = 1 [json_name = "facility_names"];
+
+      // log_levels: list of string
+      repeated string log_levels = 2 [json_name = "log_levels"];
+
+      // name: string
+      string name = 3;
+
+      // streams: list of string
+      repeated string streams = 4;
+    }
+
+    message WindowsEventLog {
+      // name: string
+      string name = 1;
+
+      // streams: list of string
+      repeated string streams = 2;
+
+      // x_path_queries: list of string
+      repeated string x_path_queries = 3 [json_name = "x_path_queries"];
+    }
+
+    message WindowsFirewallLog {
+      // name: string
+      string name = 1;
+
+      // streams: list of string
+      repeated string streams = 2;
+    }
+  }
+
+  message Destinations {
+    // azure_monitor_metrics: list of object
+    repeated AzureMonitorMetrics azure_monitor_metrics = 1 [json_name = "azure_monitor_metrics"];
+
+    // event_hub: list of object
+    repeated EventHub event_hub = 2 [json_name = "event_hub"];
+
+    // event_hub_direct: list of object
+    repeated EventHubDirect event_hub_direct = 3 [json_name = "event_hub_direct"];
+
+    // log_analytics: list of object
+    repeated LogAnalytics log_analytics = 4 [json_name = "log_analytics"];
+
+    // monitor_account: list of object
+    repeated MonitorAccount monitor_account = 5 [json_name = "monitor_account"];
+
+    // storage_blob: list of object
+    repeated StorageBlob storage_blob = 6 [json_name = "storage_blob"];
+
+    // storage_blob_direct: list of object
+    repeated StorageBlobDirect storage_blob_direct = 7 [json_name = "storage_blob_direct"];
+
+    // storage_table_direct: list of object
+    repeated StorageTableDirect storage_table_direct = 8 [json_name = "storage_table_direct"];
+
+    message AzureMonitorMetrics {
+      // name: string
+      string name = 1;
+    }
+
+    message EventHub {
+      // event_hub_id: string
+      string event_hub_id = 1 [json_name = "event_hub_id"];
+
+      // name: string
+      string name = 2;
+    }
+
+    message EventHubDirect {
+      // event_hub_id: string
+      string event_hub_id = 1 [json_name = "event_hub_id"];
+
+      // name: string
+      string name = 2;
+    }
+
+    message LogAnalytics {
+      // name: string
+      string name = 1;
+
+      // workspace_resource_id: string
+      string workspace_resource_id = 2 [json_name = "workspace_resource_id"];
+    }
+
+    message MonitorAccount {
+      // monitor_account_id: string
+      string monitor_account_id = 1 [json_name = "monitor_account_id"];
+
+      // name: string
+      string name = 2;
+    }
+
+    message StorageBlob {
+      // container_name: string
+      string container_name = 1 [json_name = "container_name"];
+
+      // name: string
+      string name = 2;
+
+      // storage_account_id: string
+      string storage_account_id = 3 [json_name = "storage_account_id"];
+    }
+
+    message StorageBlobDirect {
+      // container_name: string
+      string container_name = 1 [json_name = "container_name"];
+
+      // name: string
+      string name = 2;
+
+      // storage_account_id: string
+      string storage_account_id = 3 [json_name = "storage_account_id"];
+    }
+
+    message StorageTableDirect {
+      // name: string
+      string name = 1;
+
+      // storage_account_id: string
+      string storage_account_id = 2 [json_name = "storage_account_id"];
+
+      // table_name: string
+      string table_name = 3 [json_name = "table_name"];
+    }
+  }
+
+  message Identity {
+    // identity_ids: list of string
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    // principal_id: string
+    string principal_id = 2 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 4;
+  }
+
+  message StreamDeclaration {
+    // column: list of object
+    repeated Column column = 1;
+
+    // stream_name: string
+    string stream_name = 2 [json_name = "stream_name"];
+
+    message Column {
+      // name: string
+      string name = 1;
+
+      // type: string
+      string type = 2;
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMonitorDiagnosticCategories version is 0
+message AzurermMonitorDiagnosticCategories {
+  string id = 1;
+
+  repeated string log_category_groups = 2 [json_name = "log_category_groups"];
+
+  repeated string log_category_types = 3 [json_name = "log_category_types"];
+
+  repeated string logs = 4;
+
+  repeated string metrics = 5;
+
+  string resource_id = 6 [json_name = "resource_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMonitorLogProfile version is 1
+message AzurermMonitorLogProfile {
+  repeated string categories = 1;
+
+  string id = 2;
+
+  repeated string locations = 3;
+
+  string name = 4;
+
+  repeated RetentionPolicy retention_policy = 5 [json_name = "retention_policy"];
+
+  string servicebus_rule_id = 6 [json_name = "servicebus_rule_id"];
+
+  string storage_account_id = 7 [json_name = "storage_account_id"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message RetentionPolicy {
+    // days: number
+    int64 days = 1;
+
+    // enabled: bool
+    bool enabled = 2;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMonitorScheduledQueryRulesAlert version is 1
+message AzurermMonitorScheduledQueryRulesAlert {
+  repeated Action action = 1;
+
+  repeated string authorized_resource_ids = 2 [json_name = "authorized_resource_ids"];
+
+  string data_source_id = 3 [json_name = "data_source_id"];
+
+  string description = 4;
+
+  bool enabled = 5;
+
+  int64 frequency = 6;
+
+  string id = 7;
+
+  string location = 8;
+
+  string name = 9;
+
+  string query = 10;
+
+  string query_type = 11 [json_name = "query_type"];
+
+  string resource_group_name = 12 [json_name = "resource_group_name"];
+
+  int64 severity = 13;
+
+  map<string, string> tags = 14;
+
+  int64 throttling = 15;
+
+  int64 time_window = 16 [json_name = "time_window"];
+
+  repeated Trigger trigger = 17;
+
+  repeated Timeouts timeouts = 18;
+
+  google.protobuf.Value for_each = 19 [json_name = "for_each"];
+
+  repeated string depends_on = 20 [json_name = "depends_on"];
+
+  int32 count = 21;
+
+  string provider = 22;
+
+  terraform.v1.Lifecycle lifecycle = 23;
+
+  message Action {
+    // action_group: set of string
+    repeated string action_group = 1 [json_name = "action_group"];
+
+    // custom_webhook_payload: string
+    string custom_webhook_payload = 2 [json_name = "custom_webhook_payload"];
+
+    // email_subject: string
+    string email_subject = 3 [json_name = "email_subject"];
+  }
+
+  message Trigger {
+    // metric_trigger: set of object
+    repeated MetricTrigger metric_trigger = 1 [json_name = "metric_trigger"];
+
+    // operator: string
+    string operator = 2;
+
+    // threshold: number
+    int64 threshold = 3;
+
+    message MetricTrigger {
+      // metric_column: string
+      string metric_column = 1 [json_name = "metric_column"];
+
+      // metric_trigger_type: string
+      string metric_trigger_type = 2 [json_name = "metric_trigger_type"];
+
+      // operator: string
+      string operator = 3;
+
+      // threshold: number
+      int64 threshold = 4;
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMonitorScheduledQueryRulesLog version is 1
+message AzurermMonitorScheduledQueryRulesLog {
+  repeated string authorized_resource_ids = 1 [json_name = "authorized_resource_ids"];
+
+  repeated Criteria criteria = 2;
+
+  string data_source_id = 3 [json_name = "data_source_id"];
+
+  string description = 4;
+
+  bool enabled = 5;
+
+  string id = 6;
+
+  string location = 7;
+
+  string name = 8;
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Criteria {
+    // dimension: set of object
+    repeated Dimension dimension = 1;
+
+    // metric_name: string
+    string metric_name = 2 [json_name = "metric_name"];
+
+    message Dimension {
+      // name: string
+      string name = 1;
+
+      // operator: string
+      string operator = 2;
+
+      // values: list of string
+      repeated string values = 3;
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermMonitorWorkspace version is 0
+message AzurermMonitorWorkspace {
+  string default_data_collection_endpoint_id = 1 [json_name = "default_data_collection_endpoint_id"];
+
+  string default_data_collection_rule_id = 2 [json_name = "default_data_collection_rule_id"];
+
+  string id = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  bool public_network_access_enabled = 6 [json_name = "public_network_access_enabled"];
+
+  string query_endpoint = 7 [json_name = "query_endpoint"];
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string read = 1;
+  }
+}

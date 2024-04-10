@@ -1,0 +1,295 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermDatabricksAccessConnector version is 0
+message AzurermDatabricksAccessConnector {
+  string id = 1;
+
+  string location = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 5;
+
+  Identity identity = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDatabricksVirtualNetworkPeering version is 0
+message AzurermDatabricksVirtualNetworkPeering {
+  repeated string address_space_prefixes = 1 [json_name = "address_space_prefixes"];
+
+  bool allow_forwarded_traffic = 2 [json_name = "allow_forwarded_traffic"];
+
+  bool allow_gateway_transit = 3 [json_name = "allow_gateway_transit"];
+
+  bool allow_virtual_network_access = 4 [json_name = "allow_virtual_network_access"];
+
+  string id = 5;
+
+  string name = 6;
+
+  repeated string remote_address_space_prefixes = 7 [json_name = "remote_address_space_prefixes"];
+
+  string remote_virtual_network_id = 8 [json_name = "remote_virtual_network_id"];
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  bool use_remote_gateways = 10 [json_name = "use_remote_gateways"];
+
+  string virtual_network_id = 11 [json_name = "virtual_network_id"];
+
+  string workspace_id = 12 [json_name = "workspace_id"];
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDatabricksWorkspace version is 0
+message AzurermDatabricksWorkspace {
+  bool customer_managed_key_enabled = 1 [json_name = "customer_managed_key_enabled"];
+
+  string disk_encryption_set_id = 2 [json_name = "disk_encryption_set_id"];
+
+  string id = 3;
+
+  bool infrastructure_encryption_enabled = 4 [json_name = "infrastructure_encryption_enabled"];
+
+  string load_balancer_backend_address_pool_id = 5 [
+    json_name = "load_balancer_backend_address_pool_id"
+  ];
+
+  string location = 6;
+
+  string managed_disk_cmk_key_vault_key_id = 7 [json_name = "managed_disk_cmk_key_vault_key_id"];
+
+  bool managed_disk_cmk_rotation_to_latest_version_enabled = 8 [
+    json_name = "managed_disk_cmk_rotation_to_latest_version_enabled"
+  ];
+
+  repeated ManagedDiskIdentity managed_disk_identity = 9 [json_name = "managed_disk_identity"];
+
+  string managed_resource_group_id = 10 [json_name = "managed_resource_group_id"];
+
+  string managed_resource_group_name = 11 [json_name = "managed_resource_group_name"];
+
+  string managed_services_cmk_key_vault_key_id = 12 [
+    json_name = "managed_services_cmk_key_vault_key_id"
+  ];
+
+  string name = 13;
+
+  string network_security_group_rules_required = 14 [
+    json_name = "network_security_group_rules_required"
+  ];
+
+  bool public_network_access_enabled = 15 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 16 [json_name = "resource_group_name"];
+
+  string sku = 17;
+
+  repeated StorageAccountIdentity storage_account_identity = 18 [json_name = "storage_account_identity"];
+
+  map<string, string> tags = 19;
+
+  string workspace_id = 20 [json_name = "workspace_id"];
+
+  string workspace_url = 21 [json_name = "workspace_url"];
+
+  CustomParameters custom_parameters = 22 [json_name = "custom_parameters"];
+
+  repeated Timeouts timeouts = 23;
+
+  google.protobuf.Value for_each = 24 [json_name = "for_each"];
+
+  repeated string depends_on = 25 [json_name = "depends_on"];
+
+  int32 count = 26;
+
+  string provider = 27;
+
+  terraform.v1.Lifecycle lifecycle = 28;
+
+  message ManagedDiskIdentity {
+    // principal_id: string
+    string principal_id = 1 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 2 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 3;
+  }
+
+  message StorageAccountIdentity {
+    // principal_id: string
+    string principal_id = 1 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 2 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 3;
+  }
+
+  message CustomParameters {
+    string machine_learning_workspace_id = 1 [json_name = "machine_learning_workspace_id"];
+
+    string nat_gateway_name = 2 [json_name = "nat_gateway_name"];
+
+    bool no_public_ip = 3 [json_name = "no_public_ip"];
+
+    string private_subnet_name = 4 [json_name = "private_subnet_name"];
+
+    string private_subnet_network_security_group_association_id = 5 [
+      json_name = "private_subnet_network_security_group_association_id"
+    ];
+
+    string public_ip_name = 6 [json_name = "public_ip_name"];
+
+    string public_subnet_name = 7 [json_name = "public_subnet_name"];
+
+    string public_subnet_network_security_group_association_id = 8 [
+      json_name = "public_subnet_network_security_group_association_id"
+    ];
+
+    string storage_account_name = 9 [json_name = "storage_account_name"];
+
+    string storage_account_sku_name = 10 [json_name = "storage_account_sku_name"];
+
+    string virtual_network_id = 11 [json_name = "virtual_network_id"];
+
+    string vnet_address_prefix = 12 [json_name = "vnet_address_prefix"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDatabricksWorkspaceCustomerManagedKey version is 1
+message AzurermDatabricksWorkspaceCustomerManagedKey {
+  string id = 1;
+
+  string key_vault_key_id = 2 [json_name = "key_vault_key_id"];
+
+  string workspace_id = 3 [json_name = "workspace_id"];
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermDatabricksWorkspaceRootDbfsCustomerManagedKey version is 0
+message AzurermDatabricksWorkspaceRootDbfsCustomerManagedKey {
+  string id = 1;
+
+  string key_vault_key_id = 2 [json_name = "key_vault_key_id"];
+
+  string workspace_id = 3 [json_name = "workspace_id"];
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}

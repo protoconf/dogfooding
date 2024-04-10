@@ -1,0 +1,388 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermAutomationAccount version is 0
+message AzurermAutomationAccount {
+  string endpoint = 1;
+
+  string hybrid_service_url = 2 [json_name = "hybrid_service_url"];
+
+  string id = 3;
+
+  repeated Identity identity = 4;
+
+  string name = 5;
+
+  string primary_key = 6 [json_name = "primary_key"];
+
+  repeated PrivateEndpointConnection private_endpoint_connection = 7 [json_name = "private_endpoint_connection"];
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  string secondary_key = 9 [json_name = "secondary_key"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Identity {
+    // identity_ids: list of string
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    // principal_id: string
+    string principal_id = 2 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 4;
+  }
+
+  message PrivateEndpointConnection {
+    // id: string
+    string id = 1;
+
+    // name: string
+    string name = 2;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermAutomationVariableBool version is 0
+message AzurermAutomationVariableBool {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string description = 2;
+
+  bool encrypted = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  bool value = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermAutomationVariableDatetime version is 0
+message AzurermAutomationVariableDatetime {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string description = 2;
+
+  bool encrypted = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string value = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermAutomationVariableInt version is 0
+message AzurermAutomationVariableInt {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string description = 2;
+
+  bool encrypted = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  int64 value = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermAutomationVariableObject version is 0
+message AzurermAutomationVariableObject {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string description = 2;
+
+  bool encrypted = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string value = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermAutomationVariableString version is 0
+message AzurermAutomationVariableString {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string description = 2;
+
+  bool encrypted = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string value = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermAutomationVariables version is 0
+message AzurermAutomationVariables {
+  string automation_account_id = 1 [json_name = "automation_account_id"];
+
+  repeated Bool bool = 2;
+
+  repeated Datetime datetime = 3;
+
+  repeated Encrypted encrypted = 4;
+
+  string id = 5;
+
+  repeated Int int = 6;
+
+  repeated Null null = 7;
+
+  repeated Object object = 8;
+
+  repeated String string = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Bool {
+    // description: string
+    string description = 1;
+
+    // encrypted: bool
+    bool encrypted = 2;
+
+    // id: string
+    string id = 3;
+
+    // name: string
+    string name = 4;
+
+    // value: bool
+    bool value = 5;
+  }
+
+  message Datetime {
+    // description: string
+    string description = 1;
+
+    // encrypted: bool
+    bool encrypted = 2;
+
+    // id: string
+    string id = 3;
+
+    // name: string
+    string name = 4;
+
+    // value: string
+    string value = 5;
+  }
+
+  message Encrypted {
+    // description: string
+    string description = 1;
+
+    // encrypted: bool
+    bool encrypted = 2;
+
+    // id: string
+    string id = 3;
+
+    // name: string
+    string name = 4;
+
+    // value: string
+    string value = 5;
+  }
+
+  message Int {
+    // description: string
+    string description = 1;
+
+    // encrypted: bool
+    bool encrypted = 2;
+
+    // id: string
+    string id = 3;
+
+    // name: string
+    string name = 4;
+
+    // value: number
+    int64 value = 5;
+  }
+
+  message Null {
+    // description: string
+    string description = 1;
+
+    // encrypted: bool
+    bool encrypted = 2;
+
+    // id: string
+    string id = 3;
+
+    // name: string
+    string name = 4;
+
+    // value: string
+    string value = 5;
+  }
+
+  message Object {
+    // description: string
+    string description = 1;
+
+    // encrypted: bool
+    bool encrypted = 2;
+
+    // id: string
+    string id = 3;
+
+    // name: string
+    string name = 4;
+
+    // value: string
+    string value = 5;
+  }
+
+  message String {
+    // description: string
+    string description = 1;
+
+    // encrypted: bool
+    bool encrypted = 2;
+
+    // id: string
+    string id = 3;
+
+    // name: string
+    string name = 4;
+
+    // value: string
+    string value = 5;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

@@ -1,0 +1,169 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermSqlDatabase version is 0
+message AzurermSqlDatabase {
+  string collation = 1;
+
+  string default_secondary_location = 2 [json_name = "default_secondary_location"];
+
+  string edition = 3;
+
+  string elastic_pool_name = 4 [json_name = "elastic_pool_name"];
+
+  string failover_group_id = 5 [json_name = "failover_group_id"];
+
+  string id = 6;
+
+  string location = 7;
+
+  string name = 8;
+
+  bool read_scale = 9 [json_name = "read_scale"];
+
+  string resource_group_name = 10 [json_name = "resource_group_name"];
+
+  string server_name = 11 [json_name = "server_name"];
+
+  map<string, string> tags = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermSqlManagedInstance version is 0
+message AzurermSqlManagedInstance {
+  string administrator_login = 1 [json_name = "administrator_login"];
+
+  string collation = 2;
+
+  string dns_zone_partner_id = 3 [json_name = "dns_zone_partner_id"];
+
+  string fqdn = 4;
+
+  string id = 5;
+
+  repeated Identity identity = 6;
+
+  string license_type = 7 [json_name = "license_type"];
+
+  string location = 8;
+
+  string minimum_tls_version = 9 [json_name = "minimum_tls_version"];
+
+  string name = 10;
+
+  string proxy_override = 11 [json_name = "proxy_override"];
+
+  bool public_data_endpoint_enabled = 12 [json_name = "public_data_endpoint_enabled"];
+
+  string resource_group_name = 13 [json_name = "resource_group_name"];
+
+  string sku_name = 14 [json_name = "sku_name"];
+
+  string storage_account_type = 15 [json_name = "storage_account_type"];
+
+  int64 storage_size_in_gb = 16 [json_name = "storage_size_in_gb"];
+
+  string subnet_id = 17 [json_name = "subnet_id"];
+
+  map<string, string> tags = 18;
+
+  string timezone_id = 19 [json_name = "timezone_id"];
+
+  int64 vcores = 20;
+
+  repeated Timeouts timeouts = 21;
+
+  google.protobuf.Value for_each = 22 [json_name = "for_each"];
+
+  repeated string depends_on = 23 [json_name = "depends_on"];
+
+  int32 count = 24;
+
+  string provider = 25;
+
+  terraform.v1.Lifecycle lifecycle = 26;
+
+  message Identity {
+    // principal_id: string
+    string principal_id = 1 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 2 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 3;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermSqlServer version is 0
+message AzurermSqlServer {
+  string administrator_login = 1 [json_name = "administrator_login"];
+
+  string fqdn = 2;
+
+  string id = 3;
+
+  repeated Identity identity = 4;
+
+  string location = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 8;
+
+  string version = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Identity {
+    // principal_id: string
+    string principal_id = 1 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 2 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 3;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}

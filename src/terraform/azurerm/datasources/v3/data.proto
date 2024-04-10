@@ -1,0 +1,462 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.datasources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermDataFactory version is 2
+message AzurermDataFactory {
+  repeated GithubConfiguration github_configuration = 1 [json_name = "github_configuration"];
+
+  string id = 2;
+
+  repeated Identity identity = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 7;
+
+  repeated VstsConfiguration vsts_configuration = 8 [json_name = "vsts_configuration"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message GithubConfiguration {
+    // account_name: string
+    string account_name = 1 [json_name = "account_name"];
+
+    // branch_name: string
+    string branch_name = 2 [json_name = "branch_name"];
+
+    // git_url: string
+    string git_url = 3 [json_name = "git_url"];
+
+    // repository_name: string
+    string repository_name = 4 [json_name = "repository_name"];
+
+    // root_folder: string
+    string root_folder = 5 [json_name = "root_folder"];
+  }
+
+  message Identity {
+    // identity_ids: list of string
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    // principal_id: string
+    string principal_id = 2 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 4;
+  }
+
+  message VstsConfiguration {
+    // account_name: string
+    string account_name = 1 [json_name = "account_name"];
+
+    // branch_name: string
+    string branch_name = 2 [json_name = "branch_name"];
+
+    // project_name: string
+    string project_name = 3 [json_name = "project_name"];
+
+    // repository_name: string
+    string repository_name = 4 [json_name = "repository_name"];
+
+    // root_folder: string
+    string root_folder = 5 [json_name = "root_folder"];
+
+    // tenant_id: string
+    string tenant_id = 6 [json_name = "tenant_id"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermDataFactoryTriggerSchedule version is 0
+message AzurermDataFactoryTriggerSchedule {
+  bool activated = 1;
+
+  repeated string annotations = 2;
+
+  string data_factory_id = 3 [json_name = "data_factory_id"];
+
+  string description = 4;
+
+  string end_time = 5 [json_name = "end_time"];
+
+  string frequency = 6;
+
+  string id = 7;
+
+  int64 interval = 8;
+
+  string name = 9;
+
+  string pipeline_name = 10 [json_name = "pipeline_name"];
+
+  repeated Schedule schedule = 11;
+
+  string start_time = 12 [json_name = "start_time"];
+
+  string time_zone = 13 [json_name = "time_zone"];
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message Schedule {
+    // days_of_month: list of number
+    repeated int64 days_of_month = 1 [json_name = "days_of_month"];
+
+    // days_of_week: list of string
+    repeated string days_of_week = 2 [json_name = "days_of_week"];
+
+    // hours: list of number
+    repeated int64 hours = 3;
+
+    // minutes: list of number
+    repeated int64 minutes = 4;
+
+    // monthly: list of object
+    repeated Monthly monthly = 5;
+
+    message Monthly {
+      // week: number
+      int64 week = 1;
+
+      // weekday: string
+      string weekday = 2;
+    }
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermDataFactoryTriggerSchedules version is 0
+message AzurermDataFactoryTriggerSchedules {
+  string data_factory_id = 1 [json_name = "data_factory_id"];
+
+  string id = 2;
+
+  repeated string items = 3;
+
+  repeated Timeouts timeouts = 4;
+
+  google.protobuf.Value for_each = 5 [json_name = "for_each"];
+
+  repeated string depends_on = 6 [json_name = "depends_on"];
+
+  int32 count = 7;
+
+  string provider = 8;
+
+  terraform.v1.Lifecycle lifecycle = 9;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermDataProtectionBackupVault version is 0
+message AzurermDataProtectionBackupVault {
+  string datastore_type = 1 [json_name = "datastore_type"];
+
+  string id = 2;
+
+  repeated Identity identity = 3;
+
+  string location = 4;
+
+  string name = 5;
+
+  string redundancy = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Identity {
+    // principal_id: string
+    string principal_id = 1 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 2 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 3;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermDataShare version is 0
+message AzurermDataShare {
+  string account_id = 1 [json_name = "account_id"];
+
+  string description = 2;
+
+  string id = 3;
+
+  string kind = 4;
+
+  string name = 5;
+
+  repeated SnapshotSchedule snapshot_schedule = 6 [json_name = "snapshot_schedule"];
+
+  string terms = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message SnapshotSchedule {
+    // name: string
+    string name = 1;
+
+    // recurrence: string
+    string recurrence = 2;
+
+    // start_time: string
+    string start_time = 3 [json_name = "start_time"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermDataShareAccount version is 0
+message AzurermDataShareAccount {
+  string id = 1;
+
+  repeated Identity identity = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 5;
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Identity {
+    // principal_id: string
+    string principal_id = 1 [json_name = "principal_id"];
+
+    // tenant_id: string
+    string tenant_id = 2 [json_name = "tenant_id"];
+
+    // type: string
+    string type = 3;
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermDataShareDatasetBlobStorage version is 0
+message AzurermDataShareDatasetBlobStorage {
+  string container_name = 1 [json_name = "container_name"];
+
+  string data_share_id = 2 [json_name = "data_share_id"];
+
+  string display_name = 3 [json_name = "display_name"];
+
+  string file_path = 4 [json_name = "file_path"];
+
+  string folder_path = 5 [json_name = "folder_path"];
+
+  string id = 6;
+
+  string name = 7;
+
+  repeated StorageAccount storage_account = 8 [json_name = "storage_account"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message StorageAccount {
+    // name: string
+    string name = 1;
+
+    // resource_group_name: string
+    string resource_group_name = 2 [json_name = "resource_group_name"];
+
+    // subscription_id: string
+    string subscription_id = 3 [json_name = "subscription_id"];
+  }
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermDataShareDatasetDataLakeGen2 version is 0
+message AzurermDataShareDatasetDataLakeGen2 {
+  string display_name = 1 [json_name = "display_name"];
+
+  string file_path = 2 [json_name = "file_path"];
+
+  string file_system_name = 3 [json_name = "file_system_name"];
+
+  string folder_path = 4 [json_name = "folder_path"];
+
+  string id = 5;
+
+  string name = 6;
+
+  string share_id = 7 [json_name = "share_id"];
+
+  string storage_account_id = 8 [json_name = "storage_account_id"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermDataShareDatasetKustoCluster version is 0
+message AzurermDataShareDatasetKustoCluster {
+  string display_name = 1 [json_name = "display_name"];
+
+  string id = 2;
+
+  string kusto_cluster_id = 3 [json_name = "kusto_cluster_id"];
+
+  string kusto_cluster_location = 4 [json_name = "kusto_cluster_location"];
+
+  string name = 5;
+
+  string share_id = 6 [json_name = "share_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string read = 1;
+  }
+}
+
+// AzurermDataShareDatasetKustoDatabase version is 0
+message AzurermDataShareDatasetKustoDatabase {
+  string display_name = 1 [json_name = "display_name"];
+
+  string id = 2;
+
+  string kusto_cluster_location = 3 [json_name = "kusto_cluster_location"];
+
+  string kusto_database_id = 4 [json_name = "kusto_database_id"];
+
+  string name = 5;
+
+  string share_id = 6 [json_name = "share_id"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string read = 1;
+  }
+}

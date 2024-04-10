@@ -1,0 +1,1397 @@
+syntax = "proto3";
+
+// Provider: azurerm 3
+package terraform.azurerm.resources.v3;
+
+import "google/protobuf/struct.proto";
+
+import "terraform/v1/meta.proto";
+
+// AzurermAutomationAccount version is 0
+message AzurermAutomationAccount {
+  string dsc_primary_access_key = 1 [json_name = "dsc_primary_access_key"];
+
+  string dsc_secondary_access_key = 2 [json_name = "dsc_secondary_access_key"];
+
+  string dsc_server_endpoint = 3 [json_name = "dsc_server_endpoint"];
+
+  string hybrid_service_url = 4 [json_name = "hybrid_service_url"];
+
+  string id = 5;
+
+  bool local_authentication_enabled = 6 [json_name = "local_authentication_enabled"];
+
+  string location = 7;
+
+  string name = 8;
+
+  repeated PrivateEndpointConnection private_endpoint_connection = 9 [json_name = "private_endpoint_connection"];
+
+  bool public_network_access_enabled = 10 [json_name = "public_network_access_enabled"];
+
+  string resource_group_name = 11 [json_name = "resource_group_name"];
+
+  string sku_name = 12 [json_name = "sku_name"];
+
+  map<string, string> tags = 13;
+
+  repeated Encryption encryption = 14;
+
+  Identity identity = 15;
+
+  repeated Timeouts timeouts = 16;
+
+  google.protobuf.Value for_each = 17 [json_name = "for_each"];
+
+  repeated string depends_on = 18 [json_name = "depends_on"];
+
+  int32 count = 19;
+
+  string provider = 20;
+
+  terraform.v1.Lifecycle lifecycle = 21;
+
+  message PrivateEndpointConnection {
+    // id: string
+    string id = 1;
+
+    // name: string
+    string name = 2;
+  }
+
+  message Encryption {
+    string key_source = 1 [json_name = "key_source"];
+
+    string key_vault_key_id = 2 [json_name = "key_vault_key_id"];
+
+    string user_assigned_identity_id = 3 [json_name = "user_assigned_identity_id"];
+  }
+
+  message Identity {
+    repeated string identity_ids = 1 [json_name = "identity_ids"];
+
+    string principal_id = 2 [json_name = "principal_id"];
+
+    string tenant_id = 3 [json_name = "tenant_id"];
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationCertificate version is 0
+message AzurermAutomationCertificate {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string base64 = 2;
+
+  string description = 3;
+
+  bool exportable = 4;
+
+  string id = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string thumbprint = 8;
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationConnection version is 0
+message AzurermAutomationConnection {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string description = 2;
+
+  string id = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string type = 6;
+
+  map<string, string> values = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationConnectionCertificate version is 0
+message AzurermAutomationConnectionCertificate {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string automation_certificate_name = 2 [json_name = "automation_certificate_name"];
+
+  string description = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string subscription_id = 7 [json_name = "subscription_id"];
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationConnectionClassicCertificate version is 0
+message AzurermAutomationConnectionClassicCertificate {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string certificate_asset_name = 2 [json_name = "certificate_asset_name"];
+
+  string description = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string subscription_id = 7 [json_name = "subscription_id"];
+
+  string subscription_name = 8 [json_name = "subscription_name"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationConnectionServicePrincipal version is 0
+message AzurermAutomationConnectionServicePrincipal {
+  string application_id = 1 [json_name = "application_id"];
+
+  string automation_account_name = 2 [json_name = "automation_account_name"];
+
+  string certificate_thumbprint = 3 [json_name = "certificate_thumbprint"];
+
+  string description = 4;
+
+  string id = 5;
+
+  string name = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string subscription_id = 8 [json_name = "subscription_id"];
+
+  string tenant_id = 9 [json_name = "tenant_id"];
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationConnectionType version is 0
+message AzurermAutomationConnectionType {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string id = 2;
+
+  bool is_global = 3 [json_name = "is_global"];
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  repeated Field field = 6;
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Field {
+    bool is_encrypted = 1 [json_name = "is_encrypted"];
+
+    bool is_optional = 2 [json_name = "is_optional"];
+
+    string name = 3;
+
+    string type = 4;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermAutomationCredential version is 0
+message AzurermAutomationCredential {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string description = 2;
+
+  string id = 3;
+
+  string name = 4;
+
+  string password = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string username = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationDscConfiguration version is 0
+message AzurermAutomationDscConfiguration {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string content_embedded = 2 [json_name = "content_embedded"];
+
+  string description = 3;
+
+  string id = 4;
+
+  string location = 5;
+
+  bool log_verbose = 6 [json_name = "log_verbose"];
+
+  string name = 7;
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  string state = 9;
+
+  map<string, string> tags = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationDscNodeconfiguration version is 0
+message AzurermAutomationDscNodeconfiguration {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string configuration_name = 2 [json_name = "configuration_name"];
+
+  string content_embedded = 3 [json_name = "content_embedded"];
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 7;
+
+  google.protobuf.Value for_each = 8 [json_name = "for_each"];
+
+  repeated string depends_on = 9 [json_name = "depends_on"];
+
+  int32 count = 10;
+
+  string provider = 11;
+
+  terraform.v1.Lifecycle lifecycle = 12;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationHybridRunbookWorker version is 0
+message AzurermAutomationHybridRunbookWorker {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string id = 2;
+
+  string ip = 3;
+
+  string last_seen_date_time = 4 [json_name = "last_seen_date_time"];
+
+  string registration_date_time = 5 [json_name = "registration_date_time"];
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string vm_resource_id = 7 [json_name = "vm_resource_id"];
+
+  string worker_group_name = 8 [json_name = "worker_group_name"];
+
+  string worker_id = 9 [json_name = "worker_id"];
+
+  string worker_name = 10 [json_name = "worker_name"];
+
+  string worker_type = 11 [json_name = "worker_type"];
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermAutomationHybridRunbookWorkerGroup version is 0
+message AzurermAutomationHybridRunbookWorkerGroup {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string credential_name = 2 [json_name = "credential_name"];
+
+  string id = 3;
+
+  string name = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationJobSchedule version is 0
+message AzurermAutomationJobSchedule {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string id = 2;
+
+  string job_schedule_id = 3 [json_name = "job_schedule_id"];
+
+  map<string, string> parameters = 4;
+
+  string resource_group_name = 5 [json_name = "resource_group_name"];
+
+  string run_on = 6 [json_name = "run_on"];
+
+  string runbook_name = 7 [json_name = "runbook_name"];
+
+  string schedule_name = 8 [json_name = "schedule_name"];
+
+  repeated Timeouts timeouts = 9;
+
+  google.protobuf.Value for_each = 10 [json_name = "for_each"];
+
+  repeated string depends_on = 11 [json_name = "depends_on"];
+
+  int32 count = 12;
+
+  string provider = 13;
+
+  terraform.v1.Lifecycle lifecycle = 14;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+  }
+}
+
+// AzurermAutomationModule version is 0
+message AzurermAutomationModule {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string id = 2;
+
+  string name = 3;
+
+  string resource_group_name = 4 [json_name = "resource_group_name"];
+
+  ModuleLink module_link = 5 [json_name = "module_link"];
+
+  repeated Timeouts timeouts = 6;
+
+  google.protobuf.Value for_each = 7 [json_name = "for_each"];
+
+  repeated string depends_on = 8 [json_name = "depends_on"];
+
+  int32 count = 9;
+
+  string provider = 10;
+
+  terraform.v1.Lifecycle lifecycle = 11;
+
+  message ModuleLink {
+    string uri = 1;
+
+    Hash hash = 2;
+
+    message Hash {
+      string algorithm = 1;
+
+      string value = 2;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationPowershell72Module version is 0
+message AzurermAutomationPowershell72Module {
+  string automation_account_id = 1 [json_name = "automation_account_id"];
+
+  string id = 2;
+
+  string name = 3;
+
+  ModuleLink module_link = 4 [json_name = "module_link"];
+
+  repeated Timeouts timeouts = 5;
+
+  google.protobuf.Value for_each = 6 [json_name = "for_each"];
+
+  repeated string depends_on = 7 [json_name = "depends_on"];
+
+  int32 count = 8;
+
+  string provider = 9;
+
+  terraform.v1.Lifecycle lifecycle = 10;
+
+  message ModuleLink {
+    string uri = 1;
+
+    Hash hash = 2;
+
+    message Hash {
+      string algorithm = 1;
+
+      string value = 2;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationPython3Package version is 0
+message AzurermAutomationPython3Package {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string content_uri = 2 [json_name = "content_uri"];
+
+  string content_version = 3 [json_name = "content_version"];
+
+  string hash_algorithm = 4 [json_name = "hash_algorithm"];
+
+  string hash_value = 5 [json_name = "hash_value"];
+
+  string id = 6;
+
+  string name = 7;
+
+  string resource_group_name = 8 [json_name = "resource_group_name"];
+
+  map<string, string> tags = 9;
+
+  repeated Timeouts timeouts = 10;
+
+  google.protobuf.Value for_each = 11 [json_name = "for_each"];
+
+  repeated string depends_on = 12 [json_name = "depends_on"];
+
+  int32 count = 13;
+
+  string provider = 14;
+
+  terraform.v1.Lifecycle lifecycle = 15;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationRunbook version is 0
+message AzurermAutomationRunbook {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string content = 2;
+
+  string description = 3;
+
+  string id = 4;
+
+  repeated JobSchedule job_schedule = 5 [json_name = "job_schedule"];
+
+  string location = 6;
+
+  int64 log_activity_trace_level = 7 [json_name = "log_activity_trace_level"];
+
+  bool log_progress = 8 [json_name = "log_progress"];
+
+  bool log_verbose = 9 [json_name = "log_verbose"];
+
+  string name = 10;
+
+  string resource_group_name = 11 [json_name = "resource_group_name"];
+
+  string runbook_type = 12 [json_name = "runbook_type"];
+
+  map<string, string> tags = 13;
+
+  Draft draft = 14;
+
+  PublishContentLink publish_content_link = 15 [json_name = "publish_content_link"];
+
+  repeated Timeouts timeouts = 16;
+
+  google.protobuf.Value for_each = 17 [json_name = "for_each"];
+
+  repeated string depends_on = 18 [json_name = "depends_on"];
+
+  int32 count = 19;
+
+  string provider = 20;
+
+  terraform.v1.Lifecycle lifecycle = 21;
+
+  message JobSchedule {
+    // job_schedule_id: string
+    string job_schedule_id = 1 [json_name = "job_schedule_id"];
+
+    // parameters: map of string
+    map<string, string> parameters = 2;
+
+    // run_on: string
+    string run_on = 3 [json_name = "run_on"];
+
+    // schedule_name: string
+    string schedule_name = 4 [json_name = "schedule_name"];
+  }
+
+  message Draft {
+    string creation_time = 1 [json_name = "creation_time"];
+
+    bool edit_mode_enabled = 2 [json_name = "edit_mode_enabled"];
+
+    string last_modified_time = 3 [json_name = "last_modified_time"];
+
+    repeated string output_types = 4 [json_name = "output_types"];
+
+    ContentLink content_link = 5 [json_name = "content_link"];
+
+    repeated Parameters parameters = 6;
+
+    message ContentLink {
+      string uri = 1;
+
+      string version = 2;
+
+      Hash hash = 3;
+
+      message Hash {
+        string algorithm = 1;
+
+        string value = 2;
+      }
+    }
+
+    message Parameters {
+      string default_value = 1 [json_name = "default_value"];
+
+      string key = 2;
+
+      bool mandatory = 3;
+
+      int64 position = 4;
+
+      string type = 5;
+    }
+  }
+
+  message PublishContentLink {
+    string uri = 1;
+
+    string version = 2;
+
+    Hash hash = 3;
+
+    message Hash {
+      string algorithm = 1;
+
+      string value = 2;
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationSchedule version is 0
+message AzurermAutomationSchedule {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string description = 2;
+
+  string expiry_time = 3 [json_name = "expiry_time"];
+
+  string frequency = 4;
+
+  string id = 5;
+
+  int64 interval = 6;
+
+  repeated int64 month_days = 7 [json_name = "month_days"];
+
+  string name = 8;
+
+  string resource_group_name = 9 [json_name = "resource_group_name"];
+
+  string start_time = 10 [json_name = "start_time"];
+
+  string timezone = 11;
+
+  repeated string week_days = 12 [json_name = "week_days"];
+
+  MonthlyOccurrence monthly_occurrence = 13 [json_name = "monthly_occurrence"];
+
+  repeated Timeouts timeouts = 14;
+
+  google.protobuf.Value for_each = 15 [json_name = "for_each"];
+
+  repeated string depends_on = 16 [json_name = "depends_on"];
+
+  int32 count = 17;
+
+  string provider = 18;
+
+  terraform.v1.Lifecycle lifecycle = 19;
+
+  message MonthlyOccurrence {
+    string day = 1;
+
+    int64 occurrence = 2;
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationSoftwareUpdateConfiguration version is 0
+message AzurermAutomationSoftwareUpdateConfiguration {
+  string automation_account_id = 1 [json_name = "automation_account_id"];
+
+  string duration = 2;
+
+  string error_code = 3 [json_name = "error_code"];
+
+  string error_meesage = 4 [json_name = "error_meesage"];
+
+  string error_message = 5 [json_name = "error_message"];
+
+  string id = 6;
+
+  string name = 7;
+
+  repeated string non_azure_computer_names = 8 [json_name = "non_azure_computer_names"];
+
+  string operating_system = 9 [json_name = "operating_system"];
+
+  repeated string virtual_machine_ids = 10 [json_name = "virtual_machine_ids"];
+
+  Linux linux = 11;
+
+  PostTask post_task = 12 [json_name = "post_task"];
+
+  PreTask pre_task = 13 [json_name = "pre_task"];
+
+  Schedule schedule = 14;
+
+  Target target = 15;
+
+  repeated Timeouts timeouts = 16;
+
+  Windows windows = 17;
+
+  google.protobuf.Value for_each = 18 [json_name = "for_each"];
+
+  repeated string depends_on = 19 [json_name = "depends_on"];
+
+  int32 count = 20;
+
+  string provider = 21;
+
+  terraform.v1.Lifecycle lifecycle = 22;
+
+  message Linux {
+    string classification_included = 1 [json_name = "classification_included"];
+
+    repeated string classifications_included = 2 [json_name = "classifications_included"];
+
+    repeated string excluded_packages = 3 [json_name = "excluded_packages"];
+
+    repeated string included_packages = 4 [json_name = "included_packages"];
+
+    string reboot = 5;
+  }
+
+  message PostTask {
+    map<string, string> parameters = 1;
+
+    string source = 2;
+  }
+
+  message PreTask {
+    map<string, string> parameters = 1;
+
+    string source = 2;
+  }
+
+  message Schedule {
+    repeated int64 advanced_month_days = 1 [json_name = "advanced_month_days"];
+
+    repeated string advanced_week_days = 2 [json_name = "advanced_week_days"];
+
+    string creation_time = 3 [json_name = "creation_time"];
+
+    string description = 4;
+
+    string expiry_time = 5 [json_name = "expiry_time"];
+
+    int64 expiry_time_offset_minutes = 6 [json_name = "expiry_time_offset_minutes"];
+
+    string frequency = 7;
+
+    int64 interval = 8;
+
+    bool is_enabled = 9 [json_name = "is_enabled"];
+
+    string last_modified_time = 10 [json_name = "last_modified_time"];
+
+    string next_run = 11 [json_name = "next_run"];
+
+    int64 next_run_offset_minutes = 12 [json_name = "next_run_offset_minutes"];
+
+    string start_time = 13 [json_name = "start_time"];
+
+    int64 start_time_offset_minutes = 14 [json_name = "start_time_offset_minutes"];
+
+    string time_zone = 15 [json_name = "time_zone"];
+
+    MonthlyOccurrence monthly_occurrence = 16 [json_name = "monthly_occurrence"];
+
+    message MonthlyOccurrence {
+      string day = 1;
+
+      int64 occurrence = 2;
+    }
+  }
+
+  message Target {
+    repeated AzureQuery azure_query = 1 [json_name = "azure_query"];
+
+    repeated NonAzureQuery non_azure_query = 2 [json_name = "non_azure_query"];
+
+    message AzureQuery {
+      repeated string locations = 1;
+
+      repeated string scope = 2;
+
+      string tag_filter = 3 [json_name = "tag_filter"];
+
+      repeated Tags tags = 4;
+
+      message Tags {
+        string tag = 1;
+
+        repeated string values = 2;
+      }
+    }
+
+    message NonAzureQuery {
+      string function_alias = 1 [json_name = "function_alias"];
+
+      string workspace_id = 2 [json_name = "workspace_id"];
+    }
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+
+  message Windows {
+    string classification_included = 1 [json_name = "classification_included"];
+
+    repeated string classifications_included = 2 [json_name = "classifications_included"];
+
+    repeated string excluded_knowledge_base_numbers = 3 [json_name = "excluded_knowledge_base_numbers"];
+
+    repeated string included_knowledge_base_numbers = 4 [json_name = "included_knowledge_base_numbers"];
+
+    string reboot = 5;
+  }
+}
+
+// AzurermAutomationSourceControl version is 1
+message AzurermAutomationSourceControl {
+  bool automatic_sync = 1 [json_name = "automatic_sync"];
+
+  string automation_account_id = 2 [json_name = "automation_account_id"];
+
+  string branch = 3;
+
+  string description = 4;
+
+  string folder_path = 5 [json_name = "folder_path"];
+
+  string id = 6;
+
+  string name = 7;
+
+  bool publish_runbook_enabled = 8 [json_name = "publish_runbook_enabled"];
+
+  string repository_url = 9 [json_name = "repository_url"];
+
+  string source_control_type = 10 [json_name = "source_control_type"];
+
+  Security security = 11;
+
+  repeated Timeouts timeouts = 12;
+
+  google.protobuf.Value for_each = 13 [json_name = "for_each"];
+
+  repeated string depends_on = 14 [json_name = "depends_on"];
+
+  int32 count = 15;
+
+  string provider = 16;
+
+  terraform.v1.Lifecycle lifecycle = 17;
+
+  message Security {
+    string refresh_token = 1 [json_name = "refresh_token"];
+
+    string token = 2;
+
+    string token_type = 3 [json_name = "token_type"];
+  }
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationVariableBool version is 0
+message AzurermAutomationVariableBool {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string description = 2;
+
+  bool encrypted = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  bool value = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationVariableDatetime version is 0
+message AzurermAutomationVariableDatetime {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string description = 2;
+
+  bool encrypted = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string value = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationVariableInt version is 0
+message AzurermAutomationVariableInt {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string description = 2;
+
+  bool encrypted = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  int64 value = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationVariableObject version is 0
+message AzurermAutomationVariableObject {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string description = 2;
+
+  bool encrypted = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string value = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationVariableString version is 0
+message AzurermAutomationVariableString {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  string description = 2;
+
+  bool encrypted = 3;
+
+  string id = 4;
+
+  string name = 5;
+
+  string resource_group_name = 6 [json_name = "resource_group_name"];
+
+  string value = 7;
+
+  repeated Timeouts timeouts = 8;
+
+  google.protobuf.Value for_each = 9 [json_name = "for_each"];
+
+  repeated string depends_on = 10 [json_name = "depends_on"];
+
+  int32 count = 11;
+
+  string provider = 12;
+
+  terraform.v1.Lifecycle lifecycle = 13;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationWatcher version is 0
+message AzurermAutomationWatcher {
+  string automation_account_id = 1 [json_name = "automation_account_id"];
+
+  string description = 2;
+
+  string etag = 3;
+
+  int64 execution_frequency_in_seconds = 4 [json_name = "execution_frequency_in_seconds"];
+
+  string id = 5;
+
+  string location = 6;
+
+  string name = 7;
+
+  string script_name = 8 [json_name = "script_name"];
+
+  map<string, string> script_parameters = 9 [json_name = "script_parameters"];
+
+  string script_run_on = 10 [json_name = "script_run_on"];
+
+  string status = 11;
+
+  map<string, string> tags = 12;
+
+  repeated Timeouts timeouts = 13;
+
+  google.protobuf.Value for_each = 14 [json_name = "for_each"];
+
+  repeated string depends_on = 15 [json_name = "depends_on"];
+
+  int32 count = 16;
+
+  string provider = 17;
+
+  terraform.v1.Lifecycle lifecycle = 18;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
+
+// AzurermAutomationWebhook version is 1
+message AzurermAutomationWebhook {
+  string automation_account_name = 1 [json_name = "automation_account_name"];
+
+  bool enabled = 2;
+
+  string expiry_time = 3 [json_name = "expiry_time"];
+
+  string id = 4;
+
+  string name = 5;
+
+  map<string, string> parameters = 6;
+
+  string resource_group_name = 7 [json_name = "resource_group_name"];
+
+  string run_on_worker_group = 8 [json_name = "run_on_worker_group"];
+
+  string runbook_name = 9 [json_name = "runbook_name"];
+
+  string uri = 10;
+
+  repeated Timeouts timeouts = 11;
+
+  google.protobuf.Value for_each = 12 [json_name = "for_each"];
+
+  repeated string depends_on = 13 [json_name = "depends_on"];
+
+  int32 count = 14;
+
+  string provider = 15;
+
+  terraform.v1.Lifecycle lifecycle = 16;
+
+  message Timeouts {
+    string create = 1;
+
+    string delete = 2;
+
+    string read = 3;
+
+    string update = 4;
+  }
+}
