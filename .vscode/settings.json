@@ -4,7 +4,7 @@
   },
   "files.associations": {
     "*.pconf": "Starlark",
-    "*.mpconf": "Starlark",
+    "*.mpconf": "starlark",
     "*.pinc": "Starlark",
     "*.proto-validator": "Starlark",
     "*.materialized_JSON": "json"
