@@ -13,8 +13,9 @@ load("//terraform/helm/resources/v2/release.proto", "HelmRelease")
 
 load("//terraform/http/provider/v3/http.proto", HttpProvider="Http")
 load("//terraform/http/datasources/v3/http.proto", Http="Http")
-# load("//protoconf_terraform/config/v1/config.proto", "SubscriptionConfig")
+
 load("encoding/yaml.star", "yaml")
+#hello github!
 
 load(
     "@kubernetes//lib/kubernetes/kubernetes.pinc",
@@ -23,7 +24,8 @@ load(
     "KubernetesDaemonSet",
 )
 AZURE_RESOURCE_GROUP = "ProtoconfDev"
-REGIONS = ["southeastasia", "eastus", "westus", "westeurope", "northeurope"]
+# Just add regions here!!!
+REGIONS = ["southeastasia", "eastus", "westus", "westeurope", "northeurope", "us-west-2"]
 
 
 def AKSCluster(region, *hooks):
