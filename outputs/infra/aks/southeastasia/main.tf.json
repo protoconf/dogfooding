@@ -33,7 +33,7 @@
       },
       "script": {
         "data": {
-          "run.sh": "#!/bin/bash\n\napt-get update\napt-get install -y curl git\n\ncurl -L https://github.com/protoconf/protoconf/releases/download/v0.2.0-alpha1/protoconf_0.2.0-alpha1_linux_amd64.tar.gz -o /tmp/protoconf.tgz\ntar xvzf /tmp/protoconf.tgz -C /usr/local/bin\n\ncd /data\n\ngit clone https://github.com/protoconf/dogfooding.git\ncd dogfooding\n\nprotoconf mod tidy\ngit ls-files materialized_config | xargs protoconf insert -store=etcd -store-address=etcd:2380 .\nPREVIOUS=$(git rev-parse HEAD)\nfor sleep 15; do\n    git pull\n    git diff $PREVIOUS --name-only materialized_config | xargs protoconf insert -store=etcd -store-address=etcd:2380 .\n    PREVIOUS=$(git rev-parse HEAD)\ndone\n\n                    "
+          "run.sh": "#!/bin/bash\n\napt-get update\napt-get install -y curl git\n\ncurl -L https://github.com/protoconf/protoconf/releases/download/v0.2.0-alpha1/protoconf_0.2.0-alpha1_linux_amd64.tar.gz -o /tmp/protoconf.tgz\ntar xvzf /tmp/protoconf.tgz -C /usr/local/bin\n\ncd /data\n\ngit clone https://github.com/protoconf/dogfooding.git\ncd dogfooding\n\nprotoconf mod tidy\ngit ls-files materialized_config | xargs protoconf insert -store=etcd -store-address=etcd:2380 .\nPREVIOUS=$(git rev-parse HEAD)\nwhile true; do\n    git pull\n    git diff $PREVIOUS --name-only materialized_config | xargs protoconf insert -store=etcd -store-address=etcd:2380 .\n    PREVIOUS=$(git rev-parse HEAD)\n    sleep 15\ndone\n\n                    "
         },
         "metadata": {
           "name": "script",

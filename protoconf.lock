@@ -34,12 +34,12 @@ deps: {
   key: "kubernetes"
   value: {
     label: "com_github_protoconf_protoconf_kubernetes_f56d311"
-    url: "https://github.com/protoconf/protoconf-kubernetes"
+    url: "github.com/protoconf/protoconf-kubernetes"
     commit: "f56d311"
     source_path: "src"
     exclude_file_regexps: "terraform"
-    integrity: "h1:Az7B6flygedcHLtpjnhRninjqksj5s5HWscx7jJywvk="
-    getter_url: "https://github.com/protoconf/protoconf-kubernetes?ref=f56d311"
+    integrity: "h1:okN5vlPmr8gNylvBdg5bUaNK4AsKuKjWPxYhAinKxx4="
+    getter_url: "git::https://github.com/protoconf/protoconf-kubernetes.git?depth=0&ref=f56d311"
     file_descriptor_set_sum: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   }
 }
@@ -64,34 +64,21 @@ deps: {
     url: "github.com/protoconf/protoconf-xds"
     tag: "v0.1.2-1"
     source_path: "src"
-    deps: {
-      key: "envoy"
-      value: {
-        label: "com_github_envoyproxy_data_plane_api_54a58fd"
-        url: "github.com/envoyproxy/data-plane-api"
-        commit: "54a58fd"
-        source_path: "src"
-        additional_proto_dirs: "."
-        exclude_file_regexps: "^google/.*"
-        exclude_file_regexps: "^bazel/.*"
-        getter_url: "git::https://github.com/envoyproxy/data-plane-api.git?depth=0&ref=54a58fd"
-      }
-    }
     integrity: "h1:M152DgKm9yWvNHIMjPmCJtlL6A+nxtgPJqzdZxeaiU0="
     getter_url: "git::https://github.com/protoconf/protoconf-xds.git?depth=0&ref=v0.1.2-1"
-    file_descriptor_set_sum: "cb0f21a1698834b23bdb31168da38b32a5e9fc6cb70e02d0ae0663d15f1879b9"
+    file_descriptor_set_sum: "3f44d6b87be5c8346008500a5d8beb51ba647825b90fa1778ff3710a5845d85d"
   }
 }
 deps: {
   key: "xds_proto"
   value: {
     label: "com_github_cncf_xds_0335649"
-    url: "https://github.com/cncf/xds"
+    url: "github.com/cncf/xds"
     commit: "0335649"
     source_path: "src"
     additional_proto_dirs: "."
-    integrity: "h1:/HIiaZzpUmCK8l5hLiLi4Lkf/3UsaKSAbuDOJo6Jx2A="
-    getter_url: "https://github.com/cncf/xds?ref=0335649"
-    file_descriptor_set_sum: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    integrity: "h1:/cB8uyWuYkMqKQ5/GJFWHlQTX7blK7ctQORKuDp1khs="
+    getter_url: "git::https://github.com/cncf/xds.git?depth=0&ref=0335649"
+    file_descriptor_set_sum: "8a908df38c75b4dfd3049af5b1057c8d18631bdef9408b98556cd78269cc1a1e"
   }
 }
