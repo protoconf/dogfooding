@@ -1,2 +1,3 @@
 .terraform
+terraform.tfstate*
 .protoconf_cache

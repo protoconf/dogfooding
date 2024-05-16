@@ -6,6 +6,13 @@
         "name": "pconf-dev-us-west-2"
       }
     },
+    "azurerm_user_assigned_identity": {
+      "uami": {
+        "location": "${azurerm_resource_group.resource_group.location}",
+        "name": "uami-${azurerm_resource_group.resource_group.name}",
+        "resource_group_name": "${azurerm_resource_group.resource_group.name}"
+      }
+    },
     "helm_release": {
       "uptrace": {
         "chart": "uptrace",
@@ -270,11 +277,17 @@
     "depends_on": [
           "azurerm_resource_group.resource_group"
         ],
+    "identity_ids": [
+          "${azurerm_user_assigned_identity.uami.id}"
+        ],
+    "identity_type": "UserAssigned",
+    "network_policy": "calico",
     "prefix": "pconf-dev-us-west-2",
     "rbac_aad": false,
     "resource_group_name": "${azurerm_resource_group.resource_group.name}",
+    "role_based_access_control_enabled": false,
     "source": "Azure/aks/azurerm",
-    "version": "7.5.0"
+    "version": "8.0.0"
   }
   }
 }

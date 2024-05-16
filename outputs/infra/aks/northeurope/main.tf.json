@@ -7,18 +7,29 @@
       }
     },
     "helm_release": {
-      "uptrace": {
-        "chart": "uptrace",
+      "ingress-nginx": {
+        "chart": "ingress-nginx",
         "create_namespace": true,
-        "name": "uptrace",
-        "namespace": "uptrace",
-        "repository": "https://charts.uptrace.dev",
+        "name": "ingress-nginx",
+        "namespace": "ingress-nginx",
+        "repository": "https://kubernetes.github.io/ingress-nginx",
         "values": [
-          "clickhouse:\n  enabled: true\n  image:\n    pullPolicy: IfNotPresent\n    repository: clickhouse/clickhouse-server\n    tag: \"23.7\"\n  imagePullSecrets: []\n  persistence:\n    enabled: true\n    size: 80Gi\n    storageClassName: \"\"\ningress:\n  annotations: {}\n  className: webapprouting.kubernetes.azure.com\n  enabled: true\n  hosts:\n  - host: uptrace-northeurope.protoconf.dev\n    paths:\n    - path: /\n      pathType: Prefix\notelcol:\n  enabled: false\npostgresql:\n  enabled: true\n  image:\n    pullPolicy: IfNotPresent\n    repository: postgres\n    tag: 15-alpine\n  imagePullSecrets: []\n"
+          "controller:\n  service:\n    annotations:\n      service.beta.kubernetes.io/azure-load-balancer-internal: \"false\"\n"
         ],
         "depends_on": [
           "module.aks_cluster"
         ]
+      }
+    },
+    "kubernetes_config_map": {
+      "envoy": {
+        "data": {
+          "envoy.yaml": "admin:\n  address:\n    socket_address:\n      address: 0.0.0.0\n      port_value: 19000\ndynamic_resources:\n  ads_config:\n    api_type: GRPC\n    grpc_services:\n    - envoy_grpc:\n        cluster_name: xds_cluster\n    transport_api_version: V3\n  cds_config:\n    ads: {}\n    resource_api_version: V3\n  lds_config:\n    ads: {}\n    resource_api_version: V3\nnode:\n  cluster: frontend\n  id: mock\nstatic_resources:\n  clusters:\n  - load_assignment:\n      cluster_name: xds_cluster\n      endpoints:\n      - lb_endpoints:\n        - endpoint:\n            address:\n              socket_address:\n                address: xds-cluster\n                port_value: 18000\n    name: xds_cluster\n    type: STRICT_DNS\n    typed_extension_protocol_options:\n      envoy.extensions.upstreams.http.v3.HttpProtocolOptions:\n        '@type': type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions\n        explicit_http_config:\n          http2_protocol_options: {}\n"
+        },
+        "metadata": {
+          "name": "envoy",
+          "namespace": "default"
+        }
       }
     },
     "kubernetes_daemon_set_v1": {
@@ -68,6 +79,62 @@
         }
       }
     },
+    "kubernetes_deployment": {
+      "envoy": {
+        "metadata": {
+          "labels": {
+            "port_name": "envoy"
+          },
+          "name": "envoy",
+          "namespace": "default"
+        },
+        "spec": {
+          "replicas": "2",
+          "selector": {
+            "match_labels": {
+              "port_name": "envoy"
+            }
+          },
+          "template": {
+            "metadata": {
+              "labels": {
+                "port_name": "envoy"
+              }
+            },
+            "spec": {
+              "container": [
+                {
+                  "image": "envoyproxy/envoy:v1.30-latest",
+                  "name": "envoy",
+                  "port": [
+                    {
+                      "container_port": "10000",
+                      "name": "envoy",
+                      "protocol": "TCP"
+                    }
+                  ],
+                  "volume_mount": [
+                    {
+                      "mount_path": "/etc/envoy",
+                      "name": "envoy"
+                    }
+                  ]
+                }
+              ],
+              "volume": [
+                {
+                  "name": "envoy",
+                  "config_map": {
+                    "default_mode": "0755",
+                    "name": "envoy"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
     "kubernetes_namespace": {
       "protoconf": {
         "metadata": {
@@ -76,6 +143,29 @@
       }
     },
     "kubernetes_service": {
+      "envoy": {
+        "metadata": {
+          "annotations": {
+            "service.beta.kubernetes.io/azure-load-balancer-internal": "false"
+          },
+          "name": "envoy",
+          "namespace": "default"
+        },
+        "spec": {
+          "selector": {
+            "port_name": "envoy"
+          },
+          "type": "LoadBalancer",
+          "port": [
+            {
+              "name": "envoy",
+              "port": "10000",
+              "protocol": "TCP",
+              "target_port": "10000"
+            }
+          ]
+        }
+      },
       "etcd": {
         "metadata": {
           "name": "etcd",
@@ -86,6 +176,7 @@
           "selector": {
             "port_name": "etcd"
           },
+          "type": "ClusterIP",
           "port": [
             {
               "name": "client",
@@ -105,6 +196,7 @@
           "selector": {
             "port_name": "etcd-client"
           },
+          "type": "ClusterIP",
           "port": [
             {
               "name": "etcd-client",
@@ -124,6 +216,7 @@
           "selector": {
             "port_name": "protoconf"
           },
+          "type": "ClusterIP",
           "port": [
             {
               "name": "protoconf",
@@ -267,14 +360,22 @@
   },
   "module": {
     "aks_cluster": {
+    "create_role_assignments_for_application_gateway": false,
     "depends_on": [
           "azurerm_resource_group.resource_group"
         ],
+    "green_field_application_gateway_for_ingress": {
+          "name": "ingress",
+          "subnet_cidr": "10.225.0.0/16"
+        },
+    "identity_type": "SystemAssigned",
+    "network_policy": "calico",
     "prefix": "pconf-dev-northeurope",
     "rbac_aad": false,
     "resource_group_name": "${azurerm_resource_group.resource_group.name}",
+    "role_based_access_control_enabled": false,
     "source": "Azure/aks/azurerm",
-    "version": "7.5.0"
+    "version": "8.0.0"
   }
   }
 }

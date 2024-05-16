@@ -291,7 +291,9 @@ def value(v):
         return Value(list_value=ListValue(values=[value(i) for i in v]))
     if type(v) == "dict":
         return Struct(fields=dict([(k, value(vv)) for k, vv in v.items()]))
-    return None
+    if type(v) == "google.protobuf.Struct":
+        return Value(struct_value=v)
+    fail("unsupported type: %s" % type(v))
 
 
 def Module(name, source, then=(), **kwargs):

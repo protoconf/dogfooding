@@ -1,0 +1,82 @@
+{
+  "protoFile": "protoconfxds/v1/protoconfxds.proto",
+  "value": {
+    "@type": "type.googleapis.com/protoconfenvoy.v1.XDSSnapshot",
+    "routes": [
+      {
+        "name": "default",
+        "virtualHosts": [
+          {
+            "name": "default",
+            "domains": [
+              "*"
+            ],
+            "routes": [
+              {
+                "match": {
+                  "prefix": "/"
+                },
+                "directResponse": {
+                  "status": 200,
+                  "body": {
+                    "inlineString": "Hello World!\n"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "listeners": [
+      {
+        "name": "default",
+        "address": {
+          "socketAddress": {
+            "address": "0.0.0.0",
+            "portValue": 9999
+          }
+        },
+        "filterChains": [
+          {
+            "filters": [
+              {
+                "name": "envoy.filters.network.http_connection_manager",
+                "typedConfig": {
+                  "@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager",
+                  "statPrefix": "http",
+                  "rds": {
+                    "configSource": {
+                      "apiConfigSource": {
+                        "apiType": "GRPC",
+                        "transportApiVersion": "V3",
+                        "grpcServices": [
+                          {
+                            "envoyGrpc": {
+                              "clusterName": "xds_cluster"
+                            }
+                          }
+                        ],
+                        "setNodeOnFirstMessageOnly": true
+                      },
+                      "resourceApiVersion": "V3"
+                    },
+                    "routeConfigName": "default"
+                  },
+                  "httpFilters": [
+                    {
+                      "name": "envoy.filters.http.router",
+                      "typedConfig": {
+                        "@type": "type.googleapis.com/envoy.extensions.filters.http.router.v3.Router"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

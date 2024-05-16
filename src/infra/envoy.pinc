@@ -1,0 +1,140 @@
+load("encoding/yaml.star", "yaml")
+load("//terraform/v1/util.pinc", "util", "From", "value")
+load(
+    "@kubernetes//lib/kubernetes/kubernetes.pinc", "KubernetesDeployment",
+)
+
+XDS_CLUSTER_NAME = "xds-cluster"
+XDS_PORT = 18000
+
+
+def Envoy(cluster, node_id):
+    return KubernetesDeployment(
+        "envoy",
+        lambda k: util.Group(
+            k.SetName("envoy"),
+            k.SetNamespace("default"),
+            k.SetReplicas(2),
+            k.AddContainer(
+                lambda c: util.Group(
+                    c.SetName("envoy"),
+                    c.SetImage("envoyproxy/envoy:v1.30-latest"),
+                    c.AddServicePort(
+                        "envoy",
+                        10000,
+                        target_port=10000,
+                        type="LoadBalancer",
+                        ingress_annotations={
+                            "service.beta.kubernetes.io/azure-load-balancer-internal": "false"
+                        },
+                    ),
+                    c.AddConfigFiles(
+                        "envoy",
+                        "/etc/envoy",
+                        data={
+                            "envoy.yaml": yaml.dumps(
+                                {
+                                    "node": {"id": node_id, "cluster": cluster,},
+                                    "dynamic_resources": {
+                                        "ads_config": {
+                                            "api_type": "GRPC",
+                                            "transport_api_version": "V3",
+                                            "grpc_services": [
+                                                {
+                                                    "envoy_grpc": {
+                                                        "cluster_name": "xds_cluster"
+                                                    }
+                                                }
+                                            ],
+                                        },
+                                        "cds_config": {
+                                            "ads": {},
+                                            "resource_api_version": "V3",
+                                        },
+                                        "lds_config": {
+                                            "resource_api_version": "V3",
+                                            "ads": {},
+                                        },
+                                    },
+                                    "static_resources": {
+                                        "clusters": [
+                                            {
+                                                "type": "STRICT_DNS",
+                                                "typed_extension_protocol_options": {
+                                                    "envoy.extensions.upstreams.http.v3.HttpProtocolOptions": {
+                                                        "@type": "type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions",
+                                                        "explicit_http_config": {
+                                                            "http2_protocol_options": {}
+                                                        },
+                                                    }
+                                                },
+                                                "name": "xds_cluster",
+                                                "load_assignment": {
+                                                    "cluster_name": "xds_cluster",
+                                                    "endpoints": [
+                                                        {
+                                                            "lb_endpoints": [
+                                                                {
+                                                                    "endpoint": {
+                                                                        "address": {
+                                                                            "socket_address": {
+                                                                                "address": XDS_CLUSTER_NAME,
+                                                                                "port_value": XDS_PORT,
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    ],
+                                                },
+                                            }
+                                        ]
+                                    },
+                                    "admin": {
+                                        "address": {
+                                            "socket_address": {
+                                                "address": "0.0.0.0",
+                                                "port_value": 19000,
+                                            }
+                                        }
+                                    },
+                                }
+                            )
+                        },
+                    ),
+                )
+            ),
+        ),
+    )
+
+
+def XDSServer():
+    return KubernetesDeployment(
+        "xds-server",
+        lambda k: util.Group(
+            k.SetName("xds-server"),
+            k.SetNamespace("default"),
+            k.SetReplicas(1),
+            k.AddContainer(
+                lambda c: util.Group(
+                    c.SetName("xds-server"),
+                    c.SetImage("ghcr.io/protoconf/protoconf-xds:latest"),
+                    c.AddServicePort(XDS_CLUSTER_NAME, XDS_PORT),
+                    c.SetCommandArgs(
+                        "serve",
+                        "-nodeId",
+                        "ratelimit",
+                        "-nodeId",
+                        "mock",
+                        "-nodeId",
+                        "proxy",
+                        "-prefix",
+                        "infra/xds",
+                        "-protoconfAgentAddr",
+                        "protoconf.protoconf:4300",
+                    ),
+                )
+            ),
+        ),
+    )

@@ -1,0 +1,14 @@
+load("@xds//xds/lib.pinc", "xds")
+
+
+def main():
+    return xds.Snapshot(
+        xds.VirtualHost(
+            "default",
+            xds.Domains("*"),
+            xds.DirectResponse("Hello World!\n", xds.IfPrefix("/")),
+        ),
+        xds.Listener(
+            "default", xds.WithTCP("0.0.0.0", 9999), xds.WithRdsHTTPRoute("default"),
+        ),
+    )

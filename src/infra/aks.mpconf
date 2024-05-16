@@ -2,6 +2,7 @@ load("//terraform/v1/util.pinc", "util", "From", "value")
 
 load("//terraform/azurerm/provider/v3/azurerm.proto", "Azurerm")
 load("//terraform/azurerm/resources/v3/resource.proto", "AzurermResourceGroup")
+load("//terraform/azurerm/resources/v3/kubernetes.proto", "AzurermKubernetesCluster")
 
 load("//terraform/kubernetes/provider/v2/kubernetes.proto", "Kubernetes")
 load("//terraform/kubernetes/resources/v2/manifest.proto", "KubernetesManifest")
@@ -14,8 +15,10 @@ load("//terraform/helm/resources/v2/release.proto", "HelmRelease")
 load("//terraform/http/provider/v3/http.proto", HttpProvider="Http")
 load("//terraform/http/datasources/v3/http.proto", Http="Http")
 
+load("envoy.pinc", "Envoy")
+
 load("encoding/yaml.star", "yaml")
-#hello github!
+# hello github!
 
 load(
     "@kubernetes//lib/kubernetes/kubernetes.pinc",
@@ -25,7 +28,13 @@ load(
 )
 AZURE_RESOURCE_GROUP = "ProtoconfDev"
 # Just add regions here!!!
-REGIONS = ["southeastasia", "eastus", "westus", "westeurope", "northeurope", "us-west-2"]
+REGIONS = [
+    "southeastasia",
+    "eastus",
+    "westus",
+    "westeurope",
+    "northeurope",
+]
 
 
 def AKSCluster(region, *hooks):
@@ -47,11 +56,18 @@ def AKSCluster(region, *hooks):
             lambda var: util.Module(
                 "aks_cluster",
                 source="Azure/aks/azurerm",
-                version="7.5.0",
+                version="8.0.0",
                 resource_group_name=var.azurerm_resource_group.resource_group.name,
+                identity_type="SystemAssigned",
+                network_policy="calico",
                 prefix="pconf-dev-%s" % region,
                 depends_on=[var.azurerm_resource_group.resource_group.self],
+                role_based_access_control_enabled=False,
                 rbac_aad=False,
+                create_role_assignments_for_application_gateway=False,
+                green_field_application_gateway_for_ingress=value(
+                    {"name": "ingress", "subnet_cidr": "10.225.0.0/16",}
+                ),
             ),
         ),
         util.WithLink(
@@ -92,10 +108,12 @@ def AKSCluster(region, *hooks):
 def DefaultCluster(region):
     return util.Group(
         util.Provider(HttpProvider()),
-        Uptrace(region),
+        # Uptrace(region),
         WithinNamespace("protoconf"),
         Etcd(3),
+        IngressController(),
         ProtoconfAgent,
+        Envoy("frontend", "mock"),
     )
 
 
@@ -107,56 +125,84 @@ def WithinNamespace(namespace, *resources):
     )
 
 
+def IngressController():
+    return util.Resource(
+        "ingress-nginx",
+        HelmRelease(
+            name="ingress-nginx",
+            chart="ingress-nginx",
+            namespace="ingress-nginx",
+            repository="https://kubernetes.github.io/ingress-nginx",
+            create_namespace=True,
+            depends_on=["module.aks_cluster"],
+            values=[
+                yaml.dumps(
+                    {
+                        "controller": {
+                            "service": {
+                                "annotations": {
+                                    "service.beta.kubernetes.io/azure-load-balancer-internal": "false",
+                                }
+                            }
+                        }
+                    }
+                )
+            ],
+        ),
+    )
+
+
 def Etcd(replicas):
     if replicas not in [3, 5, 7]:
         fail("Etcd replicas must be 3, 5, or 7")
 
     return KubernetesStatefulSet(
-    "etcd",
-    lambda k: util.Group(
-        k.SetName("etcd"),
-        k.SetServiceName("etcd"),
-        k.SetNamespace("protoconf"),
-        k.SetReplicas(replicas),
-        k.AddContainer(
-            lambda c: util.Group(
-                c.SetName("etcd"),
-                c.SetImage("quay.io/coreos/etcd:latest"),
-                c.AddServicePort("etcd-client", 2379),
-                c.AddServicePort("etcd", 2380, headless=True, port_name="peer"),
-                c.AddServicePort("etcd", 2379, headless=True, port_name="client"),
-                c.SetEnv(
-                    etcd_listen_peer_urls="http://0.0.0.0:2380",
-                    etcd_listen_client_urls="http://0.0.0.0:2379",
-                    etcd_data_dir="/var/run/etcd/default.etcd",
-                ),
-                c.AddVolume("data", "/var/run/etcd", "10Gi", ""),
-                c.SetCommand(
-                    "sh",
-                    "-c",
-                    " ".join(
-                        [
-                            "etcd",
-                            "--name",
-                            "$${HOSTNAME}",
-                            "--advertise-client-urls",
-                            "http://$${HOSTNAME}.etcd:2379",
-                            "--initial-advertise-peer-urls",
-                            "http://$${HOSTNAME}:2380",
-                            "--initial-cluster",
-                            ",".join(
-                                [
-                                    "etcd-{0}=http://etcd-{0}.etcd:2380".format(i)
-                                    for i in range(0, replicas)
-                                ]
-                            ),
-                        ]
+        "etcd",
+        lambda k: util.Group(
+            k.SetName("etcd"),
+            k.SetServiceName("etcd"),
+            k.SetNamespace("protoconf"),
+            k.SetReplicas(replicas),
+            k.AddContainer(
+                lambda c: util.Group(
+                    c.SetName("etcd"),
+                    c.SetImage("quay.io/coreos/etcd:latest"),
+                    c.AddServicePort("etcd-client", 2379),
+                    c.AddServicePort("etcd", 2380, headless=True, port_name="peer"),
+                    c.AddServicePort("etcd", 2379, headless=True, port_name="client"),
+                    c.SetEnv(
+                        etcd_listen_peer_urls="http://0.0.0.0:2380",
+                        etcd_listen_client_urls="http://0.0.0.0:2379",
+                        etcd_data_dir="/var/run/etcd/default.etcd",
                     ),
-                ),
-            )
+                    c.AddVolume("data", "/var/run/etcd", "10Gi", ""),
+                    c.SetCommand(
+                        "sh",
+                        "-c",
+                        " ".join(
+                            [
+                                "etcd",
+                                "--name",
+                                "$${HOSTNAME}",
+                                "--advertise-client-urls",
+                                "http://$${HOSTNAME}.etcd:2379",
+                                "--initial-advertise-peer-urls",
+                                "http://$${HOSTNAME}:2380",
+                                "--initial-cluster",
+                                ",".join(
+                                    [
+                                        "etcd-{0}=http://etcd-{0}.etcd:2380".format(i)
+                                        for i in range(0, replicas)
+                                    ]
+                                ),
+                            ]
+                        ),
+                    ),
+                )
+            ),
         ),
-    ),
-)
+    )
+
 
 ProtoconfAgent = KubernetesDaemonSet(
     "protoconf-agent",
@@ -175,8 +221,6 @@ ProtoconfAgent = KubernetesDaemonSet(
         ),
     ),
 )
-
-
 
 
 def Uptrace(region):
