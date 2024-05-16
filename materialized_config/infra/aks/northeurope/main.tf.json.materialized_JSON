@@ -33,6 +33,15 @@
             "name": "envoy",
             "namespace": "default"
           }
+        },
+        "script": {
+          "data": {
+            "run.sh": "#!/bin/bash\n\napt-get update\napt-get install -y curl git\n\ncurl -L https://github.com/protoconf/protoconf/releases/download/v0.2.0-alpha1/protoconf_0.2.0-alpha1_linux_amd64.tar.gz -o /tmp/protoconf.tgz\ntar xvzf /tmp/protoconf.tgz -C /usr/local/bin\n\ncd /data\n\ngit clone https://github.com/protoconf/dogfooding.git\ncd dogfooding\n\nprotoconf mod tidy\ngit ls-files materialized_config | xargs protoconf insert -store=etcd -store-address=etcd:2380 .\nPREVIOUS=$(git rev-parse HEAD)\nfor sleep 15; do\n    git pull\n    git diff $PREVIOUS --name-only materialized_config | xargs protoconf insert -store=etcd -store-address=etcd:2380 .\n    PREVIOUS=$(git rev-parse HEAD)\ndone\n\n                    "
+          },
+          "metadata": {
+            "name": "script",
+            "namespace": "protoconf"
+          }
         }
       },
       "kubernetes_daemon_set_v1": {
@@ -229,6 +238,26 @@
               }
             ]
           }
+        },
+        "protoconf-insert": {
+          "metadata": {
+            "name": "protoconf-insert",
+            "namespace": "protoconf"
+          },
+          "spec": {
+            "selector": {
+              "port_name": "protoconf-insert"
+            },
+            "type": "ClusterIP",
+            "port": [
+              {
+                "name": "protoconf-insert",
+                "port": "4300",
+                "protocol": "TCP",
+                "target_port": "4300"
+              }
+            ]
+          }
         }
       },
       "kubernetes_stateful_set": {
@@ -301,6 +330,89 @@
                         "name": "data"
                       }
                     ]
+                  }
+                ]
+              }
+            },
+            "volume_claim_template": [
+              {
+                "metadata": {
+                  "name": "data",
+                  "namespace": "protoconf"
+                },
+                "spec": {
+                  "access_modes": [
+                    "ReadWriteOnce"
+                  ],
+                  "resources": {
+                    "requests": {
+                      "storage": "10Gi"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "protoconf-insert": {
+          "metadata": {
+            "labels": {
+              "port_name": "protoconf-insert"
+            },
+            "name": "protoconf-insert",
+            "namespace": "protoconf"
+          },
+          "spec": {
+            "replicas": "1",
+            "service_name": "protoconf-insert",
+            "selector": {
+              "match_labels": {
+                "port_name": "protoconf-insert"
+              }
+            },
+            "template": {
+              "metadata": {
+                "labels": {
+                  "port_name": "protoconf-insert"
+                }
+              },
+              "spec": {
+                "container": [
+                  {
+                    "args": [
+                      "/srv/script/run.sh"
+                    ],
+                    "command": [
+                      "bash"
+                    ],
+                    "image": "ubuntu:22.04",
+                    "name": "protoconf-insert",
+                    "port": [
+                      {
+                        "container_port": "4300",
+                        "name": "rotoconf-insert",
+                        "protocol": "TCP"
+                      }
+                    ],
+                    "volume_mount": [
+                      {
+                        "mount_path": "/data",
+                        "name": "data"
+                      },
+                      {
+                        "mount_path": "/srv/script",
+                        "name": "script"
+                      }
+                    ]
+                  }
+                ],
+                "volume": [
+                  {
+                    "name": "script",
+                    "config_map": {
+                      "default_mode": "0755",
+                      "name": "script"
+                    }
                   }
                 ]
               }

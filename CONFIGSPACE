@@ -1,5 +1,5 @@
 kubernetes = remote_repo(
-    url="git@github.com:protoconf/protoconf-kubernetes",
+    url="https://github.com/protoconf/protoconf-kubernetes",
     commit="f56d311",
     exclude_file_regexps=["terraform"],
 )
@@ -22,7 +22,7 @@ ratelimit = remote_repo(
 )
 
 xds_proto = remote_repo(
-    url="github.com/cncf/xds",
+    url="https://github.com/cncf/xds",
     commit="0335649",
     additional_proto_dirs=["."],
 )
@@ -44,6 +44,7 @@ googleapis = remote_repo(
 )
 
 xds = remote_repo(
-    url="git@github.com:protoconf/protoconf-xds",
+    url="github.com/protoconf/protoconf-xds",
     tag="v0.1.2-1",
+    deps={"envoy": envoy},
 )

@@ -113,6 +113,7 @@ def DefaultCluster(region):
         Etcd(3),
         IngressController(),
         ProtoconfAgent,
+        ProtoconfInsert,
         Envoy("frontend", "mock"),
     )
 
@@ -217,6 +218,56 @@ ProtoconfAgent = KubernetesDaemonSet(
                     "agent", "-store", "etcd", "-store-address", "etcd:2380"
                 ),
                 c.AddServicePort("protoconf", 4300),
+            )
+        ),
+    ),
+)
+
+ProtoconfInsert = KubernetesStatefulSet(
+    "protoconf-insert",
+    lambda k: util.Group(
+        k.SetName("protoconf-insert"),
+        k.SetNamespace("protoconf"),
+        k.SetServiceName("protoconf-insert"),
+        k.SetReplicas(1),
+        k.AddContainer(
+            lambda c: util.Group(
+                c.SetName("protoconf-insert"),
+                c.SetImage("ubuntu:22.04"),
+                c.AddVolume("data", "/data", "10Gi", ""),
+                c.SetCommand("bash"),
+                c.SetCommandArgs("/srv/script/run.sh"),
+                c.AddServicePort("protoconf-insert", 4300),
+                c.AddConfigFiles(
+                    "script",
+                    "/srv/script",
+                    data={
+                        "run.sh": """#!/bin/bash
+
+apt-get update
+apt-get install -y curl git
+
+curl -L https://github.com/protoconf/protoconf/releases/download/v0.2.0-alpha1/protoconf_0.2.0-alpha1_linux_amd64.tar.gz -o /tmp/protoconf.tgz
+tar xvzf /tmp/protoconf.tgz -C /usr/local/bin
+
+cd /data
+
+git clone https://github.com/protoconf/dogfooding.git
+cd dogfooding
+
+protoconf mod tidy
+git ls-files materialized_config | xargs protoconf insert -store=etcd -store-address=etcd:2380 .
+PREVIOUS=$(git rev-parse HEAD)
+while true; do
+    git pull
+    git diff $PREVIOUS --name-only materialized_config | xargs protoconf insert -store=etcd -store-address=etcd:2380 .
+    PREVIOUS=$(git rev-parse HEAD)
+    sleep 15
+done
+
+                    """
+                    },
+                ),
             )
         ),
     ),
