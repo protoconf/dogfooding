@@ -257,10 +257,13 @@ cd dogfooding
 
 protoconf mod tidy
 git ls-files materialized_config | xargs protoconf insert -store=etcd -store-address=etcd:2380 .
+git checkout -- .
 PREVIOUS=$(git rev-parse HEAD)
 while true; do
     git pull
+    protoconf mod tidy
     git diff $PREVIOUS --name-only materialized_config | xargs protoconf insert -store=etcd -store-address=etcd:2380 .
+    git checkout -- .
     PREVIOUS=$(git rev-parse HEAD)
     sleep 15
 done
